@@ -1,7 +1,7 @@
 # FEC
 
 # step 1
-yarn install from the root directory
+yarn install from the root directory with "npm i -g yarn"
 
 # step 2
 yarn run dev

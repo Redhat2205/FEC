@@ -2,6 +2,10 @@
 import React from "react";
 // Bring reactDOM in to mount component to the dom.
 import reactDOM from "react-dom";
+import Overview from "./Widget/Overview/Overview.jsx";
+import Q_A from "./Widget/Q&A/Q&A.jsx";
+import R_R from "./Widget/R&R/R&R.jsx";
+import Related from "./Widget/Related/Related.jsx";
 
 // // Here is out base App component.
 // // Notice we are NOT using jsx here. This is because we have not set up babel yet.
@@ -17,7 +21,15 @@ const root = createRoot(document.getElementById("root"));
 
 // Huzzah for jsx!
 const App = () => {
-  return <h1>Hello World</h1>
+  return (
+  <div>
+    <h1>Hello World</h1>
+    <Overview/>
+    <Related/>
+    <Q_A/>
+    <R_R/>
+  </div>
+  )
 }
 
 root.render(<App />);
