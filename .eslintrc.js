@@ -18,5 +18,8 @@ module.exports = {
     'react',
   ],
   rules: {
+    "max-len": 0,
+    "eol-last": 0,
+    quotes: 0,
   },
 };
