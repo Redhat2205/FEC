@@ -21,5 +21,7 @@ module.exports = {
     "max-len": 0,
     "eol-last": 0,
     quotes: 0,
+    "no-console": 0,
+    "react/function-component-definition": 0,
   },
 };
