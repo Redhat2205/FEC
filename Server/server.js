@@ -11,5 +11,4 @@ const port = process.env.PORT || 3000;
 
 app.listen(port, () => {
   console.log('Listening on PORT', port);
-  console.log('pizza test');
 });
