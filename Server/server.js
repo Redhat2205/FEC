@@ -1,7 +1,8 @@
 const express = require('express');
-const app = express();
 require('dotenv').config();
 const path = require('path');
+
+const app = express();
 
 // serving static files
 app.use(express.static(path.join(__dirname, "../Client/public")));
