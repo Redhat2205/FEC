@@ -23,5 +23,6 @@ module.exports = {
     quotes: 0,
     "no-console": 0,
     "react/function-component-definition": 0,
+    "import/extensions": 0,
   },
 };
