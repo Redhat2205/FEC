@@ -5,6 +5,11 @@ const Button = styled.button`
   width: 200px;
   height: 30px;
   background-color: #35E5F0;
+
+  &:hover {
+    background-color: green;
+    color: white;
+  }
 `;
 
 export default Button;

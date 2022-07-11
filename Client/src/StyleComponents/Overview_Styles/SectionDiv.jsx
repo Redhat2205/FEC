@@ -6,7 +6,7 @@ const SectionDiv = {
     height: 600px;
     display: flex;
     float: left;
-    background-color: beige;
+    background-color: #faface;
   `,
   ProductInfoSection: styled.div`
     width: 38vw;
