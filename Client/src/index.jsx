@@ -10,7 +10,7 @@ import Related from "./Widget/Related/Related";
 
 const root = createRoot(document.getElementById("root"));
 
-// Huzzah for jsx!
+// Huzzah for JSX!
 const App = () => (
   <div>
     <h1>Hello World!</h1>
