@@ -13,14 +13,21 @@ const SectionDiv = {
     height: 200px;
     display: flex;
     float: right;
-    background-color: palevioletred;
+    background-color: #e0a2b7;
   `,
   StyleSelectorSection: styled.div`
     width: 38vw;
     height: 200px;
     display: flex;
     float: right;
-    background-color: #79d3e9;
+    background-color: #9bd4e2;
+  `,
+  AddToCartSection: styled.div`
+    width: 38vw;
+    height: 200px;
+    display: flex;
+    float: right;
+    background-color: #e7d2f3;
   `,
 };
 
