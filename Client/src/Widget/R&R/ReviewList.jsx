@@ -1,11 +1,12 @@
 import React from 'react';
 import ReviewTile from './ReviewTile.jsx';
 
-const ReviewList = () => (
+const ReviewList = (props) => (
   <ul>
-    <ReviewTile />
-    <ReviewTile />
-    <ReviewTile />
+    {/* <ReviewTile currentItem={props.currentItem} /> */}
+    {props.reviews.map((review) => (
+      <ReviewTile eachReview={review}/>
+    ))}
   </ul>
 );
 
