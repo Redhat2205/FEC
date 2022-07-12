@@ -16,7 +16,7 @@ const Q_A = () => {
     })
       .then((product) => {
         setqA(product);
-        console.log("what is this", product.data.results);
+        // console.log("what is this", product.data.results);
         // console.log(qA);
       })
       .catch((err) => {
