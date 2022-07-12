@@ -11,8 +11,8 @@ const Q_A = () => {
   useEffect(() => {
     axios({
       method: 'get',
-      url: `${config.url}${productId}`,
-      headers: { Authorization: config.TOKEN },
+      url: `${config.URL}/qa/questions?product_id=${productId}`,
+      headers: { Authorization: config.KEY },
     })
       .then((product) => {
         setqA(product.data);
