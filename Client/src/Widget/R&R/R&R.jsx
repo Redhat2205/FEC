@@ -1,6 +1,7 @@
 import React from "react";
 import axios from 'axios';
 import config from '../../../../config.js';
+const moment = require('moment');
 
 import ReviewList from './ReviewList.jsx';
 import RatingChart from './RatingChart.jsx';
