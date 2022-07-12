@@ -2,7 +2,7 @@ import React from "react";
 import SectionDiv from "../../../StyleComponents/Overview_Styles/SectionDiv.jsx";
 import ProductInfoStyles from "../../../StyleComponents/Overview_Styles/ProductInfoStyles.jsx";
 
-const ProductInfo = (props) => {
+const ProductInfo = ({ product }) => {
   console.log('product in productinfo page: ');
 
   return (

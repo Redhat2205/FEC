@@ -21,7 +21,6 @@ const Overview = () => {
   };
 
   useEffect(() => {
-    // axios.get(options.url, options.headers)
     axios({
       method: 'GET',
       url: options.url,
@@ -31,7 +30,6 @@ const Overview = () => {
         console.log('product data: ', productData.data[0]);
         setProduct(productData[0]);
       })
-      // .then((currProduct) => setProduct(currProduct))
       .then(() => console.log('product!!!', product))
       .catch((err) => console.log('error in client when GET: ', err));
   }, []);
