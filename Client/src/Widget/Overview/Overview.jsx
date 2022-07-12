@@ -27,10 +27,10 @@ const Overview = () => {
       headers: options.headers,
     })
       .then((productData) => {
-        console.log('product data: ', productData.data[0]);
+        // console.log('product data: ', productData.data[0]);
         setProduct(productData[0]);
       })
-      .then(() => console.log('product!!!', product))
+      // .then(() => console.log('product!!!', product))
       .catch((err) => console.log('error in client when GET: ', err));
   }, []);
 
