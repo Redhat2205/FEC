@@ -10,14 +10,13 @@ const Q_A = () => {
   // qa/questions?product_id=${productId}`
   useEffect(() => {
     axios({
-      method: 'GET',
+      method: 'get',
       url: `${config.URL}/qa/questions?product_id=${productId}`,
       headers: { Authorization: config.KEY },
     })
       .then((product) => {
-        setqA(product);
-        // console.log("what is this", product.data.results);
-        // console.log(qA);
+        setqA(product.data.results);
+        console.log("what is this", product.data.results);
       })
       .catch((err) => {
         console.log('err when get', err);
