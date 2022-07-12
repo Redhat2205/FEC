@@ -4,11 +4,16 @@ import { render, screen } from '@testing-library/react';
 
 // import widgets
 import R_R from '../Client/src/Widget/R&R/R&R.jsx';
+import Overview from '../Client/src/Widget/Overview/Overview.jsx';
 
 // write tests per widget
 
-
 // Overview
+test('rendering widget - overview', () => {
+  render(<Overview />);
+  const target = screen.getByTestId("overview");
+  expect(target).not.toBeNull();
+});
 
 // QA
 
@@ -16,7 +21,7 @@ import R_R from '../Client/src/Widget/R&R/R&R.jsx';
 
 // Ratings
 
-test('rendering widget dynamically from api response data', () => {
+test('rendering R_R widget dynamically from api response data', () => {
   render(<R_R />);
   const target = screen.getByTestId("rnr");
   expect(target).not.toBeNull();
