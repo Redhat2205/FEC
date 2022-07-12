@@ -22,10 +22,10 @@ const PI = {
   Name: styled.div`
     display: block;
     margin: 20px;
-    width: 300px;
+    width: 400px;
     height: 20px;
     font-weight: 700;
-    font-size: 40px;
+    font-size: 35px;
     /* text-align: vertical center */
   `,
   Price: styled.div`

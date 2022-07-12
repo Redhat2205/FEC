@@ -1,5 +1,5 @@
 // Bring React in to build a component.
-import React from "react";
+import React, { useState } from "react";
 // Bring reactDOM in to mount component to the dom.
 // import reactDOM from "react-dom";
 import { createRoot } from "react-dom/client";
@@ -11,14 +11,18 @@ import Related from "./Widget/Related/Related.jsx";
 const root = createRoot(document.getElementById("root"));
 
 // Huzzah for JSX!!
-const App = () => (
-  <div>
-    <h1>Hello World!</h1>
-    <Overview />
-    <Related />
-    <Q_A />
-    <R_R />
-  </div>
-);
+const App = () => {
+  const [productID, setProductID] = useState('37316');
+
+  return (
+    <div>
+      <h1>Hello World!</h1>
+      <Overview productID={productID} setProductID={setProductID} />
+      <Related productID={productID} />
+      <Q_A productID={productID} />
+      <R_R productID={productID} />
+    </div>
+  );
+};
 
 root.render(<App />);
