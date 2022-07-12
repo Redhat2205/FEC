@@ -6,7 +6,7 @@ import SearchBar from './Components/SearchBar.jsx';
 
 const Q_A = () => {
   const [qA, setQa] = useState([]);
-  const productId = 37311;
+  const productId = 37316;
   // qa/questions?product_id=${productId}`
   useEffect(() => {
     axios({
