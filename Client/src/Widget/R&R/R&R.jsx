@@ -130,7 +130,7 @@ class R_R extends React.Component {
         <div className="rating-chart-container" style={{ border: 'solid 1px', borderRadius: '5px', boxShadow: '5px 10px #888888', float: 'left', width: '33%' }}>
           <RatingChart currentItem={this.state.currentItem} />
         </div>
-        <div className="review-list-container" style={{ border: 'solid 1px', borderRadius: '5px', boxShadow: '5px 10px #888888', float: 'right', width: '66%' }}>
+        <div className="review-list-container" style={{ border: 'solid 1px', borderRadius: '5px', boxShadow: '5px 10px #888888', float: 'right', width: '66%', marginBottom: '20px' }}>
           <h1 style={{textAlign: 'center', fontFamily: 'Tahoma'}}>Review List</h1>
           <ReviewList reviews={this.state.productReviews} />
         </div>
