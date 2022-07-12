@@ -10,6 +10,9 @@ const IG = {
     max-height: 100%;
     object-fit: contain;
   `,
+  Thumbnail: styled.div`
+    width
+  `,
 };
 
 export default IG;

@@ -14,7 +14,7 @@ const SectionDiv = {
     /* display: flex; */
     float: right;
     background-color: #e0a2b7;
-    font-family: Tahoma;
+    font-family: 'Neue-Helvetica', 'Helvetica', 'Arial', Sans-Serif;
   `,
   StyleSelectorSection: styled.div`
     width: 39%;

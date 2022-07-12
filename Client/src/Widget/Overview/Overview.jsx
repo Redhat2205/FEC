@@ -49,7 +49,7 @@ const Overview = () => {
     <div>
       <div data-testid="overview"> Hello Overview</div>
       <ImageGallery currStyle={currStyle} />
-      <ProductInfo product={product} />
+      <ProductInfo product={product} currStyle={currStyle} />
       <StyleSelector styles={styles} setCurrStyle={setCurrStyle} />
       <AddToCart />
     </div>
