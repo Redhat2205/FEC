@@ -6,7 +6,7 @@ const ProductInfo = ({ product, currStyle }) => (
   <SectionDiv.ProductInfoSection>
     <PI.Ratings>
       ☆☆☆☆☆
-      <PI.AtoReview href="#reviewss">Read all # reviews</PI.AtoReview>
+      <PI.AtoReview href="#main-rnr-header">Read all # reviews</PI.AtoReview>
     </PI.Ratings>
     <PI.Category>
       { product.category }
