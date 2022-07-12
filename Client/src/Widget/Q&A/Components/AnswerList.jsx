@@ -14,7 +14,7 @@ const AnswerList = ({ answerObj }) => {
       </div>
       {moreAnswer && sortedAnswer.slice(2).map((answer) => (
         <AnswerPanel answer={answer} />))}
-      <span onClick={() => {moreAnswer !== true ? setMoreAnwser(true) : setMoreAnwser(false);}}>LOAD MORE ANSWERS</span>
+      <span onClick={() => {moreAnswer !== true ? setMoreAnwser(true) : setMoreAnwser(false);}}>{moreAnswer ? "COLLAPSE ANSWERS" : "LOAD MORE ANSWERS"}</span>
     </div>
   );
 };

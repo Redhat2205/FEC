@@ -2,7 +2,7 @@ import React from "react";
 
 const AnswerPanel = ({answer}) => (
   <div>
-    <span>{answer.body}</span>
+    <span>{`A: ${answer.body}`}</span>
     <span>
       {answer.answerer_name}
     </span>
