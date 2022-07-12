@@ -5,7 +5,7 @@ const ReviewList = (props) => (
   <ul>
     {/* <ReviewTile currentItem={props.currentItem} /> */}
     {props.reviews.map((review) => (
-      <ReviewTile eachReview={review}/>
+      <ReviewTile key={review.review_id} eachReview={review}/>
     ))}
   </ul>
 );
