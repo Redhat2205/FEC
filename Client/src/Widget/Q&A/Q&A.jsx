@@ -25,7 +25,7 @@ const Q_A = () => {
   }, []);
   return (
     <div>
-      <h1> Questions and Answers</h1>
+      <h1 id="qna"> Questions and Answers</h1>
       <SearchBar
       />
       <QuestionList
