@@ -10,18 +10,21 @@ import AddToCart from "./Components/AddToCart.jsx";
 const Overview = () => {
   const [product, setProduct] = useState({});
 
-  useEffect(() => {
+  const getProduct = async () => (
     axios({
       method: 'GET',
-      url: config.URL,
-      headers: config.KEY,
+      url: `${config.URL}/products`,
+      headers: { Authorization: config.KEY },
     })
       .then((productData) => {
-        // console.log('product data: ', productData.data[0]);
-        setProduct(productData[0]);
+        console.log('product data: ', productData.data[0]);
+        setProduct(productData.data[0]);
       })
-      // .then(() => console.log('product!!!', product))
-      .catch((err) => console.log('error in client when GET: ', err));
+      .catch((err) => console.log('error in client when GET: ', err))
+  );
+
+  useEffect(() => {
+    getProduct();
   }, []);
 
   return (

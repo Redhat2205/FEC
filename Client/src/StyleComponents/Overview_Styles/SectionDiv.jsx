@@ -11,9 +11,10 @@ const SectionDiv = {
   ProductInfoSection: styled.div`
     width: 39%;
     height: 200px;
-    display: flex;
+    /* display: flex; */
     float: right;
     background-color: #e0a2b7;
+    font-family: Tahoma;
   `,
   StyleSelectorSection: styled.div`
     width: 39%;

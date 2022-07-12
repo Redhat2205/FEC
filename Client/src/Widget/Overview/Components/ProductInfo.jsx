@@ -1,19 +1,22 @@
 import React from "react";
 import SectionDiv from "../../../StyleComponents/Overview_Styles/SectionDiv.jsx";
-import ProductInfoStyles from "../../../StyleComponents/Overview_Styles/ProductInfoStyles.jsx";
+import PI from "../../../StyleComponents/Overview_Styles/PI.jsx";
 
 const ProductInfo = ({ product }) => {
-  console.log('product in productinfo page: ', product);
+  console.log('');
 
   return (
     <SectionDiv.ProductInfoSection>
-      <ProductInfoStyles.General>☆☆☆☆☆  Read all # reviews</ProductInfoStyles.General>
-      {/* <ProductInfoStyles.General>
+      <PI.Ratings>
+        ☆☆☆☆☆
+        <PI.AtoReview href="#reviewss">Read all # reviews</PI.AtoReview>
+      </PI.Ratings>
+      <PI.Category>
         { product.category }
-      </ProductInfoStyles.General>
-      <ProductInfoStyles.General>
+      </PI.Category>
+      <PI.Name>
         { product.name }
-      </ProductInfoStyles.General> */}
+      </PI.Name>
     </SectionDiv.ProductInfoSection>
   );
 };
