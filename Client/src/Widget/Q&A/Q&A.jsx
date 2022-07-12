@@ -24,8 +24,8 @@ const Q_A = () => {
       });
   }, []);
   return (
-    <div>
-      <h1 id="qna"> Questions and Answers</h1>
+    <div data-testid="qna">
+      <h1> Questions and Answers</h1>
       <SearchBar
       />
       <QuestionList

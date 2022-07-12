@@ -3,7 +3,7 @@ import SectionDiv from "../../../StyleComponents/Overview_Styles/SectionDiv.jsx"
 import ProductInfoStyles from "../../../StyleComponents/Overview_Styles/ProductInfoStyles.jsx";
 
 const ProductInfo = ({ product }) => {
-  console.log('product in productinfo page: ');
+  console.log('product in productinfo page: ', product);
 
   return (
     <SectionDiv.ProductInfoSection>

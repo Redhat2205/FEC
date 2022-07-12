@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import config from '../../../../config.js';
 import ImageGallery from "./Components/ImageGallery.jsx";
 import ProductInfo from "./Components/ProductInfo.jsx";
 import StyleSelector from "./Components/StyleSelector.jsx";
@@ -9,22 +10,11 @@ import AddToCart from "./Components/AddToCart.jsx";
 const Overview = () => {
   const [product, setProduct] = useState({});
 
-  const options = {
-    url: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/products',
-    headers: {
-      Authorization: process.env.REACT_APP_API_KEY,
-      // 'Access-Control-Allow-Origin': 'http://localhost:3000',
-      // "Cache-Control": "no-cache",
-      // withCredentials: true,
-      // crossdomain: true,
-    },
-  };
-
   useEffect(() => {
     axios({
       method: 'GET',
-      url: options.url,
-      headers: options.headers,
+      url: config.URL,
+      headers: config.KEY,
     })
       .then((productData) => {
         // console.log('product data: ', productData.data[0]);
@@ -36,7 +26,7 @@ const Overview = () => {
 
   return (
     <div>
-      <div> Hello Overview</div>
+      <div data-testid="overview"> Hello Overview</div>
       <ImageGallery />
       <ProductInfo product={product} />
       <StyleSelector />
