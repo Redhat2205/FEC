@@ -1,11 +1,12 @@
 import React from "react";
 import axios from 'axios';
+import config from '../../../../config.js';
 
 import ReviewList from './ReviewList.jsx';
 import RatingChart from './RatingChart.jsx';
 
-const API_BASE = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe';
-const Magic = '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';
+const API_BASE = config.URL;
+const Magic = config.KEY;
 
 // const R_R = () => (
 //   <div className="rnr-container">
@@ -20,47 +21,47 @@ const Magic = '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';
 //   </div>
 // );
 
-const dummyData = [
-  {rating: 2,
-   summary: 'blah blah blaze blahblah',
-   date: '07-11-2022',
-   reviewer_name: 'shy guy',
-   body: 'dslajfdisfjidajfldsajflijlijflkdsjafldksjoigjasdoijgdisajfdigjisajgilsgjlidsajgil'
-  },
-  {rating: 3,
-   summary: 'pizza pizza pizza pizza',
-   date: '07-11-2022',
-   reviewer_name: 'pizza maniac',
-   body: 'adsfljkdsojgoiidsjgoidhfdhgljkfalfhdgfijiohweoirhgofshdihfighrowihgiohgioehgoi'
-  },
-  {rating: 5,
-   summary: '5 tacos plus rice and beans',
-   date: '07-11-2022',
-   reviewer_name: 'zeiram',
-   body: 'jaldfskjioewghaskhgjfdioshgiowrugroieuthdsaoghwrioiwohgiowahgoiefjo;gihrasagdhoi'
-  },
-  {rating: 1,
-   summary: 'behari beef kebab with rice, salad, chickpeas and bread',
-   date: '07-11-2022',
-   reviewer_name: 'Porsche Owner',
-   body: 'alksdjflahgoiewhgoiawhgiohgoijfaidoghriowhgoihwagiohfoghi'
-  },
-  {rating: 4,
-   summary: 'grilled chicken greek salad',
-   date: '07-11-2022',
-   reviewer_name: 'Giant Rabbit',
-   body: 'yuwihfgirosfhaeiodigosdjgjaghsflagsihiehegi'
-  },
-];
+// const dummyData = [
+//   {rating: 2,
+//    summary: 'blah blah blaze blahblah',
+//    date: '07-11-2022',
+//    reviewer_name: 'shy guy',
+//    body: 'dslajfdisfjidajfldsajflijlijflkdsjafldksjoigjasdoijgdisajfdigjisajgilsgjlidsajgil'
+//   },
+//   {rating: 3,
+//    summary: 'pizza pizza pizza pizza',
+//    date: '07-11-2022',
+//    reviewer_name: 'pizza maniac',
+//    body: 'adsfljkdsojgoiidsjgoidhfdhgljkfalfhdgfijiohweoirhgofshdihfighrowihgiohgioehgoi'
+//   },
+//   {rating: 5,
+//    summary: '5 tacos plus rice and beans',
+//    date: '07-11-2022',
+//    reviewer_name: 'zeiram',
+//    body: 'jaldfskjioewghaskhgjfdioshgiowrugroieuthdsaoghwrioiwohgiowahgoiefjo;gihrasagdhoi'
+//   },
+//   {rating: 1,
+//    summary: 'behari beef kebab with rice, salad, chickpeas and bread',
+//    date: '07-11-2022',
+//    reviewer_name: 'Porsche Owner',
+//    body: 'alksdjflahgoiewhgoiawhgiohgoijfaidoghriowhgoihwagiohfoghi'
+//   },
+//   {rating: 4,
+//    summary: 'grilled chicken greek salad',
+//    date: '07-11-2022',
+//    reviewer_name: 'Giant Rabbit',
+//    body: 'yuwihfgirosfhaeiodigosdjgjaghsflagsihiehegi'
+//   },
+// ];
 
-const rando = Math.floor(Math.random() * dummyData.length);
+// const rando = Math.floor(Math.random() * dummyData.length);
 
 class R_R extends React.Component {
   constructor() {
     super();
     this.state = {
-      productReviews: dummyData,
-      currentItem: dummyData[rando],
+      productReviews: [],
+      currentItem: {},
     };
     // bind handlers in constructor
     this.fetchReviewsTest = this.fetchReviewsTest.bind(this);
@@ -71,55 +72,20 @@ class R_R extends React.Component {
   }
 
   fetchReviewsTest() {
-    // axios({
-    //   method: 'get',
-    //   url: API_BASE + '/reviews',
-    //   headers: { Authorization: Magic },
-    //   params: { product_id: '37320' },
-    // })
-    //   .then((res) => {
-    //     this.setState({ productReviews: res.data.results });
-    //     this.setState({ currentItem: res.data.results[0] });
-    //   })
-    //   .catch((err) => {
-    //     console.log('🟥there was an error fetching product info!', err);
-    //   });
-
-    // please give me the API authorization back!!!
-    // *******************************************
-    // const dummyData = [
-    //   {rating: 2,
-    //    summary: 'blah blah blaze blahblah',
-    //    date: '07-11-2022',
-    //    reviewer_name: 'shy guy',
-    //    body: 'dslajfdisfjidajfldsajflijlijflkdsjafldksjoigjasdoijgdisajfdigjisajgilsgjlidsajgil'
-    //   },
-    //   {rating: 3,
-    //    summary: 'pizza pizza pizza pizza',
-    //    date: '07-11-2022',
-    //    reviewer_name: 'pizza maniac',
-    //    body: 'adsfljkdsojgoiidsjgoidhfdhgljkfalfhdgfijiohweoirhgofshdihfighrowihgiohgioehgoi'
-    //   },
-    //   {rating: 5,
-    //    summary: '5 tacos plus rice and beans',
-    //    date: '07-11-2022',
-    //    reviewer_name: 'zeiram',
-    //    body: 'jaldfskjioewghaskhgjfdioshgiowrugroieuthdsaoghwrioiwohgiowahgoiefjo;gihrasagdhoi'
-    //   },
-    //   {rating: 1,
-    //    summary: 'behari beef kebab with rice, salad, chickpeas and bread',
-    //    date: '07-11-2022',
-    //    reviewer_name: 'Porsche Owner',
-    //    body: 'alksdjflahgoiewhgoiawhgiohgoijfaidoghriowhgoihwagiohfoghi'
-    //   },
-    //   {rating: 4,
-    //    summary: 'grilled chicken greek salad',
-    //    date: '07-11-2022',
-    //    reviewer_name: 'Giant Rabbit',
-    //    body: 'yuwihfgirosfhaeiodigosdjgjaghsflagsihiehegi'
-    //   },
-    // ];
-    // this.setState({productReviews: dummyData})
+    axios({
+      method: 'get',
+      url: API_BASE + '/reviews',
+      headers: { Authorization: Magic },
+      params: { product_id: '37320' },
+    })
+      .then((res) => {
+        this.setState({ productReviews: res.data.results });
+        this.setState({ currentItem: res.data.results[0] });
+      })
+      .catch((err) => {
+        console.log('🟥there was an error fetching product info!', err);
+      });
+    // this.setState({productReviews: dummyData});
     // this.setState({currentItem: this.state.productReviews[0]});
   }
 
