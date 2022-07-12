@@ -1,11 +1,12 @@
 import React from "react";
 import axios from 'axios';
+import config from '../../../../config.js';
 
 import ReviewList from './ReviewList.jsx';
 import RatingChart from './RatingChart.jsx';
 
-const API_BASE = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe';
-const Magic = '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';
+const API_BASE = config.URL;
+const Magic = config.KEY;
 
 // const R_R = () => (
 //   <div className="rnr-container">
@@ -19,6 +20,41 @@ const Magic = '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';
 //     </div>
 //   </div>
 // );
+
+// const dummyData = [
+//   {rating: 2,
+//    summary: 'blah blah blaze blahblah',
+//    date: '07-11-2022',
+//    reviewer_name: 'shy guy',
+//    body: 'dslajfdisfjidajfldsajflijlijflkdsjafldksjoigjasdoijgdisajfdigjisajgilsgjlidsajgil'
+//   },
+//   {rating: 3,
+//    summary: 'pizza pizza pizza pizza',
+//    date: '07-11-2022',
+//    reviewer_name: 'pizza maniac',
+//    body: 'adsfljkdsojgoiidsjgoidhfdhgljkfalfhdgfijiohweoirhgofshdihfighrowihgiohgioehgoi'
+//   },
+//   {rating: 5,
+//    summary: '5 tacos plus rice and beans',
+//    date: '07-11-2022',
+//    reviewer_name: 'zeiram',
+//    body: 'jaldfskjioewghaskhgjfdioshgiowrugroieuthdsaoghwrioiwohgiowahgoiefjo;gihrasagdhoi'
+//   },
+//   {rating: 1,
+//    summary: 'behari beef kebab with rice, salad, chickpeas and bread',
+//    date: '07-11-2022',
+//    reviewer_name: 'Porsche Owner',
+//    body: 'alksdjflahgoiewhgoiawhgiohgoijfaidoghriowhgoihwagiohfoghi'
+//   },
+//   {rating: 4,
+//    summary: 'grilled chicken greek salad',
+//    date: '07-11-2022',
+//    reviewer_name: 'Giant Rabbit',
+//    body: 'yuwihfgirosfhaeiodigosdjgjaghsflagsihiehegi'
+//   },
+// ];
+
+// const rando = Math.floor(Math.random() * dummyData.length);
 
 class R_R extends React.Component {
   constructor() {
@@ -49,17 +85,19 @@ class R_R extends React.Component {
       .catch((err) => {
         console.log('🟥there was an error fetching product info!', err);
       });
+    // this.setState({productReviews: dummyData});
+    // this.setState({currentItem: this.state.productReviews[0]});
   }
 
   render() {
     return (
       <div className="rnr-container">
-        <h1 style={{textAlign: 'center'}}>Ratings and Reviews</h1>
-        <div className="rating-chart-container" style={{ border: 'solid 2px', float: 'left', width: '49%' }}>
+        <h1 data-testid="rnr" style={{textAlign: 'center', fontFamily: 'tahoma'}}>Ratings and Reviews</h1>
+        <div className="rating-chart-container" style={{ border: 'solid 1px', borderRadius: '5px', boxShadow: '5px 10px #888888', float: 'left', width: '33%' }}>
           <RatingChart currentItem={this.state.currentItem} />
         </div>
-        <div className="review-list-container" style={{ border: 'solid 2px', float: 'right', width: '49%' }}>
-          <h3 style={{textAlign: 'center'}}>Review List</h3>
+        <div className="review-list-container" style={{ border: 'solid 1px', borderRadius: '5px', boxShadow: '5px 10px #888888', float: 'right', width: '66%', marginBottom: '20px' }}>
+          <h1 style={{textAlign: 'center', fontFamily: 'Tahoma'}}>Review List</h1>
           <ReviewList reviews={this.state.productReviews} />
         </div>
       </div>
