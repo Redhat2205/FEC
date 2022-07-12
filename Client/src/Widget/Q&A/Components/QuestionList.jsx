@@ -1,7 +1,7 @@
 import React from "react";
 import QuestionPanel from "./QuestionPanel.jsx";
 
-const QuestionList = ({qA}) => (
+const QuestionList = ({ qA }) => (
   <QuestionPanel>
     {qA}
   </QuestionPanel>
