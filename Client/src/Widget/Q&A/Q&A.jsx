@@ -16,7 +16,7 @@ const Q_A = () => {
     })
       .then((product) => {
         setqA(product);
-        console.log("what is this", product.data.results);
+        // console.log("what is this", product.data.results);
         // console.log(qA);
       })
       .catch((err) => {
@@ -24,7 +24,7 @@ const Q_A = () => {
       });
   }, []);
   return (
-    <div>
+    <div data-testid="qna">
       <h1> Questions and Answers</h1>
       <SearchBar
       />
