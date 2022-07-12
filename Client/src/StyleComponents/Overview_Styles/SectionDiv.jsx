@@ -4,7 +4,7 @@ const SectionDiv = {
   ImageGallerySection: styled.div`
     width: 60%;
     height: 600px;
-    display: flex;
+    /* display: flex; */
     float: left;
     background-color: #ffffe9;
   `,
@@ -19,14 +19,14 @@ const SectionDiv = {
   StyleSelectorSection: styled.div`
     width: 39%;
     height: 200px;
-    display: flex;
+    /* display: flex; */
     float: right;
     background-color: #9bd4e2;
   `,
   AddToCartSection: styled.div`
     width: 39%;
     height: 200px;
-    display: flex;
+    /* display: flex; */
     float: right;
     background-color: #e7d2f3;
   `,
