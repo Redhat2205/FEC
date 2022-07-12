@@ -10,18 +10,19 @@ const Q_A = () => {
   // qa/questions?product_id=${productId}`
   useEffect(() => {
     axios({
-      method: 'get',
-      url: `${config.url}${productId}`,
-      headers: { Authorization: config.TOKEN },
+      method: 'GET',
+      url: `${config.URL}/qa/questions?product_id=${productId}`,
+      headers: { Authorization: config.KEY },
     })
       .then((product) => {
-        setqA(product.data);
-        console.log(qA);
+        setqA(product);
+        console.log("what is this", product.data.results);
+        // console.log(qA);
       })
       .catch((err) => {
-        console.log(err);
+        console.log('err when get', err);
       });
-  }, [productId]);
+  }, []);
   return (
     <div>
       <h1> Questions and Answers</h1>
