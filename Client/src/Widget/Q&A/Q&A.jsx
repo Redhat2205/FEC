@@ -5,19 +5,20 @@ import config from '../../../../config.js';
 import SearchBar from './Components/SearchBar.jsx';
 
 const Q_A = () => {
-  const [qA, setqA] = useState([]);
+  const [qA, setQa] = useState([]);
   const productId = 37311;
   // qa/questions?product_id=${productId}`
   useEffect(() => {
     axios({
-      method: 'GET',
+      method: 'get',
       url: `${config.URL}/qa/questions?product_id=${productId}`,
       headers: { Authorization: config.KEY },
     })
       .then((product) => {
-        setqA(product);
-        // console.log("what is this", product.data.results);
-        // console.log(qA);
+        const sortedQuestions = Object.values(product.data.results).sort((a, b) => (
+          b.helpfulness - a.helpfulness
+        ));
+        setQa(sortedQuestions);
       })
       .catch((err) => {
         console.log('err when get', err);
@@ -27,6 +28,8 @@ const Q_A = () => {
     <div data-testid="qna">
       <h1> Questions and Answers</h1>
       <SearchBar
+        setQa={setQa}
+        qA={qA}
       />
       <QuestionList
         qA={qA}
