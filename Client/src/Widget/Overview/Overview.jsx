@@ -17,7 +17,7 @@ const Overview = () => {
       headers: config.KEY,
     })
       .then((productData) => {
-        console.log('product data: ', productData.data[0]);
+        // console.log('product data: ', productData.data[0]);
         setProduct(productData[0]);
       })
       // .then(() => console.log('product!!!', product))
