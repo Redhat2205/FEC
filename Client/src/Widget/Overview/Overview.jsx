@@ -26,7 +26,7 @@ const Overview = () => {
 
   return (
     <div>
-      <div> Hello Overview</div>
+      <div data-testid="overview"> Hello Overview</div>
       <ImageGallery />
       <ProductInfo product={product} />
       <StyleSelector />
