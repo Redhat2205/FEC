@@ -595,7 +595,11 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var reac
   \*******************/
 /***/ ((module) => {
 
+<<<<<<< HEAD
 eval("URL = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe';\nKEY = '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';\nmodule.exports.URL = URL;\nmodule.exports.KEY = KEY;//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiLi9jb25maWcuanMuanMiLCJtYXBwaW5ncyI6IkFBQUE7QUFDQTtBQUNBO0FBQ0EiLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly9mZWMvLi9jb25maWcuanM/YTFiYyJdLCJzb3VyY2VzQ29udGVudCI6WyJVUkwgPSAnaHR0cHM6Ly9hcHAtaHJzZWktYXBpLmhlcm9rdWFwcC5jb20vYXBpL2ZlYzIvaHItcmZlJztcbktFWSA9ICdnaHBfSURhbERZMDBCdDZWMW9uTUNZRVVqcEM0R1oySnJSM09WT2tFJztcbm1vZHVsZS5leHBvcnRzLlVSTCA9IFVSTDtcbm1vZHVsZS5leHBvcnRzLktFWSA9IEtFWTsiXSwibmFtZXMiOltdLCJzb3VyY2VSb290IjoiIn0=\n//# sourceURL=webpack-internal:///./config.js\n");
+=======
+eval("module.exports.KEY = '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';\nmodule.exports.URL = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe';//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiLi9jb25maWcuanMuanMiLCJtYXBwaW5ncyI6IkFBQUE7QUFFQSIsInNvdXJjZXMiOlsid2VicGFjazovL2ZlYy8uL2NvbmZpZy5qcz9hMWJjIl0sInNvdXJjZXNDb250ZW50IjpbIm1vZHVsZS5leHBvcnRzLktFWSA9ICdnaHBfWGUzd3pkTUpRWEdmZjBBNVM0cXF0d2dMZ1ZwQktTM2lCbkRqJztcblxubW9kdWxlLmV4cG9ydHMuVVJMID0gJ2h0dHBzOi8vYXBwLWhyc2VpLWFwaS5oZXJva3VhcHAuY29tL2FwaS9mZWMyL2hyLXJmZSc7Il0sIm5hbWVzIjpbXSwic291cmNlUm9vdCI6IiJ9\n//# sourceURL=webpack-internal:///./config.js\n");
+>>>>>>> 27bb85730f3a3b2044552409b6f4ed4675c3eb2d
 
 /***/ }),
 
