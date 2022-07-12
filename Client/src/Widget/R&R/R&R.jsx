@@ -92,7 +92,7 @@ class R_R extends React.Component {
   render() {
     return (
       <div className="rnr-container">
-        <h1 data-testid="rnr" style={{textAlign: 'center', fontFamily: 'tahoma'}}>Ratings and Reviews</h1>
+        <h1 id="main-rnr-header" data-testid="rnr" style={{textAlign: 'center', fontFamily: 'tahoma'}}>Ratings and Reviews</h1>
         <div className="rating-chart-container" style={{ border: 'solid 1px', borderRadius: '5px', boxShadow: '5px 10px #888888', float: 'left', width: '33%' }}>
           <RatingChart currentItem={this.state.currentItem} />
         </div>
