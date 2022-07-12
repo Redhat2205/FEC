@@ -7,7 +7,7 @@ import StyleSelector from "./Components/StyleSelector.jsx";
 import AddToCart from "./Components/AddToCart.jsx";
 // import GeneralStyles from "../../StyleComponents/GeneralStyles.jsx";
 
-const Overview = () => {
+const Overview = ({ productID, setProductID }) => {
   const [product, setProduct] = useState({});
   const [styles, setStyles] = useState([]);
   const [currStyle, setCurrStyle] = useState({});
@@ -15,12 +15,12 @@ const Overview = () => {
   const getProduct = () => (
     axios({
       method: 'GET',
-      url: `${config.URL}/products`,
+      url: `${config.URL}/products/${productID}`,
       headers: { Authorization: config.KEY },
     })
       .then((productData) => {
         // console.log('product data: ', productData.data[0]);
-        setProduct(productData.data[0]);
+        setProduct(productData.data);
       })
       .catch((err) => console.log('error when getting product: ', err))
   );
@@ -28,7 +28,7 @@ const Overview = () => {
   const getStyles = () => {
     axios({
       method: 'GET',
-      url: `${config.URL}/products/37311/styles`,
+      url: `${config.URL}/products/37316/styles`,
       headers: { Authorization: config.KEY },
     })
       .then((stylesData) => {
