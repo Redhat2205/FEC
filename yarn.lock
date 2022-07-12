@@ -2798,22 +2798,14 @@ domexception@^4.0.0:
 
 dotenv-defaults@^2.0.2:
   version "2.0.2"
-<<<<<<< HEAD
-  resolved "https://registry.npmjs.org/dotenv-defaults/-/dotenv-defaults-2.0.2.tgz"
-=======
   resolved "https://registry.yarnpkg.com/dotenv-defaults/-/dotenv-defaults-2.0.2.tgz#6b3ec2e4319aafb70940abda72d3856770ee77ac"
->>>>>>> d217ba337ad1ba3ab783bce7da5c951b3cb1a73a
   integrity sha512-iOIzovWfsUHU91L5i8bJce3NYK5JXeAwH50Jh6+ARUdLiiGlYWfGw6UkzsYqaXZH/hjE/eCd/PlfM/qqyK0AMg==
   dependencies:
     dotenv "^8.2.0"
 
 dotenv-webpack@^8.0.0:
   version "8.0.0"
-<<<<<<< HEAD
-  resolved "https://registry.npmjs.org/dotenv-webpack/-/dotenv-webpack-8.0.0.tgz"
-=======
   resolved "https://registry.yarnpkg.com/dotenv-webpack/-/dotenv-webpack-8.0.0.tgz#bde8750eebda8fd1c6d7134f02bf56ad1f865772"
->>>>>>> d217ba337ad1ba3ab783bce7da5c951b3cb1a73a
   integrity sha512-vsWj11yWbIxLUPcQDbifCGW1+Mp03XfApFHJTC+/Ag9g3D/AnxoaVZcp76LpuBmReRwIJ+YO1fVdhmpzh+LL1A==
   dependencies:
     dotenv-defaults "^2.0.2"
