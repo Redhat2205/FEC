@@ -32,7 +32,7 @@ const AddToCart = ({ currStyle }) => {
           <option> - </option>
           { skus.map((sku) => (
             <option
-              key={sku[0]}
+              key={sku[0] + 100}
             >
               {sku[1].quantity}
             </option>
