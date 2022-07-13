@@ -3,20 +3,38 @@ import SectionDiv from "../../../StyleComponents/Overview_Styles/SectionDiv.jsx"
 import ATC from "../../../StyleComponents/Overview_Styles/ATC.jsx";
 
 const AddToCart = ({ currStyle }) => {
+  const defaultStock = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
+
   const [size, setSize] = useState(null);
+  const [stock, setStock] = useState(defaultStock);
   const [quantity, setQuantity] = useState(null);
 
   if (currStyle.name !== undefined) {
     const skus = Object.entries(currStyle.skus);
 
-    const selectSizeAndUpdateQuantity = (e, skuID) => {
+    const selectSizeAndUpdateStock = (e) => {
       setSize(e.target.value);
-      // let currQuan = skus[]
-      // console.log('target value: ', e.target.value);
+
+      skus.forEach((sku) => {
+        if (sku[1].size === e.target.value) {
+          let newStockNum = sku[1].quantity;
+          const newStockArr = [];
+
+          if (newStockNum >= 15) {
+            setStock(defaultStock);
+          } else {
+            while (newStockNum > 0) {
+              newStockArr.unshift(newStockNum);
+              newStockNum -= 1;
+            }
+            setStock(newStockArr);
+          }
+        }
+      });
     };
 
     return (
-      <SectionDiv.AddToCartSection onChange={selectSizeAndUpdateQuantity}>
+      <SectionDiv.AddToCartSection onChange={selectSizeAndUpdateStock}>
         <ATC.SelectSize>
           <option> Select Size </option>
           { skus.map((sku) => (
@@ -30,13 +48,21 @@ const AddToCart = ({ currStyle }) => {
 
         <ATC.SelectQuantity>
           <option> - </option>
-          { skus.map((sku) => (
-            <option
-              key={sku[0] + 100}
-            >
-              {sku[1].quantity}
-            </option>
-          ))}
+          { size === null
+            ? stock.map((quantityChoice, index) => (
+              <option
+                key={index + 100}
+              >
+                {quantityChoice}
+              </option>
+            ))
+            : stock.map((quantityChoice, index) => (
+              <option
+                key={index + 200}
+              >
+                {quantityChoice}
+              </option>
+            ))}
         </ATC.SelectQuantity>
 
       </SectionDiv.AddToCartSection>
