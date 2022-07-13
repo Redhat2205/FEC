@@ -16,7 +16,7 @@ const ReviewList = (props) => {
     </ul>
     <MoreReviews />
     <AddReview show={show} setShow={setShow} />
-    <AddReviewModal show={show} setShow={setShow}/>
+    <AddReviewModal show={show} setShow={setShow} viewedItem={props.viewedItem}/>
   </>
   );
 };

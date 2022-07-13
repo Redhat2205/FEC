@@ -31,14 +31,28 @@ var modalBodyStyle = {
 };
 
 const AddReviewModal = (props) => {
+  // console.log('current item⭐️', props.viewedItem.name);
   if (!props.show) {
     return null;
   } else {
     return (
       <div className="modal-container" style={modalStyle}>
         <div className="modal-content" style={modalContentStyle}>
-          <div style={{modalHeaderStyle}}>header</div>
-          <div style={{modalBodyStyle}}>body</div>
+          <div style={{modalHeaderStyle}}>
+            <h1>Write Your Review</h1>
+            <h3>About {props.viewedItem.name}</h3>
+          </div>
+          <div className="modal-body" style={{modalBodyStyle}}>
+            <h5>Overall rating</h5>
+            <h5>Do you recommend this product?</h5>
+            <h5>Characteristics</h5>
+            <h5>Review summary</h5>
+            <h5>Review body</h5>
+            <h5>Upload photos</h5>
+            <h5>What is your nickname?</h5>
+            <h5>What is your email?</h5>
+            <button>Submit review</button>
+          </div>
           <div className="modal-footer" style={{modalFooterStyle}}>
             <button onClick={() => props.setShow(!props.show)}>Close</button>
           </div>

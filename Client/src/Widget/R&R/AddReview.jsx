@@ -7,7 +7,7 @@ const addReviewStyle = {
   float: 'left',
   border: '1px solid',
   padding: '25px 0 25px',
-  margin: '4px'
+  margin: '4px',
 };
 
 const AddReview = (props) => {
