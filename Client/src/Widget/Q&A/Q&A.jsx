@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from "react";
 import axios from 'axios';
 import QuestionList from './Components/QuestionList.jsx';
-import config from '../../../../config.js';
 import SearchBar from './Components/SearchBar.jsx';
+import config from '../../../../config.js';
 
 const Q_A = ({ productID }) => {
   const [qA, setQa] = useState([]);
 
-  // qa/questions?product_id=${productId}`
   useEffect(() => {
     axios({
       method: 'get',
@@ -21,6 +20,7 @@ const Q_A = ({ productID }) => {
         setQa(sortedQuestions);
       })
       .catch((err) => {
+        console.log(config.URL);
         console.log('err when get', err);
       });
   }, []);
