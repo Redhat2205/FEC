@@ -5,7 +5,7 @@ const moment = require('moment');
 import ReviewList from './ReviewList.jsx';
 import RatingChart from './RatingChart.jsx';
 
-const API_BASE = process.env.API_BASE;
+const API_BASE = process.env.API_Base;
 const secret = process.env.API_Key;
 
 // const R_R = () => (
