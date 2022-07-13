@@ -5,7 +5,7 @@ const moment = require('moment');
 import ReviewList from './ReviewList.jsx';
 import RatingChart from './RatingChart.jsx';
 
-const API_BASE = process.env.API_BASE;
+const API_Base = process.env.API_Base;
 const secret = process.env.API_Key;
 
 // const R_R = () => (
@@ -75,7 +75,7 @@ class R_R extends React.Component {
   fetchReviewsTest() {
     axios({
       method: 'get',
-      url: API_BASE + '/reviews',
+      url: API_Base + '/reviews',
       headers: { Authorization: secret },
       params: { product_id: this.props.productID }, // NOT USING GLOBAL PRODUCTID VARIABLE!!!!
     })
@@ -86,7 +86,7 @@ class R_R extends React.Component {
       .then(() => {
         axios({
           method: 'get',
-          url: API_BASE + '/products/' + this.props.productID,
+          url: API_Base + '/products/' + this.props.productID,
           headers: { Authorization: secret },
           // params: { product_id: this.props.productID },
         })
