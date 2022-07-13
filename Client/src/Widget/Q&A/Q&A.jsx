@@ -4,14 +4,14 @@ import QuestionList from './Components/QuestionList.jsx';
 import config from '../../../../config.js';
 import SearchBar from './Components/SearchBar.jsx';
 
-const Q_A = () => {
+const Q_A = ({ productID }) => {
   const [qA, setQa] = useState([]);
-  const productId = 37316;
+
   // qa/questions?product_id=${productId}`
   useEffect(() => {
     axios({
       method: 'get',
-      url: `${config.URL}/qa/questions?product_id=${productId}`,
+      url: `${config.URL}/qa/questions?product_id=${productID}`,
       headers: { Authorization: config.KEY },
     })
       .then((product) => {
