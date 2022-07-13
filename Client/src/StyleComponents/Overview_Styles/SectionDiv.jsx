@@ -5,6 +5,7 @@ const SectionDiv = {
     width: 60%;
     height: 600px;
     /* display: flex; */
+    overflow: hidden;
     float: left;
     background-color: #f8f8f8;
   `,
@@ -12,6 +13,7 @@ const SectionDiv = {
     width: 39%;
     height: 200px;
     /* display: flex; */
+    overflow: hidden;
     float: right;
     background-color: #e0a2b7;
     font-family: 'Neue-Helvetica', 'Helvetica', 'Arial', Sans-Serif;
@@ -20,6 +22,7 @@ const SectionDiv = {
     width: 39%;
     height: 200px;
     /* display: flex; */
+    overflow: hidden;
     float: right;
     background-color: #9bd4e2;
   `,
@@ -27,6 +30,7 @@ const SectionDiv = {
     width: 39%;
     height: 200px;
     /* display: flex; */
+    overflow: hidden;
     float: right;
     background-color: #e7d2f3;
   `,
@@ -34,8 +38,8 @@ const SectionDiv = {
     width: 100%;
     height: 200px;
     /* display: flex; */
-    float: right;
     overflow: hidden;
+    float: right;
     background-color: #f1f1dc;
     font-family: 'Neue-Helvetica', 'Helvetica', 'Arial', Sans-Serif;
   `,

@@ -11,9 +11,6 @@ const IG = {
     margin: 1.5%;
     object-fit: contain;
   `,
-  Thumbnail: styled.div`
-    width
-  `,
   ThumbnailSection: styled.div`
     display: block;
     float: left;
