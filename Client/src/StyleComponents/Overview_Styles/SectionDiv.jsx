@@ -6,7 +6,7 @@ const SectionDiv = {
     height: 600px;
     /* display: flex; */
     float: left;
-    background-color: #ffffe9;
+    background-color: #f8f8f8;
   `,
   ProductInfoSection: styled.div`
     width: 39%;
@@ -29,6 +29,14 @@ const SectionDiv = {
     /* display: flex; */
     float: right;
     background-color: #e7d2f3;
+  `,
+  ProductAdditionalInfo: styled.div`
+    width: 100%;
+    height: 200px;
+    /* display: flex; */
+    float: right;
+    background-color: #f1f1dc;
+    font-family: 'Neue-Helvetica', 'Helvetica', 'Arial', Sans-Serif;
   `,
 };
 

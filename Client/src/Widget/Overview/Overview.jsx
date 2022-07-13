@@ -5,6 +5,7 @@ import ImageGallery from "./Components/ImageGallery.jsx";
 import ProductInfo from "./Components/ProductInfo.jsx";
 import StyleSelector from "./Components/StyleSelector.jsx";
 import AddToCart from "./Components/AddToCart.jsx";
+import ProductAdditionalInfo from "./Components/ProductAdditionalInfo.jsx";
 // import GeneralStyles from "../../StyleComponents/GeneralStyles.jsx";
 
 const Overview = ({ productID, setProductID }) => {
@@ -52,6 +53,7 @@ const Overview = ({ productID, setProductID }) => {
       <ProductInfo product={product} currStyle={currStyle} />
       <StyleSelector styles={styles} setCurrStyle={setCurrStyle} />
       <AddToCart />
+      <ProductAdditionalInfo product={product} currStyle={currStyle} />
     </div>
   );
 };

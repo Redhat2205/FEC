@@ -6,12 +6,19 @@ const IG = {
     /* justify-content: flex-end; */
     float: right;
     /* width: 600px; */
-    max-width: 100%;
-    max-height: 100%;
+    width: 79%;
+    height: 100%;
+    margin: 1.5%;
     object-fit: contain;
   `,
   Thumbnail: styled.div`
     width
+  `,
+  ThumbnailSection: styled.div`
+    display: block;
+    float: left;
+    width: 20%;
+    height: 80%;
   `,
 };
 
