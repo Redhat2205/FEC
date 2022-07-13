@@ -7,7 +7,6 @@ import ReviewList from './ReviewList.jsx';
 import RatingChart from './RatingChart.jsx';
 
 const API_BASE = config.URL;
-const Magic = config.KEY;
 const secret = process.env.API_Key;
 
 // const R_R = () => (
