@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import AnswerPanel from "./AnswerPanel.jsx";
 
-const AnswerList = ({ answerObj }) => {
+const AnswerList = ({ answerObj, onClickHelpful }) => {
   const [moreAnswer, setMoreAnwser] = useState(false);
   const sortedAnswer = Object.values(answerObj).sort((a, b) => (
     b.helpfulness - a.helpfulness
@@ -11,12 +11,20 @@ const AnswerList = ({ answerObj }) => {
   );
   return (
     <div>
-      <div>
-        {sortedAnswer.slice(0, 2).map((answer) => (
-          <AnswerPanel answer={answer} />))}
-      </div>
+      {sortedAnswer.slice(0, 2).map((answer) => (
+        <AnswerPanel
+          key={answer.id}
+          answer={answer}
+          onClickHelpful={onClickHelpful}
+        />
+      ))}
       {moreAnswer && sortedAnswer.slice(2).map((answer) => (
-        <AnswerPanel answer={answer} />))}
+        <AnswerPanel
+          key={answer.id}
+          answer={answer}
+          onClickHelpful={onClickHelpful}
+        />
+      ))}
       {sortedAnswer.length > 2 && <span onClick={handleMoreAnswers}>{moreAnswer ? "COLLAPSE ANSWERS" : "LOAD MORE ANSWERS"}</span>}
     </div>
   );
