@@ -2,11 +2,13 @@ import styled from "styled-components";
 
 const MODAL = {
   Background: styled.div`
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.7);
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.7);
     display: flex;
-    /* position: fixed; */
+    position: fixed;
     justify-content: center;
     align-items: center;
   `,
@@ -17,7 +19,7 @@ const MODAL = {
     background: #fff;
     color: #000;
     display: flex;
-    /* position: fixed; */
+    position: fixed;
     z-index: 1000;
     border-radius: 10px;
   `,
@@ -29,11 +31,14 @@ const MODAL = {
     line-height: 1.8;
     color: #141414;
   `,
-  Container: styled.div`
-    display: flex;
-    justify-content:center;
-    align-items: center;
-    height: 100vh;
+  CloseButton: styled.button`
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    z-index: 10;
   `,
 };
 

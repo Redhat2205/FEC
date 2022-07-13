@@ -12,6 +12,7 @@ const AddAQuestionModal = ({ isOpen, onClose }) => {
           <input />
           <input />
           <button onClick={onClose} type="button">Submit</button>
+          <MODAL.CloseButton onClick={onClose}> X </MODAL.CloseButton>
         </MODAL.Content>
       </MODAL.PopUp>
     </MODAL.Background>
