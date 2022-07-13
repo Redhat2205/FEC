@@ -21,9 +21,16 @@ const ProductInfo = ({ product, currStyle }) => (
       </PI.Price>
     )}
     {currStyle.sale_price !== null && (
-      <PI.SalePrice>
-        { currStyle.sale_price }
-      </PI.SalePrice>
+      <div>
+        <PI.StruckthroughPrice>
+          $
+          {currStyle.original_price}
+        </PI.StruckthroughPrice>
+        <PI.SalePrice>
+          $
+          { currStyle.sale_price }
+        </PI.SalePrice>
+      </div>
     )}
 
   </SectionDiv.ProductInfoSection>
