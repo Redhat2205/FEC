@@ -35,6 +35,14 @@ const PI = {
     height: 20px;
     font-size: 18px;
   `,
+  StruckthroughPrice: styled.div`
+    display: block;
+    margin: 40px 20px;
+    width: 50px;
+    height: 20px;
+    font-size: 18px;
+    text-decoration: line-through;
+  `,
   SalePrice: styled.div`
     display: block;
     margin: 20px;

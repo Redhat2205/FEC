@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import config from '../../../../config.js';
 import ImageGallery from "./Components/ImageGallery.jsx";
 import ProductInfo from "./Components/ProductInfo.jsx";
 import StyleSelector from "./Components/StyleSelector.jsx";
 import AddToCart from "./Components/AddToCart.jsx";
+import ProductAdditionalInfo from "./Components/ProductAdditionalInfo.jsx";
 // import GeneralStyles from "../../StyleComponents/GeneralStyles.jsx";
 
 const Overview = ({ productID, setProductID }) => {
@@ -13,10 +13,11 @@ const Overview = ({ productID, setProductID }) => {
   const [currStyle, setCurrStyle] = useState({});
 
   const getProduct = () => (
+
     axios({
       method: 'GET',
-      url: `${config.URL}/products/${productID}`,
-      headers: { Authorization: config.KEY },
+      url: `${process.env.REACT_APP_API_Base}/products/${productID}`,
+      headers: { Authorization: process.env.REACT_APP_API_KEY },
     })
       .then((productData) => {
         // console.log('product data: ', productData.data[0]);
@@ -28,8 +29,8 @@ const Overview = ({ productID, setProductID }) => {
   const getStyles = () => {
     axios({
       method: 'GET',
-      url: `${config.URL}/products/37316/styles`,
-      headers: { Authorization: config.KEY },
+      url: `${process.env.REACT_APP_API_Base}/products/37316/styles`,
+      headers: { Authorization: process.env.REACT_APP_API_KEY },
     })
       .then((stylesData) => {
         // console.log('styles Data: ', stylesData.data);
@@ -52,6 +53,7 @@ const Overview = ({ productID, setProductID }) => {
       <ProductInfo product={product} currStyle={currStyle} />
       <StyleSelector styles={styles} setCurrStyle={setCurrStyle} />
       <AddToCart />
+      <ProductAdditionalInfo product={product} currStyle={currStyle} />
     </div>
   );
 };
