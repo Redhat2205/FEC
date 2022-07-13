@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import config from '../../../../config.js';
+// import config from '../../../../config.js';
 import ImageGallery from "./Components/ImageGallery.jsx";
 import ProductInfo from "./Components/ProductInfo.jsx";
 import StyleSelector from "./Components/StyleSelector.jsx";
@@ -16,8 +16,8 @@ const Overview = ({ productID, setProductID }) => {
   const getProduct = () => (
     axios({
       method: 'GET',
-      url: `${config.URL}/products/${productID}`,
-      headers: { Authorization: config.KEY },
+      url: `${process.env.API_BASE}/products/${productID}`,
+      headers: { Authorization: process.env.API_KEY },
     })
       .then((productData) => {
         // console.log('product data: ', productData.data[0]);
