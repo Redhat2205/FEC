@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-// import config from '../../../../config.js';
 import ImageGallery from "./Components/ImageGallery.jsx";
 import ProductInfo from "./Components/ProductInfo.jsx";
 import StyleSelector from "./Components/StyleSelector.jsx";
@@ -29,8 +28,8 @@ const Overview = ({ productID, setProductID }) => {
   const getStyles = () => {
     axios({
       method: 'GET',
-      url: `${config.URL}/products/37316/styles`,
-      headers: { Authorization: config.KEY },
+      url: `${process.env.API_BASE}/products/37316/styles`,
+      headers: { Authorization: process.env.API_KEY },
     })
       .then((stylesData) => {
         // console.log('styles Data: ', stylesData.data);
