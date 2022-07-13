@@ -2,26 +2,27 @@ import styled from "styled-components";
 
 const PAI = {
   Slogan: styled.div`
-    display: flex;
+    display: inline-block;
     float: left;
-    margin: 30px 0px 20px 150px;
+    margin: 3% 0 2% 10%;
     width: 40%;
     height: 20%;
     font-weight: 700;
     font-size: 20px;
   `,
   Description: styled.div`
-    display: flex;
+    float: inline-block;
     float: left;
-    margin: 10px 0px 20px 150px;
+    margin: 1% 0 2% 10%;
     width: 40%;
     height: 50%;
     font-size: 15px;
   `,
   FeatureList: styled.ul`
+    float: inline-block;
     border-left: 2px solid #B2B4B8;
     float: right;
-    margin: 30px 150px 20px 20px;
+    margin: 3% 10% 2% 2%;
     width: 25%;
     height: 70%;
     font-size: 15px;

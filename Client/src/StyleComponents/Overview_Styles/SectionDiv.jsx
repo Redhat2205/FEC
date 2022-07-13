@@ -35,6 +35,7 @@ const SectionDiv = {
     height: 200px;
     /* display: flex; */
     float: right;
+    overflow: hidden;
     background-color: #f1f1dc;
     font-family: 'Neue-Helvetica', 'Helvetica', 'Arial', Sans-Serif;
   `,
