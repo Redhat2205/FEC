@@ -2,10 +2,6 @@ import React from "react";
 import SectionDiv from "../../../StyleComponents/Overview_Styles/SectionDiv.jsx";
 import PI from "../../../StyleComponents/Overview_Styles/PI.jsx";
 
-<<<<<<< HEAD
-const ProductInfo = ({ product }) => {
-  // console.log('product in productinfo page: ', product);
-=======
 const ProductInfo = ({ product, currStyle }) => (
   <SectionDiv.ProductInfoSection>
     <PI.Ratings>
@@ -29,7 +25,6 @@ const ProductInfo = ({ product, currStyle }) => (
         { currStyle.sale_price }
       </PI.SalePrice>
     )}
->>>>>>> dev
 
   </SectionDiv.ProductInfoSection>
 );
