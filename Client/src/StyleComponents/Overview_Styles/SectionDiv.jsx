@@ -34,6 +34,7 @@ const SectionDiv = {
     overflow: hidden;
     float: right;
     background-color: #e7d2f3;
+    font-family: 'Neue-Helvetica', 'Helvetica', 'Arial', Sans-Serif;
   `,
   ProductAdditionalInfo: styled.div`
     width: 100%;

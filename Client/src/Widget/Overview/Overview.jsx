@@ -55,7 +55,7 @@ const Overview = ({ productID, setProductID }) => {
         currStyle={currStyle}
         setCurrStyle={setCurrStyle}
       />
-      <AddToCart />
+      <AddToCart currStyle={currStyle} />
       <ProductAdditionalInfo product={product} currStyle={currStyle} />
     </div>
   );
