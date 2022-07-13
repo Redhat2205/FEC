@@ -46,6 +46,13 @@ const AddReviewModal = (props) => {
           <div className="modal-body" style={{modalBodyStyle}}>
             <h5>Overall rating</h5>
             <AddStarRating />
+            <p style={{marginLeft: '60%'}}>
+              <span>1 star - “Poor”</span><br></br>
+              <span>2 stars - “Fair”</span><br></br>
+              <span>3 stars - “Average”</span><br></br>
+              <span>4 stars - “Good”</span><br></br>
+              <span>5 stars - “Great”</span><br></br>
+            </p>
             <h5 style={{marginLeft: '15px'}}>Do you recommend this product?</h5>
             <label style={{marginLeft: '15px'}} for="Yes">Yes</label>
             <input style={{marginLeft: '15px'}} type="radio" name="recommended" value="yes"></input><br></br>
