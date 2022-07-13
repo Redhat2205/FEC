@@ -1,6 +1,6 @@
 import React from "react";
 
-const AnswerPanel = ({answer}) => (
+const AnswerPanel = ({ answer }) => (
   <div>
     <span>{`A: ${answer.body}`}</span>
     <span>
