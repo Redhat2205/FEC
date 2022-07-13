@@ -77,7 +77,7 @@ class R_R extends React.Component {
       method: 'get',
       url: API_BASE + '/reviews',
       headers: { Authorization: Magic },
-      params: { product_id: '37320' },
+      params: { product_id: '37316' },
     })
       .then((res) => {
         this.setState({ productReviews: res.data.results });
