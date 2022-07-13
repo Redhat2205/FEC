@@ -10,8 +10,8 @@ const ProductAdditionalInfo = ({ product, currStyle }) => {
           {product.slogan}
         </PAI.Slogan>
         <PAI.FeatureList>
-          {product.features.map((eachFeature) => (
-            <li>
+          {product.features.map((eachFeature, index) => (
+            <li key={product.id + index}>
               &nbsp;
               {eachFeature.feature}
               :&nbsp;
