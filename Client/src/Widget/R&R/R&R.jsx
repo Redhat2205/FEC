@@ -8,6 +8,7 @@ import RatingChart from './RatingChart.jsx';
 
 const API_BASE = config.URL;
 const Magic = config.KEY;
+const secret = process.env.API_Key;
 
 // const R_R = () => (
 //   <div className="rnr-container">
@@ -76,7 +77,7 @@ class R_R extends React.Component {
     axios({
       method: 'get',
       url: API_BASE + '/reviews',
-      headers: { Authorization: Magic },
+      headers: { Authorization: secret },
       params: { product_id: '37316' },
     })
       .then((res) => {
