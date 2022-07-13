@@ -52,7 +52,8 @@ const AddReviewModal = (props) => {
             <h5>Characteristics</h5>
             <h5 style={{marginLeft: '15px'}}>Review summary</h5>
             <input style={{marginLeft: '15px'}} type="text" size="50" maxlength="60" placeholder="Example: Best purchase ever!"></input>
-            <h5>Review body</h5>
+            <h5 style={{marginLeft: '15px'}}>Review body</h5>
+            <input style={{marginLeft: '15px', height: '100px', textAlign: 'none'}} placeholder="Why did you like the product or not?" maxlength="1000" size="50"></input>
             <h5>Upload photos</h5>
             <h5>What is your nickname?</h5>
             <h5>What is your email?</h5>
