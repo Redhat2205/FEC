@@ -1,4 +1,5 @@
 import React from 'react';
+import AddStarRating from './AddStarRating.jsx';
 
 var modalStyle = {
   position: 'fixed',
@@ -44,6 +45,7 @@ const AddReviewModal = (props) => {
           </div>
           <div className="modal-body" style={{modalBodyStyle}}>
             <h5>Overall rating</h5>
+            <AddStarRating />
             <h5 style={{marginLeft: '15px'}}>Do you recommend this product?</h5>
             <label style={{marginLeft: '15px'}} for="Yes">Yes</label>
             <input style={{marginLeft: '15px'}} type="radio" name="recommended" value="yes"></input><br></br>
