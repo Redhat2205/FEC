@@ -12,7 +12,7 @@ const AddToCart = ({ currStyle }) => {
     const selectSizeAndUpdateQuantity = (e, skuID) => {
       setSize(e.target.value);
       // let currQuan = skus[]
-      console.log('target value: ', e.target.value);
+      // console.log('target value: ', e.target.value);
     };
 
     return (
