@@ -1,12 +1,11 @@
 import React from "react";
 import axios from 'axios';
-import config from '../../../../config.js';
 const moment = require('moment');
 
 import ReviewList from './ReviewList.jsx';
 import RatingChart from './RatingChart.jsx';
 
-const API_BASE = config.URL;
+const API_BASE = process.env.API_BASE;
 const secret = process.env.API_Key;
 
 // const R_R = () => (
