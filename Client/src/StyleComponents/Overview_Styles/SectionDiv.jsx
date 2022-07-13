@@ -25,6 +25,7 @@ const SectionDiv = {
     overflow: hidden;
     float: right;
     background-color: #9bd4e2;
+    font-family: 'Neue-Helvetica', 'Helvetica', 'Arial', Sans-Serif;
   `,
   AddToCartSection: styled.div`
     width: 39%;
