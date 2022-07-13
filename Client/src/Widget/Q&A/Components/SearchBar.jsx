@@ -1,11 +1,12 @@
-import React, { useState, useEffect} from "react";
+import React from "react";
 
-const SearchBar = () => {
-  return (
-    <input
-      placeholder="Have a question? Search for answers…"
-      onChange={(e) => { setSearchInput(e.target.value); }}
-    />
-  );
-};
+const SearchBar = ({ searchHandler, searchInput, setSearchInput }) => (
+  <input
+    placeholder="Have a question? Search for answers…"
+    onChange={(e) => {
+      searchHandler(e.target.value);
+    }}
+  />
+);
+
 export default SearchBar;
