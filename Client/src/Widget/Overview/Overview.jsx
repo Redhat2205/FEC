@@ -28,7 +28,7 @@ const Overview = ({ productID, setProductID }) => {
   const getStyles = () => {
     axios({
       method: 'GET',
-      url: `${process.env.API_Base}/products/37316/styles`,
+      url: `${process.env.API_Base}/products/${productID}/styles`,
       headers: { Authorization: process.env.API_Key },
     })
       .then((stylesData) => {
@@ -50,8 +50,12 @@ const Overview = ({ productID, setProductID }) => {
       <div data-testid="overview"> Hello Overview</div>
       <ImageGallery currStyle={currStyle} />
       <ProductInfo product={product} currStyle={currStyle} />
-      <StyleSelector styles={styles} setCurrStyle={setCurrStyle} />
-      <AddToCart />
+      <StyleSelector
+        styles={styles}
+        currStyle={currStyle}
+        setCurrStyle={setCurrStyle}
+      />
+      <AddToCart currStyle={currStyle} />
       <ProductAdditionalInfo product={product} currStyle={currStyle} />
     </div>
   );

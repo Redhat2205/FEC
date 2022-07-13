@@ -7,6 +7,7 @@ import Overview from "./Widget/Overview/Overview.jsx";
 import Q_A from "./Widget/Q&A/Q&A.jsx";
 import R_R from "./Widget/R&R/R&R.jsx";
 import Related from "./Widget/Related/Related.jsx";
+import GeneralStyles from "./StyleComponents/GeneralStyles.jsx";
 
 const root = createRoot(document.getElementById("root"));
 
@@ -15,13 +16,13 @@ const App = () => {
   const [productID, setProductID] = useState('37316');
 
   return (
-    <div>
+    <GeneralStyles.Div>
       <h1>Hello World!</h1>
       <Overview productID={productID} setProductID={setProductID} />
       <Related productID={productID} />
       <Q_A productID={productID} />
       <R_R productID={productID} />
-    </div>
+    </GeneralStyles.Div>
   );
 };
 
