@@ -4,7 +4,6 @@ import PAI from "../../../StyleComponents/Overview_Styles/PAI.jsx";
 
 const ProductAdditionalInfo = ({ product, currStyle }) => {
   if (product.name !== undefined) {
-    console.log('product features: ', product.features);
     return (
       <SectionDiv.ProductAdditionalInfo>
         <PAI.Slogan>
