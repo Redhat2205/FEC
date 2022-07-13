@@ -15,8 +15,8 @@ const Overview = ({ productID, setProductID }) => {
   const getProduct = () => (
     axios({
       method: 'GET',
-      url: `${process.env.REACT_APP_API_BASE}/products/${productID}`,
-      headers: { Authorization: process.env.REACT_APP_API_KEY },
+      url: `${process.env.API_Base}/products/${productID}`,
+      headers: { Authorization: process.env.API_Key },
     })
       .then((productData) => {
         // console.log('product data: ', productData.data[0]);
@@ -28,8 +28,8 @@ const Overview = ({ productID, setProductID }) => {
   const getStyles = () => {
     axios({
       method: 'GET',
-      url: `${process.env.REACT_APP_API_BASE}/products/37316/styles`,
-      headers: { Authorization: process.env.REACT_APP_API_KEY },
+      url: `${process.env.API_Base}/products/37316/styles`,
+      headers: { Authorization: process.env.API_Key },
     })
       .then((stylesData) => {
         // console.log('styles Data: ', stylesData.data);
