@@ -11,6 +11,10 @@ const PI = {
     margin: 20px 20px 20px 10px;
     font-size: 12px;
     color: grey;
+
+    &:hover {
+      font-weight: 700;
+    }
   `,
   Category: styled.div`
     display: block;
@@ -36,17 +40,19 @@ const PI = {
     font-size: 18px;
   `,
   StruckthroughPrice: styled.div`
-    display: block;
-    margin: 40px 20px;
+    display: inline-block;
+    float: left;
+    margin: 20px;
     width: 50px;
     height: 20px;
     font-size: 18px;
     text-decoration: line-through;
   `,
   SalePrice: styled.div`
-    display: block;
+    display: inline-block;
+    float: center;
     margin: 20px;
-    width: 300px;
+    width: 100px;
     height: 20px;
     font-size: 18px;
     color: red;

@@ -1,13 +1,9 @@
 import styled from "styled-components";
 
-const generalStyles = {
-  Button: styled.button`
-    width: 80px;
-    height: 30px;
-    background-color: beige;
-    margin: 10px;
+const GeneralStyles = {
+  Div: styled.div`
+    font-family: 'Neue-Helvetica', 'Helvetica', 'Arial', Sans-Serif;
   `,
-
 };
 
-export default generalStyles;
+export default GeneralStyles;
