@@ -13,10 +13,11 @@ const Overview = ({ productID, setProductID }) => {
   const [currStyle, setCurrStyle] = useState({});
 
   const getProduct = () => (
+
     axios({
       method: 'GET',
-      url: `${process.env.API_BASE}/products/${productID}`,
-      headers: { Authorization: process.env.API_KEY },
+      url: `${process.env.REACT_APP_API_Base}/products/${productID}`,
+      headers: { Authorization: process.env.REACT_APP_API_KEY },
     })
       .then((productData) => {
         // console.log('product data: ', productData.data[0]);
@@ -28,8 +29,8 @@ const Overview = ({ productID, setProductID }) => {
   const getStyles = () => {
     axios({
       method: 'GET',
-      url: `${process.env.API_BASE}/products/37316/styles`,
-      headers: { Authorization: process.env.API_KEY },
+      url: `${process.env.REACT_APP_API_Base}/products/37316/styles`,
+      headers: { Authorization: process.env.REACT_APP_API_KEY },
     })
       .then((stylesData) => {
         // console.log('styles Data: ', stylesData.data);
