@@ -11,6 +11,10 @@ const PI = {
     margin: 20px 20px 20px 10px;
     font-size: 12px;
     color: grey;
+
+    &:hover {
+      font-weight: 700;
+    }
   `,
   Category: styled.div`
     display: block;

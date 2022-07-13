@@ -3,13 +3,27 @@ import SectionDiv from "../../../StyleComponents/Overview_Styles/SectionDiv.jsx"
 import SS from "../../../StyleComponents/Overview_Styles/SS.jsx";
 
 const StyleSelector = ({ styles, currStyle, setCurrStyle }) => (
+
   <SectionDiv.StyleSelectorSection>
     <SS.Style>
-      Style &nbsp;
+      STYLE &nbsp;
       <SS.Span>{'>'}</SS.Span>
       &nbsp;&nbsp;
-      {currStyle.name}
+      <SS.StyleName>
+        {currStyle.name}
+      </SS.StyleName>
     </SS.Style>
+
+    <SS.ThumbnailSection>
+      {styles.map((style) => (
+        <SS.Thumbnail
+          key={style.style_id}
+          src={style.photos[0].thumbnail_url}
+          alt={style.name}
+          onClick={() => setCurrStyle(style)}
+        />
+      ))}
+    </SS.ThumbnailSection>
   </SectionDiv.StyleSelectorSection>
 );
 
