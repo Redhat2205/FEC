@@ -55,20 +55,25 @@ const AddReviewModal = (props) => {
             </p>
             <h5 style={{marginLeft: '15px'}}>Do you recommend this product?</h5>
             <label style={{marginLeft: '15px'}} for="Yes">Yes</label>
-            <input style={{marginLeft: '15px'}} type="radio" name="recommended" value="yes"></input><br></br>
+            <textarea style={{marginLeft: '15px'}} type="radio" name="recommended" value="yes"></textarea><br></br>
             <label style={{marginLeft: '16.5px'}} for="No">No</label>
-            <input style={{marginLeft: '16.39px'}} type="radio" name="recommended" value="no"></input>
+            <textarea style={{marginLeft: '16.39px'}} type="radio" name="recommended" value="no"></textarea>
             <h5>Characteristics</h5>
             <h5 style={{marginLeft: '15px'}}>Review summary</h5>
-            <input style={{marginLeft: '15px'}} type="text" size="50" maxlength="60" placeholder="Example: Best purchase ever!"></input>
+            <textarea style={{marginLeft: '15px'}} type="text" size="50" maxlength="60" placeholder="Example: Best purchase ever!"></textarea>
             <h5 style={{marginLeft: '15px'}}>Review body</h5>
-            <input style={{marginLeft: '15px', height: '100px', textAlign: 'none'}} placeholder="Why did you like the product or not?" maxlength="1000" size="50"></input>
+            <textarea style={{marginLeft: '15px', height: '100px', textAlign: 'none'}} type="text" placeholder="Why did you like the product or not?" maxlength="1000" size="50"></textarea>
             <h5>Upload photos</h5>
-            <h5>What is your nickname?</h5>
-            <h5>What is your email?</h5>
-            <button>Submit review</button>
+            <h5 style={{marginLeft: '15px'}}>What is your nickname?</h5>
+            <textarea style={{marginLeft: '15px'}} type="text" size="50" maxlength="60" placeholder="Example: jackson11!"></textarea>
+            <p style={{fontWeight: 'bold', marginLeft: '15px'}}>For privacy reasons, do not use your full name or email address</p>
+
+            <h5 style={{marginLeft: '15px'}}>What is your email?</h5>
+            <textarea style={{marginLeft: '15px'}} type="text" size="50" maxlength="60" placeholder="Example: jackson11@email.com"></textarea>
+
           </div>
           <div className="modal-footer" style={{modalFooterStyle}}>
+            <button>Submit review</button><br></br>
             <button onClick={() => props.setShow(!props.show)}>Close</button>
           </div>
         </div>

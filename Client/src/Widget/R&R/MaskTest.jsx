@@ -44,13 +44,13 @@ const MaskTest = () => {
         </svg>
       </div>
       <div style={{ height: '1px',}}>
-        <svg viewBox=" -1050 -55 3000 3000">
+        <svg viewBox=" -1150 -35 3000 3000">
           {/* <circle cs={50} cy={50} r={50} fill="green" /> */}
           <polygon points = "100,10 40,180 190,60 10,60 160,180" width="10px" height="10px" fill = "gold"/>
         </svg>
       </div>
       <div style={{ height: '1px',}}>
-        <svg viewBox=" 50% -310 7000 7000">
+        <svg viewBox=" 50 -310 7000 7000">
           {/* <circle cs={50} cy={50} r={50} fill="green" /> */}
           <polygon points = "100,10 40,180 190,60 10,60 160,180" width="10px" height="10px" fill = "gold"/>
         </svg>

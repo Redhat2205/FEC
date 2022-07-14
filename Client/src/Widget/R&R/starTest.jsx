@@ -37,7 +37,7 @@ const starStyle = {
   // padding: '0px 13px', /* 4.25 */
   // padding: '0px 10px', /* 4.50 */
   // padding: '0px 7px', /* 4.75 */
-  padding: '0px 0px', /* 5.00 */
+  // padding: '0px 0px', /* 5.00 */
   // backgroundColor: 'rga(10,0,0,0.9)',
   // overflow: 'hidden',
 }
