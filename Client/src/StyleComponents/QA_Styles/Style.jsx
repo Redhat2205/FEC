@@ -7,6 +7,7 @@ const Style = {
     width: 60%;
     height: 600px;
     padding: 10px;
+    overflow: hidden;
   `,
   SearchBar: styled.input`
     margin-left: auto;
