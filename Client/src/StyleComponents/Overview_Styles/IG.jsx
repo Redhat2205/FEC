@@ -33,18 +33,18 @@ const IG = {
     height: 7%;
     /* border: 3px solid grey; */
   `,
-  MainImageDiv: styled.div`
-    float: left;
-    position: relative;
-    top: 7.5%;
-    left: 3%;
-    width: 65%;
-    height: 85%;
-    background-position: center;
-    background-size: contain;
-    background-repeat: no-repeat;
-    object-fit: contain;
-  `,
+  // MainImageDiv: styled.div`
+  //   float: left;
+  //   position: relative;
+  //   top: 7.5%;
+  //   left: 3%;
+  //   width: 65%;
+  //   height: 85%;
+  //   background-position: center;
+  //   background-size: contain;
+  //   background-repeat: no-repeat;
+  //   object-fit: contain;
+  // `,
   MainImage: styled.img`
     float: left;
     position: relative;
