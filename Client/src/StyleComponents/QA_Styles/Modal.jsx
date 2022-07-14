@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const MODAL = {
+const Modal = {
   Background: styled.div`
     left: 0;
     top: 0;
@@ -30,7 +30,9 @@ const MODAL = {
     align-items: center;
     line-height: 1.8;
     color: #141414;
+    margin: auto
   `,
+
   CloseButton: styled.button`
     position: absolute;
     top: 20px;
@@ -42,4 +44,4 @@ const MODAL = {
   `,
 };
 
-export default MODAL;
+export default Modal;

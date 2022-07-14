@@ -3,6 +3,7 @@ import axios from 'axios';
 import QuestionList from './Components/QuestionList.jsx';
 import SearchBar from './Components/SearchBar.jsx';
 import AddAQuestion from './Components/AddAQuestion.jsx';
+import Style from "../../StyleComponents/QA_Styles/Style.jsx";
 
 const Q_A = ({ productID }) => {
   const [qA, setQa] = useState([]);
@@ -61,8 +62,8 @@ const Q_A = ({ productID }) => {
 
   };
   return (
-    <div data-testid="qna">
-      <h1> Questions and Answers</h1>
+    <Style.Body data-testid="qna">
+      <Style.Title> Questions and Answers</Style.Title>
       <SearchBar
         searchHandler={searchHandler}
       />
@@ -72,7 +73,7 @@ const Q_A = ({ productID }) => {
       />
       <AddAQuestion
       />
-    </div>
+    </Style.Body>
   );
 };
 

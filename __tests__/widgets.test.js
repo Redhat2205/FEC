@@ -22,6 +22,23 @@ it('rendering Q&A dynamically from api response data', () => {
   const target = screen.getByTestId('qna');
   expect(target).not.toBeNull();
 });
+
+// when search term is less than three characters display all questions and answer
+it('should pull data dynamically from the api'), () => {
+
+}
+
+// when search term is greater than 3 filter data for keywords
+
+// for a particular product ID, pull the questions related to the product ID
+
+// renders load more answers for answers greater than 3
+
+// for any api calls returns success code 200
+
+// successful submission of question
+
+
 // Related
 
 // Ratings

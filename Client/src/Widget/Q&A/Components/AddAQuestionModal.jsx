@@ -1,21 +1,34 @@
 import React from "react";
-
-import MODAL from "../../../StyleComponents/QA_Styles/Modal.jsx";
+import Modal from "../../../StyleComponents/QA_Styles/Modal.jsx";
 
 const AddAQuestionModal = ({ isOpen, onClose }) => {
   if (!isOpen) return null;
   return (
-    <MODAL.Background>
-      <MODAL.PopUp>
-        <MODAL.Content>
+    <Modal.Background>
+      <Modal.PopUp>
+        <Modal.Content>
+          <h1> Ask Your Question</h1>
+          <h3>About the [Product Name Here]</h3>
+          <span> What is your nickname:</span>
           <input />
+          <br />
+          <span>Your email:</span>
+          <input
+            type="email"
+            id="email"
+            pattern=".+@globex\.com"
+            size="30"
+            required
+          />
+          <br />
+          <span>Your question:</span>
           <input />
-          <input />
+          <br />
           <button onClick={onClose} type="button">Submit</button>
-          <MODAL.CloseButton onClick={onClose}> X </MODAL.CloseButton>
-        </MODAL.Content>
-      </MODAL.PopUp>
-    </MODAL.Background>
+          <Modal.CloseButton onClick={onClose}> X </Modal.CloseButton>
+        </Modal.Content>
+      </Modal.PopUp>
+    </Modal.Background>
   );
 };
 
