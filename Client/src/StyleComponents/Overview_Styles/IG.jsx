@@ -1,6 +1,16 @@
 import styled from "styled-components";
 
 const IG = {
+  MainImageSection: styled.div`
+    display: block;
+    /* justify-content: flex-end; */
+    float: right;
+    /* position: relative; */
+    max-width: 100%;
+    height: auto;
+    margin: 1.5% auto;
+    overflow: hidden;
+`,
   MainImage: styled.img`
     display: block;
     /* justify-content: flex-end; */
@@ -9,7 +19,7 @@ const IG = {
     width: 79%;
     height: 100%;
     margin: 1.5%;
-    object-fit: contain;
+    object-fit: cover;
   `,
   ThumbnailSection: styled.div`
     display: block;
