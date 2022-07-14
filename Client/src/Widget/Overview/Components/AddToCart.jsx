@@ -2,16 +2,14 @@ import React, { useState } from "react";
 import SectionDiv from "../../../StyleComponents/Overview_Styles/SectionDiv.jsx";
 import ATC from "../../../StyleComponents/Overview_Styles/ATC.jsx";
 
-const AddToCart = ({
-  product, currStyle, quantity, setQuantity,
-}) => {
+const AddToCart = ({ product, currStyle }) => {
   const defaultStock = ['-', 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
   const selectRef = React.useRef();
   const openOnFocus = useState(true);
 
   const [size, setSize] = useState(null);
   const [stock, setStock] = useState(defaultStock);
-  // const [quantity, setQuantity] = useState('-');
+  const [quantity, setQuantity] = useState('-');
   const [favorite, setFavorite] = useState(false);
 
   if (currStyle.name !== undefined) {
