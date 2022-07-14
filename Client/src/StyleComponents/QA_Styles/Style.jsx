@@ -7,7 +7,7 @@ const Style = {
     width: 60%;
     height: 600px;
     padding: 10px;
-    overflow: hidden;
+    overflow: auto;
   `,
   SearchBar: styled.input`
     margin-left: auto;
@@ -46,3 +46,5 @@ const Style = {
 };
 
 export default Style;
+
+// transition

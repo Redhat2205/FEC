@@ -28,6 +28,7 @@ const Modal = {
     position: fixed;
     z-index: 1000;
     border-radius: 10px;
+    overflow: auto;
   `,
   Content: styled.div`
     display: flex;

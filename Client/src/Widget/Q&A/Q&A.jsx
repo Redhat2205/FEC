@@ -16,7 +16,7 @@ const Q_A = ({ productID }) => {
   const getQa = () => {
     axios({
       method: 'get',
-      url: `${process.env.API_Base}/qa/questions?product_id=${productID}`,
+      url: `${process.env.API_Base}/qa/questions?product_id=${productID}&count=50`,
       headers: { Authorization: process.env.API_Key },
     })
       .then((product) => {
@@ -74,6 +74,7 @@ const Q_A = ({ productID }) => {
         productName={productName}
       />
       <AddAQuestion
+        qA={qA}
         productName={productName}
       />
     </Style.Body>
