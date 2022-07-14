@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import AddAQuestionModal from "./AddAQuestionModal.jsx";
 import Modal from "../../../StyleComponents/QA_Styles/Modal.jsx";
 
-const AddAQuestion = () => {
+const AddAQuestion = ({ productName }) => {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <div>
@@ -16,6 +16,7 @@ const AddAQuestion = () => {
         ADD A QUESTION +
       </Modal.AddQuestion>
       <AddAQuestionModal
+        productName={productName}
         onClose={() => setIsOpen(false)}
         isOpen={isOpen}
       />

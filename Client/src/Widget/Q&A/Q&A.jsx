@@ -7,6 +7,7 @@ import Style from "../../StyleComponents/QA_Styles/Style.jsx";
 
 const Q_A = ({ productID }) => {
   const [qA, setQa] = useState([]);
+  const productName = "Pumped Up Kicks";
 
   useEffect(() => {
     getQa();
@@ -70,8 +71,10 @@ const Q_A = ({ productID }) => {
       <QuestionList
         qA={qA}
         onClickHelpful={onClickHelpful}
+        productName={productName}
       />
       <AddAQuestion
+        productName={productName}
       />
     </Style.Body>
   );

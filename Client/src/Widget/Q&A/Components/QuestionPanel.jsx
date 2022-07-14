@@ -4,7 +4,7 @@ import AddAnswerModal from "./AddAnswerModal.jsx";
 import Style from "../../../StyleComponents/QA_Styles/Style.jsx";
 import AStyle from "../../../StyleComponents/QA_Styles/AStyle.jsx";
 
-const QuestionsPanel = ({ questionid, qAObj, onClickHelpful }) => {
+const QuestionsPanel = ({ questionid, qAObj, onClickHelpful, productName }) => {
   const [showAnswerStatus, setShowAnswerStatus] = useState(false);
   const [answerHelp, setAnswerHelp] = useState(false);
   const [questionHelp, setQuestionHelp] = useState(false);
@@ -32,7 +32,12 @@ const QuestionsPanel = ({ questionid, qAObj, onClickHelpful }) => {
             </AStyle.Yes>
           )}
         <AStyle.Reported onClick={() => (setAddModalStatus(true))}>|  Add Answer</AStyle.Reported>
-        <AddAnswerModal questionBody={qAObj.question_body} addModalStatus={addModalStatus} onClose={() => (setAddModalStatus(false))} />
+        <AddAnswerModal
+          productName={productName}
+          questionBody={qAObj.question_body}
+          addModalStatus={addModalStatus}
+          onClose={() => (setAddModalStatus(false))}
+        />
       </Style.Info>
       {showAnswerStatus && <AnswerList onClickHelpful={onClickHelpful} answerObj={qAObj.answers} />}
     </Style.Questions>

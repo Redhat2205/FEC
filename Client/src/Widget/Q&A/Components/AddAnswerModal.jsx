@@ -1,14 +1,16 @@
 import React from "react";
 import Modal from "../../../StyleComponents/QA_Styles/Modal.jsx";
 
-const AddAnswerModal = ({ addModalStatus, onClose, questionBody }) => {
+const AddAnswerModal = ({
+  addModalStatus, onClose, questionBody, productName,
+}) => {
   if (!addModalStatus) return null;
   return (
     <Modal.Background>
       <Modal.PopUp>
         <Modal.Content>
           <h1> Submit Your Answer</h1>
-          <h3>{`[Product Name]: ${questionBody}`}</h3>
+          <h3>{`${productName}: ${questionBody}`}</h3>
           <span> What is your nickname*:</span>
           <Modal.Name size="60" placeholder="Example: jack543!" />
           <br />
