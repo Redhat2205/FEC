@@ -4,6 +4,8 @@ const moment = require('moment');
 
 import ReviewList from './ReviewList.jsx';
 import RatingChart from './RatingChart.jsx';
+import StarTest from './StarTest.jsx';
+import MaskTest from './MaskTest.jsx';
 
 const API_Base = process.env.API_Base;
 const secret = process.env.API_Key;
@@ -106,7 +108,9 @@ class R_R extends React.Component {
   render() {
     return (
       <div className="rnr-container">
-        <h1 id="main-rnr-header" data-testid="rnr" style={{textAlign: 'center', fontFamily: 'tahoma'}}>Ratings and Reviews</h1>
+        {/* <MaskTest />
+        <StarTest style={{backgroundColor: 'gold', height: '10px'}} className="StarTest"/> */}
+        <h1 id="main-rnr-header" data-testid="rnr" style={{textAlign: 'center', fontFamily: 'tahoma'}}>Ratings and☆ Reviews</h1>
         <div className="rating-chart-container" style={{ border: 'solid 1px', borderRadius: '5px', boxShadow: '5px 10px #888888', float: 'left', width: '33%' }}>
           <RatingChart currentItem={this.state.currentReview} />
         </div>

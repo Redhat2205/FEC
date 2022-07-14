@@ -7,7 +7,7 @@ const AddStarRating = () => {
   if (userStarRating === 1) {
     return (
     <>
-      <p style={{float: 'left'}}>
+      <p>
         <span onClick={() => setUserStarRating(1)}>★</span>
         <span onClick={() => setUserStarRating(2)}>☆</span>
         <span onClick={() => setUserStarRating(3)}>☆</span>
