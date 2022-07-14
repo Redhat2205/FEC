@@ -1,20 +1,20 @@
 import React, { useState } from "react";
 import AddAQuestionModal from "./AddAQuestionModal.jsx";
-import MODAL from "../../../StyleComponents/QA_Styles/Modal.jsx";
+import Modal from "../../../StyleComponents/QA_Styles/Modal.jsx";
 
 const AddAQuestion = () => {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <div>
-      <button
+      <Modal.AddQuestion
         type="button"
         onClick={() => {
           setIsOpen(true);
           console.log(isOpen);
         }}
       >
-        Add A Question +
-      </button>
+        ADD A QUESTION +
+      </Modal.AddQuestion>
       <AddAQuestionModal
         onClose={() => setIsOpen(false)}
         isOpen={isOpen}

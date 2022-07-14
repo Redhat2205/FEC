@@ -35,11 +35,12 @@ const Style = {
     font-weight: bold;
     margin-bottom: 25px;
   `,
-  QuestionLinks: styled.div`
-    font-size: 15px;
-    text-align: right;
-    float: right;
-    margin-top: 0px;
+  Info: styled.ul`
+  font-size: 13px;
+  font-weight: normal;
+  display: flex;
+  float: right;
+  list-style: none;
   `,
 };
 

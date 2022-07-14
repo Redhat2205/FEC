@@ -17,24 +17,28 @@ const AStyle = {
     display: flex;
     list-style: none;
   `,
+  More: styled.span`
+    font-size: 12px;
+    font-weight: bold;
+  `,
   User: styled.li`
-    margin-right: 10px;
+    margin-right: 5px;
   `,
   Date: styled.li`
-    margin-right: 10px;
+    margin-right: 5px;
   `,
   Helpful: styled.li`
-    margin-right: 10px;
+    margin-right: 5px;
 `,
   Yes: styled.li`
-    margin-right: 10px;
+    margin-right: 5px;
     text-decoration-line: underline;
     &:hover {
     color: blue;
   }
 `,
   Reported: styled.li`
-    margin-right: 10px;
+    margin-right: 5px;
     text-decoration-line: underline;
     &:hover {
     color: blue;

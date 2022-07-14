@@ -12,9 +12,9 @@ const AnswerPanel = ({ answer, onClickHelpful }) => {
         <AStyle.User>
           {`by ${answer.answerer_name}`}
         </AStyle.User>
-        <AStyle.Date>{answer.date}</AStyle.Date>
-        <AStyle.Helpful>Helpful?</AStyle.Helpful>
-        {answerHelp ? <li>{`Yes (${answer.helpfulness})`}</li>
+        <AStyle.Date>{`| ${answer.date}`}</AStyle.Date>
+        <AStyle.Helpful>| Helpful?</AStyle.Helpful>
+        {answerHelp ? <li>{`| Yes (${answer.helpfulness})`}</li>
           : (
             <AStyle.Yes
               id={answer.id}
@@ -24,9 +24,10 @@ const AnswerPanel = ({ answer, onClickHelpful }) => {
                 setAnswerHelp(true);
               }}
             >
-              {`Yes (${answer.helpfulness})`}
+              {`| Yes (${answer.helpfulness})`}
             </AStyle.Yes>
           )}
+        <AStyle.Reported>Reported</AStyle.Reported>
       </AStyle.Info>
     </div>
   );

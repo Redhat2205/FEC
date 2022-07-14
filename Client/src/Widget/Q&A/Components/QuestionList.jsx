@@ -13,7 +13,7 @@ const QuestionList = ({ qA, onClickHelpful }) => {
         {qA.length > 0 ? qA.slice(0, 4).map((qAObj) => (
           <QuestionPanel
             key={qAObj.question_id}
-            question_id={qAObj.question_id}
+            questionid={qAObj.question_id}
             qAObj={qAObj}
             onClickHelpful={onClickHelpful}
           />
@@ -22,7 +22,7 @@ const QuestionList = ({ qA, onClickHelpful }) => {
       {moreQuestion && qA.slice(4, 6).map((qAObj) => (
         <QuestionPanel
           key={qAObj.question_id}
-          question_id={qAObj.question_id}
+          questionid={qAObj.question_id}
           qAObj={qAObj}
           onClickHelpful={onClickHelpful}
         />
