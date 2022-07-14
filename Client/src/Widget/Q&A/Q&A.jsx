@@ -2,12 +2,17 @@ import React, { useState, useEffect } from "react";
 import axios from 'axios';
 import QuestionList from './Components/QuestionList.jsx';
 import SearchBar from './Components/SearchBar.jsx';
+import AddAQuestion from './Components/AddAQuestion.jsx';
+import Style from "../../StyleComponents/QA_Styles/Style.jsx";
 
 const Q_A = ({ productID }) => {
   const [qA, setQa] = useState([]);
-  const [currentState, setCurrentState] = useState([]);
 
   useEffect(() => {
+    getQa();
+  }, []);
+
+  const getQa = () => {
     axios({
       method: 'get',
       url: `${process.env.API_Base}/qa/questions?product_id=${productID}`,
@@ -18,33 +23,57 @@ const Q_A = ({ productID }) => {
           b.helpfulness - a.helpfulness
         ));
         setQa(sortedQuestions);
-        setCurrentState(sortedQuestions);
       })
       .catch((err) => {
         console.log('err when get', err);
       });
-  }, []);
+  };
 
   const searchHandler = (searchTerm) => {
     if (searchTerm.length > 2) {
       const result = qA.filter((questions) => (questions.question_body.toLowerCase().includes(searchTerm.toLowerCase())));
-      setCurrentState(result);
+      setQa(result);
       // console.log("this is state", currentState);
     } else {
-      setCurrentState(qA);
+      getQa();
     }
   };
+  const onClickHelpful = (e) => {
+    const current = (e.target.getAttribute('type'));
+    let currentUrl;
+    let questionID;
+    let answerID;
+    if (current === 'question') {
+      questionID = e.target.getAttribute('id');
+      currentUrl = `${process.env.API_Base}/qa/questions/${questionID}/helpful`;
+    } else if (current === 'answer') {
+      answerID = e.target.getAttribute('id');
+      currentUrl = `${process.env.API_Base}/qa/answers/${answerID}/helpful`;
+    }
+    axios({
+      method: 'put',
+      url: currentUrl,
+      headers: { Authorization: process.env.API_Key },
+    })
+      .then(() => { getQa(); })
+      .catch((err) => console.log(err));
+  };
+  const onClickAddQuestion = () => {
 
+  };
   return (
-    <div data-testid="qna">
-      <h1> Questions and Answers</h1>
+    <Style.Body data-testid="qna">
+      <Style.Title> Questions and Answers</Style.Title>
       <SearchBar
         searchHandler={searchHandler}
       />
       <QuestionList
-        qA={currentState}
+        qA={qA}
+        onClickHelpful={onClickHelpful}
       />
-    </div>
+      <AddAQuestion
+      />
+    </Style.Body>
   );
 };
 
