@@ -7,18 +7,18 @@ const AddToCart = ({ currStyle }) => {
 
   const [size, setSize] = useState(null);
   const [stock, setStock] = useState(defaultStock);
-  const [quantity, setQuantity] = useState(null);
+  const [quantity, setQuantity] = useState('-');
 
   if (currStyle.name !== undefined) {
     const skus = Object.entries(currStyle.skus);
 
     const selectSizeAndUpdateStock = (e) => {
-      console.log('target value size: ', e.target.value);
       if (e.target.value === 'Select Size') {
         setStock(defaultStock);
         setQuantity(defaultStock[0]);
       } else {
         setSize(e.target.value);
+        setQuantity(1);
 
         skus.forEach((sku) => {
           if (sku[1].size === e.target.value) {
@@ -39,38 +39,41 @@ const AddToCart = ({ currStyle }) => {
       }
     };
 
+    const updateQuantity = (e) => {
+      setQuantity(e.target.value);
+    };
+
     return (
-      <SectionDiv.AddToCartSection onChange={selectSizeAndUpdateStock}>
-        <ATC.SelectSize>
+      <SectionDiv.AddToCartSection>
+        <ATC.SelectSize onChange={selectSizeAndUpdateStock}>
           <option> Select Size </option>
           { skus.map((sku) => (
-            <option
-              key={sku[0]}
-            >
+            <option key={sku[0]}>
               {sku[1].size}
             </option>
           ))}
         </ATC.SelectSize>
 
-        <ATC.SelectQuantity>
-          {/* <option> - </option> */}
-          { size === null
-            ? stock.map((quantityChoice, index) => (
-              <option
-                key={index + 100}
-              >
-                {quantityChoice}
-              </option>
-            ))
-            : stock.map((quantityChoice, index) => (
-              <option
-                key={index + 200}
-              >
-                {quantityChoice}
-              </option>
-            ))}
-        </ATC.SelectQuantity>
-
+        { quantity === '-'
+          ? (
+            <ATC.SelectQuantity>
+              <option> - </option>
+            </ATC.SelectQuantity>
+          ) : (
+            <ATC.SelectQuantity onChange={updateQuantity} value={quantity}>
+              { size === null
+                ? stock.map((quantityChoice, index) => (
+                  <option key={index + 100}>
+                    {quantityChoice}
+                  </option>
+                ))
+                : stock.map((quantityChoice, index) => (
+                  <option key={index + 200}>
+                    {quantityChoice}
+                  </option>
+                ))}
+            </ATC.SelectQuantity>
+          )}
       </SectionDiv.AddToCartSection>
     );
   }

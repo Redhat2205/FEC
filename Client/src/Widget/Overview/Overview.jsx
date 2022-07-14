@@ -12,6 +12,8 @@ const Overview = ({ productID, setProductID }) => {
   const [styles, setStyles] = useState([]);
   const [currStyle, setCurrStyle] = useState({});
 
+  const [size, setSize] = useState(null);
+
   const getProduct = () => (
     axios({
       method: 'GET',
@@ -55,7 +57,11 @@ const Overview = ({ productID, setProductID }) => {
         currStyle={currStyle}
         setCurrStyle={setCurrStyle}
       />
-      <AddToCart currStyle={currStyle} />
+      <AddToCart
+        currStyle={currStyle}
+        size={size}
+        setSize={setSize}
+      />
       <ProductAdditionalInfo product={product} currStyle={currStyle} />
     </div>
   );
