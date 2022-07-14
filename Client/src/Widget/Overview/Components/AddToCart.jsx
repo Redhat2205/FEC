@@ -75,7 +75,7 @@ const AddToCart = ({
 
     const toggleFavorite = () => {
       setFavorite(!favorite);
-    }
+    };
 
     return (
       <SectionDiv.AddToCartSection>

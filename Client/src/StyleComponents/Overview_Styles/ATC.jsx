@@ -8,9 +8,8 @@ const ATC = {
     width: 200px;
     height: 50px;
     font-size: 15px;
-    font-weight: 600;
+    font-weight: 500;
     border-radius: 5px;
-    color: grey;
   `,
   SelectQuantity: styled.select`
     display: inline-block;
@@ -19,9 +18,8 @@ const ATC = {
     width: 100px;
     height: 50px;
     font-size: 15px;
-    font-weight: 600;
+    font-weight: 500;
     border-radius: 5px;
-    color: grey;
   `,
   SecondLine: styled.div`
     display: block;
@@ -34,16 +32,15 @@ const ATC = {
     width: 250px;
     height: 50px;
     font-size: 15px;
-    font-weight: 600;
+    font-weight: 500;
     text-align: left;
-    border: 1px solid;
+    border: 1px solid rgb(118, 118, 118);
     border-radius: 5px;
     background-color: white;
-    color: grey;
 
-    &:hover {
-      text-decoration: underline;
-    }
+    /* &:hover {
+      border: 2px solid;
+    } */
   `,
   FavoriteButton: styled.button`
     display: inline-block;
@@ -53,10 +50,9 @@ const ATC = {
     height: 50px;
     font-size: 15px;
     font-weight: 600;
-    border: 1px solid;
+    border: 1px solid rgb(118, 118, 118);
     border-radius: 5px;
     background-color: white;
-    color: grey;
   `,
 };
 
