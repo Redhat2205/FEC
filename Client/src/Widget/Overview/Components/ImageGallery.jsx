@@ -10,26 +10,20 @@ const ImageGallery = ({ currStyle }) => {
 
     return (
       <SectionDiv.ImageGallerySection>
-        <IG.MainImage
-          // style={{ backgroundImage: `url(${mainUrl})` }}
-          // alt={currStyle.name}
-        >
-          <IG.ThumbnailSection>
-            AM I ON TOP?
-          </IG.ThumbnailSection>
-          <IG.LeftArrow>
-            <IG.ArrowSpan> 《 </IG.ArrowSpan>
-          </IG.LeftArrow>
-          <IG.MainImageDiv
-            style={{ backgroundImage: `url(${mainUrl})` }}
-            alt={currStyle.name}
-          >
-            HEYYYY
-          </IG.MainImageDiv>
-          <IG.RightArrow>
-            <IG.ArrowSpan> 》 </IG.ArrowSpan>
-          </IG.RightArrow>
-        </IG.MainImage>
+        <IG.ThumbnailSection>
+          AM I ON TOP?
+        </IG.ThumbnailSection>
+        <IG.LeftArrow>
+          <IG.ArrowSpan> 《 </IG.ArrowSpan>
+        </IG.LeftArrow>
+        {/* <IG.MainImageDiv
+          style={{ backgroundImage: `url(${mainUrl})` }}
+          alt={currStyle.name}
+        /> */}
+        <IG.MainImage src={mainUrl} alt={currStyle} />
+        <IG.RightArrow>
+          <IG.ArrowSpan> 》 </IG.ArrowSpan>
+        </IG.RightArrow>
       </SectionDiv.ImageGallerySection>
     );
   }
