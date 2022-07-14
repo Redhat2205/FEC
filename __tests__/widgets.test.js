@@ -22,6 +22,7 @@ it('rendering Q&A dynamically from api response data', () => {
   const target = screen.getByTestId('qna');
   expect(target).not.toBeNull();
 });
+
 // Related
 
 // Ratings

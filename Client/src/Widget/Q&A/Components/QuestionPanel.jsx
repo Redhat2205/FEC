@@ -1,23 +1,41 @@
 import React, { useState } from "react";
 import AnswerList from "./AnswerList.jsx";
+import AddAnswerModal from "./AddAnswerModal.jsx";
+import Style from "../../../StyleComponents/QA_Styles/Style.jsx";
+import AStyle from "../../../StyleComponents/QA_Styles/AStyle.jsx";
 
-const QuestionsPanel = ({ qAObj }) => {
-  const [answerStatus, setAnswerStatus] = useState(false);
+const QuestionsPanel = ({ questionid, qAObj, onClickHelpful }) => {
+  const [showAnswerStatus, setShowAnswerStatus] = useState(false);
   const [answerHelp, setAnswerHelp] = useState(false);
+  const [questionHelp, setQuestionHelp] = useState(false);
+  const [addModalStatus, setAddModalStatus] = useState(false);
   return (
-    <div>
-      <span
-        onClick={ () => { answerStatus !== true ? setAnswerStatus(true) : setAnswerStatus(false);} }
+    <Style.Questions>
+      <Style.Questions
+        onClick={() => (showAnswerStatus !== true ? setShowAnswerStatus(true) : setShowAnswerStatus(false))}
       >
         {`Q: ${qAObj.question_body}`}
-      </span>
-      <span onClick={() => {}}>Helpful?</span>
-      <span>
-        {`Yes (${qAObj.question_helpfulness})`}
-      </span>
-      <span>Add Answer</span>
-      {answerStatus && <AnswerList answerObj={qAObj.answers} />}
-    </div>
+      </Style.Questions>
+      <Style.Info>
+        <AStyle.Helpful>Helpful?</AStyle.Helpful>
+        {questionHelp ? <AStyle.Helpful>{`|  Yes (${qAObj.question_helpfulness})`}</AStyle.Helpful>
+          : (
+            <AStyle.Yes
+              id={questionid}
+              type="question"
+              onClick={(e) => {
+                onClickHelpful(e);
+                setQuestionHelp(true);
+              }}
+            >
+              {`|  Yes (${qAObj.question_helpfulness})`}
+            </AStyle.Yes>
+          )}
+        <AStyle.Reported onClick={() => (setAddModalStatus(true))}>|  Add Answer</AStyle.Reported>
+        <AddAnswerModal questionBody={qAObj.question_body} addModalStatus={addModalStatus} onClose={() => (setAddModalStatus(false))} />
+      </Style.Info>
+      {showAnswerStatus && <AnswerList onClickHelpful={onClickHelpful} answerObj={qAObj.answers} />}
+    </Style.Questions>
   );
 };
 
