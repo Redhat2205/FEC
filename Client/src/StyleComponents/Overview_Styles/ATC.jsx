@@ -23,6 +23,9 @@ const ATC = {
     border-radius: 5px;
     color: grey;
   `,
+  SecondLine: styled.div`
+    display: block;
+  `,
   AddtoBag: styled.button`
     display: inline-block;
     float: left;
@@ -41,6 +44,19 @@ const ATC = {
     &:hover {
       text-decoration: underline;
     }
+  `,
+  FavoriteButton: styled.button`
+    display: inline-block;
+    margin: 10px 5px;
+    padding: 10px;
+    width: 65px;
+    height: 50px;
+    font-size: 15px;
+    font-weight: 600;
+    border: 1px solid;
+    border-radius: 5px;
+    background-color: white;
+    color: grey;
   `,
 };
 

@@ -6,16 +6,18 @@ const AddToCart = ({
   product, currStyle, quantity, setQuantity,
 }) => {
   const defaultStock = ['-', 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
+  const selectRef = React.useRef();
+  const openOnFocus = useState(true);
 
   const [size, setSize] = useState(null);
   const [stock, setStock] = useState(defaultStock);
   // const [quantity, setQuantity] = useState('-');
-  const selectRef = React.useRef();
-  const openOnFocus = useState(true);
+  const [favorite, setFavorite] = useState(false);
 
   if (currStyle.name !== undefined) {
     const skus = Object.entries(currStyle.skus);
 
+    // ========== Size and Quantity ============
     const selectSizeAndUpdateStock = (e) => {
       if (e.target.value === 'Select Size') {
         setStock(defaultStock);
@@ -47,6 +49,7 @@ const AddToCart = ({
       setQuantity(e.target.value);
     };
 
+    // ========== Add to Bag and Favoirte ============
     const onClickOpenDropDown = () => {
       console.log('open dropdown!');
       console.log('selectRef.current: ', selectRef.current);
@@ -69,6 +72,10 @@ const AddToCart = ({
         `,
       );
     };
+
+    const toggleFavorite = () => {
+      setFavorite(!favorite);
+    }
 
     return (
       <SectionDiv.AddToCartSection>
@@ -107,17 +114,30 @@ const AddToCart = ({
             </ATC.SelectQuantity>
           )}
 
-        { size === null || size === 'SELECT SIZE'
-          ? (
-            <ATC.AddtoBag onClick={onClickOpenDropDown}>
-              ADD TO BAG &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; +
-            </ATC.AddtoBag>
-          )
-          : (
-            <ATC.AddtoBag onClick={onClickAddToBag}>
-              ADD TO BAG &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; +
-            </ATC.AddtoBag>
+        <ATC.SecondLine>
+          { size === null || size === 'SELECT SIZE'
+            ? (
+              <ATC.AddtoBag onClick={onClickOpenDropDown}>
+                ADD TO BAG &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; +
+              </ATC.AddtoBag>
+            )
+            : (
+              <ATC.AddtoBag onClick={onClickAddToBag}>
+                ADD TO BAG &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; +
+              </ATC.AddtoBag>
+            )}
+
+          {favorite ? (
+            <ATC.FavoriteButton onClick={toggleFavorite}>
+              ★
+            </ATC.FavoriteButton>
+          ) : (
+            <ATC.FavoriteButton onClick={toggleFavorite}>
+              ☆
+            </ATC.FavoriteButton>
           )}
+        </ATC.SecondLine>
+
       </SectionDiv.AddToCartSection>
     );
   }
