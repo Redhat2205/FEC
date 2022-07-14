@@ -2,12 +2,16 @@ import React, { useState } from "react";
 import SectionDiv from "../../../StyleComponents/Overview_Styles/SectionDiv.jsx";
 import ATC from "../../../StyleComponents/Overview_Styles/ATC.jsx";
 
-const AddToCart = ({ currStyle, quantity, setQuantity }) => {
+const AddToCart = ({
+  product, currStyle, quantity, setQuantity,
+}) => {
   const defaultStock = ['-', 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
 
   const [size, setSize] = useState(null);
   const [stock, setStock] = useState(defaultStock);
   // const [quantity, setQuantity] = useState('-');
+  const selectRef = React.useRef();
+  const openOnFocus = useState(true);
 
   if (currStyle.name !== undefined) {
     const skus = Object.entries(currStyle.skus);
@@ -45,22 +49,35 @@ const AddToCart = ({ currStyle, quantity, setQuantity }) => {
 
     const onClickOpenDropDown = () => {
       console.log('open dropdown!');
+      console.log('selectRef.current: ', selectRef.current);
+
+      if (selectRef.current) {
+        selectRef.current.focus();
+      }
     };
 
     const onClickAddToBag = () => {
+      const unitPrice = currStyle.sale_price ? currStyle.sale_price : currStyle.original_price;
+
       console.log(
         `Add to Bag: 🎩
-  style: ${currStyle.name}
-  price: $ ${currStyle.original_price}
-  size: ${size},
-  quantity: ${quantity}
+  Product: ${product.name} - ${currStyle.name}
+  Unit Price: $ ${unitPrice}
+  Size: ${size},
+  Quantity: ${quantity}
+  Total: $ ${quantity * unitPrice}
         `,
       );
     };
 
     return (
       <SectionDiv.AddToCartSection>
-        <ATC.SelectSize id="selectSize" onChange={selectSizeAndUpdateStock}>
+        <ATC.SelectSize
+          id="selectSize"
+          onChange={selectSizeAndUpdateStock}
+          ref={selectRef}
+          openOnFocus={openOnFocus}
+        >
           <option> SELECT SIZE </option>
           { skus.map((sku) => (
             <option key={sku[0]}>
@@ -89,7 +106,8 @@ const AddToCart = ({ currStyle, quantity, setQuantity }) => {
                 ))}
             </ATC.SelectQuantity>
           )}
-        { size === null
+
+        { size === null || size === 'SELECT SIZE'
           ? (
             <ATC.AddtoBag onClick={onClickOpenDropDown}>
               ADD TO BAG &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; +

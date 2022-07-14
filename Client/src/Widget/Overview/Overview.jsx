@@ -59,6 +59,7 @@ const Overview = ({ productID, setProductID }) => {
         setQuantity={setQuantity}
       />
       <AddToCart
+        product={product}
         currStyle={currStyle}
         quantity={quantity}
         setQuantity={setQuantity}
