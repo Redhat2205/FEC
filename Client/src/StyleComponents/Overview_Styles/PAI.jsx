@@ -20,7 +20,7 @@ const PAI = {
   `,
   FeatureList: styled.ul`
     float: inline-block;
-    border-left: 2px solid #B2B4B8;
+    border-left: 2px solid rgb(118, 118, 118);
     float: right;
     margin: 3% 10% 2% 2%;
     width: 25%;
