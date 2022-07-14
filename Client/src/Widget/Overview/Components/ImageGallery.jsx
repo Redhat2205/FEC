@@ -1,4 +1,5 @@
 import React from "react";
+import Slider from "react-slick";
 import SectionDiv from "../../../StyleComponents/Overview_Styles/SectionDiv.jsx";
 import IG from "../../../StyleComponents/Overview_Styles/IG.jsx";
 
