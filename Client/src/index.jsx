@@ -13,6 +13,8 @@ const root = createRoot(document.getElementById("root"));
 
 // Huzzah for JSX!!
 const App = () => {
+  // ****** default product id: 37316
+  // const [productID, setProductID] = useState('37320');
   const [productID, setProductID] = useState('37316');
 
   return (

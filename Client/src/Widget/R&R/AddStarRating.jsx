@@ -7,7 +7,7 @@ const AddStarRating = () => {
   if (userStarRating === 1) {
     return (
     <>
-      <p>
+      <p style={{marginLeft: '15px'}}>
         <span onClick={() => setUserStarRating(1)}>★</span>
         <span onClick={() => setUserStarRating(2)}>☆</span>
         <span onClick={() => setUserStarRating(3)}>☆</span>
@@ -20,7 +20,7 @@ const AddStarRating = () => {
   else if (userStarRating === 2) {
     return (
     <>
-      <p>
+      <p style={{marginLeft: '15px'}}>
         <span onClick={() => setUserStarRating(1)}>★</span>
         <span onClick={() => setUserStarRating(2)}>★</span>
         <span onClick={() => setUserStarRating(3)}>☆</span>
@@ -32,7 +32,7 @@ const AddStarRating = () => {
   } else if (userStarRating === 3) {
     return (
     <>
-      <p>
+      <p style={{marginLeft: '15px'}}>
         <span onClick={() => setUserStarRating(1)}>★</span>
         <span onClick={() => setUserStarRating(2)}>★</span>
         <span onClick={() => setUserStarRating(3)}>★</span>
@@ -44,7 +44,7 @@ const AddStarRating = () => {
   } else if (userStarRating === 4) {
     return (
     <>
-      <p>
+      <p style={{marginLeft: '15px'}}>
         <span onClick={() => setUserStarRating(1)}>★</span>
         <span onClick={() => setUserStarRating(2)}>★</span>
         <span onClick={() => setUserStarRating(3)}>★</span>
@@ -56,7 +56,7 @@ const AddStarRating = () => {
   } else if (userStarRating === 5) {
     return (
     <>
-      <p>
+      <p style={{marginLeft: '15px'}}>
         <span onClick={() => setUserStarRating(1)}>★</span>
         <span onClick={() => setUserStarRating(2)}>★</span>
         <span onClick={() => setUserStarRating(3)}>★</span>
@@ -68,7 +68,7 @@ const AddStarRating = () => {
   } else if (userStarRating === 0) {
     return (
       <>
-        <p>
+        <p style={{marginLeft: '15px'}}>
           <span onClick={() => setUserStarRating(1)}>☆</span>
           <span onClick={() => setUserStarRating(2)}>☆</span>
           <span onClick={() => setUserStarRating(3)}>☆</span>
