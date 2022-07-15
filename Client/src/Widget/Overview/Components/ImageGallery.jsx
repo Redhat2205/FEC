@@ -18,7 +18,6 @@ const ImageGallery = ({ currStyle }) => {
       currStyle.photos.forEach((photoObj) => {
         mainArr.push(photoObj.url);
         if (photoObj.thumbnail_url[0] === 'u') {
-          console.log('photoObj:', photoObj.thumbnail_url.slice(1))
           thumbnailArr.push(photoObj.thumbnail_url.slice(1));
         } else {
           thumbnailArr.push(photoObj.thumbnail_url);
@@ -29,16 +28,6 @@ const ImageGallery = ({ currStyle }) => {
       setCurrTnSet(thumbnailArr.slice(0, 7));
     }
   }, [currStyle]);
-
-  // const changeCurrTnSet = () => {
-  //   if (currIndex >= 0 && currIndex < 6) {
-  //     setCurrTnSet(thumbnails.slice(0, 7));
-  //   } else if (currIndex >= 6 && currIndex < 13) {
-  //     setCurrTnSet(thumbnails.slice(7, 14));
-  //   } else if (currIndex >= 13 && currIndex < 20) {
-  //     setCurrTnSet(thumbnails.slice(14, 21));
-  //   }
-  // };
 
   // =========== Arrows ===========
   const nextMainImage = () => {
@@ -66,6 +55,11 @@ const ImageGallery = ({ currStyle }) => {
     setCurrTnSet(thumbnails.slice(0, 7));
   };
 
+  const onClickSetIndex = (thumbnail) => {
+    const newIndex = thumbnails.indexOf(thumbnail);
+    setcurrIndex(newIndex);
+  };
+
   if (currIndex !== null) {
     return (
       <SectionDiv.ImageGallerySection>
@@ -74,11 +68,13 @@ const ImageGallery = ({ currStyle }) => {
           alt={currStyle.name}
         > */}
         <IG.ThumbnailSection>
-          <IG.TnUpArrow onClick={prevSetThumbnail}> ⌃ </IG.TnUpArrow>
+          {currTnSet[0] !== thumbnails[7]
+            ? <IG.TnUpArrow style={{ fontWeight: 300 }}> .. </IG.TnUpArrow>
+            : <IG.TnUpArrow onClick={prevSetThumbnail}> ⌃ </IG.TnUpArrow>}
+
           {currTnSet.map((thumbnail) => {
             if (thumbnail === thumbnails[currIndex]) {
               return (
-
                 <IG.Thumbnail
                   style={{
                     borderWidth: '2px 2px 2px 10px',
@@ -96,10 +92,14 @@ const ImageGallery = ({ currStyle }) => {
                 key={thumbnail.slice(34, 47)}
                 src={thumbnail}
                 alt={thumbnail.slice(34, 47)}
+                onClick={() => onClickSetIndex(thumbnail)}
               />
             );
           })}
-          <IG.TnDownArrow onClick={nextSetThumbnail}> ⌄ </IG.TnDownArrow>
+
+          {currTnSet[0] === thumbnails[7] ? null
+            : <IG.TnDownArrow onClick={nextSetThumbnail}> ⌄ </IG.TnDownArrow>}
+
         </IG.ThumbnailSection>
 
         <IG.LeftArrow>
