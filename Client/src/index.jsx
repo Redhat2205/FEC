@@ -15,8 +15,8 @@ const root = createRoot(document.getElementById("root"));
 // Huzzah for JSX!!
 const App = () => {
   const [productID, setProductID] = useState('37316');
-  const [product, setProduct] = useState(null);
-  const [productReviews, setProductReviews] = useState(null);
+  const [product, setProduct] = useState([]);
+  const [productReviews, setProductReviews] = useState([]);
 
   const getProduct = () => (
     axios({
@@ -25,7 +25,7 @@ const App = () => {
       headers: { Authorization: process.env.API_Key },
     })
       .then((productData) => {
-        console.log('productData: ', productData.data);
+        // console.log('productData: ', productData.data);
         setProduct(productData.data);
       })
       .catch((err) => console.log('error when getting product: ', err))
@@ -42,7 +42,7 @@ const App = () => {
       },
     })
       .then((reviewsData) => {
-        console.log('reviews: ', reviewsData.data);
+        // console.log('reviews: ', reviewsData.data);
         setProductReviews(reviewsData.data);
       })
       .catch((err) => console.log('error when getting reviews: ', err));
@@ -52,7 +52,6 @@ const App = () => {
     getProduct()
       .then(() => {
         getReviews();
-        console.log('product data and reviews: ', product, productReviews);
       })
       .catch((err) => console.log('error in useEffect: ', err));
   }, []);
@@ -60,14 +59,26 @@ const App = () => {
   return (
     <GeneralStyles.Div>
       <h1>Hello World!</h1>
-      {/* {product === null ? <div>is null</div>
-        : (<Overview
-          productID={productID}
-          setProductID={setProductID}
-          product={product}
-          productReviews={productReviews}
-      />)} */}
-      <Overview
+      {product.name === undefined
+        ? <div>Loading...</div>
+        : (
+          <div>
+            <Overview
+              productID={productID}
+              setProductID={setProductID}
+              product={product}
+              productReviews={productReviews}
+            />
+            <Related
+              productID={productID}
+              product={product}
+              productReviews={productReviews}
+            />
+            <Q_A productID={productID} product={product} />
+            <R_R productID={productID} />
+          </div>
+        )}
+      {/* <Overview
         productID={productID}
         setProductID={setProductID}
         product={product}
@@ -79,7 +90,7 @@ const App = () => {
         productReviews={productReviews}
       />
       <Q_A productID={productID} product={product} />
-      <R_R productID={productID} />
+      <R_R productID={productID} /> */}
     </GeneralStyles.Div>
   );
 };
