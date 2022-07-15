@@ -78,19 +78,6 @@ const App = () => {
             <R_R productID={productID} />
           </div>
         )}
-      {/* <Overview
-        productID={productID}
-        setProductID={setProductID}
-        product={product}
-        productReviews={productReviews}
-      />
-      <Related
-        productID={productID}
-        product={product}
-        productReviews={productReviews}
-      />
-      <Q_A productID={productID} product={product} />
-      <R_R productID={productID} /> */}
     </GeneralStyles.Div>
   );
 };
