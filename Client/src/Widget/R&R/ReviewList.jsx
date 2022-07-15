@@ -3,21 +3,27 @@ import ReviewTile from './ReviewTile.jsx';
 import AddReview from './AddReview.jsx';
 import MoreReviews from './MoreReviews.jsx';
 import AddReviewModal from './AddReviewModal.jsx';
+import Sorting from './Sorting.jsx';
 
-const ReviewList = ({ currentItem, reviews }) => {
+const sortingStyle = {
+  marginLeft: '10%',
+};
+
+const ReviewList = ({ currentItem, reviews, reviewCount }) => {
+  // console.log('reviewCount:', reviewCount);
   const [show, setShow] = useState(false);
   return (
-  <>
-    <ul>
-      {/* <ReviewTile currentItem={props.currentItem} /> */}
-      {reviews.map((review) => (
-        <ReviewTile key={review.review_id} eachReview={review}/>
-      ))}
-    </ul>
-    <MoreReviews />
-    <AddReview show={show} setShow={setShow} />
-    <AddReviewModal show={show} setShow={setShow} currentItem={currentItem}/>
-  </>
+    <div style={sortingStyle}>
+      <Sorting reviewCount={reviewCount} />
+      <ul>
+        {reviews.map((review) => (
+          <ReviewTile key={review.review_id} eachReview={review} />
+        ))}
+      </ul>
+      <MoreReviews />
+      <AddReview show={show} setShow={setShow} />
+      <AddReviewModal show={show} setShow={setShow} currentItem={currentItem} />
+    </div>
   );
 };
 

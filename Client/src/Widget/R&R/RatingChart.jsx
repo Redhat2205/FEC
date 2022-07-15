@@ -1,46 +1,49 @@
 import React from 'react';
 
-const RatingChart = (props) => {
-  if (props.currentItem.rating === 1) {
+const RatingChart = ({ currentItem, averageRating }) => {
+
+  // console.log(currentItem);
+  const dummedDown = Math.ceil(averageRating);
+  if (dummedDown === 1) {
     return (
       <div>
-      <h1 style={{ textAlign: 'center', fontFamily: 'tahoma' }}>{'Rating:' + ' ' + props.currentItem.rating}</h1>
+      <h1 style={{ textAlign: 'center', fontFamily: 'tahoma' }}>{'Rating:' + ' ' + averageRating}</h1>
       <p style={{ textAlign: 'center' }}>⭐️</p>
     </div>
     );
   }
-  if (props.currentItem.rating === 2) {
+  if (dummedDown === 2) {
     return (
       <div>
-      <h1 style={{ textAlign: 'center', fontFamily: 'tahoma' }}>{'Rating:' + ' ' + props.currentItem.rating}</h1>
+      <h1 style={{ textAlign: 'center', fontFamily: 'tahoma' }}>{'Rating:' + ' ' + averageRating}</h1>
       <p style={{ textAlign: 'center' }}>⭐️⭐️</p>
     </div>
     )
   }
-  if (props.currentItem.rating === 3) {
+  if (dummedDown === 3) {
     return (
       <div>
-      <h1 style={{ textAlign: 'center', fontFamily: 'tahoma' }}>{'Rating:' + ' ' + props.currentItem.rating}</h1>
+      <h1 style={{ textAlign: 'center', fontFamily: 'tahoma' }}>{'Rating:' + ' ' + averageRating}</h1>
       <p style={{ textAlign: 'center' }}>⭐️⭐️⭐️</p>
     </div>
     )
   }
-  if (props.currentItem.rating === 4) {
+  if (dummedDown === 4) {
     return (
       <div>
-      <h1 style={{ textAlign: 'center', fontFamily: 'tahoma' }}>{'Rating:' + ' ' + props.currentItem.rating}</h1>
+      <h1 style={{ textAlign: 'center', fontFamily: 'tahoma' }}>{'Rating:' + ' ' + averageRating}</h1>
       <p style={{ textAlign: 'center' }}>⭐️⭐️⭐️⭐️</p>
     </div>
     )
   }
-  if (props.currentItem.rating === 5) {
+  if (dummedDown === 5) {
     return (
       <div>
-      <h1 style={{ textAlign: 'center', fontFamily: 'tahoma' }}>{'Rating:' + ' ' + props.currentItem.rating}</h1>
+      <h1 style={{ textAlign: 'center', fontFamily: 'tahoma' }}>{'Rating:' + ' ' + averageRating}</h1>
       <p style={{ textAlign: 'center' }}>⭐️⭐️⭐️⭐️⭐️</p>
     </div>
     )
-  } else if (typeof props.currentItem.rating !== 'number') {
+  } else if (typeof dummedDown !== 'number') {
     return (
       <div>
       <h1 style={{ textAlign: 'center', fontFamily: 'tahoma' }}>{'Rating: -'}</h1>

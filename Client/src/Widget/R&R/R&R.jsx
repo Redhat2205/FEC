@@ -62,6 +62,8 @@ const secret = process.env.API_Key;
 const R_R = ({ productID }) => {
   const [productReviews, setProductReviews] = useState([]);
   const [currentItem, setCurrentItem] = useState({});
+  const [reviewCount, setReviewCount] = useState(null);
+  const [averageRating, setAverageRating] = useState(null);
 
   // useEffect will initialize widget state based on API response data
 
@@ -90,16 +92,31 @@ const R_R = ({ productID }) => {
       url: API_Base + '/reviews/',
       // url: API_Base + '/reviews/' + productID,
       headers: { Authorization: secret },
-      params: { product_id: productID },
+      params: {
+        product_id: productID,
+        count: '9999',
+      },
     })
       .then((res) => {
         // console.log('all reviews specific product', res.data.results);
         setProductReviews(res.data.results);
+
+        // set the average rating
+        let total = 0;
+        res.data.results.forEach((result) => {total += result.rating});
+        // console.log('total rating:', total);
+        // console.log('average rating:', total / res.data.results.length);
+        // setAverageRating(total * 1.00);
+        setAverageRating(Math.round((total / res.data.results.length) * 10) / 10);
+        // console.log('response data results', res.data.results.length);
+        setReviewCount(res.data.results.length);
       })
       .catch((err) => {
         console.log('🟥there was an error fetching product info!', err);
       })
   }, []);
+
+
 
   // old set the productReviews
   // useEffect(() => {
@@ -169,11 +186,11 @@ const R_R = ({ productID }) => {
       {/* // <StarTest style={{backgroundColor: 'gold', height: '10px'}} className="StarTest"/> */}
       <h1 id="main-rnr-header" data-testid="rnr" style={{textAlign: 'center', fontFamily: 'tahoma'}}>Ratings and Reviews</h1>
       <div className="rating-chart-container" style={{ border: 'solid 1px', borderRadius: '5px', boxShadow: '5px 10px #888888', float: 'left', width: '33%' }}>
-        <RatingChart currentItem={currentItem} />
+        <RatingChart currentItem={currentItem} averageRating={averageRating}/>
       </div>
       <div className="review-list-container" style={{ border: 'solid 1px', borderRadius: '5px', boxShadow: '5px 10px #888888', float: 'right', width: '66%', marginBottom: '20px' }}>
-        <h1 style={{textAlign: 'center', fontFamily: 'Tahoma'}}>Review List</h1>
-        <ReviewList reviews={productReviews} currentItem={currentItem}/>
+        {/* <h1 style={{textAlign: 'center', fontFamily: 'Tahoma'}}>Review List</h1> */}
+        <ReviewList reviews={productReviews} currentItem={currentItem} reviewCount={reviewCount}/>
       </div>
     </div>
   );
