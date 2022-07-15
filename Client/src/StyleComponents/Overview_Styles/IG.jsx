@@ -55,32 +55,34 @@ const IG = {
     text-align: center;
   `,
   ArrowSpan: styled.button`
+    position: relative;
     font-size: 25px;
     font-weight: 700;
     border: 2px;
-    background-color: #f8f8f8;
+    background-color: white;
     color: rgb(118, 118, 118);
   `,
   TnUpArrow: styled.button`
+    display: flex;
     position: relative;
     top: 10px;
     left: 30%;
     font-size: 25px;
     font-weight: 700;
     border: 2px;
-    background-color: #f8f8f8;
+    background-color: white;
     color: rgb(118, 118, 118);
   `,
   TnDownArrow: styled.button`
     position: relative;
-    /* overflow: auto; */
+    float: top;
     top: 1px;
     left: 30%;
     height: 25px;
     font-size: 35px;
     font-weight: 700;
     border: 2px;
-    background-color: #f8f8f8;
+    background-color: white;
     color: rgb(118, 118, 118);
   `,
   Thumbnail: styled.img`

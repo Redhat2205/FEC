@@ -7,7 +7,7 @@ const SectionDiv = {
     /* display: flex; */
     overflow: hidden;
     float: left;
-    background-color: #f8f8f8;
+    /* background-color: #f8f8f8; */
   `,
   ProductInfoSection: styled.div`
     width: 39%;
