@@ -40,9 +40,6 @@ const IG = {
     left: 3%;
     width: 65%;
     height: 85%;
-    /* background-position: center;
-    background-size: contain;
-    background-repeat: no-repeat; */
     object-fit: contain;
   `,
   RightArrow: styled.div`
@@ -61,7 +58,7 @@ const IG = {
     font-weight: 700;
     border: 2px;
     background-color: #f8f8f8;
-    color: grey;
+    color: rgb(118, 118, 118);
   `,
 };
 

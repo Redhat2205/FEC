@@ -4,30 +4,55 @@ import IG from "../../../StyleComponents/Overview_Styles/IG.jsx";
 
 const ImageGallery = ({ currStyle }) => {
   // console.log('styles in IG: ', currStyle);
-  const [mainUrl, setMainUrl] = useState('');
+  const [currMainIndex, setCurrMainIndex] = useState(null);
+  const [mainImages, setMainImages] = useState([]);
+  const [thumbnails, setThumbnails] = useState([]);
 
   useEffect(() => {
     if (currStyle.name !== undefined) {
-      setMainUrl(currStyle.photos[0].url);
+      setCurrMainIndex(0);
+
+      const mainArr = [];
+      const thumbnailArr = [];
+      currStyle.photos.forEach((photoObj) => {
+        mainArr.push(photoObj.url);
+        thumbnailArr.push(photoObj.thumbnail_url);
+      });
+      setMainImages(mainArr);
+      setThumbnails(thumbnailArr);
     }
   }, [currStyle]);
 
-  if (currStyle.name !== undefined) {
+  const nextMainImage = () => {
+    const newIndex = currMainIndex + 1;
+    setCurrMainIndex(newIndex);
+  };
+  const prevMainImage = () => {
+    const newIndex = currMainIndex - 1;
+    setCurrMainIndex(newIndex);
+  };
+
+  if (currMainIndex !== null) {
     return (
       <SectionDiv.ImageGallerySection>
         {/* <IG.MainImageDiv
-          style={{ backgroundImage: `url(${mainUrl})` }}
+          style={{ backgroundImage: `url(${currMainIndex})` }}
           alt={currStyle.name}
         > */}
         <IG.ThumbnailSection>
           AM I ON TOP?
         </IG.ThumbnailSection>
+
         <IG.LeftArrow>
-          <IG.ArrowSpan> 《 </IG.ArrowSpan>
+          {currMainIndex === 0 ? null
+            : <IG.ArrowSpan onClick={prevMainImage}> 《 </IG.ArrowSpan>}
         </IG.LeftArrow>
-        <IG.MainImage src={mainUrl} alt={currStyle} />
+
+        <IG.MainImage src={mainImages[currMainIndex]} alt={currStyle} />
+
         <IG.RightArrow>
-          <IG.ArrowSpan> 》 </IG.ArrowSpan>
+          {currMainIndex === mainImages.length - 1 ? null
+            : <IG.ArrowSpan onClick={nextMainImage}> 》 </IG.ArrowSpan>}
         </IG.RightArrow>
         {/* </IG.MainImageDiv> */}
       </SectionDiv.ImageGallerySection>
