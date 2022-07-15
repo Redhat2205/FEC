@@ -56,13 +56,30 @@ const ImageGallery = ({ currStyle }) => {
         > */}
         <IG.ThumbnailSection>
           <IG.TnUpArrow> ⌃ </IG.TnUpArrow>
-          {currTnSet.map((thumbnail) => (
-            <IG.Thumbnail
-              key={thumbnail.slice(34, 47)}
-              src={thumbnail}
-              alt={thumbnail.slice(34, 47)}
-            />
-          ))}
+          {currTnSet.map((thumbnail) => {
+            if (thumbnail === thumbnails[currIndex]) {
+              return (
+
+                <IG.Thumbnail
+                  style={{
+                    borderWidth: '2px 2px 2px 10px',
+                    borderStyle: 'ridge',
+                    borderColor: '#9698A8',
+                  }}
+                  key={thumbnail.slice(34, 47)}
+                  src={thumbnail}
+                  alt={thumbnail.slice(34, 47)}
+                />
+              );
+            }
+            return (
+              <IG.Thumbnail
+                key={thumbnail.slice(34, 47)}
+                src={thumbnail}
+                alt={thumbnail.slice(34, 47)}
+              />
+            );
+          })}
           <IG.TnDownArrow> ⌄ </IG.TnDownArrow>
         </IG.ThumbnailSection>
 
