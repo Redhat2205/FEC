@@ -6,12 +6,12 @@ const ImageGallery = ({ currStyle }) => {
   // console.log('styles in IG: ', currStyle);
   const [mainImages, setMainImages] = useState([]);
   const [thumbnails, setThumbnails] = useState([]);
-  const [currIndex, setcurrIndex] = useState(null);
+  const [currIndex, setcurrIndex] = useState(0);
   const [currTnSet, setCurrTnSet] = useState([]);
 
   useEffect(() => {
     if (currStyle.name !== undefined) {
-      setcurrIndex(0);
+      // setcurrIndex(0);
 
       const mainArr = [];
       const thumbnailArr = [];
