@@ -18,9 +18,11 @@ const ImageGallery = ({ currStyle }) => {
       currStyle.photos.forEach((photoObj) => {
         mainArr.push(photoObj.url);
         if (photoObj.thumbnail_url[0] === 'u') {
+          console.log('photoObj:', photoObj.thumbnail_url.slice(1))
           thumbnailArr.push(photoObj.thumbnail_url.slice(1));
+        } else {
+          thumbnailArr.push(photoObj.thumbnail_url);
         }
-        thumbnailArr.push(photoObj.thumbnail_url);
       });
       setMainImages(mainArr);
       setThumbnails(thumbnailArr);
@@ -28,23 +30,40 @@ const ImageGallery = ({ currStyle }) => {
     }
   }, [currStyle]);
 
+  // const changeCurrTnSet = () => {
+  //   if (currIndex >= 0 && currIndex < 6) {
+  //     setCurrTnSet(thumbnails.slice(0, 7));
+  //   } else if (currIndex >= 6 && currIndex < 13) {
+  //     setCurrTnSet(thumbnails.slice(7, 14));
+  //   } else if (currIndex >= 13 && currIndex < 20) {
+  //     setCurrTnSet(thumbnails.slice(14, 21));
+  //   }
+  // };
+
+  // =========== Arrows ===========
   const nextMainImage = () => {
     const newIndex = currIndex + 1;
+    if (currIndex >= 0 && currIndex < 6) {
+      setCurrTnSet(thumbnails.slice(0, 7));
+    } else if (currIndex >= 6 && currIndex < 13) {
+      setCurrTnSet(thumbnails.slice(7, 14));
+    }
     setcurrIndex(newIndex);
   };
   const prevMainImage = () => {
     const newIndex = currIndex - 1;
+    if (currIndex >= 0 && currIndex <= 7) {
+      setCurrTnSet(thumbnails.slice(0, 7));
+    } else if (currIndex > 7 && currIndex < 13) {
+      setCurrTnSet(thumbnails.slice(7, 14));
+    }
     setcurrIndex(newIndex);
   };
-
-  const changeCurrTnSet = () => {
-    if (currIndex >= 0 && currIndex <= 6) {
-      setCurrTnSet(thumbnails.slice(0, 7));
-    } else if (currIndex >= 7 && currIndex <= 13) {
-      setCurrTnSet(thumbnails.slice(7, 14));
-    } else if (currIndex >= 14 && currIndex <= 20) {
-      setCurrTnSet(thumbnails.slice(14, 21));
-    }
+  const nextSetThumbnail = () => {
+    setCurrTnSet(thumbnails.slice(7, 14));
+  };
+  const prevSetThumbnail = () => {
+    setCurrTnSet(thumbnails.slice(0, 7));
   };
 
   if (currIndex !== null) {
@@ -55,7 +74,7 @@ const ImageGallery = ({ currStyle }) => {
           alt={currStyle.name}
         > */}
         <IG.ThumbnailSection>
-          <IG.TnUpArrow> ⌃ </IG.TnUpArrow>
+          <IG.TnUpArrow onClick={prevSetThumbnail}> ⌃ </IG.TnUpArrow>
           {currTnSet.map((thumbnail) => {
             if (thumbnail === thumbnails[currIndex]) {
               return (
@@ -80,7 +99,7 @@ const ImageGallery = ({ currStyle }) => {
               />
             );
           })}
-          <IG.TnDownArrow> ⌄ </IG.TnDownArrow>
+          <IG.TnDownArrow onClick={nextSetThumbnail}> ⌄ </IG.TnDownArrow>
         </IG.ThumbnailSection>
 
         <IG.LeftArrow>
