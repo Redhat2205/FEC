@@ -8,6 +8,7 @@ import ProductAdditionalInfo from "./Components/ProductAdditionalInfo.jsx";
 // import GeneralStyles from "../../StyleComponents/GeneralStyles.jsx";
 
 const Overview = ({ productID, setProductID }) => {
+  // product, productReviews
   const [product, setProduct] = useState({});
   const [styles, setStyles] = useState([]);
   const [currStyle, setCurrStyle] = useState({});
@@ -32,7 +33,7 @@ const Overview = ({ productID, setProductID }) => {
       headers: { Authorization: process.env.API_Key },
     })
       .then((stylesData) => {
-        // console.log('styles Data: ', stylesData.data);
+        console.log('styles Data in overview: ', stylesData.data);
         setStyles(stylesData.data.results);
         setCurrStyle(stylesData.data.results[0]);
       })
