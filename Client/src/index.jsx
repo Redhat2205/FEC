@@ -69,13 +69,13 @@ const App = () => {
               product={product}
               productReviews={productReviews}
             />
-            <Related
+            <Related productID={productID} />
+            <Q_A productID={productID} product={product} />
+            <R_R
               productID={productID}
               product={product}
               productReviews={productReviews}
             />
-            <Q_A productID={productID} product={product} />
-            <R_R productID={productID} />
           </div>
         )}
     </GeneralStyles.Div>
