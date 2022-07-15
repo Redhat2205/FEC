@@ -7,7 +7,16 @@ const PI = {
     width: 300px;
     height: 20px;
   `,
+  Stars: styled.div`
+    display: flex;
+    position: relative;
+    color: black;
+  `,
   AtoReview: styled.a`
+    display: flex;
+    position: relative;
+    left: 80px;
+    bottom: 37px;
     margin: 20px 20px 20px 10px;
     width: 40%;
     font-size: 12px;

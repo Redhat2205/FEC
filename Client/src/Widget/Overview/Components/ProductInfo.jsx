@@ -8,15 +8,22 @@ const ProductInfo = ({ product, currStyle, productReviews }) => {
   return (
     <SectionDiv.ProductInfoSection>
       <PI.Ratings>
-        ☆☆☆☆☆
         {productReviews.product === undefined
-          ? <PI.AtoReview> Read all # reviews</PI.AtoReview>
+          ? (
+            <div>
+              <PI.Stars> ☆☆☆☆☆ </PI.Stars>
+              <PI.AtoReview> Read all # reviews</PI.AtoReview>
+            </div>
+          )
           : (
-            <PI.AtoReview href="#main-rnr-header">
-              Read all&nbsp;
-              {productReviews.results.length}
-              &nbsp;reviews
-            </PI.AtoReview>
+            <div>
+              <PI.Stars> ☆☆☆☆☆ </PI.Stars>
+              <PI.AtoReview href="#main-rnr-header">
+                Read all&nbsp;
+                {productReviews.results.length}
+                &nbsp;reviews
+              </PI.AtoReview>
+            </div>
           )}
 
       </PI.Ratings>
