@@ -1,9 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import Modal from "../../../StyleComponents/QA_Styles/Modal.jsx";
 
 const AddAnswerModal = ({
-  addModalStatus, onClose, questionBody, productName,
+  addModalStatus, onClose, questionBody, productName, productID, onSubmitAnswerHandle, questionID,
 }) => {
+  const [name, setName] = useState("");
+  const [body, setBody] = useState("");
+  const [email, setEmail] = useState("");
+  const [submit, setSubmit] = useState(false);
   if (!addModalStatus) return null;
   return (
     <Modal.Background>
@@ -11,8 +15,15 @@ const AddAnswerModal = ({
         <Modal.Content>
           <h1> Submit Your Answer</h1>
           <h3>{`${productName}: ${questionBody}`}</h3>
+          {submit && <span>Successfully Submited</span>}
           <span> What is your nickname*:</span>
-          <Modal.Name size="60" placeholder="Example: jack543!" />
+          <Modal.Name
+            size="60"
+            placeholder="Example: jack543!"
+            onChange={(e) => {
+              setName(e.target.value);
+            }}
+          />
           <br />
           <span>Your email*:</span>
           <Modal.Name
@@ -22,12 +33,29 @@ const AddAnswerModal = ({
             pattern=".+@globex\.com"
             size="60"
             required
+            onChange={(e) => {
+              setEmail(e.target.value);
+            }}
           />
           <br />
           <span>Your answer:</span>
-          <Modal.SubmitInput TextMode="MultiLine" size="1000" />
+          <Modal.SubmitInput
+            TextMode="MultiLine"
+            size="1000"
+            onChange={(e) => {
+              setBody(e.target.value);
+            }}
+          />
           <br />
-          <button onClick={onClose} type="button">Submit Answer</button>
+          <button
+            onClick={() => {
+              onSubmitAnswerHandle(body, name, email, questionID);
+              setSubmit(true);
+            }}
+            type="button"
+          >
+            Submit Answer
+          </button>
           <Modal.CloseButton onClick={onClose}> X </Modal.CloseButton>
         </Modal.Content>
       </Modal.PopUp>

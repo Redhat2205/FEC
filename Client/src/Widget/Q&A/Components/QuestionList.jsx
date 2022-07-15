@@ -3,9 +3,10 @@ import axios from 'axios';
 import QuestionPanel from "./QuestionPanel.jsx";
 import SubmitNewQuestion from "./SubmitNewQuestion.jsx";
 import Style from "../../../StyleComponents/QA_Styles/Style.jsx";
+import AddAQuestion from './AddAQuestion.jsx';
 
 const QuestionList = ({
-  qA, onClickHelpful, productName, onReport,
+  qA, onClickHelpful, productName, onReport, productID, onSubmitHandle, onSubmitAnswerHandle,
 }) => {
   const [moreQuestion, setMoreQuestion] = useState(false);
   const [currentQuestion, setCurrentQuestion] = useState([]);
@@ -23,11 +24,14 @@ const QuestionList = ({
   };
   const handleMoreQuestion = () => {
     let counter = end;
+    // if (currentQuestion[counter] === undefined) {
+    //   counter += 1;
+    // }
     setEnd(counter += 2);
     setCurrentQuestion(qA);
   };
 
-  if (qA.length === 0) return <SubmitNewQuestion />;
+  if (qA.length === 0) return <SubmitNewQuestion productID={productID} productName={productName} onSubmitHandle={onSubmitHandle} />;
   if (qA.length < 5) {
     return (
       <div>
@@ -44,7 +48,7 @@ const QuestionList = ({
   }
   return (
     <div>
-      {currentQuestion.length === 0
+      {end === 4
         ? qA.slice(0, 4).map((qAObj) => (
           <QuestionPanel
             key={qAObj.question_id}
@@ -54,9 +58,10 @@ const QuestionList = ({
             onClickHelpful={onClickHelpful}
             onReport={onReport}
             onQReport={onQReport}
+            onSubmitAnswerHandle={onSubmitAnswerHandle}
           />
         ))
-        : currentQuestion.slice(0, end).map((qAObj) => (
+        : qA.slice(0, end).map((qAObj) => (
           <QuestionPanel
             key={qAObj.question_id}
             questionid={qAObj.question_id}
@@ -65,9 +70,16 @@ const QuestionList = ({
             productName={productName}
             onReport={onReport}
             onQReport={onQReport}
+            onSubmitAnswerHandle={onSubmitAnswerHandle}
           />
         ))}
       {(qA.length >= end) && <Style.MoreAnsweredQuestion type="button" onClick={handleMoreQuestion}>More Answered Questions</Style.MoreAnsweredQuestion>}
+      <AddAQuestion
+        qA={qA}
+        productName={productName}
+        onSubmitHandle={onSubmitHandle}
+        productID={productID}
+      />
     </div>
   );
 };

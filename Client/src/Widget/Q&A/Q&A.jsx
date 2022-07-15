@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import axios from 'axios';
 import QuestionList from './Components/QuestionList.jsx';
 import SearchBar from './Components/SearchBar.jsx';
-import AddAQuestion from './Components/AddAQuestion.jsx';
 import Style from "../../StyleComponents/QA_Styles/Style.jsx";
 
 const Q_A = ({ productID }) => {
@@ -16,7 +15,7 @@ const Q_A = ({ productID }) => {
   const getQa = () => {
     axios({
       method: 'get',
-      url: `${process.env.API_Base}/qa/questions?product_id=${productID}&count=10000`,
+      url: `${process.env.API_Base}/qa/questions?product_id=${productID}&count=1000`,
       headers: { Authorization: process.env.API_Key },
     })
       .then((product) => {
@@ -57,9 +56,7 @@ const Q_A = ({ productID }) => {
       .then(() => { getQa(); })
       .catch((err) => console.log(err));
   };
-  const onClickAddQuestion = () => {
 
-  };
   const onReport = (e) => {
     const answerID = e.target.getAttribute('id');
     axios({
@@ -70,21 +67,39 @@ const Q_A = ({ productID }) => {
       .then(() => { getQa(); })
       .catch((err) => console.log(err));
   };
-  const onSubmitHandle = (body, name, email, productId) => (
+
+  const onSubmitHandle = (body, name, email) => {
     axios({
       method: 'post',
-      url: `${process.env.API_Base}/qa/answers/`,
+      url: `${process.env.API_Base}/qa/questions`,
       headers: { Authorization: process.env.API_Key },
       data: {
         body: body,
         name: name,
         email: email,
-        product_id: productId,
+        product_id: parseInt(productID)
       },
     })
-      .then(() => { getQa(); })
-      .catch((err) => console.log(err))
-  );
+      .then(() => getQa())
+      .catch((err) => console.log(err));
+  };
+  const onSubmitAnswerHandle = (body, name, email, questionID, photo) => {
+    console.log(questionID);
+    axios({
+      method: 'post',
+      url: `${process.env.API_Base}/qa/questions/${questionID}/answers`,
+      headers: { Authorization: process.env.API_Key },
+      data: {
+        body: body,
+        name: name,
+        email: email,
+        photo: photo,
+      },
+    })
+      .then(() => getQa())
+      .catch((err) => console.log(err));
+  };
+
   return (
     <Style.Body data-testid="qna">
       <Style.Title> Questions and Answers</Style.Title>
@@ -96,12 +111,9 @@ const Q_A = ({ productID }) => {
         onClickHelpful={onClickHelpful}
         productName={productName}
         onReport={onReport}
-      />
-      <AddAQuestion
-        qA={qA}
-        productName={productName}
         onSubmitHandle={onSubmitHandle}
         productID={productID}
+        onSubmitAnswerHandle={onSubmitAnswerHandle}
       />
     </Style.Body>
   );

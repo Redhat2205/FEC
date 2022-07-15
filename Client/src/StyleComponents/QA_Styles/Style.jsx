@@ -35,7 +35,14 @@ const Style = {
     font-size: 18px;
     font-weight: bold;
     margin-bottom: 25px;
-  `,
+    `,
+  QBody: styled.div`
+   font-size: 18px;
+   font-weight: bold;
+   margin-bottom: 25px;
+   display: inline-block;
+
+ `,
   MoreAnsweredQuestion: styled.button`
     width: 30%;
     height: 65px;

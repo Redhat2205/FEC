@@ -57,8 +57,8 @@ const Modal = {
   Name: styled.input`
     width: 400px
   `,
-  Form: styled.form`
-    
+  Add: styled.div`
+  display: inline;
   `,
 };
 
