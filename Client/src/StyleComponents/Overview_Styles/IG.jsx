@@ -17,11 +17,11 @@ const IG = {
     /* display: flex; */
     float: left;
     position: relative;
-    top: 7.5%;
+    top: 3px;
     left: 3%;
     width: 12%;
-    height: 85%;
-    border: 3px solid grey;
+    height: 590px;
+    /* border: 3px solid grey; */
   `,
   LeftArrow: styled.div`
     /* display: flex; */
@@ -41,6 +41,7 @@ const IG = {
     width: 65%;
     height: 85%;
     object-fit: contain;
+    transition: 1s;
   `,
   RightArrow: styled.div`
     /* display: flex; */
@@ -60,6 +61,38 @@ const IG = {
     background-color: #f8f8f8;
     color: rgb(118, 118, 118);
   `,
+  TnUpArrow: styled.button`
+    position: relative;
+    top: 10px;
+    left: 30%;
+    font-size: 25px;
+    font-weight: 700;
+    border: 2px;
+    background-color: #f8f8f8;
+    color: rgb(118, 118, 118);
+  `,
+  TnDownArrow: styled.button`
+    position: relative;
+    /* overflow: auto; */
+    top: 1px;
+    left: 30%;
+    height: 25px;
+    font-size: 35px;
+    font-weight: 700;
+    border: 2px;
+    background-color: #f8f8f8;
+    color: rgb(118, 118, 118);
+  `,
+  Thumbnail: styled.img`
+    position: relative;
+    margin: 2% 0 5% 0;
+    top: 7px;
+    left: 10%;
+    width: 70%;
+    height: 10%;
+    border-radius: 10%;
+    border: 2px solid grey;
+`,
 };
 
 export default IG;
