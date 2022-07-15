@@ -33,6 +33,9 @@ const ProductInfo = ({ product, currStyle, productReviews }) => {
       }
       averageRating -= 1;
     }
+    while (activeStars.length < 5) {
+      activeStars.push('0%');
+    }
   }
 
   return (

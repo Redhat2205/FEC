@@ -96,10 +96,10 @@ const ImageGallery = ({ currStyle }) => {
               />
             );
           })}
-
-          {currTnSet[0] === thumbnails[7] ? null
+          {(thumbnails.length <= 7 || currTnSet[0] === thumbnails[7]) ? null
             : <IG.TnDownArrow onClick={nextSetThumbnail}> ⌄ </IG.TnDownArrow>}
-
+          {/* (currTnSet[0] === thumbnails[7] ? null
+            : <IG.TnDownArrow onClick={nextSetThumbnail}> ⌄ </IG.TnDownArrow>) */}
         </IG.ThumbnailSection>
 
         <IG.LeftArrow>
