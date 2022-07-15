@@ -4,30 +4,32 @@ import IG from "../../../StyleComponents/Overview_Styles/IG.jsx";
 
 const ImageGallery = ({ currStyle }) => {
   // console.log('styles in IG: ', currStyle);
+  const [mainUrl, setMainUrl] = useState('');
+
+  useEffect(() => {
+    if (currStyle.name !== undefined) {
+      setMainUrl(currStyle.photos[0].url);
+    }
+  }, [currStyle]);
 
   if (currStyle.name !== undefined) {
-    const [mainUrl, setMainUrl] = useState(currStyle.photos[0].url);
-
-    useEffect(() => {
-      setMainUrl(currStyle.photos[0].url);
-    }, [currStyle]);
-
     return (
       <SectionDiv.ImageGallerySection>
+        {/* <IG.MainImageDiv
+          style={{ backgroundImage: `url(${mainUrl})` }}
+          alt={currStyle.name}
+        > */}
         <IG.ThumbnailSection>
           AM I ON TOP?
         </IG.ThumbnailSection>
         <IG.LeftArrow>
           <IG.ArrowSpan> 《 </IG.ArrowSpan>
         </IG.LeftArrow>
-        {/* <IG.MainImageDiv
-          style={{ backgroundImage: `url(${mainUrl})` }}
-          alt={currStyle.name}
-        /> */}
         <IG.MainImage src={mainUrl} alt={currStyle} />
         <IG.RightArrow>
           <IG.ArrowSpan> 》 </IG.ArrowSpan>
         </IG.RightArrow>
+        {/* </IG.MainImageDiv> */}
       </SectionDiv.ImageGallerySection>
     );
   }
