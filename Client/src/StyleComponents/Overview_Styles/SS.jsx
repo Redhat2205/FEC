@@ -11,6 +11,8 @@ const SS = {
   `,
   Span: styled.span`
     display: inline-block;
+    position: relative;
+    bottom: 10%;
     margin: 2px;
     font-weight: 700;
     font-size: 13px;

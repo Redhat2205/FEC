@@ -21,7 +21,6 @@ const StyleSelector = ({
           alt={style.name}
           onClick={() => {
             setCurrStyle(style);
-            // setQuantity('-');
           }}
         />
       ))}
