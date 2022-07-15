@@ -9,6 +9,7 @@ const PI = {
   `,
   AtoReview: styled.a`
     margin: 20px 20px 20px 10px;
+    width: 40%;
     font-size: 12px;
     color: grey;
 

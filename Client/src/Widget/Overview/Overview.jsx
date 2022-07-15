@@ -35,7 +35,11 @@ const Overview = ({
     <div>
       <div data-testid="overview"> Hello Overview</div>
       <ImageGallery currStyle={currStyle} />
-      <ProductInfo product={product} currStyle={currStyle} />
+      <ProductInfo
+        product={product}
+        currStyle={currStyle}
+        productReviews={productReviews}
+      />
       <StyleSelector
         styles={styles}
         currStyle={currStyle}
