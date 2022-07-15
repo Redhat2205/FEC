@@ -7,10 +7,12 @@ const PI = {
     width: 300px;
     height: 20px;
   `,
+  Div: styled.div`
+    font-size: 17px;
+  `,
   Stars: styled.div`
     display: flex;
     position: relative;
-    color: black;
   `,
   AtoReview: styled.a`
     display: flex;
@@ -40,7 +42,6 @@ const PI = {
     height: 20px;
     font-weight: 700;
     font-size: 35px;
-    /* text-align: vertical center */
   `,
   Price: styled.div`
     display: block;
