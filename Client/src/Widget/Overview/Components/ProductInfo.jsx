@@ -17,7 +17,7 @@ const ProductInfo = ({ product, currStyle, productReviews }) => {
       ratingsTotal += review.rating;
     });
     let averageRating = ratingsTotal / productReviews.results.length;
-    console.log('average rating: ', averageRating);
+    // console.log('average rating: ', averageRating);
 
     while (averageRating > 0) {
       if (averageRating < 1) {
@@ -26,7 +26,7 @@ const ProductInfo = ({ product, currStyle, productReviews }) => {
         } else if (averageRating > 0.25 && averageRating <= 0.5) {
           activeStars.push('50%');
         } else if (averageRating > 0.5) {
-          activeStars.push('60%');
+          activeStars.push('57%');
         }
       } else {
         activeStars.push('100%');
