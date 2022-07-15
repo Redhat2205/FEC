@@ -7,23 +7,12 @@ import AddToCart from "./Components/AddToCart.jsx";
 import ProductAdditionalInfo from "./Components/ProductAdditionalInfo.jsx";
 // import GeneralStyles from "../../StyleComponents/GeneralStyles.jsx";
 
-const Overview = ({ productID, setProductID }) => {
-  const [product, setProduct] = useState({});
+const Overview = ({
+  productID, setProductID, product, productReviews,
+}) => {
+  // const [product, setProduct] = useState({});
   const [styles, setStyles] = useState([]);
   const [currStyle, setCurrStyle] = useState({});
-
-  const getProduct = () => (
-    axios({
-      method: 'GET',
-      url: `${process.env.API_Base}/products/${productID}`,
-      headers: { Authorization: process.env.API_Key },
-    })
-      .then((productData) => {
-        // console.log('product data: ', productData.data[0]);
-        setProduct(productData.data);
-      })
-      .catch((err) => console.log('error when getting product: ', err))
-  );
 
   const getStyles = () => {
     axios({
@@ -32,7 +21,6 @@ const Overview = ({ productID, setProductID }) => {
       headers: { Authorization: process.env.API_Key },
     })
       .then((stylesData) => {
-        // console.log('styles Data: ', stylesData.data);
         setStyles(stylesData.data.results);
         setCurrStyle(stylesData.data.results[0]);
       })
@@ -40,11 +28,9 @@ const Overview = ({ productID, setProductID }) => {
   };
 
   useEffect(() => {
-    getProduct()
-      .then(() => getStyles())
-      .catch((err) => console.log('error in useEffect: ', err));
+    getStyles();
+    // console.log('product in overview: ', product)
   }, []);
-
   return (
     <div>
       <div data-testid="overview"> Hello Overview</div>
