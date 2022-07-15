@@ -2,16 +2,15 @@ import React from "react";
 import SectionDiv from "../../../StyleComponents/Overview_Styles/SectionDiv.jsx";
 import SS from "../../../StyleComponents/Overview_Styles/SS.jsx";
 
-const StyleSelector = ({ styles, currStyle, setCurrStyle }) => (
-
+const StyleSelector = ({
+  styles, currStyle, setCurrStyle, setQuantity,
+}) => (
   <SectionDiv.StyleSelectorSection>
     <SS.Style>
       STYLE &nbsp;
-      <SS.Span>{'>'}</SS.Span>
+      <SS.Span>{">"}</SS.Span>
       &nbsp;&nbsp;
-      <SS.StyleName>
-        {currStyle.name}
-      </SS.StyleName>
+      <SS.StyleName>{currStyle.name}</SS.StyleName>
     </SS.Style>
 
     <SS.ThumbnailSection>
@@ -20,7 +19,10 @@ const StyleSelector = ({ styles, currStyle, setCurrStyle }) => (
           key={style.style_id}
           src={style.photos[0].thumbnail_url}
           alt={style.name}
-          onClick={() => setCurrStyle(style)}
+          onClick={() => {
+            setCurrStyle(style);
+            // setQuantity('-');
+          }}
         />
       ))}
     </SS.ThumbnailSection>
