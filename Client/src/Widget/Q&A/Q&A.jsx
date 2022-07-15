@@ -42,13 +42,11 @@ const Q_A = ({ productID }) => {
   const onClickHelpful = (e) => {
     const current = (e.target.getAttribute('type'));
     let currentUrl;
-    let questionID;
-    let answerID;
     if (current === 'question') {
-      questionID = e.target.getAttribute('id');
+      const questionID = e.target.getAttribute('id');
       currentUrl = `${process.env.API_Base}/qa/questions/${questionID}/helpful`;
     } else if (current === 'answer') {
-      answerID = e.target.getAttribute('id');
+      const answerID = e.target.getAttribute('id');
       currentUrl = `${process.env.API_Base}/qa/answers/${answerID}/helpful`;
     }
     axios({
@@ -62,6 +60,31 @@ const Q_A = ({ productID }) => {
   const onClickAddQuestion = () => {
 
   };
+  const onReport = (e) => {
+    const answerID = e.target.getAttribute('id');
+    axios({
+      method: 'put',
+      url: `${process.env.API_Base}/qa/answers/${answerID}/report`,
+      headers: { Authorization: process.env.API_Key },
+    })
+      .then(() => { getQa(); })
+      .catch((err) => console.log(err));
+  };
+  const onSubmitHandle = (body, name, email, productId) => (
+    axios({
+      method: 'post',
+      url: `${process.env.API_Base}/qa/answers/`,
+      headers: { Authorization: process.env.API_Key },
+      data: {
+        body: body,
+        name: name,
+        email: email,
+        product_id: productId,
+      },
+    })
+      .then(() => { getQa(); })
+      .catch((err) => console.log(err))
+  );
   return (
     <Style.Body data-testid="qna">
       <Style.Title> Questions and Answers</Style.Title>
@@ -72,10 +95,13 @@ const Q_A = ({ productID }) => {
         qA={qA}
         onClickHelpful={onClickHelpful}
         productName={productName}
+        onReport={onReport}
       />
       <AddAQuestion
         qA={qA}
         productName={productName}
+        onSubmitHandle={onSubmitHandle}
+        productID={productID}
       />
     </Style.Body>
   );

@@ -1,6 +1,10 @@
 import styled from "styled-components";
 
 const AStyle = {
+  Body: styled.div`
+    height: 100px
+    overflow: auto
+  `,
   Input: styled.span`
     font-size: 15px;
     font-weight: normal;

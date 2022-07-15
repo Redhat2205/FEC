@@ -1,17 +1,30 @@
 import React, { useState, useEffect } from "react";
+import axios from 'axios';
 import QuestionPanel from "./QuestionPanel.jsx";
 import SubmitNewQuestion from "./SubmitNewQuestion.jsx";
+import Style from "../../../StyleComponents/QA_Styles/Style.jsx";
 
-const QuestionList = ({ qA, onClickHelpful }) => {
+const QuestionList = ({
+  qA, onClickHelpful, productName, onReport,
+}) => {
   const [moreQuestion, setMoreQuestion] = useState(false);
   const [currentQuestion, setCurrentQuestion] = useState([]);
   const [end, setEnd] = useState(4);
 
+  const onQReport = (e) => {
+    const questionID = e.target.getAttribute('id');
+    axios({
+      method: 'put',
+      url: `${process.env.API_Base}/qa/questions/${questionID}/report`,
+      headers: { Authorization: process.env.API_Key },
+    })
+      .then(() => { console.log('shit'); })
+      .catch((err) => console.log(err));
+  };
   const handleMoreQuestion = () => {
     let counter = end;
     setEnd(counter += 2);
     setCurrentQuestion(qA);
-    console.log(end);
   };
 
   if (qA.length === 0) return <SubmitNewQuestion />;
@@ -35,9 +48,12 @@ const QuestionList = ({ qA, onClickHelpful }) => {
         ? qA.slice(0, 4).map((qAObj) => (
           <QuestionPanel
             key={qAObj.question_id}
+            productName={productName}
             questionid={qAObj.question_id}
             qAObj={qAObj}
             onClickHelpful={onClickHelpful}
+            onReport={onReport}
+            onQReport={onQReport}
           />
         ))
         : currentQuestion.slice(0, end).map((qAObj) => (
@@ -46,12 +62,13 @@ const QuestionList = ({ qA, onClickHelpful }) => {
             questionid={qAObj.question_id}
             qAObj={qAObj}
             onClickHelpful={onClickHelpful}
+            productName={productName}
+            onReport={onReport}
+            onQReport={onQReport}
           />
         ))}
-      {(qA.length >= end) && <button type="button" onClick={handleMoreQuestion}>More Answered Questions</button>}
+      {(qA.length >= end) && <Style.MoreAnsweredQuestion type="button" onClick={handleMoreQuestion}>More Answered Questions</Style.MoreAnsweredQuestion>}
     </div>
   );
 };
-// if end is greater than 38
-// if qA[start] || qA[end] is undefined
 export default QuestionList;

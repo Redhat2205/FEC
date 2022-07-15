@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import AddAQuestionModal from "./AddAQuestionModal.jsx";
 import Modal from "../../../StyleComponents/QA_Styles/Modal.jsx";
 
-const AddAQuestion = ({ productName, qA }) => {
+const AddAQuestion = ({ productName, qA, onSubmitHandle }) => {
   const [isOpen, setIsOpen] = useState(false);
   if (qA.length === 0) return null;
   return (
@@ -18,8 +18,9 @@ const AddAQuestion = ({ productName, qA }) => {
       </Modal.AddQuestion>
       <AddAQuestionModal
         productName={productName}
-        onClose={() => setIsOpen(false)}
+        onClose={() => (setIsOpen(false))}
         isOpen={isOpen}
+        onSubmitHandle={onSubmitHandle}
       />
     </div>
   );

@@ -36,6 +36,12 @@ const Style = {
     font-weight: bold;
     margin-bottom: 25px;
   `,
+  MoreAnsweredQuestion: styled.button`
+    width: 30%;
+    height: 65px;
+    font-size: 18px;
+    font-weight: bold;
+`,
   Info: styled.ul`
   font-size: 13px;
   font-weight: normal;

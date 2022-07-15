@@ -57,6 +57,9 @@ const Modal = {
   Name: styled.input`
     width: 400px
   `,
+  Form: styled.form`
+    
+  `,
 };
 
 export default Modal;

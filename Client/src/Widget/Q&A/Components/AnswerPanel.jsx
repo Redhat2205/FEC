@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import AStyle from "../../../StyleComponents/QA_Styles/AStyle.jsx";
 
-const AnswerPanel = ({ answer, onClickHelpful }) => {
+const AnswerPanel = ({ answer, onClickHelpful, onReport }) => {
   const [answerHelp, setAnswerHelp] = useState(false);
+  const [report, setReport] = useState(false);
+
   return (
     <div>
       <AStyle.A>A: </AStyle.A>
@@ -27,7 +29,15 @@ const AnswerPanel = ({ answer, onClickHelpful }) => {
               {`| Yes (${answer.helpfulness})`}
             </AStyle.Yes>
           )}
-        <AStyle.Reported>Reported</AStyle.Reported>
+        <AStyle.Reported
+          id={answer.id}
+          onClick={(e) => {
+            setReport(true);
+            onReport(e);
+          }}
+        >
+          {report ? "Reported" : "Report"}
+        </AStyle.Reported>
       </AStyle.Info>
     </div>
   );

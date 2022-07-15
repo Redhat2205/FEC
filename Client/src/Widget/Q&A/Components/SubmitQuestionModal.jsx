@@ -10,7 +10,10 @@ const SubmitQuestionModal = ({ productName, onClose, modalSubQuestion }) => {
           <h1> Submit Your Question</h1>
           <h3>{`About the ${productName}`}</h3>
           <span> What is your nickname:*</span>
-          <Modal.Name size="60" placeholder="Example: jack543!" />
+          <Modal.Name
+            size="60"
+            placeholder="Example: jack543!"
+          />
           <br />
           <span>Your email*:</span>
           <Modal.Name
@@ -23,7 +26,8 @@ const SubmitQuestionModal = ({ productName, onClose, modalSubQuestion }) => {
           />
           <br />
           <span>Your question:</span>
-          <Modal.SubmitInput size="1000" />
+          <Modal.SubmitInput
+          />
           <br />
           <button onClick={onClose} type="button">Submit</button>
           <Modal.CloseButton onClick={onClose}> X </Modal.CloseButton>
