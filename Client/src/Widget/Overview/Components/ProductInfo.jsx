@@ -58,11 +58,11 @@ const ProductInfo = ({ product, currStyle, productReviews }) => {
                   fontSize: "5px",
                 }}
               >
-                {activeStars.map((star, index) => (
+                {activeStars.map((starWidth, index) => (
                   <Box position="relative" key={index}>
                     <Box
                       sx={{
-                        width: star,
+                        width: starWidth,
                         overflow: "hidden",
                         position: "absolute",
                       }}

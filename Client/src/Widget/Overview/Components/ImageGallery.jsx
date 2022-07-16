@@ -8,13 +8,13 @@ const ImageGallery = ({ currStyle }) => {
   const [thumbnails, setThumbnails] = useState([]);
   const [currIndex, setcurrIndex] = useState(0);
   const [currTnSet, setCurrTnSet] = useState([]);
+  const [currView, setCurrView] = useState('default');
 
   useEffect(() => {
     if (currStyle.name !== undefined) {
-      // setcurrIndex(0);
-
       const mainArr = [];
       const thumbnailArr = [];
+
       currStyle.photos.forEach((photoObj) => {
         mainArr.push(photoObj.url);
         if (photoObj.thumbnail_url[0] === 'u') {
@@ -60,6 +60,22 @@ const ImageGallery = ({ currStyle }) => {
     setcurrIndex(newIndex);
   };
 
+  // =========== Set View ============
+  const onClickDefault = () => {
+    setCurrView('default');
+    console.log('default view');
+  };
+  const onClickExpand = () => {
+    setCurrView('expanded');
+    console.log('expanded view');
+  };
+  const onClickZoom = () => {
+    setCurrView('zoomed');
+    console.log('zoomed view');
+  };
+
+  // ========= Expanded View ==========
+
   if (currIndex !== null) {
     return (
       <SectionDiv.ImageGallerySection>
@@ -98,16 +114,33 @@ const ImageGallery = ({ currStyle }) => {
           })}
           {(thumbnails.length <= 7 || currTnSet[0] === thumbnails[7]) ? null
             : <IG.TnDownArrow onClick={nextSetThumbnail}> ⌄ </IG.TnDownArrow>}
-          {/* (currTnSet[0] === thumbnails[7] ? null
-            : <IG.TnDownArrow onClick={nextSetThumbnail}> ⌄ </IG.TnDownArrow>) */}
         </IG.ThumbnailSection>
 
         <IG.LeftArrow>
           {currIndex === 0 ? null
             : <IG.ArrowSpan onClick={prevMainImage}> 《 </IG.ArrowSpan>}
         </IG.LeftArrow>
-
-        <IG.MainImage src={mainImages[currIndex]} alt={currStyle} />
+        {currView === 'default' && (
+          <IG.MainImageDefault
+            src={mainImages[currIndex]}
+            alt={currStyle}
+            onClick={onClickExpand}
+          />
+        )}
+        {currView === 'expanded' && (
+          <IG.MainImageDefault
+            src={mainImages[currIndex]}
+            alt={currStyle}
+            onClick={onClickZoom}
+          />
+        )}
+        {currView === 'zoomed' && (
+          <IG.MainImageDefault
+            src={mainImages[currIndex]}
+            alt={currStyle}
+            onClick={onClickDefault}
+          />
+        )}
 
         <IG.RightArrow>
           {currIndex === mainImages.length - 1 ? null

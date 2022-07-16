@@ -1,18 +1,18 @@
 import styled from "styled-components";
 
 const IG = {
-  // MainImageDiv: styled.div`
-  //   /* display: flex; */
-  //   /* justify-content: flex-end; */
-  //   width: 100%;
-  //   height: 100%;
-  //   background-position: center;
-  //   background-size: contain;
-  //   background-repeat: no-repeat;
-  //   margin: 1% auto;
-  //   object-fit: contain;
-  //   /* z-index: 0; */
-  // `,
+  MainImageDiv: styled.div`
+    /* display: flex; */
+    /* justify-content: flex-end; */
+    width: 100%;
+    height: 100%;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin: 1% auto;
+    object-fit: contain;
+    /* z-index: 0; */
+  `,
   ThumbnailSection: styled.div`
     /* display: flex; */
     float: left;
@@ -33,7 +33,7 @@ const IG = {
     height: 7%;
     /* border: 3px solid grey; */
   `,
-  MainImage: styled.img`
+  MainImageDefault: styled.img`
     float: left;
     position: relative;
     top: 7.5%;
@@ -42,6 +42,11 @@ const IG = {
     height: 85%;
     object-fit: contain;
     transition: 1s;
+    border: 1px;
+
+    &:hover {
+      cursor: zoom-in;
+    }
   `,
   RightArrow: styled.div`
     /* display: flex; */
@@ -49,6 +54,9 @@ const IG = {
     position: relative;
     top: 45%;
     left: 3%;
+    /* position: absolute; */
+    /* top: 42.7% */
+    /* right: 40%; */
     width: 8%;
     height: 7%;
     /* border: 3px solid grey; */
