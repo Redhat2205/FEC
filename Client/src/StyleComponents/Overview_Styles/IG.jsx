@@ -47,7 +47,6 @@ const IG = {
     width: 65%;
     height: 85%;
     object-fit: contain;
-    transition: 1s;
     border: 1px;
 
     &:hover {
@@ -62,28 +61,30 @@ const IG = {
     width: 70%;
     height: 85%;
     object-fit: contain;
-    transition: 1s;
     background-color: #f8f8f8;
     /* border: 2px solid grey; */
 
     &:hover {
-      cursor: zoom-in;
+      cursor: crosshair;
     }
   `,
-  MainImageZoomed: styled.img`
+  ZoomContainer: styled.div`
     float: left;
     position: relative;
     top: 7.5%;
     left: 3%;
     width: 90%;
     height: 85%;
+    overflow: hidden;
+  `,
+  MainImageZoomed: styled.img`
     object-fit: contain;
-    transition: 1s;
-    background-color: #f8f8f8;
-    /* border: 2px solid grey; */
+    position: absolute;
+    height: 100%;
+    width: 100%;
 
     &:hover {
-      cursor: zoom-in;
+      cursor: zoom-out;
     }
   `,
   RightArrow: styled.div`

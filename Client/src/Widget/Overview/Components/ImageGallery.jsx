@@ -8,6 +8,10 @@ const ImageGallery = ({ currStyle, currView, setCurrView }) => {
   const [thumbnails, setThumbnails] = useState([]);
   const [currIndex, setcurrIndex] = useState(0);
   const [currTnSet, setCurrTnSet] = useState([]);
+  const [mousePosition, setMousePosition] = useState({
+    x: 0,
+    y: 0,
+  });
 
   useEffect(() => {
     if (currStyle.name !== undefined) {
@@ -68,21 +72,23 @@ const ImageGallery = ({ currStyle, currView, setCurrView }) => {
     setCurrView('expanded');
     console.log('expanded view');
   };
-  const onClickZoom = () => {
+  const onClickZoom = (e) => {
     setCurrView('zoomed');
+    setMousePosition({ x: e.pageX, y: e.pageY });
     console.log('zoomed view');
   };
 
-  // ========= Expanded View ==========
+  // ========= Zoomed View ==========
+  const handleMoseMove = (e) => {
+    const xVal = e.pageX;
+    const yVal = e.pageY;
+    setMousePosition({ x: xVal, y: yVal });
+    // console.log('x-y: ', mousePosition.x, mousePosition.y);
+  };
 
   if (currIndex !== null) {
     return (
       <div>
-        {/* <SectionDiv.ImageGallerySection> */}
-        {/* <IG.MainImageDiv
-          style={{ backgroundImage: `url(${mainImages[currIndex]})` }}
-          alt={currStyle.name}
-        > */}
         {currView === 'default' && (
           <SectionDiv.ImageGallerySection>
             {/* <IG.MainImageDiv
@@ -132,7 +138,7 @@ const ImageGallery = ({ currStyle, currView, setCurrView }) => {
             <IG.MainImageExpanded
               src={mainImages[currIndex]}
               alt={currStyle}
-              onClick={onClickZoom}
+              onClick={(e) => onClickZoom(e)}
             />
 
             <IG.RightArrow style={{ left: '1%' }}>
@@ -152,21 +158,19 @@ const ImageGallery = ({ currStyle, currView, setCurrView }) => {
               currTnSet={currTnSet}
               setCurrTnSet={setCurrTnSet}
             />
-            {/* <IG.LeftArrow>
-              {currIndex === 0 ? null
-                : <IG.ArrowSpan onClick={prevMainImage}> 《 </IG.ArrowSpan>}
-            </IG.LeftArrow> */}
 
-            <IG.MainImageZoomed
-              src={mainImages[currIndex]}
-              alt={currStyle}
-              onClick={onClickDefault}
-            />
-
-            {/* <IG.RightArrow>
-              {currIndex === mainImages.length - 1 ? null
-                : <IG.ArrowSpan onClick={nextMainImage}> 》 </IG.ArrowSpan>}
-            </IG.RightArrow> */}
+            <IG.ZoomContainer>
+              <IG.MainImageZoomed
+                src={mainImages[currIndex]}
+                alt={currStyle}
+                onClick={onClickDefault}
+                onMouseMove={(e) => handleMoseMove(e)}
+                style={{
+                  transformOrigin: `${mousePosition.x}px ${mousePosition.y}px`,
+                  transform: 'scale(2.5)',
+                }}
+              />
+            </IG.ZoomContainer>
           </SectionDiv.ImageGallerySection>
         )}
       </div>
