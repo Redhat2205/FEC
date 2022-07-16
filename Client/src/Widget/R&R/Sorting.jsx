@@ -2,6 +2,10 @@ import React from 'react';
 
 const underlineStyle = {
   textDecoration: 'underline',
+  border: 'none',
+  outline: 'none',
+  scrollBehavior: 'smooth',
+  fontSize: '16px',
 }
 
 const Sorting = ({ reviewCount }) => {
@@ -11,9 +15,14 @@ const Sorting = ({ reviewCount }) => {
   // because this is async, need to get the data then render the text
 
   return (
-    <h3>{reviewCount} reviews, sorted by <span style={underlineStyle} onClick={(e) => {
-      console.log('sorting this out')
-    }}>...</span></h3>
+    <>
+    <label>{reviewCount} reviews, sorted by</label>
+    <select style={underlineStyle} name="sorting-dropdown-menu">
+      <option value="helpfulness">helpfulness</option>
+      <option value="newest">newest</option>
+      <option vaklue="relevance">relevance</option>
+    </select>
+    </>
   );
 };
 

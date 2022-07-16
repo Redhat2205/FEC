@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from "react";
 import axios from 'axios';
-const moment = require('moment');
 
 import ReviewList from './ReviewList.jsx';
 import RatingChart from './RatingChart.jsx';
 import StarTest from './StarTest.jsx';
 import MaskTest from './MaskTest.jsx';
 
-const API_Base = process.env.API_Base;
+const moment = require('moment');
+
+const { API_Base } = process.env;
 const secret = process.env.API_Key;
 
 // const R_R = () => (
@@ -72,7 +73,7 @@ const R_R = ({ productID }) => {
     // get info for a specific product
     axios({
       method: 'get',
-      url: API_Base + '/products/' + productID,
+      url: `${API_Base}/products/${productID}`,
       headers: { Authorization: secret },
       // params: { product_id: productID },
     })
@@ -82,14 +83,14 @@ const R_R = ({ productID }) => {
       })
       .catch((err) => {
         console.log('🟥there was an error fetching product info!', err)
-      })
+      });
   }, []);
 
   useEffect(() => {
     // get all reviews for a specific product
     axios({
       method: 'get',
-      url: API_Base + '/reviews/',
+      url: `${API_Base}/reviews/`,
       // url: API_Base + '/reviews/' + productID,
       headers: { Authorization: secret },
       params: {
@@ -113,10 +114,8 @@ const R_R = ({ productID }) => {
       })
       .catch((err) => {
         console.log('🟥there was an error fetching product info!', err);
-      })
+      });
   }, []);
-
-
 
   // old set the productReviews
   // useEffect(() => {
@@ -151,46 +150,53 @@ const R_R = ({ productID }) => {
   //   // setCurrentItem(productID);
   // }, []);
 
-
-    // // get reviews for a specific product
-    // axios({
-    //   method: 'get',
-    //   url: API_Base + '/reviews',
-    //   headers: { Authorization: secret },
-    //   params: { product_id: productID },
-    // })
-    // // set
-    //   .then((res) => {
-    //     setProductReviews(res.data.results);
-    //     setCurrentReview(res.data.results[0]);
-    //   })
-    //   .then(() => {
-    //     axios({
-    //       method: 'get',
-    //       url: API_Base + '/products/',
-    //       headers: { Authorization: secret },
-    //       params: { product_id: productID },
-    //     })
-      //     .then((res) => {
-      //       setCurrentItem(res.data);
-      //     })
-      // })
-      // .catch((err) => {
-      //   console.log('🟥there was an error fetching product info!', err);
-      // });
-//   }
+  // get reviews for a specific product
+  // axios({
+  //   method: 'get',
+  //   url: `${API_Base}/reviews`,
+  //   headers: { Authorization: secret },
+  //   params: { product_id: productID },
+  // })
+  // // set
+  //   .then((res) => {
+  //     setProductReviews(res.data.results);
+  //     setCurrentReview(res.data.results[0]);
+  //   })
+  //   .then(() => {
+  //     axios({
+  //       method: 'get',
+  //       url: API_Base + '/products/',
+  //       headers: { Authorization: secret },
+  //       params: { product_id: productID },
+  //     })
+  //       .then((res) => {
+  //         setCurrentItem(res.data);
+  //       });
+  //   })
+  //   .catch((err) => {
+  //     console.log('🟥there was an error fetching product info!', err);
+  //   });
 
   return (
     <div className="rnr-container">
-      {/* <MaskTest /> */}
-      {/* // <StarTest style={{backgroundColor: 'gold', height: '10px'}} className="StarTest"/> */}
-      <h1 id="main-rnr-header" data-testid="rnr" style={{textAlign: 'center', fontFamily: 'tahoma'}}>Ratings and Reviews</h1>
-      <div className="rating-chart-container" style={{ border: 'solid 1px', borderRadius: '5px', boxShadow: '5px 10px #888888', float: 'left', width: '33%' }}>
-        <RatingChart currentItem={currentItem} averageRating={averageRating}/>
+      <div>
+        <h1 id="main-rnr-header" data-testid="rnr" style={{ textAlign: 'left', fontFamily: 'tahoma' }}>Ratings and Reviews</h1>
       </div>
-      <div className="review-list-container" style={{ border: 'solid 1px', borderRadius: '5px', boxShadow: '5px 10px #888888', float: 'right', width: '66%', marginBottom: '20px' }}>
+      {/* <MaskTest /> */}
+      {/* <StarTest style={{backgroundColor: 'gold', height: '10px'}} className="StarTest"/> */}
+      <StarTest className="StarTest" />
+      <div
+        className="rating-chart-container"
+        style={{
+          border: 'solid 1px', borderRadius: '5px', boxShadow: '5px 10px #888888', float: 'left', width: '33%' }}>
+        <RatingChart currentItem={currentItem} averageRating={averageRating} />
+      </div>
+      <div
+        className="review-list-container"
+        style={{
+          border: 'solid 1px', borderRadius: '5px', boxShadow: '5px 10px #888888', float: 'right', width: '66%', marginBottom: '20px' }}>
         {/* <h1 style={{textAlign: 'center', fontFamily: 'Tahoma'}}>Review List</h1> */}
-        <ReviewList reviews={productReviews} currentItem={currentItem} reviewCount={reviewCount}/>
+        <ReviewList reviews={productReviews} currentItem={currentItem} reviewCount={reviewCount} />
       </div>
     </div>
   );
@@ -241,8 +247,6 @@ const R_R = ({ productID }) => {
 //     // this.setState({productReviews: dummyData});
 //     // this.setState({currentItem: this.state.productReviews[0]});
 //   }
-
-
 
 //   render() {
 //     return (

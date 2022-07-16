@@ -10,10 +10,8 @@ const addReviewStyle = {
   margin: '4px',
 };
 
-const AddReview = (props) => {
-  return (
+const AddReview = (props) => (
     <div style={addReviewStyle} onClick={() => props.setShow(!props.show)}>ADD A REVIEW ┼</div>
   );
-};
 
 export default AddReview;

@@ -1,21 +1,23 @@
 import React from 'react';
 
+// eslint-disable-next-line consistent-return
 const RatingChart = ({ currentItem, averageRating }) => {
-
   // console.log(currentItem);
-  const dummedDown = Math.ceil(averageRating);
+  const dummedDown = Math.floor(averageRating);
   if (dummedDown === 1) {
     return (
+      // eslint-disable-next-line react/jsx-no-comment-textnodes
       <div>
-      <h1 style={{ textAlign: 'center', fontFamily: 'tahoma' }}>{'Rating:' + ' ' + averageRating}</h1>
+        // eslint-disable-next-line no-useless-concat, no-useless-concat
+        <h1 style={{ textAlign: 'center', fontFamily: 'tahoma' }}>{`Rating:` + ` ${ averageRating}`}</h1>
       <p style={{ textAlign: 'center' }}>⭐️</p>
-    </div>
+      </div>
     );
   }
   if (dummedDown === 2) {
     return (
       <div>
-      <h1 style={{ textAlign: 'center', fontFamily: 'tahoma' }}>{'Rating:' + ' ' + averageRating}</h1>
+      <h1 style={{ textAlign: 'center', fontFamily: 'tahoma' }}>{`Rating:` + ` ${  averageRating}`}</h1>
       <p style={{ textAlign: 'center' }}>⭐️⭐️</p>
     </div>
     )
