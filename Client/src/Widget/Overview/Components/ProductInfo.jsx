@@ -40,84 +40,82 @@ const ProductInfo = ({
     }
   }
 
-  return (
-    <div>
-      {currView !== 'default' ? null
-        : (
-          <SectionDiv.ProductInfoSection>
-            <PI.Ratings>
-              {productReviews.product === undefined
-                ? (
-                  <PI.Div>
-                    <PI.Stars> ☆☆☆☆☆ </PI.Stars>
-                    <PI.AtoReview> Read all # reviews</PI.AtoReview>
-                  </PI.Div>
-                )
-                : (
-                  <PI.Div>
-                    <Box
-                      sx={{
-                        display: "inline-flex",
-                        position: "relative",
-                        textAlign: "left",
-                        fontSize: "5px",
-                      }}
-                    >
-                      {activeStars.map((starWidth, index) => (
-                        <Box position="relative" key={index}>
-                          <Box
-                            sx={{
-                              width: starWidth,
-                              overflow: "hidden",
-                              position: "absolute",
-                            }}
-                          >
-                            <StarIcon style={{ fontSize: "17px" }} />
-                          </Box>
-                          <Box>
-                            <StarBorderIcon style={{ fontSize: "17px" }} />
-                          </Box>
-                        </Box>
-                      ))}
+  if (currView === 'default') {
+    return (
+      <SectionDiv.ProductInfoSection>
+        <PI.Ratings>
+          {productReviews.product === undefined
+            ? (
+              <PI.Div>
+                <PI.Stars> ☆☆☆☆☆ </PI.Stars>
+                <PI.AtoReview> Read all # reviews</PI.AtoReview>
+              </PI.Div>
+            )
+            : (
+              <PI.Div>
+                <Box
+                  sx={{
+                    display: "inline-flex",
+                    position: "relative",
+                    textAlign: "left",
+                    fontSize: "5px",
+                  }}
+                >
+                  {activeStars.map((starWidth, index) => (
+                    <Box position="relative" key={index}>
+                      <Box
+                        sx={{
+                          width: starWidth,
+                          overflow: "hidden",
+                          position: "absolute",
+                        }}
+                      >
+                        <StarIcon style={{ fontSize: "17px" }} />
+                      </Box>
+                      <Box>
+                        <StarBorderIcon style={{ fontSize: "17px" }} />
+                      </Box>
                     </Box>
-                    <PI.AtoReview href="#main-rnr-header">
-                      Read all&nbsp;
-                      {productReviews.results.length}
-                      &nbsp;reviews
-                    </PI.AtoReview>
-                  </PI.Div>
-                )}
-
-            </PI.Ratings>
-            <PI.Category>
-              { product.category }
-            </PI.Category>
-            <PI.Name>
-              { product.name }
-            </PI.Name>
-            {currStyle.sale_price === null && (
-              <PI.Price>
-                $
-                {currStyle.original_price}
-              </PI.Price>
-            )}
-            {currStyle.sale_price !== null && (
-              <div>
-                <PI.StruckthroughPrice>
-                  $
-                  {currStyle.original_price}
-                </PI.StruckthroughPrice>
-                <PI.SalePrice>
-                  $
-                  { currStyle.sale_price }
-                </PI.SalePrice>
-              </div>
+                  ))}
+                </Box>
+                <PI.AtoReview href="#main-rnr-header">
+                  Read all&nbsp;
+                  {productReviews.results.length}
+                  &nbsp;reviews
+                </PI.AtoReview>
+              </PI.Div>
             )}
 
-          </SectionDiv.ProductInfoSection>
+        </PI.Ratings>
+        <PI.Category>
+          { product.category }
+        </PI.Category>
+        <PI.Name>
+          { product.name }
+        </PI.Name>
+        {currStyle.sale_price === null && (
+          <PI.Price>
+            $
+            {currStyle.original_price}
+          </PI.Price>
         )}
-    </div>
-  );
+        {currStyle.sale_price !== null && (
+          <div>
+            <PI.StruckthroughPrice>
+              $
+              {currStyle.original_price}
+            </PI.StruckthroughPrice>
+            <PI.SalePrice>
+              $
+              { currStyle.sale_price }
+            </PI.SalePrice>
+          </div>
+        )}
+
+      </SectionDiv.ProductInfoSection>
+    );
+  }
+  return null;
 };
 
 export default ProductInfo;
