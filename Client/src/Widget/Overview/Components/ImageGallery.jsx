@@ -4,12 +4,10 @@ import IG from "../../../StyleComponents/Overview_Styles/IG.jsx";
 import ThumbnailSection from "./ThumbnailSection.jsx";
 
 const ImageGallery = ({ currStyle, currView, setCurrView }) => {
-  // console.log('styles in IG: ', currStyle);
   const [mainImages, setMainImages] = useState([]);
   const [thumbnails, setThumbnails] = useState([]);
   const [currIndex, setcurrIndex] = useState(0);
   const [currTnSet, setCurrTnSet] = useState([]);
-  // const [currView, setCurrView] = useState('default');
 
   useEffect(() => {
     if (currStyle.name !== undefined) {
@@ -79,21 +77,25 @@ const ImageGallery = ({ currStyle, currView, setCurrView }) => {
 
   if (currIndex !== null) {
     return (
-      <SectionDiv.ImageGallerySection>
+      <div>
+        {/* <SectionDiv.ImageGallerySection> */}
         {/* <IG.MainImageDiv
           style={{ backgroundImage: `url(${mainImages[currIndex]})` }}
           alt={currStyle.name}
         > */}
-        <ThumbnailSection
-          thumbnails={thumbnails}
-          currIndex={currIndex}
-          setcurrIndex={setcurrIndex}
-          currTnSet={currTnSet}
-          setCurrTnSet={setCurrTnSet}
-        />
-
         {currView === 'default' && (
-          <IG.GeneralDiv>
+          <SectionDiv.ImageGallerySection>
+            {/* <IG.MainImageDiv
+              style={{ backgroundImage: `url(${mainImages[currIndex]})` }}
+              alt={currStyle.name}
+            > */}
+            <ThumbnailSection
+              thumbnails={thumbnails}
+              currIndex={currIndex}
+              setcurrIndex={setcurrIndex}
+              currTnSet={currTnSet}
+              setCurrTnSet={setCurrTnSet}
+            />
             <IG.LeftArrow>
               {currIndex === 0 ? null
                 : <IG.ArrowSpan onClick={prevMainImage}> 《 </IG.ArrowSpan>}
@@ -109,12 +111,20 @@ const ImageGallery = ({ currStyle, currView, setCurrView }) => {
               {currIndex === mainImages.length - 1 ? null
                 : <IG.ArrowSpan onClick={nextMainImage}> 》 </IG.ArrowSpan>}
             </IG.RightArrow>
-          </IG.GeneralDiv>
+            {/* </IG.MainImageDiv> */}
+          </SectionDiv.ImageGallerySection>
         )}
 
         {currView === 'expanded' && (
-          <IG.GeneralDiv>
-            <IG.LeftArrow>
+          <SectionDiv.ImageGallerySection style={{ width: "98%" }}>
+            <ThumbnailSection
+              thumbnails={thumbnails}
+              currIndex={currIndex}
+              setcurrIndex={setcurrIndex}
+              currTnSet={currTnSet}
+              setCurrTnSet={setCurrTnSet}
+            />
+            <IG.LeftArrow style={{ left: '7%' }}>
               {currIndex === 0 ? null
                 : <IG.ArrowSpan onClick={prevMainImage}> 《 </IG.ArrowSpan>}
             </IG.LeftArrow>
@@ -125,37 +135,41 @@ const ImageGallery = ({ currStyle, currView, setCurrView }) => {
               onClick={onClickZoom}
             />
 
-            <IG.RightArrow>
+            <IG.RightArrow style={{ left: '1%' }}>
               {currIndex === mainImages.length - 1 ? null
                 : <IG.ArrowSpan onClick={nextMainImage}> 》 </IG.ArrowSpan>}
             </IG.RightArrow>
-          </IG.GeneralDiv>
+
+          </SectionDiv.ImageGallerySection>
         )}
 
         {currView === 'zoomed' && (
-          <IG.GeneralDiv>
-            <IG.LeftArrow>
+          <SectionDiv.ImageGallerySection style={{ width: "98%" }}>
+            <ThumbnailSection
+              thumbnails={thumbnails}
+              currIndex={currIndex}
+              setcurrIndex={setcurrIndex}
+              currTnSet={currTnSet}
+              setCurrTnSet={setCurrTnSet}
+            />
+            {/* <IG.LeftArrow>
               {currIndex === 0 ? null
                 : <IG.ArrowSpan onClick={prevMainImage}> 《 </IG.ArrowSpan>}
-            </IG.LeftArrow>
+            </IG.LeftArrow> */}
 
-            <IG.MainImageDefault
+            <IG.MainImageZoomed
               src={mainImages[currIndex]}
               alt={currStyle}
               onClick={onClickDefault}
             />
 
-            <IG.RightArrow>
+            {/* <IG.RightArrow>
               {currIndex === mainImages.length - 1 ? null
                 : <IG.ArrowSpan onClick={nextMainImage}> 》 </IG.ArrowSpan>}
-            </IG.RightArrow>
-          </IG.GeneralDiv>
+            </IG.RightArrow> */}
+          </SectionDiv.ImageGallerySection>
         )}
-
-
-
-        {/* </IG.MainImageDiv> */}
-      </SectionDiv.ImageGallerySection>
+      </div>
     );
   }
 

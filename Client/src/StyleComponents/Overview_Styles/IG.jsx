@@ -20,6 +20,7 @@ const IG = {
     top: 3px;
     left: 3%;
     width: 12%;
+    max-width: 95px;
     height: 590px;
     /* border: 3px solid grey; */
   `,
@@ -58,11 +59,28 @@ const IG = {
     position: relative;
     top: 7.5%;
     left: 3%;
-    width: 100%;
+    width: 70%;
     height: 85%;
     object-fit: contain;
     transition: 1s;
-    border: 1px;
+    background-color: #f8f8f8;
+    /* border: 2px solid grey; */
+
+    &:hover {
+      cursor: zoom-in;
+    }
+  `,
+  MainImageZoomed: styled.img`
+    float: left;
+    position: relative;
+    top: 7.5%;
+    left: 3%;
+    width: 90%;
+    height: 85%;
+    object-fit: contain;
+    transition: 1s;
+    background-color: #f8f8f8;
+    /* border: 2px solid grey; */
 
     &:hover {
       cursor: zoom-in;
@@ -115,11 +133,13 @@ const IG = {
   `,
   Thumbnail: styled.img`
     position: relative;
-    margin: 2% 0 5% 0;
+    margin: 1.8px 0 4.6px 0;
     top: 7px;
     left: 10%;
+    max-width: 65px;
     width: 70%;
-    height: 10%;
+    height: 57px;
+    /* height: 10%; */
     border-radius: 10%;
     border: 2px solid grey;
 `,
