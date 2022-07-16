@@ -186,7 +186,7 @@ const R_R = ({ productID }) => {
       {/* <MaskTest /> */}
       {/* <StarTest style={{backgroundColor: 'gold', height: '10px'}} className="StarTest"/> */}
       {/* <StarTest className="StarTest" /> */}
-      {/* <BasicFn averageRating={averageRating} /> */}
+      <BasicFn averageRating={averageRating} />
       <div
         className="rating-chart-container"
         style={{
