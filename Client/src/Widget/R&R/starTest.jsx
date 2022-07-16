@@ -87,37 +87,79 @@ const newStar = {
   // display: 'inline-block',
 };
 
-const StarTest = () => (
-  <div style={parentContainer}>
-    <div style={testBG}>
-      <div style={singleStarContainer}>
-        <img style={singleStarOutline} alt="star-outline" src="https://raw.githubusercontent.com/psfonseka/five-stars/master/dist/star.png" />
-      </div>
-      <div style={singleStarContainer}>
-        <img style={singleStarOutline} alt="star-outline" src="https://raw.githubusercontent.com/psfonseka/five-stars/master/dist/star.png" />
-      </div>
-      <div style={singleStarContainer}>
-        <img style={singleStarOutline} alt="star-outline" src="https://raw.githubusercontent.com/psfonseka/five-stars/master/dist/star.png" />
-      </div>
-      <div style={singleStarContainer}>
-        <img style={singleStarOutline} alt="star-outline" src="https://raw.githubusercontent.com/psfonseka/five-stars/master/dist/star.png" />
-      </div>
-      <div style={singleStarContainer}>
-        <img style={singleStarOutline} alt="star-outline" src="https://raw.githubusercontent.com/psfonseka/five-stars/master/dist/star.png" />
-      </div>
-    </div>
+// mannnnnn
+const box = {
+  display: 'inline-flex',
+  position: 'relative',
+};
 
-    {/* <ul>
-    <img style={newStar} alt="star-outline" src="https://raw.githubusercontent.com/psfonseka/five-stars/master/dist/star.png" />
-    <img style={newStar} alt="star-outline" src="https://raw.githubusercontent.com/psfonseka/five-stars/master/dist/star.png" />
-    <img style={newStar} alt="star-outline" src="https://raw.githubusercontent.com/psfonseka/five-stars/master/dist/star.png" />
-    <img style={newStar} alt="star-outline" src="https://raw.githubusercontent.com/psfonseka/five-stars/master/dist/star.png" />
-    </ul> */}
-    {/* <img alt="star-outline" src="https://raw.githubusercontent.com/psfonseka/five-stars/master/dist/star.png" />
-    <img alt="star-outline" src="https://raw.githubusercontent.com/psfonseka/five-stars/master/dist/star.png" />
-    <img alt="star-outline" src="https://raw.githubusercontent.com/psfonseka/five-stars/master/dist/star.png" />
-    <img alt="star-outline" src="https://raw.githubusercontent.com/psfonseka/five-stars/master/dist/star.png" /> */}
-  </div>
-);
+const empty = {
+  width: '0px',
+  backgroundColor: 'gold',
+};
+
+const quarter = {
+  width: '5px',
+  backgroundColor: 'gold',
+};
+
+const half = {
+  width: '10px',
+  backgroundColor: 'gold',
+};
+
+const three = {
+  width: '15px',
+  backgroundColor: 'gold',
+};
+
+const full = {
+  width: '20px',
+  backgroundColor: 'gold',
+};
+
+const StarTest = () => {
+  const totalStars = 5;
+  const activeStars = 3;
+
+  return (
+    <div style={box}>
+
+    </div>
+  );
+
+  // return (
+  //   <div style={box}>
+  //     <div style={testBG}>
+  //       <div style={singleStarContainer}>
+  //         <img style={singleStarOutline} alt="star-outline" src="https://raw.githubusercontent.com/psfonseka/five-stars/master/dist/star.png" />
+  //       </div>
+  //       <div style={singleStarContainer}>
+  //         <img style={singleStarOutline} alt="star-outline" src="https://raw.githubusercontent.com/psfonseka/five-stars/master/dist/star.png" />
+  //       </div>
+  //       <div style={singleStarContainer}>
+  //         <img style={singleStarOutline} alt="star-outline" src="https://raw.githubusercontent.com/psfonseka/five-stars/master/dist/star.png" />
+  //       </div>
+  //       <div style={singleStarContainer}>
+  //         <img style={singleStarOutline} alt="star-outline" src="https://raw.githubusercontent.com/psfonseka/five-stars/master/dist/star.png" />
+  //       </div>
+  //       <div style={singleStarContainer}>
+  //         <img style={singleStarOutline} alt="star-outline" src="https://raw.githubusercontent.com/psfonseka/five-stars/master/dist/star.png" />
+  //       </div>
+  //     </div>
+
+  //     {/* <ul>
+  //     <img style={newStar} alt="star-outline" src="https://raw.githubusercontent.com/psfonseka/five-stars/master/dist/star.png" />
+  //     <img style={newStar} alt="star-outline" src="https://raw.githubusercontent.com/psfonseka/five-stars/master/dist/star.png" />
+  //     <img style={newStar} alt="star-outline" src="https://raw.githubusercontent.com/psfonseka/five-stars/master/dist/star.png" />
+  //     <img style={newStar} alt="star-outline" src="https://raw.githubusercontent.com/psfonseka/five-stars/master/dist/star.png" />
+  //     </ul> */}
+  //     {/* <img alt="star-outline" src="https://raw.githubusercontent.com/psfonseka/five-stars/master/dist/star.png" />
+  //     <img alt="star-outline" src="https://raw.githubusercontent.com/psfonseka/five-stars/master/dist/star.png" />
+  //     <img alt="star-outline" src="https://raw.githubusercontent.com/psfonseka/five-stars/master/dist/star.png" />
+  //     <img alt="star-outline" src="https://raw.githubusercontent.com/psfonseka/five-stars/master/dist/star.png" /> */}
+  //   </div>
+  // );
+};
 
 export default StarTest;

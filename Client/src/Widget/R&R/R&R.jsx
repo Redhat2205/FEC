@@ -5,6 +5,7 @@ import ReviewList from './ReviewList.jsx';
 import RatingChart from './RatingChart.jsx';
 import StarTest from './StarTest.jsx';
 import MaskTest from './MaskTest.jsx';
+import BasicFn from './BasicFn.jsx';
 
 const moment = require('moment');
 
@@ -184,7 +185,8 @@ const R_R = ({ productID }) => {
       </div>
       {/* <MaskTest /> */}
       {/* <StarTest style={{backgroundColor: 'gold', height: '10px'}} className="StarTest"/> */}
-      <StarTest className="StarTest" />
+      {/* <StarTest className="StarTest" /> */}
+      <BasicFn />
       <div
         className="rating-chart-container"
         style={{
