@@ -13,17 +13,18 @@ const ReviewList = ({ currentItem, reviews, reviewCount }) => {
   // console.log('reviewCount:', reviewCount);
   const [show, setShow] = useState(false);
   const [initialView, setInitialView] = useState(true);
+  const [numberTiles, setNumberTiles] = useState(2);
 
   if (initialView) {
     return (
       <div style={sortingStyle}>
         <Sorting reviewCount={reviewCount} />
         <ul>
-          {reviews.slice(0, 2).map((review) => (
+          {reviews.slice(0, numberTiles).map((review) => (
             <ReviewTile key={review.review_id} eachReview={review} />
           ))}
         </ul>
-        <MoreReviews initialView={initialView} setInitialView={setInitialView} />
+        <MoreReviews initialView={initialView} setInitialView={setInitialView} numberTiles={numberTiles} setNumberTiles={setNumberTiles} reviewCount={reviewCount} />
         <AddReview show={show} setShow={setShow} />
         <AddReviewModal show={show} setShow={setShow} currentItem={currentItem} />
       </div>
@@ -37,7 +38,7 @@ const ReviewList = ({ currentItem, reviews, reviewCount }) => {
         ))}
       </ul>
       {/* <MoreReviews onClick={() => (setInitialView(!initialView))} /> */}
-      <MoreReviews view={initialView} setInitialView={setInitialView} />
+      <MoreReviews view={initialView} setInitialView={setInitialView} numberTiles={numberTiles} setNumberTiles={setNumberTiles} reviewCount={reviewCount} />
       <AddReview show={show} setShow={setShow} />
       <AddReviewModal show={show} setShow={setShow} currentItem={currentItem} />
     </div>
