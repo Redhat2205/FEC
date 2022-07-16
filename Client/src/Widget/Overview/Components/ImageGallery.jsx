@@ -2,13 +2,13 @@ import React, { useState, useEffect } from "react";
 import SectionDiv from "../../../StyleComponents/Overview_Styles/SectionDiv.jsx";
 import IG from "../../../StyleComponents/Overview_Styles/IG.jsx";
 
-const ImageGallery = ({ currStyle }) => {
+const ImageGallery = ({ currStyle, currView, setCurrView }) => {
   // console.log('styles in IG: ', currStyle);
   const [mainImages, setMainImages] = useState([]);
   const [thumbnails, setThumbnails] = useState([]);
   const [currIndex, setcurrIndex] = useState(0);
   const [currTnSet, setCurrTnSet] = useState([]);
-  const [currView, setCurrView] = useState('default');
+  // const [currView, setCurrView] = useState('default');
 
   useEffect(() => {
     if (currStyle.name !== undefined) {
@@ -116,36 +116,70 @@ const ImageGallery = ({ currStyle }) => {
             : <IG.TnDownArrow onClick={nextSetThumbnail}> ⌄ </IG.TnDownArrow>}
         </IG.ThumbnailSection>
 
-        <IG.LeftArrow>
-          {currIndex === 0 ? null
-            : <IG.ArrowSpan onClick={prevMainImage}> 《 </IG.ArrowSpan>}
-        </IG.LeftArrow>
+
+
         {currView === 'default' && (
-          <IG.MainImageDefault
-            src={mainImages[currIndex]}
-            alt={currStyle}
-            onClick={onClickExpand}
-          />
-        )}
-        {currView === 'expanded' && (
-          <IG.MainImageDefault
-            src={mainImages[currIndex]}
-            alt={currStyle}
-            onClick={onClickZoom}
-          />
-        )}
-        {currView === 'zoomed' && (
-          <IG.MainImageDefault
-            src={mainImages[currIndex]}
-            alt={currStyle}
-            onClick={onClickDefault}
-          />
+          <IG.GeneralDiv>
+            <IG.LeftArrow>
+              {currIndex === 0 ? null
+                : <IG.ArrowSpan onClick={prevMainImage}> 《 </IG.ArrowSpan>}
+            </IG.LeftArrow>
+
+            <IG.MainImageDefault
+              src={mainImages[currIndex]}
+              alt={currStyle}
+              onClick={onClickExpand}
+            />
+
+            <IG.RightArrow>
+              {currIndex === mainImages.length - 1 ? null
+                : <IG.ArrowSpan onClick={nextMainImage}> 》 </IG.ArrowSpan>}
+            </IG.RightArrow>
+          </IG.GeneralDiv>
         )}
 
-        <IG.RightArrow>
-          {currIndex === mainImages.length - 1 ? null
-            : <IG.ArrowSpan onClick={nextMainImage}> 》 </IG.ArrowSpan>}
-        </IG.RightArrow>
+        {currView === 'expanded' && (
+          <IG.GeneralDiv>
+            <IG.LeftArrow>
+              {currIndex === 0 ? null
+                : <IG.ArrowSpan onClick={prevMainImage}> 《 </IG.ArrowSpan>}
+            </IG.LeftArrow>
+
+            <IG.MainImageDefault
+              src={mainImages[currIndex]}
+              alt={currStyle}
+              onClick={onClickZoom}
+            />
+
+            <IG.RightArrow>
+              {currIndex === mainImages.length - 1 ? null
+                : <IG.ArrowSpan onClick={nextMainImage}> 》 </IG.ArrowSpan>}
+            </IG.RightArrow>
+          </IG.GeneralDiv>
+        )}
+
+        {currView === 'zoomed' && (
+          <IG.GeneralDiv>
+            <IG.LeftArrow>
+              {currIndex === 0 ? null
+                : <IG.ArrowSpan onClick={prevMainImage}> 《 </IG.ArrowSpan>}
+            </IG.LeftArrow>
+
+            <IG.MainImageDefault
+              src={mainImages[currIndex]}
+              alt={currStyle}
+              onClick={onClickDefault}
+            />
+
+            <IG.RightArrow>
+              {currIndex === mainImages.length - 1 ? null
+                : <IG.ArrowSpan onClick={nextMainImage}> 》 </IG.ArrowSpan>}
+            </IG.RightArrow>
+          </IG.GeneralDiv>
+        )}
+
+
+
         {/* </IG.MainImageDiv> */}
       </SectionDiv.ImageGallerySection>
     );
@@ -155,3 +189,18 @@ const ImageGallery = ({ currStyle }) => {
 };
 
 export default ImageGallery;
+
+// {currView === 'expanded' && (
+//   <IG.MainImageDefault
+//     src={mainImages[currIndex]}
+//     alt={currStyle}
+//     onClick={onClickZoom}
+//   />
+// )}
+// {currView === 'zoomed' && (
+//   <IG.MainImageDefault
+//     src={mainImages[currIndex]}
+//     alt={currStyle}
+//     onClick={onClickDefault}
+//   />
+// )}

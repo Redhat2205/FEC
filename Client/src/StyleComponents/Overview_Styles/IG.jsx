@@ -14,7 +14,7 @@ const IG = {
     /* z-index: 0; */
   `,
   ThumbnailSection: styled.div`
-    /* display: flex; */
+    display: inline-block;
     float: left;
     position: relative;
     top: 3px;
@@ -33,7 +33,27 @@ const IG = {
     height: 7%;
     /* border: 3px solid grey; */
   `,
+  GeneralDiv: styled.div`
+
+    display: inline;
+    position: relative;
+  `,
   MainImageDefault: styled.img`
+    float: left;
+    position: relative;
+    top: 7.5%;
+    left: 3%;
+    width: 65%;
+    height: 85%;
+    object-fit: contain;
+    transition: 1s;
+    border: 1px;
+
+    &:hover {
+      cursor: zoom-in;
+    }
+  `,
+  MainImageExpanded: styled.img`
     float: left;
     position: relative;
     top: 7.5%;
