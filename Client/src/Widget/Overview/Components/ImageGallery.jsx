@@ -66,16 +66,16 @@ const ImageGallery = ({ currStyle, currView, setCurrView }) => {
   // =========== Set View ============
   const onClickDefault = () => {
     setCurrView('default');
-    console.log('default view');
+    // console.log('default view');
   };
   const onClickExpand = () => {
     setCurrView('expanded');
-    console.log('expanded view');
+    // console.log('expanded view');
   };
   const onClickZoom = (e) => {
     setCurrView('zoomed');
     setMousePosition({ x: e.pageX, y: e.pageY });
-    console.log('zoomed view');
+    // console.log('zoomed view');
   };
 
   // ========= Zoomed View ==========
@@ -112,7 +112,6 @@ const ImageGallery = ({ currStyle, currView, setCurrView }) => {
               alt={currStyle}
               onClick={onClickExpand}
             />
-
             <IG.RightArrow>
               {currIndex === mainImages.length - 1 ? null
                 : <IG.ArrowSpan onClick={nextMainImage}> 》 </IG.ArrowSpan>}

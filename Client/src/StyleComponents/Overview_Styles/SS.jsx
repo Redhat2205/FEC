@@ -33,6 +33,7 @@ const SS = {
     display: inline-block;
     margin: 10px;
     width: 70px;
+    height: 50px;
     overflow: hidden;
     border-radius: 50%;
     border: 2px solid #B2B4B8;

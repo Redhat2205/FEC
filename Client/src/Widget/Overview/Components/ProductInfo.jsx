@@ -10,7 +10,7 @@ const ProductInfo = ({
   product, currStyle, productReviews, currView,
 }) => {
   const totalStars = 5;
-  // const activeStars = ["100%", "100%", "100%", "50%", "0%"];
+  // const activeStars = ["100%", "100%", "100%", "40%", "0%"];
   const activeStars = [];
 
   if (productReviews.product !== undefined) {
