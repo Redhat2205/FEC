@@ -3,8 +3,9 @@ import SectionDiv from "../../../StyleComponents/Overview_Styles/SectionDiv.jsx"
 import SS from "../../../StyleComponents/Overview_Styles/SS.jsx";
 
 const StyleSelector = ({
-  styles, currStyle, setCurrStyle, setQuantity,
+  styles, currStyle, setCurrStyle, setQuantity, currView,
 }) => (
+  (currView === 'default' && (
   <SectionDiv.StyleSelectorSection>
     <SS.Style>
       STYLE &nbsp;
@@ -26,6 +27,8 @@ const StyleSelector = ({
       ))}
     </SS.ThumbnailSection>
   </SectionDiv.StyleSelectorSection>
+  ))
+
 );
 
 export default StyleSelector;
