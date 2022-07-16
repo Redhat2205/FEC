@@ -6,7 +6,7 @@ import Style from "../../../StyleComponents/QA_Styles/Style.jsx";
 import AddAQuestion from './AddAQuestion.jsx';
 
 const QuestionList = ({
-  qA, onClickHelpful, productName, onReport, productID, onSubmitHandle, onSubmitAnswerHandle,
+  qA, getQa, onClickHelpful, productName, onReport, productID, onSubmitAnswerHandle,
 }) => {
   const [moreQuestion, setMoreQuestion] = useState(false);
   const [currentQuestion, setCurrentQuestion] = useState([]);
@@ -31,7 +31,7 @@ const QuestionList = ({
     setCurrentQuestion(qA);
   };
 
-  if (qA.length === 0) return <SubmitNewQuestion productID={productID} productName={productName} onSubmitHandle={onSubmitHandle} />;
+  if (qA.length === 0) return <SubmitNewQuestion productID={productID} productName={productName} getQa={getQa} />;
   if (qA.length < 5) {
     return (
       <div>
@@ -46,6 +46,10 @@ const QuestionList = ({
       </div>
     );
   }
+  // try later const thingy = {
+  //   productName,
+  //   onClickHelpful,
+  // };
   return (
     <div>
       {end === 4
@@ -59,6 +63,7 @@ const QuestionList = ({
             onReport={onReport}
             onQReport={onQReport}
             onSubmitAnswerHandle={onSubmitAnswerHandle}
+            // try later {...thingy}
           />
         ))
         : qA.slice(0, end).map((qAObj) => (
@@ -77,7 +82,6 @@ const QuestionList = ({
       <AddAQuestion
         qA={qA}
         productName={productName}
-        onSubmitHandle={onSubmitHandle}
         productID={productID}
       />
     </div>

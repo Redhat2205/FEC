@@ -3,7 +3,7 @@ import SubmitQuestionModal from "./SubmitQuestionModal.jsx";
 import Modal from "../../../StyleComponents/QA_Styles/Modal.jsx";
 
 const SubmitNewQuestion = ({
-  qA, productName, onSubmitHandle, productID,
+  qA, getQa, productName, onSubmitHandle, productID,
 }) => {
   const [modalSubQuestion, setModalSubQuestion] = useState(false);
   return (
@@ -16,6 +16,7 @@ const SubmitNewQuestion = ({
         modalSubQuestion={modalSubQuestion}
         onClose={() => (setModalSubQuestion(false))}
         productID={productID}
+        getQa={getQa}
       />
       )}
     </div>

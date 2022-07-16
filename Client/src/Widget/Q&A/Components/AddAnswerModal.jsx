@@ -20,6 +20,7 @@ const AddAnswerModal = ({
           <Modal.Name
             size="60"
             placeholder="Example: jack543!"
+            required
             onChange={(e) => {
               setName(e.target.value);
             }}
@@ -42,6 +43,7 @@ const AddAnswerModal = ({
           <Modal.SubmitInput
             TextMode="MultiLine"
             size="1000"
+            required
             onChange={(e) => {
               setBody(e.target.value);
             }}

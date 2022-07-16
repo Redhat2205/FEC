@@ -8,14 +8,10 @@ const Q_A = ({ productID }) => {
   const [qA, setQa] = useState([]);
   const productName = "Pumped Up Kicks";
 
-  useEffect(() => {
-    getQa();
-  }, []);
-
   const getQa = () => {
     axios({
       method: 'get',
-      url: `${process.env.API_Base}/qa/questions?product_id=${productID}&count=000`,
+      url: `${process.env.API_Base}/qa/questions?product_id=${productID}&count=1000`,
       headers: { Authorization: process.env.API_Key },
     })
       .then((product) => {
@@ -29,6 +25,10 @@ const Q_A = ({ productID }) => {
       });
   };
 
+  useEffect(() => {
+    console.log(typeof productID);
+    getQa();
+  }, []);
   const searchHandler = (searchTerm) => {
     if (searchTerm.length > 2) {
       const result = qA.filter((questions) => (questions.question_body.toLowerCase().includes(searchTerm.toLowerCase())));
@@ -67,24 +67,22 @@ const Q_A = ({ productID }) => {
       .then(() => { getQa(); })
       .catch((err) => console.log(err));
   };
-  // const onChangeSubmit = () => {
-  //   const
+
+  // const onSubmitHandle = (body, name, email) => {
+  //   axios({
+  //     method: 'post',
+  //     url: `${process.env.API_Base}/qa/questions`,
+  //     headers: { Authorization: process.env.API_Key },
+  //     data: {
+  //       body: body,
+  //       name: name,
+  //       email: email,
+  //       product_id: parseInt(productID)
+  //     },
+  //   })
+  //     .then(() => getQa())
+  //     .catch((err) => console.log(err));
   // };
-  const onSubmitHandle = (body, name, email) => {
-    axios({
-      method: 'post',
-      url: `${process.env.API_Base}/qa/questions`,
-      headers: { Authorization: process.env.API_Key },
-      data: {
-        body: body,
-        name: name,
-        email: email,
-        product_id: parseInt(productID)
-      },
-    })
-      .then(() => getQa())
-      .catch((err) => console.log(err));
-  };
   const onSubmitAnswerHandle = (body, name, email, questionID, photo) => {
     console.log(questionID);
     axios({
@@ -92,10 +90,10 @@ const Q_A = ({ productID }) => {
       url: `${process.env.API_Base}/qa/questions/${questionID}/answers`,
       headers: { Authorization: process.env.API_Key },
       data: {
-        body: body,
-        name: name,
-        email: email,
-        photo: photo,
+        body,
+        name,
+        email,
+        photo,
       },
     })
       .then(() => getQa())
@@ -113,9 +111,9 @@ const Q_A = ({ productID }) => {
         onClickHelpful={onClickHelpful}
         productName={productName}
         onReport={onReport}
-        onSubmitHandle={onSubmitHandle}
         productID={productID}
         onSubmitAnswerHandle={onSubmitAnswerHandle}
+        getQa={getQa}
       />
     </Style.Body>
   );
