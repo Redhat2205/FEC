@@ -145,7 +145,7 @@ const ImageGallery = ({ currStyle, currView, setCurrView }) => {
                 : <IG.ArrowSpan onClick={prevMainImage}> 《 </IG.ArrowSpan>}
             </IG.LeftArrow>
 
-            <IG.MainImageDefault
+            <IG.MainImageExpanded
               src={mainImages[currIndex]}
               alt={currStyle}
               onClick={onClickZoom}

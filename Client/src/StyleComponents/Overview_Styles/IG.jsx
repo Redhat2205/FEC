@@ -58,7 +58,7 @@ const IG = {
     position: relative;
     top: 7.5%;
     left: 3%;
-    width: 65%;
+    width: 100%;
     height: 85%;
     object-fit: contain;
     transition: 1s;

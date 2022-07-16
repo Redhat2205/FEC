@@ -14,6 +14,7 @@ const Overview = ({
   const [styles, setStyles] = useState([]);
   const [currStyle, setCurrStyle] = useState({});
   const [currView, setCurrView] = useState('default');
+  const [IgSectionWidth, setIgSectionWidth] = useState('60%');
 
   const getStyles = () => {
     axios({
