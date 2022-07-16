@@ -15,7 +15,7 @@ const Q_A = ({ productID }) => {
   const getQa = () => {
     axios({
       method: 'get',
-      url: `${process.env.API_Base}/qa/questions?product_id=${productID}&count=1000`,
+      url: `${process.env.API_Base}/qa/questions?product_id=${productID}&count=000`,
       headers: { Authorization: process.env.API_Key },
     })
       .then((product) => {
@@ -67,7 +67,9 @@ const Q_A = ({ productID }) => {
       .then(() => { getQa(); })
       .catch((err) => console.log(err));
   };
-
+  // const onChangeSubmit = () => {
+  //   const
+  // };
   const onSubmitHandle = (body, name, email) => {
     axios({
       method: 'post',

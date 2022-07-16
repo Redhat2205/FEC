@@ -8,7 +8,7 @@ const SubmitNewQuestion = ({
   const [modalSubQuestion, setModalSubQuestion] = useState(false);
   return (
     <div>
-      <Modal.AddQuestion onClick={() => (setModalSubQuestion(true))} type="Modal.AddQuestion">Submit New Question</Modal.AddQuestion>
+      <Modal.AddQuestion onClick={() => (setModalSubQuestion(true))}>Submit New Question</Modal.AddQuestion>
       {modalSubQuestion && (
       <SubmitQuestionModal
         onSubmitHandle={onSubmitHandle}

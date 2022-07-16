@@ -58,7 +58,10 @@ const Modal = {
     width: 400px
   `,
   Add: styled.div`
-  display: inline;
+    display: inline;
+  `,
+  FormLabel: styled.div`
+
   `,
 };
 
