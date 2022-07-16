@@ -17,12 +17,11 @@ const tileBottomBorder = {
 };
 
 const ReviewTile = ({ eachReview }) => {
-
   // need to format the review title and split it if necessary
 
   // if image <========================================================>
   if (eachReview.photos.length > 0) {
-      // recommended!
+    // recommended!
   if (eachReview.recommend === true) {
     // response given!
     if (eachReview.response) {
