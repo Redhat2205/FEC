@@ -15,15 +15,12 @@ const starOutlineStyle = {
 const BasicFn = ({ averageRating }) => {
   // convert average rating to closet .25 value
   let converted = (Math.round(averageRating * 4) / 4).toFixed(2);
-  // setConverted(() => {(Math.round(averageRating * 4) / 4).toFixed(2)});
-  // console.log('converted average rating', converted);
+
   const totalStars = 5;
   // const activeStars = 3;
-  let counter1 = 0;
-  let counter2 = converted;
-  let activeStars = [];
-  // const [activeStars, setActiveStars] = useState([]);
-  // let activeStars = ['100%', '57%', '50%', '39%', '0%'];
+  const counter1 = 0;
+  const counter2 = converted;
+  const activeStars = [];
 
   while (converted > 0) {
     if (converted > 1) {
@@ -130,11 +127,9 @@ const BasicFn = ({ averageRating }) => {
         </Box>
       </div>
     );
-  } else {
-    return (
-      <div>☆☆☆☆☆</div>
-    );
-  }
+  } return (
+    <div>☆☆☆☆☆</div>
+  );
 };
 
 export default BasicFn;
