@@ -195,7 +195,7 @@ const R_R = ({ productID }) => {
           border: 'solid 1px', borderRadius: '5px', boxShadow: '5px 10px #888888', float: 'left', width: '33%',
         }}
       >
-        <RatingChart currentItem={currentItem} averageRating={averageRating} />
+        <RatingChart currentItem={currentItem} averageRating={averageRating} productReviews={productReviews} />
       </div>
       <div
         className="review-list-container"
@@ -204,7 +204,7 @@ const R_R = ({ productID }) => {
         }}
       >
         {/* <h1 style={{textAlign: 'center', fontFamily: 'Tahoma'}}>Review List</h1> */}
-        <ReviewList reviews={productReviews} currentItem={currentItem} reviewCount={reviewCount} />
+        <ReviewList reviews={productReviews} currentItem={currentItem} />
       </div>
     </div>
   );
