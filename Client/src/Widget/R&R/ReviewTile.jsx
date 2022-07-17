@@ -54,7 +54,7 @@ const ReviewTile = ({ eachReview }) => {
     if (eachReview.response) {
       return (
         <div className="review-tile-container" style={tileBottomBorder}>
-          <h5 style={textRight}>{eachReview.reviewer_name + ', ' + moment(eachReview.date).format('MMMM Do YYYY')}</h5>
+          <h5 style={textRight}>{`${eachReview.reviewer_name}, ${moment(eachReview.date).format('MMMM Do YYYY')}`}</h5>
           <h3>Review Title</h3>
           <h5>{eachReview.summary}</h5>
           <p>{eachReview.body}</p>
@@ -96,7 +96,7 @@ const ReviewTile = ({ eachReview }) => {
               textRight
               }
         >
-          {`${eachReview.reviewer_name  }, ${  moment(eachReview.date).format('MMMM Do YYYY')}`}
+          {`${eachReview.reviewer_name}, ${moment(eachReview.date).format('MMMM Do YYYY')}`}
         </h5>
         <h3>Review Title</h3>
         <h5>{eachReview.summary}</h5>
@@ -108,27 +108,24 @@ const ReviewTile = ({ eachReview }) => {
   // response given!!!
   if (eachReview.response) {
     return (
-          <div className="review-tile-container" style={tileBottomBorder}>
-            <h5 style={textRight}>{eachReview.reviewer_name + ', ' + moment(eachReview.date).format('MMMM Do YYYY')}</h5>
-            <h3>Review Title</h3>
-            <h5>{eachReview.summary}</h5>
-            <p>{eachReview.body}</p>
-            <div style={greyBG}>{eachReview.response}</div>
-          </div>
-        );
-      } else {
-        // no response given!!!
-        return (
-          <div className="review-tile-container" style={tileBottomBorder}>
-            <h5 style={textRight}>{eachReview.reviewer_name + ', ' + moment(eachReview.date).format('MMMM Do YYYY')}</h5>
-            <h3>Review Title</h3>
-            <h5>{eachReview.summary}</h5>
-            <p>{eachReview.body}</p>
-          </div>
-        );
-      }
-
-
+      <div className="review-tile-container" style={tileBottomBorder}>
+        <h5 style={textRight}>{`${eachReview.reviewer_name}, ${moment(eachReview.date).format('MMMM Do YYYY')}`}</h5>
+        <h3>Review Title</h3>
+        <h5>{eachReview.summary}</h5>
+        <p>{eachReview.body}</p>
+        <div style={greyBG}>{eachReview.response}</div>
+      </div>
+    );
+  }
+  // no response given!!!
+  return (
+    <div className="review-tile-container" style={tileBottomBorder}>
+      <h5 style={textRight}>{`${eachReview.reviewer_name}, ${moment(eachReview.date).format('MMMM Do YYYY')}`}</h5>
+      <h3>Review Title</h3>
+      <h5>{eachReview.summary}</h5>
+      <p>{eachReview.body}</p>
+    </div>
+  );
 };
 
 export default ReviewTile;
