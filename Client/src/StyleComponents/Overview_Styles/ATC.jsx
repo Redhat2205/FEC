@@ -12,6 +12,11 @@ const ATC = {
     font-weight: 500;
     border-radius: 5px;
   `,
+  Div: styled.div`
+    margin: 0px 22px;
+    font-size: 12px;
+    color: red;
+  `,
   SelectQuantity: styled.select`
     display: inline-block;
     margin: 20px;

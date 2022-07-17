@@ -2,21 +2,23 @@ import React, { useState } from "react";
 import SectionDiv from "../../../StyleComponents/Overview_Styles/SectionDiv.jsx";
 import ATC from "../../../StyleComponents/Overview_Styles/ATC.jsx";
 
-const AddToCart = ({ product, currStyle, currView }) => {
+const AddToCart = ({ product, currStyle }) => {
   const defaultStock = ['-', 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
   const selectRef = React.useRef();
-  const openOnFocus = useState(true);
 
   const [size, setSize] = useState(null);
   const [stock, setStock] = useState(defaultStock);
   const [quantity, setQuantity] = useState('-');
   const [favorite, setFavorite] = useState(false);
+  const [reminder, setReminder] = useState(false);
 
   if (currStyle.name !== undefined) {
     const skus = Object.entries(currStyle.skus);
 
     // ========== Size and Quantity ============
     const selectSizeAndUpdateStock = (e) => {
+      setReminder(false);
+
       if (e.target.value === 'Select Size') {
         setStock(defaultStock);
         setQuantity('-');
@@ -49,12 +51,10 @@ const AddToCart = ({ product, currStyle, currView }) => {
 
     // ========== Add to Bag and Favoirte ============
     const onClickOpenDropDown = () => {
-      console.log('open dropdown!');
-      console.log('selectRef.current: ', selectRef.current);
-
       if (selectRef.current) {
         selectRef.current.focus();
       }
+      setReminder(true);
     };
 
     const onClickAddToBag = () => {
@@ -74,73 +74,78 @@ const AddToCart = ({ product, currStyle, currView }) => {
     const toggleFavorite = () => {
       setFavorite(!favorite);
     };
-    if (currView === 'default') {
-      return (
-        <SectionDiv.AddToCartSection>
-          <ATC.SelectSize
-            id="selectSize"
-            onChange={selectSizeAndUpdateStock}
-            ref={selectRef}
-            openOnFocus={openOnFocus}
-          >
-            <option> SELECT SIZE </option>
-            { skus.map((sku) => (
-              <option key={sku[0]}>
-                {sku[1].size}
-              </option>
-            ))}
-          </ATC.SelectSize>
 
-          { quantity === '-'
+    return (
+      <SectionDiv.AddToCartSection>
+        {reminder && (
+          <ATC.Div>
+            Please select a size!
+          </ATC.Div>
+        )}
+        <ATC.SelectSize
+          id="selectSize"
+          onChange={selectSizeAndUpdateStock}
+          ref={selectRef}
+        >
+          <option> SELECT SIZE </option>
+          { skus.map((sku) => (
+            <option key={sku[0]}>
+              {sku[1].size}
+            </option>
+          ))}
+        </ATC.SelectSize>
+
+        { quantity === '-'
+          ? (
+            <ATC.SelectQuantity>
+              <option> - </option>
+            </ATC.SelectQuantity>
+          ) : (
+            <ATC.SelectQuantity onChange={updateQuantity} value={quantity}>
+              { size === null
+                ? stock.map((quantityChoice, index) => (
+                  <option key={index + 100}>
+                    {quantityChoice}
+                  </option>
+                ))
+                : stock.map((quantityChoice, index) => (
+                  <option key={index + 200}>
+                    {quantityChoice}
+                  </option>
+                ))}
+            </ATC.SelectQuantity>
+          )}
+
+        <ATC.SecondLine>
+          { size === null || size === 'SELECT SIZE'
             ? (
-              <ATC.SelectQuantity>
-                <option> - </option>
-              </ATC.SelectQuantity>
-            ) : (
-              <ATC.SelectQuantity onChange={updateQuantity} value={quantity}>
-                { size === null
-                  ? stock.map((quantityChoice, index) => (
-                    <option key={index + 100}>
-                      {quantityChoice}
-                    </option>
-                  ))
-                  : stock.map((quantityChoice, index) => (
-                    <option key={index + 200}>
-                      {quantityChoice}
-                    </option>
-                  ))}
-              </ATC.SelectQuantity>
+              <ATC.AddtoBag onClick={onClickOpenDropDown}>
+                ADD TO BAG &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; +
+              </ATC.AddtoBag>
+            )
+            : (
+              <ATC.AddtoBag onClick={onClickAddToBag}>
+                ADD TO BAG &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; +
+              </ATC.AddtoBag>
             )}
 
-          <ATC.SecondLine>
-            { size === null || size === 'SELECT SIZE'
-              ? (
-                <ATC.AddtoBag onClick={onClickOpenDropDown}>
-                  ADD TO BAG &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; +
-                </ATC.AddtoBag>
-              )
-              : (
-                <ATC.AddtoBag onClick={onClickAddToBag}>
-                  ADD TO BAG &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; +
-                </ATC.AddtoBag>
-              )}
+          {favorite ? (
+            <ATC.FavoriteButton onClick={toggleFavorite}>
+              ★
+            </ATC.FavoriteButton>
+          ) : (
+            <ATC.FavoriteButton onClick={toggleFavorite}>
+              ☆
+            </ATC.FavoriteButton>
+          )}
+        </ATC.SecondLine>
 
-            {favorite ? (
-              <ATC.FavoriteButton onClick={toggleFavorite}>
-                ★
-              </ATC.FavoriteButton>
-            ) : (
-              <ATC.FavoriteButton onClick={toggleFavorite}>
-                ☆
-              </ATC.FavoriteButton>
-            )}
-          </ATC.SecondLine>
-
-        </SectionDiv.AddToCartSection>
-      );
-    }
+      </SectionDiv.AddToCartSection>
+    );
   }
-  return null;
+  return (
+    <SectionDiv.AddToCartSection> loading...</SectionDiv.AddToCartSection>
+  );
 };
 
 export default AddToCart;
