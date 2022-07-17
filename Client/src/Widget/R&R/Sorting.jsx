@@ -8,6 +8,16 @@ const underlineStyle = {
   fontSize: '16px',
 }
 
+// Helpful
+// descending (eachreview => allYes - allNo)
+
+// Newest
+// a stack
+
+// Relevant
+// stack order and helpfulness rating
+// use stack but helpfulness trumps review date
+
 const Sorting = ({ reviewCount }) => {
   // console.log(reviews);
   // const reviewCount = reviews.length;
@@ -20,7 +30,7 @@ const Sorting = ({ reviewCount }) => {
     <select style={underlineStyle} name="sorting-dropdown-menu">
       <option value="helpfulness">helpfulness</option>
       <option value="newest">newest</option>
-      <option vaklue="relevance">relevance</option>
+      <option value="relevance">relevance</option>
     </select>
     </>
   );
