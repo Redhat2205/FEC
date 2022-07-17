@@ -6,7 +6,7 @@ const underlineStyle = {
   outline: 'none',
   scrollBehavior: 'smooth',
   fontSize: '16px',
-}
+};
 
 // Helpful
 // descending (eachreview => allYes - allNo)
@@ -18,22 +18,19 @@ const underlineStyle = {
 // stack order and helpfulness rating
 // use stack but helpfulness trumps review date
 
-const Sorting = ({ reviewCount }) => {
-  // console.log(reviews);
-  // const reviewCount = reviews.length;
-  // console.log(reviewCount);
-  // because this is async, need to get the data then render the text
-
-  return (
-    <>
-    <label>{reviewCount} reviews, sorted by</label>
+const Sorting = ({ reviewCount }) => (
+  <div>
+    <label>
+      {reviewCount}
+      {' '}
+      reviews, sorted by
+    </label>
     <select style={underlineStyle} name="sorting-dropdown-menu">
       <option value="helpfulness">helpfulness</option>
       <option value="newest">newest</option>
       <option value="relevance">relevance</option>
     </select>
-    </>
-  );
-};
+  </div>
+);
 
 export default Sorting;
