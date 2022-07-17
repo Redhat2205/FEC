@@ -33,8 +33,7 @@ const ReviewTile = ({ eachReview }) => {
           <div className="review-tile-container" style={tileBottomBorder}>
             <h5 style={textRight}>{`${eachReview.reviewer_name}, ${moment(eachReview.date).format('MMMM Do YYYY')}`}</h5>
             <UserStars eachReview={eachReview} />
-            <h3>Review Title</h3>
-            <h5>{eachReview.summary}</h5>
+            <h3>{eachReview.summary}</h3>
             <p>{eachReview.body}</p>
             <ReviewImages images={eachReview.photos} />
             <p>✔︎ I recommend this product</p>
@@ -46,8 +45,7 @@ const ReviewTile = ({ eachReview }) => {
         <div className="review-tile-container" style={tileBottomBorder}>
           <h5 style={textRight}>{`${eachReview.reviewer_name}, ${moment(eachReview.date).format('MMMM Do YYYY')}`}</h5>
           <UserStars eachReview={eachReview} />
-          <h3>Review Title</h3>
-          <h5>{eachReview.summary}</h5>
+          <h3>{eachReview.summary}</h3>
           <p>{eachReview.body}</p>
           <ReviewImages images={eachReview.photos} />
           <p>✔︎ I recommend this product</p>
@@ -60,8 +58,7 @@ const ReviewTile = ({ eachReview }) => {
         <div className="review-tile-container" style={tileBottomBorder}>
           <h5 style={textRight}>{`${eachReview.reviewer_name}, ${moment(eachReview.date).format('MMMM Do YYYY')}`}</h5>
           <UserStars eachReview={eachReview} />
-          <h3>Review Title</h3>
-          <h5>{eachReview.summary}</h5>
+          <h3>{eachReview.summary}</h3>
           <p>{eachReview.body}</p>
           <ReviewImages images={eachReview.photos} />
           <div style={greyBG}>{eachReview.response}</div>
@@ -73,8 +70,7 @@ const ReviewTile = ({ eachReview }) => {
       <div className="review-tile-container" style={tileBottomBorder}>
         <h5 style={textRight}>{`${eachReview.reviewer_name}, ${moment(eachReview.date).format('MMMM Do YYYY')}`}</h5>
         <UserStars eachReview={eachReview} />
-        <h3>Review Title</h3>
-        <h5>{eachReview.summary}</h5>
+        <h3>{eachReview.summary}</h3>
         <p>{eachReview.body}</p>
         <ReviewImages images={eachReview.photos} />
       </div>
@@ -89,8 +85,7 @@ const ReviewTile = ({ eachReview }) => {
         <div className="review-tile-container" style={tileBottomBorder}>
           <h5 style={textRight}>{`${eachReview.reviewer_name}, ${moment(eachReview.date).format('MMMM Do YYYY')}`}</h5>
           <UserStars eachReview={eachReview} />
-          <h3>Review Title</h3>
-          <h5>{eachReview.summary}</h5>
+          <h3>{eachReview.summary}</h3>
           <p>{eachReview.body}</p>
           <p>✔︎ I recommend this product</p>
           <div style={greyBG}>{eachReview.response}</div>
@@ -106,8 +101,7 @@ const ReviewTile = ({ eachReview }) => {
           {`${eachReview.reviewer_name}, ${moment(eachReview.date).format('MMMM Do YYYY')}`}
         </h5>
         <UserStars eachReview={eachReview} />
-        <h3>Review Title</h3>
-        <h5>{eachReview.summary}</h5>
+        <h3>{eachReview.summary}</h3>
         <p>{eachReview.body}</p>
         <p>✔︎ I recommend this product</p>
       </div>
@@ -119,8 +113,7 @@ const ReviewTile = ({ eachReview }) => {
       <div className="review-tile-container" style={tileBottomBorder}>
         <h5 style={textRight}>{`${eachReview.reviewer_name}, ${moment(eachReview.date).format('MMMM Do YYYY')}`}</h5>
         <UserStars eachReview={eachReview} />
-        <h3>Review Title</h3>
-        <h5>{eachReview.summary}</h5>
+        <h3>{eachReview.summary}</h3>
         <p>{eachReview.body}</p>
         <div style={greyBG}>{eachReview.response}</div>
       </div>
@@ -131,8 +124,7 @@ const ReviewTile = ({ eachReview }) => {
     <div className="review-tile-container" style={tileBottomBorder}>
       <h5 style={textRight}>{`${eachReview.reviewer_name}, ${moment(eachReview.date).format('MMMM Do YYYY')}`}</h5>
       <UserStars eachReview={eachReview} />
-      <h3>Review Title</h3>
-      <h5>{eachReview.summary}</h5>
+      <h3>{eachReview.summary}</h3>
       <p>{eachReview.body}</p>
     </div>
   );
