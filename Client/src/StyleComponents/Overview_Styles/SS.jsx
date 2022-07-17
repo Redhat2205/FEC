@@ -26,12 +26,12 @@ const SS = {
   `,
   ThumbnailSection: styled.div`
     margin: 20px;
-    width: 300px;
+    width: 400px;
     height:150px;
   `,
   Thumbnail: styled.img`
     display: inline-block;
-    margin: 10px;
+    margin: 8px 10px;
     width: 70px;
     height: 50px;
     overflow: hidden;
