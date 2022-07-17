@@ -181,12 +181,12 @@ const R_R = ({ productID }) => {
   return (
     <div className="rnr-container">
       <div>
+        <BasicFn averageRating={averageRating} />
         <h1 id="main-rnr-header" data-testid="rnr" style={{ textAlign: 'left', fontFamily: 'tahoma' }}>Ratings and Reviews</h1>
       </div>
       {/* <MaskTest /> */}
       {/* <StarTest style={{backgroundColor: 'gold', height: '10px'}} className="StarTest"/> */}
       {/* <StarTest className="StarTest" /> */}
-      <BasicFn averageRating={averageRating} />
       <div
         className="rating-chart-container"
         style={{

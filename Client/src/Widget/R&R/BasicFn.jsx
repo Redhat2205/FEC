@@ -13,10 +13,8 @@ const starOutlineStyle = {
 };
 
 const BasicFn = ({ averageRating }) => {
-  // converted rating will be state so we can watch value to trigger rerender
-  // const [converted, setConverted] = useState(0);
   // convert average rating to closet .25 value
-  const converted = (Math.round(averageRating * 4) / 4).toFixed(2);
+  let converted = (Math.round(averageRating * 4) / 4).toFixed(2);
   // setConverted(() => {(Math.round(averageRating * 4) / 4).toFixed(2)});
   // console.log('converted average rating', converted);
   const totalStars = 5;
@@ -24,51 +22,76 @@ const BasicFn = ({ averageRating }) => {
   let counter1 = 0;
   let counter2 = converted;
   let activeStars = [];
+  // const [activeStars, setActiveStars] = useState([]);
+  // let activeStars = ['100%', '57%', '50%', '39%', '0%'];
 
-  const generateStars = () => {
-    while (counter1 < 5) {
-      if (counter2 > 1) {
-        counter1++;
-        counter2--;
-        activeStars.push(1);
-        console.log(counter1);
-      }
-      if (counter2 === 0.75) {
-        counter1++;
-        counter2 - 0.75;
-        activeStars.push(0.75);
-        console.log(counter1);
-      }
-      if (counter2 === 0.5) {
-        counter1++;
-        counter2 - 0.5;
-        activeStars.push(0.5);
-        console.log(counter1);
-      }
-      if (counter2 === 0.25) {
-        counter1++;
-        counter2 - 0.25;
-        activeStars.push(0.25);
-        console.log(counter1);
-      }
-      if (counter2 === 0) {
-        counter1++;
-        activeStars.push(0);
-        console.log(counter1);
-      }
+  while (converted > 0) {
+    if (converted > 1) {
+      activeStars.push('100%');
+      converted -= 1;
     }
-  };
-
-  useEffect(() => {
-    if (converted > 0.00) {
-      console.log('before conversion:', activeStars);
-      generateStars();
-      console.log('after conversion:', activeStars);
-      console.log(converted);
+    if (converted === 0.75) {
+      activeStars.push('57%');
+      converted -= 0.75;
     }
-  }, [converted]);
+    if (converted === 0.5) {
+      activeStars.push('50%');
+      converted -= 0.5;
+    }
+    if (converted === 0.25) {
+      activeStars.push('39%');
+      converted -= 0.25;
+    }
+  }
 
-  // console.log(activeStars);
+  while (activeStars.length < 5) {
+    activeStars.push('0%');
+  }
+
+  // const generateStars = () => {
+  //   while (counter1 < 5) {
+  //     if (counter2 > 1) {
+  //       counter1++;
+  //       counter2--;
+  //       activeStars.push('100%');
+  //       console.log(counter1);
+  //     }
+  //     if (counter2 === 0.75) {
+  //       counter1++;
+  //       counter2 - 0.75;
+  //       activeStars.push('59%');
+  //       console.log(counter1);
+  //     }
+  //     if (counter2 === 0.5) {
+  //       counter1++;
+  //       counter2 - 0.5;
+  //       activeStars.push('50%');
+  //       console.log(counter1);
+  //     }
+  //     if (counter2 === 0.25) {
+  //       counter1++;
+  //       counter2 - 0.25;
+  //       activeStars.push('40%');
+  //       console.log(counter1);
+  //     }
+  //     if (counter2 === 0) {
+  //       counter1++;
+  //       activeStars.push('0%');
+  //       console.log(counter1);
+  //     }
+  //   }
+  // };
+
+  // useEffect(() => {
+  //   if (converted > 0.00) {
+  //     console.log('before conversion:', activeStars);
+  //     generateStars();
+  //     console.log('after conversion:', activeStars);
+  //     console.log(converted);
+  //   }
+  // }, [converted]);
+
+  console.log(activeStars);
 
   // return (
   //   <div>
@@ -76,48 +99,42 @@ const BasicFn = ({ averageRating }) => {
   //   </div>
   // );
 
-  if (converted > 0) {
+  if (activeStars.length > 0) {
     return (
-      <Box
-        sx={{
-          display: 'inline-flex',
-          position: 'relative',
-          textAlign: 'left',
-          fontSize: '5px',
-        }}
-      >
-        {activeStars.map((starWidth, index) => (
-          <Box position="relative" key={index}>
-            <Box
-              sx={{
-                width: starWidth,
-                overflow: 'hidden',
-                position: 'absolute',
-              }}
-            >
-              <StarIcon style={{ fonstSize: "17px" }} />
+      <div style={{ width: '200px', height: '75px' }}>
+        <p>test</p>
+        <Box
+          sx={{
+            display: 'inline-flex',
+            position: 'relative',
+            textAlign: 'left',
+            fontSize: '5px',
+          }}
+        >
+          {activeStars.map((starWidth, index) => (
+            <Box position="relative" key={index}>
+              <Box
+                sx={{
+                  width: starWidth,
+                  overflow: "hidden",
+                  position: "absolute",
+                }}
+              >
+                <StarIcon style={{ fontSize: "17px" }} />
+              </Box>
+              <Box>
+                <StarBorderIcon style={{ fontSize: "17px" }} />
+              </Box>
             </Box>
-            <Box>
-              <StarBorderIcon style={{fontSize: '17px'}} />
-            </Box>
-          </Box>
-        ))}
-      </Box>
+          ))}
+        </Box>
+      </div>
     );
   } else {
     return (
-      <div>Loading</div>
+      <div>☆☆☆☆☆</div>
     );
   }
-
-  <Box sx={{ display: 'inline-flex',
-             position: 'relative',
-             textAlign: 'left',
-             fontSize: '5px',
-       }}
-  >
-    {[]}
-  </Box>
 };
 
 export default BasicFn;
