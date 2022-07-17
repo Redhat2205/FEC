@@ -82,18 +82,26 @@ const AddToCart = ({ product, currStyle }) => {
             Please select a size!
           </ATC.Div>
         )}
-        <ATC.SelectSize
-          id="selectSize"
-          onChange={selectSizeAndUpdateStock}
-          ref={selectRef}
-        >
-          <option> SELECT SIZE </option>
-          { skus.map((sku) => (
-            <option key={sku[0]}>
-              {sku[1].size}
-            </option>
-          ))}
-        </ATC.SelectSize>
+        {skus[0][0] === "null"
+          ? (
+            <ATC.SelectSize disabled>
+              <option>OUT OF STOCK</option>
+            </ATC.SelectSize>
+          )
+          : (
+            <ATC.SelectSize
+              id="selectSize"
+              onChange={selectSizeAndUpdateStock}
+              ref={selectRef}
+            >
+              <option> SELECT SIZE </option>
+              { skus.map((sku) => (
+                <option key={sku[0]}>
+                  {sku[1].size}
+                </option>
+              ))}
+            </ATC.SelectSize>
+          )}
 
         { quantity === '-'
           ? (

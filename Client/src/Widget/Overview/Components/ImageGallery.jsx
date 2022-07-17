@@ -8,6 +8,7 @@ const ImageGallery = ({ currStyle, currView, setCurrView }) => {
   const [thumbnails, setThumbnails] = useState([]);
   const [currIndex, setcurrIndex] = useState(0);
   const [currTnSet, setCurrTnSet] = useState([]);
+  const [noImageInAPI, setNoImageInAPI] = useState(false);
   const [mousePosition, setMousePosition] = useState({
     x: 0,
     y: 0,
@@ -17,18 +18,21 @@ const ImageGallery = ({ currStyle, currView, setCurrView }) => {
     if (currStyle.name !== undefined) {
       const mainArr = [];
       const thumbnailArr = [];
-
-      currStyle.photos.forEach((photoObj) => {
-        mainArr.push(photoObj.url);
-        if (photoObj.thumbnail_url[0] === 'u') {
-          thumbnailArr.push(photoObj.thumbnail_url.slice(1));
-        } else {
-          thumbnailArr.push(photoObj.thumbnail_url);
-        }
-      });
-      setMainImages(mainArr);
-      setThumbnails(thumbnailArr);
-      setCurrTnSet(thumbnailArr.slice(0, 7));
+      if (currStyle.photos.length === 1 && currStyle.photos[0].url === null) {
+        setNoImageInAPI(true);
+      } else {
+        currStyle.photos.forEach((photoObj) => {
+          mainArr.push(photoObj.url);
+          if (photoObj.thumbnail_url[0] === 'u') {
+            thumbnailArr.push(photoObj.thumbnail_url.slice(1));
+          } else {
+            thumbnailArr.push(photoObj.thumbnail_url);
+          }
+        });
+        setMainImages(mainArr);
+        setThumbnails(thumbnailArr);
+        setCurrTnSet(thumbnailArr.slice(0, 7));
+      }
     }
   }, [currStyle]);
 
@@ -86,7 +90,7 @@ const ImageGallery = ({ currStyle, currView, setCurrView }) => {
     // console.log('x-y: ', mousePosition.x, mousePosition.y);
   };
 
-  if (currIndex !== null) {
+  if (currIndex !== null && noImageInAPI === false) {
     return (
       <div>
         {currView === 'default' && (

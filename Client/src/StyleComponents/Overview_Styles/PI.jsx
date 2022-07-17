@@ -38,7 +38,7 @@ const PI = {
   Name: styled.div`
     display: block;
     margin: 20px;
-    width: 400px;
+    width: 440px;
     height: 20px;
     font-weight: 700;
     font-size: 35px;
