@@ -1,5 +1,6 @@
 import React from 'react';
 import BasicFn from './BasicFn.jsx';
+import BarChartDemo from './BarChartDemo.jsx';
 
 // eslint-disable-next-line consistent-return
 const RatingChart = ({ currentItem, averageRating }) => (
@@ -7,6 +8,7 @@ const RatingChart = ({ currentItem, averageRating }) => (
     <h5 style={{ display: 'inline-block' }}>{averageRating}</h5>
     <BasicFn averageRating={averageRating} style={{ display: 'inline-block' }} />
     <div>
+      <BarChartDemo />
       <p>
         rating breakdown, characteristics
       </p>

@@ -88,7 +88,7 @@ const BasicFn = ({ averageRating }) => {
   //   }
   // }, [converted]);
 
-  console.log(activeStars);
+  // console.log(activeStars);
 
   // return (
   //   <div>
