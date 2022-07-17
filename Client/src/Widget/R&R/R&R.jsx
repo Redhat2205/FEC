@@ -107,7 +107,7 @@ const R_R = ({ productID }) => {
 
         // set the average rating
         let total = 0;
-        res.data.results.forEach((result) => {total += result.rating});
+        res.data.results.forEach((result) => { total += result.rating; });
         // console.log('total rating:', total);
         // console.log('average rating:', total / res.data.results.length);
         // setAverageRating(total * 1.00);
