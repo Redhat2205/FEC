@@ -98,14 +98,14 @@ const BasicFn = ({ averageRating }) => {
 
   if (activeStars.length > 0) {
     return (
-      <div style={{ width: '200px', height: '75px' }}>
-        <p>test</p>
+      <div style={{ display: 'inline-block', height: '100%' }}>
         <Box
           sx={{
             display: 'inline-flex',
             position: 'relative',
             textAlign: 'left',
             fontSize: '5px',
+            verticalAlign: 'top',
           }}
         >
           {activeStars.map((starWidth, index) => (
