@@ -2,6 +2,7 @@ import React from 'react';
 import BasicFn from './BasicFn.jsx';
 import BarChartDemo from './BarChartDemo.jsx';
 import Recommended from './Recommended.jsx';
+import Factors from './Factors.jsx';
 
 // eslint-disable-next-line consistent-return
 const RatingChart = ({ currentItem, averageRating, productReviews }) => (
@@ -11,9 +12,9 @@ const RatingChart = ({ currentItem, averageRating, productReviews }) => (
     <Recommended productReviews={productReviews} />
     <div>
       <BarChartDemo productReviews={productReviews} />
-      <p>
-        rating breakdown, characteristics
-      </p>
+    </div>
+    <div>
+      <Factors productReviews={productReviews} />
     </div>
   </div>
 );
