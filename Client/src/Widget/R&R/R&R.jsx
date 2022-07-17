@@ -14,19 +14,6 @@ const moment = require('moment');
 const { API_Base } = process.env;
 const secret = process.env.API_Key;
 
-// const R_R = () => (
-//   <div className="rnr-container">
-//     <h1>Ratings and Reviews</h1>
-//     <div className="rating-chart-container" style={{border: 'solid 2px', float: 'left', width: '49%'}}>
-//       <h3>Current Rating Chart</h3>
-//     </div>
-//     <div className="review-list-container" style={{border: 'solid 2px', float: 'right', width: '49%'}}>
-//       <h3>Review List</h3>
-//       <ReviewList />
-//     </div>
-//   </div>
-// );
-
 // const dummyData = [
 //   {rating: 2,
 //    summary: 'blah blah blaze blahblah',
@@ -60,16 +47,14 @@ const secret = process.env.API_Key;
 //   },
 // ];
 
-// const rando = Math.floor(Math.random() * dummyData.length);
-
-// refactor *******************************************************************
 const R_R = ({ productID }) => {
   const [productReviews, setProductReviews] = useState([]);
   const [currentItem, setCurrentItem] = useState({});
   const [reviewCount, setReviewCount] = useState(null);
   const [averageRating, setAverageRating] = useState(null);
+  const [metaData, setMetaData] = useState(null);
 
-  // useEffect will initialize widget state based on API response data
+  // useEffects will initialize widget state based on API response data
 
   // set the currentItem
   useEffect(() => {
@@ -120,65 +105,21 @@ const R_R = ({ productID }) => {
       });
   }, []);
 
-  // old set the productReviews
-  // useEffect(() => {
-  //   // get reviews for a specific product
-  //   axios({
-  //     method: 'get',
-  //     url: API_Base + '/reviews',
-  //     headers: { Authorization: secret },
-  //     params: { product_id: productID },
-  //   })
-  //   // set
-  //     .then((res) => {
-  //       setProductReviews(() => res.data.results);
-  //       setCurrentReview(() => res.data.results[0]);
-  //     })
-  //     .then(() => {
-  //     })
-  //     .then(() => {
-  //       axios({
-  //         method: 'get',
-  //         url: API_Base + '/products/',
-  //         headers: { Authorization: secret },
-  //         params: { product_id: productID },
-  //       })
-  //       .then(() => {
-  //         setCurrentItem(() => productID);
-  //       })
-  //       .catch((err) => {
-  //         console.log('🟥there was an error fetching product info!', err);
-  //       });
-  //     });
-  //   // setCurrentItem(productID);
-  // }, []);
-
-  // get reviews for a specific product
-  // axios({
-  //   method: 'get',
-  //   url: `${API_Base}/reviews`,
-  //   headers: { Authorization: secret },
-  //   params: { product_id: productID },
-  // })
-  // // set
-  //   .then((res) => {
-  //     setProductReviews(res.data.results);
-  //     setCurrentReview(res.data.results[0]);
-  //   })
-  //   .then(() => {
-  //     axios({
-  //       method: 'get',
-  //       url: API_Base + '/products/',
-  //       headers: { Authorization: secret },
-  //       params: { product_id: productID },
-  //     })
-  //       .then((res) => {
-  //         setCurrentItem(res.data);
-  //       });
-  //   })
-  //   .catch((err) => {
-  //     console.log('🟥there was an error fetching product info!', err);
-  //   });
+  useEffect(() => {
+    // get all metadata for a specific product
+    axios({
+      method: 'get',
+      url: `${API_Base}/reviews/meta`,
+      headers: { Authorization: secret },
+      params: { product_id: productID },
+    })
+      .then((res) => {
+        setMetaData(() => res.data);
+      })
+      .catch((err) => {
+        console.log('🟥There was an error fetching product metadata!', err);
+      });
+  }, []);
 
   return (
     <div className="rnr-container">
@@ -195,7 +136,7 @@ const R_R = ({ productID }) => {
           border: 'solid 1px', borderRadius: '5px', boxShadow: '5px 10px #888888', float: 'left', width: '33%',
         }}
       >
-        <RatingChart currentItem={currentItem} averageRating={averageRating} productReviews={productReviews} />
+        <RatingChart currentItem={currentItem} averageRating={averageRating} productReviews={productReviews} metaData={metaData} />
       </div>
       <div
         className="review-list-container"
@@ -209,69 +150,5 @@ const R_R = ({ productID }) => {
     </div>
   );
 };
-
-// <++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++>
-// class R_R extends React.Component {
-//   constructor(props) {
-//     super(props);
-//     this.state = {
-//       productReviews: [],
-//       currentReview: {},
-//       viewedItem: {},
-//     };
-//     // bind handlers in constructor
-//     this.fetchReviewsTest = this.fetchReviewsTest.bind(this);
-//   }
-
-//   componentDidMount() {
-//     this.fetchReviewsTest();
-//   }
-
-//   fetchReviewsTest() {
-//     axios({
-//       method: 'get',
-//       url: API_Base + '/reviews',
-//       headers: { Authorization: secret },
-//       params: { product_id: this.props.productID }, // NOT USING GLOBAL PRODUCTID VARIABLE!!!!
-//     })
-//       .then((res) => {
-//         this.setState({ productReviews: res.data.results });
-//         this.setState({ currentReview: res.data.results[0] });
-//       })
-//       .then(() => {
-//         axios({
-//           method: 'get',
-//           url: API_Base + '/products/' + this.props.productID,
-//           headers: { Authorization: secret },
-//           // params: { product_id: this.props.productID },
-//         })
-//           .then((res) => {
-//             this.setState({viewedItem: res.data})
-//           })
-//       })
-//       .catch((err) => {
-//         console.log('🟥there was an error fetching product info!', err);
-//       });
-//     // this.setState({productReviews: dummyData});
-//     // this.setState({currentItem: this.state.productReviews[0]});
-//   }
-
-//   render() {
-//     return (
-//       <div className="rnr-container">
-//         {/* <MaskTest /> */}
-//         {/* // <StarTest style={{backgroundColor: 'gold', height: '10px'}} className="StarTest"/> */}
-//         <h1 id="main-rnr-header" data-testid="rnr" style={{textAlign: 'center', fontFamily: 'tahoma'}}>Ratings and Reviews</h1>
-//         <div className="rating-chart-container" style={{ border: 'solid 1px', borderRadius: '5px', boxShadow: '5px 10px #888888', float: 'left', width: '33%' }}>
-//           <RatingChart currentItem={this.state.currentReview} />
-//         </div>
-//         <div className="review-list-container" style={{ border: 'solid 1px', borderRadius: '5px', boxShadow: '5px 10px #888888', float: 'right', width: '66%', marginBottom: '20px' }}>
-//           <h1 style={{textAlign: 'center', fontFamily: 'Tahoma'}}>Review List</h1>
-//           <ReviewList reviews={this.state.productReviews} currentReview={this.state.currentReview} viewedItem={this.state.viewedItem}/>
-//         </div>
-//       </div>
-//     );
-//   }
-// }
 
 export default R_R;

@@ -1,5 +1,7 @@
 import React from 'react';
 
+import UserStars from './UserStars.jsx';
+
 import ReviewImages from './ReviewImages.jsx';
 
 const moment = require('moment');
@@ -30,6 +32,7 @@ const ReviewTile = ({ eachReview }) => {
         return (
           <div className="review-tile-container" style={tileBottomBorder}>
             <h5 style={textRight}>{`${eachReview.reviewer_name}, ${moment(eachReview.date).format('MMMM Do YYYY')}`}</h5>
+            <UserStars eachReview={eachReview} />
             <h3>Review Title</h3>
             <h5>{eachReview.summary}</h5>
             <p>{eachReview.body}</p>
@@ -42,6 +45,7 @@ const ReviewTile = ({ eachReview }) => {
       return (
         <div className="review-tile-container" style={tileBottomBorder}>
           <h5 style={textRight}>{`${eachReview.reviewer_name}, ${moment(eachReview.date).format('MMMM Do YYYY')}`}</h5>
+          <UserStars eachReview={eachReview} />
           <h3>Review Title</h3>
           <h5>{eachReview.summary}</h5>
           <p>{eachReview.body}</p>
@@ -55,6 +59,7 @@ const ReviewTile = ({ eachReview }) => {
       return (
         <div className="review-tile-container" style={tileBottomBorder}>
           <h5 style={textRight}>{`${eachReview.reviewer_name}, ${moment(eachReview.date).format('MMMM Do YYYY')}`}</h5>
+          <UserStars eachReview={eachReview} />
           <h3>Review Title</h3>
           <h5>{eachReview.summary}</h5>
           <p>{eachReview.body}</p>
@@ -67,6 +72,7 @@ const ReviewTile = ({ eachReview }) => {
     return (
       <div className="review-tile-container" style={tileBottomBorder}>
         <h5 style={textRight}>{`${eachReview.reviewer_name}, ${moment(eachReview.date).format('MMMM Do YYYY')}`}</h5>
+        <UserStars eachReview={eachReview} />
         <h3>Review Title</h3>
         <h5>{eachReview.summary}</h5>
         <p>{eachReview.body}</p>
@@ -82,6 +88,7 @@ const ReviewTile = ({ eachReview }) => {
       return (
         <div className="review-tile-container" style={tileBottomBorder}>
           <h5 style={textRight}>{`${eachReview.reviewer_name}, ${moment(eachReview.date).format('MMMM Do YYYY')}`}</h5>
+          <UserStars eachReview={eachReview} />
           <h3>Review Title</h3>
           <h5>{eachReview.summary}</h5>
           <p>{eachReview.body}</p>
@@ -98,6 +105,7 @@ const ReviewTile = ({ eachReview }) => {
         >
           {`${eachReview.reviewer_name}, ${moment(eachReview.date).format('MMMM Do YYYY')}`}
         </h5>
+        <UserStars eachReview={eachReview} />
         <h3>Review Title</h3>
         <h5>{eachReview.summary}</h5>
         <p>{eachReview.body}</p>
@@ -110,6 +118,7 @@ const ReviewTile = ({ eachReview }) => {
     return (
       <div className="review-tile-container" style={tileBottomBorder}>
         <h5 style={textRight}>{`${eachReview.reviewer_name}, ${moment(eachReview.date).format('MMMM Do YYYY')}`}</h5>
+        <UserStars eachReview={eachReview} />
         <h3>Review Title</h3>
         <h5>{eachReview.summary}</h5>
         <p>{eachReview.body}</p>
@@ -121,6 +130,7 @@ const ReviewTile = ({ eachReview }) => {
   return (
     <div className="review-tile-container" style={tileBottomBorder}>
       <h5 style={textRight}>{`${eachReview.reviewer_name}, ${moment(eachReview.date).format('MMMM Do YYYY')}`}</h5>
+      <UserStars eachReview={eachReview} />
       <h3>Review Title</h3>
       <h5>{eachReview.summary}</h5>
       <p>{eachReview.body}</p>
