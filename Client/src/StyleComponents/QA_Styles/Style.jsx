@@ -7,8 +7,14 @@ const Style = {
     width: 60%;
     height: 600px;
     padding: 10px;
-    overflow: auto;
+    overflow: hidden;
   `,
+  QuestionBody: styled.div`
+  margin: auto;
+  height: 70%;
+  padding: 10px;
+  overflow: auto;
+`,
   SearchBar: styled.input`
     margin-left: auto;
     margin-right: auto;

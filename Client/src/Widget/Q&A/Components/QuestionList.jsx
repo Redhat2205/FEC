@@ -51,7 +51,7 @@ const QuestionList = ({
   //   onClickHelpful,
   // };
   return (
-    <div overflow="auto">
+    <Style.QuestionBody>
       {end === 4
         ? qA.slice(0, 4).map((qAObj) => (
           <QuestionPanel
@@ -87,7 +87,7 @@ const QuestionList = ({
         productID={productID}
         getQa={getQa}
       />
-    </div>
+    </Style.QuestionBody>
   );
 };
 export default QuestionList;
