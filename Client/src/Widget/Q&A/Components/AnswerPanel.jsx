@@ -46,7 +46,6 @@ const AnswerPanel = ({ answer, onClickHelpful, onReport }) => {
         <ul display="inline-block">
           {answer.photos.map((photo, index) => (
             <AnswerPhoto
-              margin="50px"
               key={index}
               url={photo}
             />

@@ -63,6 +63,9 @@ const Modal = {
   FormLabel: styled.div`
 
   `,
+  PhotoContainer: styled.div`
+  display: inline
+  `,
 };
 
 export default Modal;

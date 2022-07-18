@@ -69,7 +69,7 @@ const AddAnswerModal = ({
                 <button type="submit">Submit Question</button>
               </form>
             )}
-          <Modal.CloseButton onClick={() => { onClose(); setSubmit(false); }}> X </Modal.CloseButton>
+          <Modal.CloseButton onClick={() => { onClose(); setSubmit(false); getQa(); }}> X </Modal.CloseButton>
         </Modal.Content>
       </Modal.PopUp>
     </Modal.Background>

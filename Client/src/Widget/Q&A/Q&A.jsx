@@ -67,38 +67,6 @@ const Q_A = ({ productID }) => {
       .catch((err) => console.log(err));
   };
 
-  // const onSubmitHandle = (body, name, email) => {
-  //   axios({
-  //     method: 'post',
-  //     url: `${process.env.API_Base}/qa/questions`,
-  //     headers: { Authorization: process.env.API_Key },
-  //     data: {
-  //       body: body,
-  //       name: name,
-  //       email: email,
-  //       product_id: parseInt(productID)
-  //     },
-  //   })
-  //     .then(() => getQa())
-  //     .catch((err) => console.log(err));
-  // };
-  const onSubmitAnswerHandle = (body, name, email, questionID, photo) => {
-    console.log(questionID);
-    axios({
-      method: 'post',
-      url: `${process.env.API_Base}/qa/questions/${questionID}/answers`,
-      headers: { Authorization: process.env.API_Key },
-      data: {
-        body,
-        name,
-        email,
-        photo,
-      },
-    })
-      .then(() => getQa())
-      .catch((err) => console.log(err));
-  };
-
   return (
     <Style.Body data-testid="qna">
       <Style.Title> Questions and Answers</Style.Title>
@@ -111,7 +79,6 @@ const Q_A = ({ productID }) => {
         productName={productName}
         onReport={onReport}
         productID={productID}
-        onSubmitAnswerHandle={onSubmitAnswerHandle}
         getQa={getQa}
       />
     </Style.Body>

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from 'axios';
 
-const useAnswerForm = (questionID, getQa) => {
+const useAnswerForm = (questionID) => {
   const [submit, setSubmit] = useState(false);
   const [imageSrc, setImageSrc] = useState([]);
   const [allUrls, setAllUrls] = useState(false);
@@ -65,7 +65,6 @@ const useAnswerForm = (questionID, getQa) => {
           data: json,
         }).then((r) => { console.log("PRINT RESPONSE"); console.log(r); });
       })
-      .then(() => getQa())
       .then(() => setSubmit(true))
       .then(() => (setValues({
         name: "",
