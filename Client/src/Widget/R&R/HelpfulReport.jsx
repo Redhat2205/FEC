@@ -4,6 +4,7 @@ import React from 'react';
 
 const axios = require('axios');
 
+// click handler REPORT
 const HelpfulReport = ({ reviewID, helpfulness }) => {
   let reported = false;
   let helpful = false;
@@ -18,7 +19,7 @@ const HelpfulReport = ({ reviewID, helpfulness }) => {
         headers: { Authorization: process.env.API_Key },
       })
         .then((res) => {
-          console.log(res);
+          console.log(res.data);
         })
         .catch((err) => {
           console.log('🟥There was an error reporting review', err);
@@ -26,6 +27,7 @@ const HelpfulReport = ({ reviewID, helpfulness }) => {
     }
   };
 
+  // click handler HELPFUL
   const helpfulReview = () => {
     if (!helpful) {
       helpful = true;
@@ -37,14 +39,14 @@ const HelpfulReport = ({ reviewID, helpfulness }) => {
         headers: { Authorization: process.env.API_Key },
       })
         .then((res) => {
-          console.log(res);
+          console.log(res.data);
         })
         .catch((err) => {
           console.log('🟥There was an error marking review helpful', err);
         });
     }
   };
-  console.log(reviewID);
+
   return (
     <div>
       <div style={{ display: 'inline-block' }}>
@@ -53,7 +55,8 @@ const HelpfulReport = ({ reviewID, helpfulness }) => {
         <span>{`(${helpfulness})`}</span>
       </div>
       <div style={{ display: 'inline-block', marginLeft: '10px', marginRight: '10px' }}>|</div>
-      <div style={{ display: 'inline-block' }}><span style={{ textDecoration: 'underline' }} onClick={() => reportReview()}>Report</span></div>
+      {reported ? <div style={{ display: 'inline-block' }}><span style={{ textDecoration: 'underline' }}>Reported</span></div> : <div style={{ display: 'inline-block' }}><span style={{ textDecoration: 'underline' }} onClick={() => reportReview()}>Report</span></div>}
+      {/* // {!reported ? <div style={{ display: 'inline-block' }}><span style={{ textDecoration: 'underline' }} onClick={() => helpfulReview()}>Report</span></div>} */}
     </div>
   );
 };

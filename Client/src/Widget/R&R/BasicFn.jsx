@@ -16,9 +16,9 @@ const starOutlineStyle = {
 const BasicFn = ({ averageRating }) => {
   // convert average rating to closet .25 value
   if (averageRating) {
-    console.log("average rating", averageRating);
+    // console.log("average rating", averageRating);
     let converted = (Math.round(averageRating * 4) / 4).toFixed(2);
-    console.log('converted', converted);
+    // console.log('converted', converted);
     const totalStars = 5;
     // const activeStars = 3;
     const counter1 = 0;
@@ -43,7 +43,7 @@ const BasicFn = ({ averageRating }) => {
         // converted -= 0.25;
       }
       converted -= 1;
-      console.log('end of iteration converted', converted);
+      // console.log('end of iteration converted', converted);
     }
 
     while (activeStars.length < 5) {
@@ -59,7 +59,7 @@ const BasicFn = ({ averageRating }) => {
   //   }
   // }, [converted]);
 
-  console.log('active stars', activeStars);
+  // console.log('active stars', activeStars);
 
   if (activeStars.length > 0) {
     return (
