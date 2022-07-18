@@ -14,7 +14,7 @@ const root = createRoot(document.getElementById("root"));
 
 // Huzzah for JSX!!
 const App = () => {
-  const [productID, setProductID] = useState('37316');
+  const [productID, setProductID] = useState(37316);
   const [product, setProduct] = useState([]);
   const [productReviews, setProductReviews] = useState([]);
 

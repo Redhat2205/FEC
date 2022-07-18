@@ -1,25 +1,26 @@
 import styled from "styled-components";
 
 const IG = {
-  // MainImageDiv: styled.div`
-  //   /* display: flex; */
-  //   /* justify-content: flex-end; */
-  //   width: 100%;
-  //   height: 100%;
-  //   background-position: center;
-  //   background-size: contain;
-  //   background-repeat: no-repeat;
-  //   margin: 1% auto;
-  //   object-fit: contain;
-  //   /* z-index: 0; */
-  // `,
-  ThumbnailSection: styled.div`
+  MainImageDiv: styled.div`
     /* display: flex; */
+    /* justify-content: flex-end; */
+    width: 100%;
+    height: 100%;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin: 1% auto;
+    object-fit: contain;
+    /* z-index: 0; */
+  `,
+  ThumbnailSection: styled.div`
+    display: inline-block;
     float: left;
     position: relative;
     top: 3px;
     left: 3%;
     width: 12%;
+    max-width: 95px;
     height: 590px;
     /* border: 3px solid grey; */
   `,
@@ -33,7 +34,12 @@ const IG = {
     height: 7%;
     /* border: 3px solid grey; */
   `,
-  MainImage: styled.img`
+  GeneralDiv: styled.div`
+
+    display: inline;
+    position: relative;
+  `,
+  MainImageDefault: styled.img`
     float: left;
     position: relative;
     top: 7.5%;
@@ -41,7 +47,45 @@ const IG = {
     width: 65%;
     height: 85%;
     object-fit: contain;
-    transition: 1s;
+    border: 1px;
+
+    &:hover {
+      cursor: zoom-in;
+    }
+  `,
+  MainImageExpanded: styled.img`
+    float: left;
+    position: relative;
+    top: 7.5%;
+    left: 3%;
+    width: 70%;
+    height: 85%;
+    object-fit: contain;
+    background-color: #f8f8f8;
+    /* border: 2px solid grey; */
+
+    &:hover {
+      cursor: crosshair;
+    }
+  `,
+  ZoomContainer: styled.div`
+    float: left;
+    position: relative;
+    top: 7.5%;
+    left: 3%;
+    width: 90%;
+    height: 85%;
+    overflow: hidden;
+  `,
+  MainImageZoomed: styled.img`
+    object-fit: contain;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+
+    &:hover {
+      cursor: zoom-out;
+    }
   `,
   RightArrow: styled.div`
     /* display: flex; */
@@ -49,6 +93,9 @@ const IG = {
     position: relative;
     top: 45%;
     left: 3%;
+    /* position: absolute; */
+    /* top: 42.7% */
+    /* right: 40%; */
     width: 8%;
     height: 7%;
     /* border: 3px solid grey; */
@@ -87,11 +134,13 @@ const IG = {
   `,
   Thumbnail: styled.img`
     position: relative;
-    margin: 2% 0 5% 0;
+    margin: 1.8px 0 4.6px 0;
     top: 7px;
     left: 10%;
+    max-width: 65px;
     width: 70%;
-    height: 10%;
+    height: 57px;
+    /* height: 10%; */
     border-radius: 10%;
     border: 2px solid grey;
 `,
