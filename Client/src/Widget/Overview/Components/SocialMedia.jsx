@@ -41,7 +41,7 @@ const SocialMedia = ({ product, currStyle }) => {
           type="button"
           role="button"
           title="Share on pinterest"
-          href={`http://pinterest.com/pin/create/link/?url=${url}&media=https://www.redhat.com/cms/managed-files/Brand_Standars-Red_Hat-_color_on-darkgray.svg?itok=OMKEYTam&description=Next%20stop%3A%20Pinterest`}
+          href={`http://pinterest.com/pin/create/link/?url=${url}&media=https://www.kindpng.com/picc/m/31-310489_six-thinking-hats-red-hd-png-download.png`}
           rel="noopener"
           style={{ color: 'grey' }}
         >
