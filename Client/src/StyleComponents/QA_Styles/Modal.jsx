@@ -28,6 +28,7 @@ const Modal = {
     position: fixed;
     z-index: 1000;
     border-radius: 10px;
+    overflow: auto;
   `,
   Content: styled.div`
     display: flex;
@@ -55,6 +56,15 @@ const Modal = {
   `,
   Name: styled.input`
     width: 400px
+  `,
+  Add: styled.div`
+    display: inline;
+  `,
+  FormLabel: styled.div`
+
+  `,
+  PhotoContainer: styled.div`
+  display: inline
   `,
 };
 

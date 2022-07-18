@@ -2,24 +2,29 @@ import React, { useState } from "react";
 import AddAQuestionModal from "./AddAQuestionModal.jsx";
 import Modal from "../../../StyleComponents/QA_Styles/Modal.jsx";
 
-const AddAQuestion = () => {
+const AddAQuestion = ({
+  productName, qA, getQa, productID,
+}) => {
   const [isOpen, setIsOpen] = useState(false);
+  if (qA.length === 0) return null;
   return (
-    <div>
+    <Modal.Add>
       <Modal.AddQuestion
         type="button"
         onClick={() => {
           setIsOpen(true);
-          console.log(isOpen);
         }}
       >
         ADD A QUESTION +
       </Modal.AddQuestion>
       <AddAQuestionModal
-        onClose={() => setIsOpen(false)}
+        productName={productName}
+        onClose={() => (setIsOpen(false))}
         isOpen={isOpen}
+        getQa={getQa}
+        productID={productID}
       />
-    </div>
+    </Modal.Add>
   );
 };
 
