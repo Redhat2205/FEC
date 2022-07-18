@@ -4,7 +4,7 @@ const PAI = {
   Slogan: styled.div`
     display: inline-block;
     float: left;
-    margin: 3% 0 1% 10%;
+    margin: 3% 0 0 10%;
     width: 40%;
     height: 20%;
     font-weight: 700;
@@ -16,6 +16,7 @@ const PAI = {
     margin: 1% 0 1% 10%;
     width: 40%;
     height: 30%;
+    overflow: auto;
     font-size: 15px;
   `,
   FeatureList: styled.ul`
