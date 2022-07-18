@@ -7,6 +7,7 @@ const AnswerList = ({ answerObj, onClickHelpful, onReport }) => {
   const sortedAnswer = Object.values(answerObj).sort((a, b) => (
     b.helpfulness - a.helpfulness
   ));
+  sortedAnswer.sort((a, b) => (a.answerer_name.toLowerCase() === 'seller' ? -1 : 0));
   const handleMoreAnswers = () => (
     moreAnswer !== true ? setMoreAnwser(true) : setMoreAnwser(false)
   );

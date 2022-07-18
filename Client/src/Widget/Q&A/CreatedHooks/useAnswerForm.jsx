@@ -28,28 +28,16 @@ const useAnswerForm = (questionID) => {
     const json = values;
     const formData = new FormData();
     formData.append("upload_preset", "fecuploads");
-    const requests = [];
-    for (let i = 0; i < imageSrc.length; i += 1) {
+    const promises = imageSrc.map((image) => {
       if (formData.get('file') === undefined) {
-        formData.append("file", imageSrc[i][0]);
+        formData.append("file", image[0]);
       } else {
-        formData.set("file", imageSrc[i][0]);
+        formData.set("file", image[0]);
       }
-      requests.push(axios.post("https://api.cloudinary.com/v1_1/dnwsss6fk/image/upload", formData));
-    }
-    axios.all(
-      requests,
-      // [
-      //   imageSrc.forEach((image) => {
-      //     if (formData.get('file') === undefined) {
-      //       formData.append("file", image[0]);
-      //     } else {
-      //       formData.set("file", image[0]);
-      //     }
-      //     axios.post("https://api.cloudinary.com/v1_1/dnwsss6fk/image/upload", formData);
-      //     // .then((r) => { (urlArray.push(r.data.url)); });
-      //   }),
-      // ],
+      return axios.post("https://api.cloudinary.com/v1_1/dnwsss6fk/image/upload", formData);
+    });
+    Promise.all(
+      promises,
     )
       .then((response) => {
         response.forEach((res) => {
@@ -66,11 +54,14 @@ const useAnswerForm = (questionID) => {
         }).then((r) => { console.log("PRINT RESPONSE"); console.log(r); });
       })
       .then(() => setSubmit(true))
-      .then(() => (setValues({
-        name: "",
-        email: "",
-        body: "",
-      })))
+      .then(() => {
+        setImageSrc([]);
+        setValues({
+          name: "",
+          email: "",
+          body: "",
+        });
+      })
       .catch((err) => console.log(err));
   };
 

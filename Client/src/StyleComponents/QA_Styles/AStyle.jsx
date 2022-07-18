@@ -20,29 +20,32 @@ const AStyle = {
     font-weight: normal;
     display: flex;
     list-style: none;
+    margin-right: 0px;
+    margin-top: 0;
+    width: 40%;
   `,
   More: styled.span`
     font-size: 12px;
     font-weight: bold;
   `,
   User: styled.li`
-    margin-right: 5px;
+   margin: 2px;
   `,
   Date: styled.li`
-    margin-right: 5px;
+  margin: 2px;
   `,
   Helpful: styled.li`
-    margin-right: 5px;
+  margin: 2px;
 `,
   Yes: styled.li`
-    margin-right: 5px;
+  margin: 2px;
     text-decoration-line: underline;
     &:hover {
     color: blue;
   }
 `,
   Reported: styled.li`
-    margin-right: 5px;
+  margin: 2px;
     text-decoration-line: underline;
     &:hover {
     color: blue;

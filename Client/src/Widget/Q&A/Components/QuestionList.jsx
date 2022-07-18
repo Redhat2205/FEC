@@ -34,7 +34,7 @@ const QuestionList = ({
   if (qA.length === 0) return <SubmitNewQuestion productID={productID} productName={productName} getQa={getQa} />;
   if (qA.length < 5) {
     return (
-      <div>
+      <div overflow="auto">
         {qA.map((qAObj) => (
           <QuestionPanel
             key={qAObj.question_id}
@@ -51,7 +51,7 @@ const QuestionList = ({
   //   onClickHelpful,
   // };
   return (
-    <div>
+    <div overflow="auto">
       {end === 4
         ? qA.slice(0, 4).map((qAObj) => (
           <QuestionPanel

@@ -37,7 +37,7 @@ const Style = {
     margin-bottom: 25px;
     `,
   QBody: styled.div`
-    width: 70%;
+    width: 60%;
     font-size: 18px;
     font-weight: bold;
     margin-bottom: 25px;
