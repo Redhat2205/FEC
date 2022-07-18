@@ -22,7 +22,7 @@ const underlineStyle = {
 // use stack but helpfulness trumps review date
 
 // eslint-disable-next-line consistent-return
-const Sorting = ({ reviews }) => {
+const Sorting = ({ reviews, reviewCount }) => {
   if (reviews) {
     const newest = reviews.slice(0).sort((a, b) => (
       a.review_id < b.review_id ? 1 : -1
@@ -41,7 +41,7 @@ const Sorting = ({ reviews }) => {
     return (
       <div>
         <label>
-          {`${reviews.length} `}
+          {reviewCount}
           reviews, sorted by
         </label>
         <select style={underlineStyle} name="sorting-dropdown-menu">

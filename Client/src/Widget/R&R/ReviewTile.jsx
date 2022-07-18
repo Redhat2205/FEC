@@ -4,6 +4,8 @@ import UserStars from './UserStars.jsx';
 
 import ReviewImages from './ReviewImages.jsx';
 
+import HelpfulReport from './HelpfulReport.jsx';
+
 const moment = require('moment');
 
 // styles
@@ -38,6 +40,7 @@ const ReviewTile = ({ eachReview }) => {
             <ReviewImages images={eachReview.photos} />
             <p>✔︎ I recommend this product</p>
             <div style={greyBG}>{eachReview.response}</div>
+            <HelpfulReport helpfulness={eachReview.helpfulness} reviewID={eachReview.review_id} />
           </div>
         );
       } // no response given!
@@ -49,6 +52,7 @@ const ReviewTile = ({ eachReview }) => {
           <p>{eachReview.body}</p>
           <ReviewImages images={eachReview.photos} />
           <p>✔︎ I recommend this product</p>
+          <HelpfulReport helpfulness={eachReview.helpfulness} reviewID={eachReview.review_id} />
         </div>
       );
     } // not recommended!
@@ -62,6 +66,7 @@ const ReviewTile = ({ eachReview }) => {
           <p>{eachReview.body}</p>
           <ReviewImages images={eachReview.photos} />
           <div style={greyBG}>{eachReview.response}</div>
+          <HelpfulReport helpfulness={eachReview.helpfulness} reviewID={eachReview.review_id} />
         </div>
       );
     }
@@ -73,6 +78,7 @@ const ReviewTile = ({ eachReview }) => {
         <h3>{eachReview.summary}</h3>
         <p>{eachReview.body}</p>
         <ReviewImages images={eachReview.photos} />
+        <HelpfulReport helpfulness={eachReview.helpfulness} reviewID={eachReview.review_id} />
       </div>
     );
   }
@@ -89,21 +95,20 @@ const ReviewTile = ({ eachReview }) => {
           <p>{eachReview.body}</p>
           <p>✔︎ I recommend this product</p>
           <div style={greyBG}>{eachReview.response}</div>
+          <HelpfulReport helpfulness={eachReview.helpfulness} reviewID={eachReview.review_id} />
         </div>
       );
     } // no response given!
     return (
       <div className="review-tile-container" style={tileBottomBorder}>
-        <h5 style={
-              textRight
-              }
-        >
+        <h5 style={textRight}>
           {`${eachReview.reviewer_name}, ${moment(eachReview.date).format('MMMM Do YYYY')}`}
         </h5>
         <UserStars eachReview={eachReview} />
         <h3>{eachReview.summary}</h3>
         <p>{eachReview.body}</p>
         <p>✔︎ I recommend this product</p>
+        <HelpfulReport helpfulness={eachReview.helpfulness} reviewID={eachReview.review_id} />
       </div>
     );
   } // not recommended!
@@ -116,6 +121,7 @@ const ReviewTile = ({ eachReview }) => {
         <h3>{eachReview.summary}</h3>
         <p>{eachReview.body}</p>
         <div style={greyBG}>{eachReview.response}</div>
+        <HelpfulReport helpfulness={eachReview.helpfulness} reviewID={eachReview.review_id} />
       </div>
     );
   }
@@ -126,6 +132,7 @@ const ReviewTile = ({ eachReview }) => {
       <UserStars eachReview={eachReview} />
       <h3>{eachReview.summary}</h3>
       <p>{eachReview.body}</p>
+      <HelpfulReport helpfulness={eachReview.helpfulness} reviewID={eachReview.review_id} />
     </div>
   );
 };

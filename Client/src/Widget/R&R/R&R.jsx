@@ -10,59 +10,19 @@ import BasicFn from './BasicFn.jsx';
 
 const moment = require('moment');
 
-// eslint-disable-next-line camelcase
-const { API_Base } = process.env;
-const secret = process.env.API_Key;
-
-// const dummyData = [
-//   {rating: 2,
-//    summary: 'blah blah blaze blahblah',
-//    date: '07-11-2022',
-//    reviewer_name: 'shy guy',
-//    body: 'dslajfdisfjidajfldsajflijlijflkdsjafldksjoigjasdoijgdisajfdigjisajgilsgjlidsajgil'
-//   },
-//   {rating: 3,
-//    summary: 'pizza pizza pizza pizza',
-//    date: '07-11-2022',
-//    reviewer_name: 'pizza maniac',
-//    body: 'adsfljkdsojgoiidsjgoidhfdhgljkfalfhdgfijiohweoirhgofshdihfighrowihgiohgioehgoi'
-//   },
-//   {rating: 5,
-//    summary: '5 tacos plus rice and beans',
-//    date: '07-11-2022',
-//    reviewer_name: 'zeiram',
-//    body: 'jaldfskjioewghaskhgjfdioshgiowrugroieuthdsaoghwrioiwohgiowahgoiefjo;gihrasagdhoi'
-//   },
-//   {rating: 1,
-//    summary: 'behari beef kebab with rice, salad, chickpeas and bread',
-//    date: '07-11-2022',
-//    reviewer_name: 'Porsche Owner',
-//    body: 'alksdjflahgoiewhgoiawhgiohgoijfaidoghriowhgoihwagiohfoghi'
-//   },
-//   {rating: 4,
-//    summary: 'grilled chicken greek salad',
-//    date: '07-11-2022',
-//    reviewer_name: 'Giant Rabbit',
-//    body: 'yuwihfgirosfhaeiodigosdjgjaghsflagsihiehegi'
-//   },
-// ];
-
 const R_R = ({ productID }) => {
   const [productReviews, setProductReviews] = useState([]);
   const [currentItem, setCurrentItem] = useState({});
-  const [reviewCount, setReviewCount] = useState(null);
   const [averageRating, setAverageRating] = useState(null);
   const [metaData, setMetaData] = useState(null);
-
-  // useEffects will initialize widget state based on API response data
+  const [reviewCount, setReviewCount] = useState(null);
 
   // set the currentItem
   useEffect(() => {
-    // get info for a specific product
     axios({
       method: 'get',
-      url: `${API_Base}/products/${productID}`,
-      headers: { Authorization: secret },
+      url: `${process.env.API_Base}/products/${productID}`,
+      headers: { Authorization: process.env.API_Key },
       // params: { product_id: productID },
     })
       .then((res) => {
@@ -74,13 +34,13 @@ const R_R = ({ productID }) => {
       });
   }, []);
 
+  // get all reviews for a specific product
   useEffect(() => {
-    // get all reviews for a specific product
     axios({
       method: 'get',
-      url: `${API_Base}/reviews/`,
+      url: `${process.env.API_Base}/reviews/`,
       // url: API_Base + '/reviews/' + productID,
-      headers: { Authorization: secret },
+      headers: { Authorization: process.env.API_Key },
       params: {
         product_id: productID,
         count: '9999',
@@ -89,7 +49,7 @@ const R_R = ({ productID }) => {
       .then((res) => {
         // console.log('all reviews specific product', res.data.results);
         setProductReviews(res.data.results);
-
+        setReviewCount(res.data.results.length);
         // set the average rating
         let total = 0;
         res.data.results.forEach((result) => { total += result.rating; });
@@ -98,19 +58,18 @@ const R_R = ({ productID }) => {
         // setAverageRating(total * 1.00);
         setAverageRating(Math.round((total / res.data.results.length) * 10) / 10);
         // console.log('response data results', res.data.results.length);
-        setReviewCount(res.data.results.length);
       })
       .catch((err) => {
         console.log('🟥there was an error fetching product info!', err);
       });
   }, []);
 
+  // get all metadata for a specific product
   useEffect(() => {
-    // get all metadata for a specific product
     axios({
       method: 'get',
-      url: `${API_Base}/reviews/meta`,
-      headers: { Authorization: secret },
+      url: `${process.env.API_Base}/reviews/meta`,
+      headers: { Authorization: process.env.API_Key },
       params: { product_id: productID },
     })
       .then((res) => {
@@ -144,8 +103,7 @@ const R_R = ({ productID }) => {
           border: 'solid 1px', borderRadius: '5px', boxShadow: '5px 10px #888888', float: 'right', width: '66%', marginBottom: '20px',
         }}
       >
-        {/* <h1 style={{textAlign: 'center', fontFamily: 'Tahoma'}}>Review List</h1> */}
-        <ReviewList reviews={productReviews} currentItem={currentItem} />
+        <ReviewList reviews={productReviews} currentItem={currentItem} reviewCount={reviewCount} />
       </div>
     </div>
   );

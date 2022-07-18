@@ -9,7 +9,7 @@ const sortingStyle = {
   marginLeft: '10%',
 };
 
-const ReviewList = ({ currentItem, reviews }) => {
+const ReviewList = ({ currentItem, reviews, reviewCount }) => {
   const [show, setShow] = useState(false);
   const [initialView, setInitialView] = useState(true);
   const [numberTiles, setNumberTiles] = useState(2);
@@ -17,27 +17,27 @@ const ReviewList = ({ currentItem, reviews }) => {
   if (initialView) {
     return (
       <div style={sortingStyle}>
-        <Sorting reviews={reviews} />
+        <Sorting reviewCount={reviewCount} reviews={reviews} />
         <ul>
           {reviews.slice(0, numberTiles).map((review) => (
             <ReviewTile key={review.review_id} eachReview={review} />
           ))}
         </ul>
-        <MoreReviews initialView={initialView} setInitialView={setInitialView} numberTiles={numberTiles} setNumberTiles={setNumberTiles} reviewCount={reviews.length} />
+        {numberTiles < reviewCount && <MoreReviews initialView={initialView} setInitialView={setInitialView} numberTiles={numberTiles} setNumberTiles={setNumberTiles} reviewCount={reviewCount} />}
         <AddReview show={show} setShow={setShow} />
         <AddReviewModal show={show} setShow={setShow} currentItem={currentItem} />
       </div>
     );
   } return (
     <div style={sortingStyle}>
-      <Sorting reviews={reviews} />
+      <Sorting reviewCount={reviewCount} reviews={reviews} />
       <ul>
         {reviews.map((review) => (
           <ReviewTile key={review.review_id} eachReview={review} />
         ))}
       </ul>
       {/* <MoreReviews onClick={() => (setInitialView(!initialView))} /> */}
-      <MoreReviews view={initialView} setInitialView={setInitialView} numberTiles={numberTiles} setNumberTiles={setNumberTiles} reviewCount={reviews.length} />
+      {numberTiles < reviewCount && <MoreReviews view={initialView} setInitialView={setInitialView} numberTiles={numberTiles} setNumberTiles={setNumberTiles} reviewCount={reviewCount} />}
       <AddReview show={show} setShow={setShow} />
       <AddReviewModal show={show} setShow={setShow} currentItem={currentItem} />
     </div>
