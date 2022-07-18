@@ -1,31 +1,38 @@
 import React, { useState, useEffect } from "react";
 import SectionDiv from "../../../StyleComponents/Overview_Styles/SectionDiv.jsx";
 import IG from "../../../StyleComponents/Overview_Styles/IG.jsx";
+import ThumbnailSection from "./ThumbnailSection.jsx";
 
-const ImageGallery = ({ currStyle }) => {
-  // console.log('styles in IG: ', currStyle);
+const ImageGallery = ({ currStyle, currView, setCurrView }) => {
   const [mainImages, setMainImages] = useState([]);
   const [thumbnails, setThumbnails] = useState([]);
-  const [currIndex, setcurrIndex] = useState(null);
+  const [currIndex, setcurrIndex] = useState(0);
   const [currTnSet, setCurrTnSet] = useState([]);
+  const [noImageInAPI, setNoImageInAPI] = useState(false);
+  const [mousePosition, setMousePosition] = useState({
+    x: 0,
+    y: 0,
+  });
 
   useEffect(() => {
     if (currStyle.name !== undefined) {
-      setcurrIndex(0);
-
       const mainArr = [];
       const thumbnailArr = [];
-      currStyle.photos.forEach((photoObj) => {
-        mainArr.push(photoObj.url);
-        if (photoObj.thumbnail_url[0] === 'u') {
-          thumbnailArr.push(photoObj.thumbnail_url.slice(1));
-        } else {
-          thumbnailArr.push(photoObj.thumbnail_url);
-        }
-      });
-      setMainImages(mainArr);
-      setThumbnails(thumbnailArr);
-      setCurrTnSet(thumbnailArr.slice(0, 7));
+      if (currStyle.photos.length === 1 && currStyle.photos[0].url === null) {
+        setNoImageInAPI(true);
+      } else {
+        currStyle.photos.forEach((photoObj) => {
+          mainArr.push(photoObj.url);
+          if (photoObj.thumbnail_url[0] === 'u') {
+            thumbnailArr.push(photoObj.thumbnail_url.slice(1));
+          } else {
+            thumbnailArr.push(photoObj.thumbnail_url);
+          }
+        });
+        setMainImages(mainArr);
+        setThumbnails(thumbnailArr);
+        setCurrTnSet(thumbnailArr.slice(0, 7));
+      }
     }
   }, [currStyle]);
 
@@ -60,61 +67,116 @@ const ImageGallery = ({ currStyle }) => {
     setcurrIndex(newIndex);
   };
 
-  if (currIndex !== null) {
+  // =========== Set View ============
+  const onClickDefault = () => {
+    setCurrView('default');
+    // console.log('default view');
+  };
+  const onClickExpand = () => {
+    setCurrView('expanded');
+    // console.log('expanded view');
+  };
+  const onClickZoom = (e) => {
+    setCurrView('zoomed');
+    setMousePosition({ x: e.pageX, y: e.pageY });
+    // console.log('zoomed view');
+  };
+
+  // ========= Zoomed View ==========
+  const handleMoseMove = (e) => {
+    const xVal = e.pageX;
+    const yVal = e.pageY;
+    setMousePosition({ x: xVal, y: yVal });
+    // console.log('x-y: ', mousePosition.x, mousePosition.y);
+  };
+
+  if (currIndex !== null && noImageInAPI === false) {
     return (
-      <SectionDiv.ImageGallerySection>
-        {/* <IG.MainImageDiv
-          style={{ backgroundImage: `url(${mainImages[currIndex]})` }}
-          alt={currStyle.name}
-        > */}
-        <IG.ThumbnailSection>
-          {currTnSet[0] !== thumbnails[7]
-            ? <IG.TnUpArrow style={{ fontWeight: 300 }}> .. </IG.TnUpArrow>
-            : <IG.TnUpArrow onClick={prevSetThumbnail}> ⌃ </IG.TnUpArrow>}
+      <div>
+        {currView === 'default' && (
+          <SectionDiv.ImageGallerySection>
+            {/* <IG.MainImageDiv
+              style={{ backgroundImage: `url(${mainImages[currIndex]})` }}
+              alt={currStyle.name}
+            > */}
+            <ThumbnailSection
+              thumbnails={thumbnails}
+              currIndex={currIndex}
+              setcurrIndex={setcurrIndex}
+              currTnSet={currTnSet}
+              setCurrTnSet={setCurrTnSet}
+            />
+            <IG.LeftArrow>
+              {currIndex === 0 ? null
+                : <IG.ArrowSpan onClick={prevMainImage}> 《 </IG.ArrowSpan>}
+            </IG.LeftArrow>
 
-          {currTnSet.map((thumbnail) => {
-            if (thumbnail === thumbnails[currIndex]) {
-              return (
-                <IG.Thumbnail
-                  style={{
-                    borderWidth: '2px 2px 2px 10px',
-                    borderStyle: 'ridge',
-                    borderColor: '#9698A8',
-                  }}
-                  key={thumbnail.slice(34, 47)}
-                  src={thumbnail}
-                  alt={thumbnail.slice(34, 47)}
-                />
-              );
-            }
-            return (
-              <IG.Thumbnail
-                key={thumbnail.slice(34, 47)}
-                src={thumbnail}
-                alt={thumbnail.slice(34, 47)}
-                onClick={() => onClickSetIndex(thumbnail)}
+            <IG.MainImageDefault
+              src={mainImages[currIndex]}
+              alt={currStyle}
+              onClick={onClickExpand}
+            />
+            <IG.RightArrow>
+              {currIndex === mainImages.length - 1 ? null
+                : <IG.ArrowSpan onClick={nextMainImage}> 》 </IG.ArrowSpan>}
+            </IG.RightArrow>
+            {/* </IG.MainImageDiv> */}
+          </SectionDiv.ImageGallerySection>
+        )}
+
+        {currView === 'expanded' && (
+          <SectionDiv.ImageGallerySection style={{ width: "98%" }}>
+            <ThumbnailSection
+              thumbnails={thumbnails}
+              currIndex={currIndex}
+              setcurrIndex={setcurrIndex}
+              currTnSet={currTnSet}
+              setCurrTnSet={setCurrTnSet}
+            />
+            <IG.LeftArrow style={{ left: '7%' }}>
+              {currIndex === 0 ? null
+                : <IG.ArrowSpan onClick={prevMainImage}> 《 </IG.ArrowSpan>}
+            </IG.LeftArrow>
+
+            <IG.MainImageExpanded
+              src={mainImages[currIndex]}
+              alt={currStyle}
+              onClick={(e) => onClickZoom(e)}
+            />
+
+            <IG.RightArrow style={{ left: '1%' }}>
+              {currIndex === mainImages.length - 1 ? null
+                : <IG.ArrowSpan onClick={nextMainImage}> 》 </IG.ArrowSpan>}
+            </IG.RightArrow>
+
+          </SectionDiv.ImageGallerySection>
+        )}
+
+        {currView === 'zoomed' && (
+          <SectionDiv.ImageGallerySection style={{ width: "98%" }}>
+            <ThumbnailSection
+              thumbnails={thumbnails}
+              currIndex={currIndex}
+              setcurrIndex={setcurrIndex}
+              currTnSet={currTnSet}
+              setCurrTnSet={setCurrTnSet}
+            />
+
+            <IG.ZoomContainer>
+              <IG.MainImageZoomed
+                src={mainImages[currIndex]}
+                alt={currStyle}
+                onClick={onClickDefault}
+                onMouseMove={(e) => handleMoseMove(e)}
+                style={{
+                  transformOrigin: `${mousePosition.x}px ${mousePosition.y}px`,
+                  transform: 'scale(2.5)',
+                }}
               />
-            );
-          })}
-
-          {currTnSet[0] === thumbnails[7] ? null
-            : <IG.TnDownArrow onClick={nextSetThumbnail}> ⌄ </IG.TnDownArrow>}
-
-        </IG.ThumbnailSection>
-
-        <IG.LeftArrow>
-          {currIndex === 0 ? null
-            : <IG.ArrowSpan onClick={prevMainImage}> 《 </IG.ArrowSpan>}
-        </IG.LeftArrow>
-
-        <IG.MainImage src={mainImages[currIndex]} alt={currStyle} />
-
-        <IG.RightArrow>
-          {currIndex === mainImages.length - 1 ? null
-            : <IG.ArrowSpan onClick={nextMainImage}> 》 </IG.ArrowSpan>}
-        </IG.RightArrow>
-        {/* </IG.MainImageDiv> */}
-      </SectionDiv.ImageGallerySection>
+            </IG.ZoomContainer>
+          </SectionDiv.ImageGallerySection>
+        )}
+      </div>
     );
   }
 
