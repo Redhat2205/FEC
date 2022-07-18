@@ -62,6 +62,7 @@ const QuestionList = ({
             onClickHelpful={onClickHelpful}
             onReport={onReport}
             onQReport={onQReport}
+            getQa={getQa}
             onSubmitAnswerHandle={onSubmitAnswerHandle}
             // try later {...thingy}
           />
@@ -71,6 +72,7 @@ const QuestionList = ({
             key={qAObj.question_id}
             questionid={qAObj.question_id}
             qAObj={qAObj}
+            getQa={getQa}
             onClickHelpful={onClickHelpful}
             productName={productName}
             onReport={onReport}
@@ -83,6 +85,7 @@ const QuestionList = ({
         qA={qA}
         productName={productName}
         productID={productID}
+        getQa={getQa}
       />
     </div>
   );

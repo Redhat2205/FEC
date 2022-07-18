@@ -3,7 +3,7 @@ import AddAQuestionModal from "./AddAQuestionModal.jsx";
 import Modal from "../../../StyleComponents/QA_Styles/Modal.jsx";
 
 const AddAQuestion = ({
-  productName, qA, onSubmitHandle, productID,
+  productName, qA, getQa, productID,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
   if (qA.length === 0) return null;
@@ -21,7 +21,7 @@ const AddAQuestion = ({
         productName={productName}
         onClose={() => (setIsOpen(false))}
         isOpen={isOpen}
-        onSubmitHandle={onSubmitHandle}
+        getQa={getQa}
         productID={productID}
       />
     </Modal.Add>

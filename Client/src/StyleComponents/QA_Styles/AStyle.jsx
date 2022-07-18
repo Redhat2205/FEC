@@ -48,6 +48,10 @@ const AStyle = {
     color: blue;
   }
 `,
+  PhotoList: styled.ul`
+    display:inline-block;
+    overflow-x: auto
+  `,
 };
 
 export default AStyle;

@@ -26,7 +26,6 @@ const Q_A = ({ productID }) => {
   };
 
   useEffect(() => {
-    console.log(typeof productID);
     getQa();
   }, []);
   const searchHandler = (searchTerm) => {

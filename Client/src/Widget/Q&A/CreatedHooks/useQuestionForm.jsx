@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from "react";
 import axios from 'axios';
 
-const useForm = (productID, getQa) => {
+const useQuestionForm = (productID, getQa) => {
   const [submit, setSubmit] = useState(false);
   const [values, setValues] = useState({
     name: "",
     email: "",
     body: "",
-    product_id: "",
   });
   const handleInput = (e) => {
     const { name, value } = e.target;
@@ -28,11 +27,18 @@ const useForm = (productID, getQa) => {
       data: json,
     })
       .then(() => getQa())
+      .then(() => setSubmit(true))
+      .then(() => (setValues({
+        name: "",
+        email: "",
+        body: "",
+        product_id: "",
+      })))
       .catch((err) => console.log(err));
   };
 
   return {
-    handleInput, handleSubmit, values,
+    handleInput, handleSubmit, values, submit, setSubmit,
   };
 };
-export default useForm;
+export default useQuestionForm;

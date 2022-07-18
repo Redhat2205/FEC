@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 import AStyle from "../../../StyleComponents/QA_Styles/AStyle.jsx";
+import AnswerPhoto from "./AnswerPhoto.jsx";
+
+const moment = require('moment');
 
 const AnswerPanel = ({ answer, onClickHelpful, onReport }) => {
   const [answerHelp, setAnswerHelp] = useState(false);
@@ -14,7 +17,7 @@ const AnswerPanel = ({ answer, onClickHelpful, onReport }) => {
         <AStyle.User>
           {`by ${answer.answerer_name}`}
         </AStyle.User>
-        <AStyle.Date>{`| ${answer.date}`}</AStyle.Date>
+        <AStyle.Date>{`| ${moment(answer.date).format('MMMM Do YYYY')}`}</AStyle.Date>
         <AStyle.Helpful>| Helpful?</AStyle.Helpful>
         {answerHelp ? <li>{`| Yes (${answer.helpfulness})`}</li>
           : (
@@ -39,6 +42,17 @@ const AnswerPanel = ({ answer, onClickHelpful, onReport }) => {
           {report ? "Reported" : "Report"}
         </AStyle.Reported>
       </AStyle.Info>
+      {answer.photos.length > 0 && (
+        <ul display="inline-block">
+          {answer.photos.map((photo, index) => (
+            <AnswerPhoto
+              margin="50px"
+              key={index}
+              url={photo}
+            />
+          ))}
+        </ul>
+      )}
     </div>
   );
 };

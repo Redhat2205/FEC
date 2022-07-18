@@ -5,7 +5,7 @@ import Style from "../../../StyleComponents/QA_Styles/Style.jsx";
 import AStyle from "../../../StyleComponents/QA_Styles/AStyle.jsx";
 
 const QuestionsPanel = ({
-  questionid, qAObj, onClickHelpful, productName, onReport, onQReport, productID, onSubmitAnswerHandle,
+  questionid, qAObj, onClickHelpful, productName, onReport, onQReport, productID, getQa,
 }) => {
   const [showAnswerStatus, setShowAnswerStatus] = useState(false);
   const [answerHelp, setAnswerHelp] = useState(false);
@@ -38,10 +38,10 @@ const QuestionsPanel = ({
         <AddAnswerModal
           productName={productName}
           productID={productID}
+          getQa={getQa}
           questionBody={qAObj.question_body}
           addModalStatus={addModalStatus}
           questionID={questionid}
-          onSubmitAnswerHandle={onSubmitAnswerHandle}
           onClose={() => (setAddModalStatus(false))}
         />
         <AStyle.Reported
