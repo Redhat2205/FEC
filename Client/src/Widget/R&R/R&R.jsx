@@ -1,10 +1,8 @@
 /* eslint-disable camelcase */
 import React, { useState, useEffect } from "react";
 import axios from 'axios';
-
 import ReviewList from './ReviewList.jsx';
 import RatingChart from './RatingChart.jsx';
-import StarTest from './StarTest.jsx';
 import MaskTest from './MaskTest.jsx';
 import BasicFn from './BasicFn.jsx';
 

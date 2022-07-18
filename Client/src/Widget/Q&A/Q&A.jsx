@@ -2,20 +2,16 @@ import React, { useState, useEffect } from "react";
 import axios from 'axios';
 import QuestionList from './Components/QuestionList.jsx';
 import SearchBar from './Components/SearchBar.jsx';
-import AddAQuestion from './Components/AddAQuestion.jsx';
 import Style from "../../StyleComponents/QA_Styles/Style.jsx";
 
 const Q_A = ({ productID }) => {
   const [qA, setQa] = useState([]);
-
-  useEffect(() => {
-    getQa();
-  }, []);
+  const productName = "Pumped Up Kicks";
 
   const getQa = () => {
     axios({
       method: 'get',
-      url: `${process.env.API_Base}/qa/questions?product_id=${productID}`,
+      url: `${process.env.API_Base}/qa/questions?product_id=${productID}&count=1000`,
       headers: { Authorization: process.env.API_Key },
     })
       .then((product) => {
@@ -29,6 +25,9 @@ const Q_A = ({ productID }) => {
       });
   };
 
+  useEffect(() => {
+    getQa();
+  }, []);
   const searchHandler = (searchTerm) => {
     if (searchTerm.length > 2) {
       const result = qA.filter((questions) => (questions.question_body.toLowerCase().includes(searchTerm.toLowerCase())));
@@ -41,13 +40,11 @@ const Q_A = ({ productID }) => {
   const onClickHelpful = (e) => {
     const current = (e.target.getAttribute('type'));
     let currentUrl;
-    let questionID;
-    let answerID;
     if (current === 'question') {
-      questionID = e.target.getAttribute('id');
+      const questionID = e.target.getAttribute('id');
       currentUrl = `${process.env.API_Base}/qa/questions/${questionID}/helpful`;
     } else if (current === 'answer') {
-      answerID = e.target.getAttribute('id');
+      const answerID = e.target.getAttribute('id');
       currentUrl = `${process.env.API_Base}/qa/answers/${answerID}/helpful`;
     }
     axios({
@@ -58,9 +55,18 @@ const Q_A = ({ productID }) => {
       .then(() => { getQa(); })
       .catch((err) => console.log(err));
   };
-  const onClickAddQuestion = () => {
 
+  const onReport = (e) => {
+    const answerID = e.target.getAttribute('id');
+    axios({
+      method: 'put',
+      url: `${process.env.API_Base}/qa/answers/${answerID}/report`,
+      headers: { Authorization: process.env.API_Key },
+    })
+      .then(() => { getQa(); })
+      .catch((err) => console.log(err));
   };
+
   return (
     <Style.Body data-testid="qna">
       <Style.Title> Questions and Answers</Style.Title>
@@ -70,8 +76,10 @@ const Q_A = ({ productID }) => {
       <QuestionList
         qA={qA}
         onClickHelpful={onClickHelpful}
-      />
-      <AddAQuestion
+        productName={productName}
+        onReport={onReport}
+        productID={productID}
+        getQa={getQa}
       />
     </Style.Body>
   );

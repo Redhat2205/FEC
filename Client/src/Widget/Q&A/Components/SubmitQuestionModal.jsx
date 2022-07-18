@@ -1,15 +1,15 @@
 import React, { useState } from "react";
 import Modal from "../../../StyleComponents/QA_Styles/Modal.jsx";
-import useAnswerForm from "../CreatedHooks/useAnswerForm.jsx";
+import useQuestionForm from "../CreatedHooks/useQuestionForm.jsx";
 
-const AddAnswerModal = ({
-  addModalStatus, onClose, questionBody, productName, questionID, getQa,
+const SubmitQuestionModal = ({
+  productName, onClose, modalSubQuestion, productID, getQa,
 }) => {
   const {
-    handleSubmit, handleInput, values, submit, setSubmit, handleOnChangePhoto, imageSrc,
-  } = useAnswerForm(questionID, getQa);
+    handleSubmit, handleInput, values, submit,
+  } = useQuestionForm(productID, getQa);
 
-  if (!addModalStatus) return null;
+  if (!modalSubQuestion) return null;
   return (
     <Modal.Background>
       <Modal.PopUp>
@@ -17,9 +17,9 @@ const AddAnswerModal = ({
           {submit
             ? <h1>Successfully Submited</h1>
             : (
-              <form overflow="auto" onSubmit={handleSubmit}>
-                <h1> Submit Your Answer</h1>
-                <h3>{`${productName}: ${questionBody}`}</h3>
+              <form onSubmit={handleSubmit}>
+                <h1> Submit Your Question</h1>
+                <h3>{`About the ${productName}`}</h3>
                 <div>
                   <Modal.FormLabel> What is your nickname </Modal.FormLabel>
                   <Modal.Name
@@ -35,6 +35,7 @@ const AddAnswerModal = ({
                 <div>
                   <Modal.FormLabel> Your email </Modal.FormLabel>
                   <Modal.Name
+                    id="email"
                     type="email"
                     name="email"
                     placeholder="Example:jack@email.com"
@@ -46,6 +47,7 @@ const AddAnswerModal = ({
                 <div>
                   <Modal.FormLabel> What is your nickname </Modal.FormLabel>
                   <Modal.SubmitInput
+                    id="body"
                     type="text"
                     name="body"
                     placeholder="Ask something here"
@@ -54,26 +56,14 @@ const AddAnswerModal = ({
                     onChange={handleInput}
                   />
                 </div>
-                <div>
-                  <Modal.FormLabel> Upload Photo </Modal.FormLabel>
-                  <Modal.Name type="file" name="photo" onChange={handleOnChangePhoto} />
-                  <br />
-                  {imageSrc.length >= 1 && <Modal.Name type="file" name="photo" onChange={handleOnChangePhoto} />}
-                  <br />
-                  {imageSrc.length >= 2 && <Modal.Name type="file" name="photo" onChange={handleOnChangePhoto} />}
-                  <br />
-                  {imageSrc.length >= 3 && <Modal.Name type="file" name="photo" onChange={handleOnChangePhoto} />}
-                  <br />
-                  {imageSrc.length >= 4 && <Modal.Name type="file" name="photo" onChange={handleOnChangePhoto} />}
-                </div>
                 <button type="submit">Submit Question</button>
               </form>
             )}
-          <Modal.CloseButton onClick={() => { onClose(); setSubmit(false); getQa(); }}> X </Modal.CloseButton>
+          <Modal.CloseButton onClick={onClose}> X </Modal.CloseButton>
         </Modal.Content>
       </Modal.PopUp>
     </Modal.Background>
   );
 };
 
-export default AddAnswerModal;
+export default SubmitQuestionModal;

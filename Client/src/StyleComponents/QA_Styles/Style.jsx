@@ -9,6 +9,12 @@ const Style = {
     padding: 10px;
     overflow: hidden;
   `,
+  QuestionBody: styled.div`
+  margin: auto;
+  height: 70%;
+  padding: 10px;
+  overflow: auto;
+`,
   SearchBar: styled.input`
     margin-left: auto;
     margin-right: auto;
@@ -35,14 +41,30 @@ const Style = {
     font-size: 18px;
     font-weight: bold;
     margin-bottom: 25px;
-  `,
+    `,
+  QBody: styled.div`
+    width: 60%;
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 25px;
+    display: inline-block;
+
+ `,
+  MoreAnsweredQuestion: styled.button`
+    width: 30%;
+    height: 65px;
+    font-size: 18px;
+    font-weight: bold;
+`,
   Info: styled.ul`
-  font-size: 13px;
-  font-weight: normal;
-  display: flex;
-  float: right;
-  list-style: none;
+    font-size: 13px;
+    font-weight: normal;
+    display: flex;
+    float: right;
+    list-style: none;
   `,
 };
 
 export default Style;
+
+// transition
