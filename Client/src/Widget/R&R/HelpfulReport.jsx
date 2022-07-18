@@ -11,15 +11,18 @@ const HelpfulReport = ({ reviewID, helpfulness }) => {
     if (!reported) {
       console.log(`report review ${reviewID}`);
       reported = true;
-      // axios({
-      //   // eslint-disable-next-line camelcase
-      //   url: `${process.env.API_Base}/reviews/${reviewID}/report`,
-      //   headers: { Authorization: process.env.API_Key },
-      // })
-      //   .then()
-      //   .catch((err) => {
-      //     console.log('🟥There was an error reporting review', err);
-      //   });
+      axios({
+        // eslint-disable-next-line camelcase
+        method: 'put',
+        url: `${process.env.API_Base}/reviews/${reviewID}/report`,
+        headers: { Authorization: process.env.API_Key },
+      })
+        .then((res) => {
+          console.log(res);
+        })
+        .catch((err) => {
+          console.log('🟥There was an error reporting review', err);
+        });
     }
   };
 
@@ -27,15 +30,18 @@ const HelpfulReport = ({ reviewID, helpfulness }) => {
     if (!helpful) {
       helpful = true;
       console.log(`mark review ${reviewID} helpful`);
-      // axios({
-      //   // eslint-disable-next-line camelcase
-      //   url: `${process.env.API_Base}/reviews/${reviewID}/helpful`,
-      //   headers: { Authorization: process.env.API_Key },
-      // })
-      //   .then(() => {})
-      //   .catch((err) => {
-      //     console.log('🟥There was an error marking review helpful', err);
-      //   });
+      axios({
+        // eslint-disable-next-line camelcase
+        method: 'put',
+        url: `${process.env.API_Base}/reviews/${reviewID}/helpful`,
+        headers: { Authorization: process.env.API_Key },
+      })
+        .then((res) => {
+          console.log(res);
+        })
+        .catch((err) => {
+          console.log('🟥There was an error marking review helpful', err);
+        });
     }
   };
   console.log(reviewID);

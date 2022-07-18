@@ -12,72 +12,43 @@ const starOutlineStyle = {
   display: 'inline-block',
 };
 
+// const BasicFn = ({ averageRating }) => {
 const BasicFn = ({ averageRating }) => {
   // convert average rating to closet .25 value
-  let converted = (Math.round(averageRating * 4) / 4).toFixed(2);
+  if (averageRating) {
+    console.log("average rating", averageRating);
+    let converted = (Math.round(averageRating * 4) / 4).toFixed(2);
+    console.log('converted', converted);
+    const totalStars = 5;
+    // const activeStars = 3;
+    const counter1 = 0;
+    const counter2 = converted;
+    const activeStars = [];
 
-  const totalStars = 5;
-  // const activeStars = 3;
-  const counter1 = 0;
-  const counter2 = converted;
-  const activeStars = [];
-
-  while (converted > 0) {
-    if (converted > 1) {
-      activeStars.push('100%');
+    while (converted > 0) {
+      if (converted >= 1) {
+        activeStars.push('100%');
+        // converted -= 1;
+      }
+      if (converted === 0.75) {
+        activeStars.push('59%');
+        // converted -= 0.75;
+      }
+      if (converted === 0.5) {
+        activeStars.push('50%');
+        // converted -= 0.5;
+      }
+      if (converted === 0.25) {
+        activeStars.push('39%');
+        // converted -= 0.25;
+      }
       converted -= 1;
+      console.log('end of iteration converted', converted);
     }
-    if (converted === 0.75) {
-      activeStars.push('57%');
-      converted -= 0.75;
-    }
-    if (converted === 0.5) {
-      activeStars.push('50%');
-      converted -= 0.5;
-    }
-    if (converted === 0.25) {
-      activeStars.push('39%');
-      converted -= 0.25;
-    }
-  }
 
-  while (activeStars.length < 5) {
-    activeStars.push('0%');
-  }
-
-  // const generateStars = () => {
-  //   while (counter1 < 5) {
-  //     if (counter2 > 1) {
-  //       counter1++;
-  //       counter2--;
-  //       activeStars.push('100%');
-  //       console.log(counter1);
-  //     }
-  //     if (counter2 === 0.75) {
-  //       counter1++;
-  //       counter2 - 0.75;
-  //       activeStars.push('59%');
-  //       console.log(counter1);
-  //     }
-  //     if (counter2 === 0.5) {
-  //       counter1++;
-  //       counter2 - 0.5;
-  //       activeStars.push('50%');
-  //       console.log(counter1);
-  //     }
-  //     if (counter2 === 0.25) {
-  //       counter1++;
-  //       counter2 - 0.25;
-  //       activeStars.push('40%');
-  //       console.log(counter1);
-  //     }
-  //     if (counter2 === 0) {
-  //       counter1++;
-  //       activeStars.push('0%');
-  //       console.log(counter1);
-  //     }
-  //   }
-  // };
+    while (activeStars.length < 5) {
+      activeStars.push('0%');
+    }
 
   // useEffect(() => {
   //   if (converted > 0.00) {
@@ -88,13 +59,7 @@ const BasicFn = ({ averageRating }) => {
   //   }
   // }, [converted]);
 
-  // console.log(activeStars);
-
-  // return (
-  //   <div>
-  //     {[...new Array(totalStars)].map((arr, index) => (index < activeStars ? <div style={starStyle}>★</div> : <div style={starOutlineStyle}>☆</div>))}
-  //   </div>
-  // );
+  console.log('active stars', activeStars);
 
   if (activeStars.length > 0) {
     return (
@@ -130,6 +95,7 @@ const BasicFn = ({ averageRating }) => {
   } return (
     <div>☆☆☆☆☆</div>
   );
+  }
 };
 
 export default BasicFn;

@@ -8,7 +8,7 @@ import Factors from './Factors.jsx';
 const RatingChart = ({ currentItem, averageRating, productReviews }) => (
   <div>
     <h5 style={{ display: 'inline-block' }}>{averageRating}</h5>
-    {/* <BasicFn averageRating={averageRating} style={{ display: 'inline-block' }} /> */}
+    <BasicFn averageRating={averageRating} style={{ display: 'inline-block' }} />
     <Recommended productReviews={productReviews} />
     <div>
       <BarChartDemo productReviews={productReviews} />
