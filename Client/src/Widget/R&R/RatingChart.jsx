@@ -1,52 +1,22 @@
 import React from 'react';
+import BasicFn from './BasicFn.jsx';
+import BarChartDemo from './BarChartDemo.jsx';
+import Recommended from './Recommended.jsx';
+import Factors from './Factors.jsx';
 
-const RatingChart = (props) => {
-  if (props.currentItem.rating === 1) {
-    return (
-      <div>
-      <h1 style={{ textAlign: 'center', fontFamily: 'tahoma' }}>{'Rating:' + ' ' + props.currentItem.rating}</h1>
-      <p style={{ textAlign: 'center' }}>⭐️</p>
+// eslint-disable-next-line consistent-return
+const RatingChart = ({ currentItem, averageRating, productReviews }) => (
+  <div>
+    <h5 style={{ display: 'inline-block' }}>{averageRating}</h5>
+    <BasicFn averageRating={averageRating} style={{ display: 'inline-block' }} />
+    <Recommended productReviews={productReviews} />
+    <div>
+      <BarChartDemo productReviews={productReviews} />
     </div>
-    );
-  }
-  if (props.currentItem.rating === 2) {
-    return (
-      <div>
-      <h1 style={{ textAlign: 'center', fontFamily: 'tahoma' }}>{'Rating:' + ' ' + props.currentItem.rating}</h1>
-      <p style={{ textAlign: 'center' }}>⭐️⭐️</p>
+    <div>
+      <Factors productReviews={productReviews} />
     </div>
-    )
-  }
-  if (props.currentItem.rating === 3) {
-    return (
-      <div>
-      <h1 style={{ textAlign: 'center', fontFamily: 'tahoma' }}>{'Rating:' + ' ' + props.currentItem.rating}</h1>
-      <p style={{ textAlign: 'center' }}>⭐️⭐️⭐️</p>
-    </div>
-    )
-  }
-  if (props.currentItem.rating === 4) {
-    return (
-      <div>
-      <h1 style={{ textAlign: 'center', fontFamily: 'tahoma' }}>{'Rating:' + ' ' + props.currentItem.rating}</h1>
-      <p style={{ textAlign: 'center' }}>⭐️⭐️⭐️⭐️</p>
-    </div>
-    )
-  }
-  if (props.currentItem.rating === 5) {
-    return (
-      <div>
-      <h1 style={{ textAlign: 'center', fontFamily: 'tahoma' }}>{'Rating:' + ' ' + props.currentItem.rating}</h1>
-      <p style={{ textAlign: 'center' }}>⭐️⭐️⭐️⭐️⭐️</p>
-    </div>
-    )
-  } else if (typeof props.currentItem.rating !== 'number') {
-    return (
-      <div>
-      <h1 style={{ textAlign: 'center', fontFamily: 'tahoma' }}>{'Rating: -'}</h1>
-    </div>
-    )
-  }
-};
+  </div>
+);
 
 export default RatingChart;
