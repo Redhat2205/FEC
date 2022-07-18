@@ -5,7 +5,7 @@ import SectionDiv from "../../../StyleComponents/Overview_Styles/SectionDiv.jsx"
 import PAI from "../../../StyleComponents/Overview_Styles/PAI.jsx";
 
 const SocialMedia = ({ product, currStyle }) => {
-  const url = 'www.zara.com';
+  const url = 'www.ourURL.com';
 
   if (product.name !== undefined) {
     return (
@@ -17,6 +17,7 @@ const SocialMedia = ({ product, currStyle }) => {
           title="Share on facebook"
           href={`https://www.facebook.com/sharer/sharer.php?u=${url}`}
           rel="noopener"
+          style={{ color: 'grey' }}
         >
           <FontAwesomeIcon
             icon={faFacebookSquare}
@@ -29,6 +30,7 @@ const SocialMedia = ({ product, currStyle }) => {
           title="Share on twitter"
           href={`https://twitter.com/intent/tweet?url=${url}`}
           rel="noopener"
+          style={{ color: 'grey' }}
         >
           <FontAwesomeIcon
             icon={faTwitter}
@@ -41,6 +43,7 @@ const SocialMedia = ({ product, currStyle }) => {
           title="Share on pinterest"
           href={`http://pinterest.com/pin/create/link/?url=${url}&media=https://www.redhat.com/cms/managed-files/Brand_Standars-Red_Hat-_color_on-darkgray.svg?itok=OMKEYTam&description=Next%20stop%3A%20Pinterest`}
           rel="noopener"
+          style={{ color: 'grey' }}
         >
           <FontAwesomeIcon
             icon={faPinterest}
