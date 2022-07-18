@@ -1,32 +1,65 @@
-import React from "react";
+import React, { useState } from "react";
 import Modal from "../../../StyleComponents/QA_Styles/Modal.jsx";
+import useQuestionForm from "../CreatedHooks/useQuestionForm.jsx";
 
-const AddAQuestionModal = ({ isOpen, onClose }) => {
+const AddAQuestionModal = ({
+  productName, onClose, isOpen, productID, getQa,
+}) => {
+  const {
+    handleSubmit, handleInput, values, submit, setSubmit,
+  } = useQuestionForm(productID, getQa);
+
   if (!isOpen) return null;
   return (
     <Modal.Background>
       <Modal.PopUp>
         <Modal.Content>
-          <h1> Ask Your Question</h1>
-          <h3>About the [Product Name Here]</h3>
-          <span> What is your nickname:</span>
-          <Modal.Name size="60" placeholder="Example: jack543!" />
-          <br />
-          <span>Your email:</span>
-          <Modal.Name
-            placeholder="Example: jack@email.com"
-            type="email"
-            id="email"
-            pattern=".+@globex\.com"
-            size="60"
-            required
-          />
-          <br />
-          <span>Your question:</span>
-          <Modal.SubmitInput size="1000" />
-          <br />
-          <button onClick={onClose} type="button">Submit</button>
-          <Modal.CloseButton onClick={onClose}> X </Modal.CloseButton>
+          {submit
+            ? <h1>Successfully Submited</h1>
+            : (
+              <form onSubmit={handleSubmit}>
+                <h1> Ask Your Question</h1>
+                <h3>{`About the ${productName}`}</h3>
+                <div>
+                  <Modal.FormLabel> What is your nickname </Modal.FormLabel>
+                  <Modal.Name
+                    id="nickname"
+                    type="text"
+                    name="name"
+                    placeholder="Example:jack543!"
+                    value={values.name}
+                    onChange={handleInput}
+                    required
+                  />
+                </div>
+                <div>
+                  <Modal.FormLabel> Your email </Modal.FormLabel>
+                  <Modal.Name
+                    id="email"
+                    type="email"
+                    name="email"
+                    placeholder="Example:jack@email.com"
+                    value={values.email}
+                    onChange={handleInput}
+                    required
+                  />
+                </div>
+                <div>
+                  <Modal.FormLabel> What is your nickname </Modal.FormLabel>
+                  <Modal.SubmitInput
+                    id="body"
+                    type="text"
+                    name="body"
+                    placeholder="Ask something here"
+                    value={values.body}
+                    required
+                    onChange={handleInput}
+                  />
+                </div>
+                <button type="submit">Submit Question</button>
+              </form>
+            )}
+          <Modal.CloseButton onClick={() => { onClose(); setSubmit(false); }}> X </Modal.CloseButton>
         </Modal.Content>
       </Modal.PopUp>
     </Modal.Background>

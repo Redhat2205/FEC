@@ -70,7 +70,7 @@ const App = () => {
               productReviews={productReviews}
             />
             <Related productID={productID} />
-            <Q_A productID={productID} product={product} />
+            <Q_A productID={productID} product={product.name} />
             <R_R
               productID={productID}
               product={product}
