@@ -5,18 +5,20 @@ import ATC from "../../../StyleComponents/Overview_Styles/ATC.jsx";
 const AddToCart = ({ product, currStyle }) => {
   const defaultStock = ['-', 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
   const selectRef = React.useRef();
-  const openOnFocus = useState(true);
 
   const [size, setSize] = useState(null);
   const [stock, setStock] = useState(defaultStock);
   const [quantity, setQuantity] = useState('-');
   const [favorite, setFavorite] = useState(false);
+  const [reminder, setReminder] = useState(false);
 
   if (currStyle.name !== undefined) {
     const skus = Object.entries(currStyle.skus);
 
     // ========== Size and Quantity ============
     const selectSizeAndUpdateStock = (e) => {
+      setReminder(false);
+
       if (e.target.value === 'Select Size') {
         setStock(defaultStock);
         setQuantity('-');
@@ -49,12 +51,10 @@ const AddToCart = ({ product, currStyle }) => {
 
     // ========== Add to Bag and Favoirte ============
     const onClickOpenDropDown = () => {
-      console.log('open dropdown!');
-      console.log('selectRef.current: ', selectRef.current);
-
       if (selectRef.current) {
         selectRef.current.focus();
       }
+      setReminder(true);
     };
 
     const onClickAddToBag = () => {
@@ -77,19 +77,31 @@ const AddToCart = ({ product, currStyle }) => {
 
     return (
       <SectionDiv.AddToCartSection>
-        <ATC.SelectSize
-          id="selectSize"
-          onChange={selectSizeAndUpdateStock}
-          ref={selectRef}
-          openOnFocus={openOnFocus}
-        >
-          <option> SELECT SIZE </option>
-          { skus.map((sku) => (
-            <option key={sku[0]}>
-              {sku[1].size}
-            </option>
-          ))}
-        </ATC.SelectSize>
+        {reminder && (
+          <ATC.Div>
+            Please select a size!
+          </ATC.Div>
+        )}
+        {skus[0][0] === "null"
+          ? (
+            <ATC.SelectSize disabled>
+              <option>OUT OF STOCK</option>
+            </ATC.SelectSize>
+          )
+          : (
+            <ATC.SelectSize
+              id="selectSize"
+              onChange={selectSizeAndUpdateStock}
+              ref={selectRef}
+            >
+              <option> SELECT SIZE </option>
+              { skus.map((sku) => (
+                <option key={sku[0]}>
+                  {sku[1].size}
+                </option>
+              ))}
+            </ATC.SelectSize>
+          )}
 
         { quantity === '-'
           ? (

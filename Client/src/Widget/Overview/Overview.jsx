@@ -13,6 +13,8 @@ const Overview = ({
   // const [product, setProduct] = useState({});
   const [styles, setStyles] = useState([]);
   const [currStyle, setCurrStyle] = useState({});
+  const [currView, setCurrView] = useState('default');
+  const [IgSectionWidth, setIgSectionWidth] = useState('60%');
 
   const getStyles = () => {
     axios({
@@ -34,16 +36,27 @@ const Overview = ({
   return (
     <div>
       <div data-testid="overview"> Hello Overview</div>
-      <ImageGallery currStyle={currStyle} />
-      <ProductInfo product={product} currStyle={currStyle} />
+      <ImageGallery
+        currStyle={currStyle}
+        currView={currView}
+        setCurrView={setCurrView}
+      />
+      <ProductInfo
+        product={product}
+        currStyle={currStyle}
+        productReviews={productReviews}
+        currView={currView}
+      />
       <StyleSelector
         styles={styles}
         currStyle={currStyle}
         setCurrStyle={setCurrStyle}
+        currView={currView}
       />
       <AddToCart
         product={product}
         currStyle={currStyle}
+        currView={currView}
       />
       <ProductAdditionalInfo product={product} currStyle={currStyle} />
     </div>
