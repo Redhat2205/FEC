@@ -1,4 +1,5 @@
 import React from "react";
+import SocialMedia from "./SocialMedia.jsx";
 import SectionDiv from "../../../StyleComponents/Overview_Styles/SectionDiv.jsx";
 import PAI from "../../../StyleComponents/Overview_Styles/PAI.jsx";
 
@@ -9,6 +10,7 @@ const ProductAdditionalInfo = ({ product, currStyle }) => {
         <PAI.Slogan>
           {product.slogan}
         </PAI.Slogan>
+
         <PAI.FeatureList>
           {product.features.map((eachFeature, index) => (
             <li key={product.id + index}>
@@ -22,7 +24,7 @@ const ProductAdditionalInfo = ({ product, currStyle }) => {
         <PAI.Description>
           {product.description}
         </PAI.Description>
-
+        <SocialMedia product={product} />
       </SectionDiv.ProductAdditionalInfo>
     );
   }
