@@ -14,8 +14,9 @@ const App = () => {
   const [product, setProduct] = useState([]);
   const [productReviews, setProductReviews] = useState([]);
 
+  // axios.defaults.baseURL = `http://localhost:3000`;
   const getProduct = () => (
-    axios.get(`./products/${productID}`)
+    axios.get(`products/${productID}`)
       .then((productData) => {
         // console.log('productData: ', productData.data);
         setProduct(productData.data);
@@ -35,7 +36,7 @@ const App = () => {
   );
 
   const getReviews = () => {
-    axios.get(`./reviews/${productID}`)
+    axios.get(`reviews/${productID}`)
       .then((reviewsData) => {
         // console.log('reviews: ', reviewsData.data);
         setProductReviews(reviewsData.data);
@@ -72,7 +73,7 @@ const App = () => {
       {product.name === undefined
         ? <div>Loading...</div>
         : (
-          <div>
+          <div data-testid="appAfterRendering">
             <Overview
               productID={productID}
               setProductID={setProductID}

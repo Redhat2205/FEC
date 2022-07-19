@@ -1,10 +1,14 @@
+/**
+ * @jest-environment jsdom
+ */
 /* eslint-disable no-undef */
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {
   render, waitFor, screen, cleanup, fireEvent,
 } from '@testing-library/react';
-import { create } from 'react-test-renderer';
+// import { create } from 'react-test-renderer';
+import renderer from 'react-test-renderer';
 import '@testing-library/jest-dom/extend-expect';
 // import { waitFor } from './utils';
 import axios from 'axios';
@@ -18,21 +22,23 @@ import App from '../../Client/src/App.jsx';
 // axios.defaults.baseURL = `http://localhost:3000`;
 
 describe('test!!', () => {
-  // beforeAll(async () => {
-  //   await render(<ProductInfo />);
-  // });
   test('rendering the product info Section', async () => {
-    // await waitFor(() => {
-    //   expect(screen.getByTestId("PiSection")).toBeInTheDocument();
-    // }, { timeout: 4000 });
+    // const appSection = render(<App />);
+    // await new Promise((a) => {
+    //   // wait 2s and run tests
+    //   setTimeout(a, 2000);
+    // });
+    // expect(appSection.getByTestId("appAfterRendering")).toBeInTheDocument();
     // const { root } = create(<App />);
     render(<App />);
     await new Promise((a) => {
       // wait 2s and run tests
       setTimeout(a, 2000);
     });
+
     expect(screen.getByTestId("app")).toBeInTheDocument();
-    expect(screen.getByTestId("PiSection")).toBeInTheDocument();
+    expect(screen.getByTestId("appAfterRendering")).toBeInTheDocument();
+
     // await waitFor(() => {
     // //   expect(root.findByProps({ "data-testid": "app" })).toBeInTheDocument();
     // // });
