@@ -42,6 +42,11 @@ const Sorting = ({ reviews, reviewCount, setRenderedReviews }) => {
       a.helpfulness > b.helpfulness ? -1 : 1
     ));
 
+    const selectHandler = (e) => {
+      console.log(e.target.value);
+      setRenderedReviews(e.target.value);
+    };
+    // Testing with console logs
     // console.log('reviews fresh from API', reviews);
 
     // console.log('newest sorted');
@@ -70,7 +75,7 @@ const Sorting = ({ reviews, reviewCount, setRenderedReviews }) => {
         <label>
           {`${reviewCount} reviews, sorted by `}
         </label>
-        <select style={underlineStyle} name="sorting-dropdown-menu">
+        <select style={underlineStyle} name="sorting-dropdown-menu" onChange={selectHandler}>
           <option value="helpfulness">helpfulness</option>
           <option value="newest">newest</option>
           <option value="oldest">oldest</option>
