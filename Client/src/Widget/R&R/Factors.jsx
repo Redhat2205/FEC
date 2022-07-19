@@ -1,8 +1,8 @@
 import React from 'react';
 
 // eslint-disable-next-line consistent-return
-const Factors = ({ productReviews }) => {
-  if (productReviews) {
+const Factors = ({ productReviews, metaData }) => {
+  if (productReviews && metaData) {
     // const size = productReviews.map((review) => );
     const sizeCount = 0;
     // const wide = productReviews.map();
@@ -20,14 +20,16 @@ const Factors = ({ productReviews }) => {
     // productReviews.forEach((review) => {
     //   sizeCount += review.
     // })
+
+
     return (
       <ul>
-        <li>Size</li>
-        <li>Width</li>
-        <li>Comfort</li>
-        <li>Quality</li>
-        <li>Length</li>
-        <li>Fit</li>
+        {/* {Object.keys(metaData.characteristics).map((characteristic, index, obj) => (
+          <li>{characteristic}<span>{`${obj[index]}`}</span></li>
+        ))} */}
+        {Object.entries(metaData.characteristics).map((characteristic, index, obj) => (
+          <li>{`${characteristic} `}</li>
+        ))}
       </ul>
     );
   }
