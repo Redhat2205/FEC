@@ -18,34 +18,70 @@ const App = () => {
   const [product, setProduct] = useState([]);
   const [productReviews, setProductReviews] = useState([]);
 
-  const getProduct = () => (
-    axios({
-      method: 'GET',
-      url: `${process.env.API_Base}/products/${productID}`,
-      headers: { Authorization: process.env.API_Key },
-    })
-      .then((productData) => {
-        // console.log('productData: ', productData.data);
-        setProduct(productData.data);
-      })
-      .catch((err) => console.log('error when getting product: ', err))
-  );
+  // const getProduct = () => (
+  //   axios({
+  //     method: 'GET',
+  //     url: `${process.env.API_Base}/products/${productID}`,
+  //     headers: { Authorization: process.env.API_Key },
+  //   })
+  //     .then((productData) => {
+  //       // console.log('productData: ', productData.data);
+  //       setProduct(productData.data);
+  //     })
+  //     .catch((err) => console.log('error when getting product: ', err))
+  // );
 
-  const getReviews = () => {
-    axios({
-      method: 'GET',
-      url: `${process.env.API_Base}/reviews`,
-      headers: { Authorization: process.env.API_Key },
-      params: {
-        count: '9999',
-        product_id: productID,
-      },
-    })
-      .then((reviewsData) => {
-        // console.log('reviews: ', reviewsData.data);
-        setProductReviews(reviewsData.data);
+  // const getReviews = () => {
+  //   axios({
+  //     method: 'GET',
+  //     url: `${process.env.API_Base}/reviews`,
+  //     headers: { Authorization: process.env.API_Key },
+  //     params: {
+  //       count: '9999',
+  //       product_id: productID,
+  //     },
+  //   })
+  //     .then((reviewsData) => {
+  //       // console.log('reviews: ', reviewsData.data);
+  //       setProductReviews(reviewsData.data);
+  //     })
+  //     .catch((err) => console.log('error when getting reviews: ', err));
+  // };
+
+  const getProduct = async () => {
+    try {
+      await axios({
+        method: 'GET',
+        url: `${process.env.API_Base}/products/${productID}`,
+        headers: { Authorization: process.env.API_Key },
       })
-      .catch((err) => console.log('error when getting reviews: ', err));
+        .then((productData) => {
+          // console.log('productData: ', productData.data);
+          setProduct(productData.data);
+        });
+    } catch (err) {
+      console.log('error when getting product: ', err);
+    }
+  };
+
+  const getReviews = async () => {
+    try {
+      await axios({
+        method: 'GET',
+        url: `${process.env.API_Base}/reviews`,
+        headers: { Authorization: process.env.API_Key },
+        params: {
+          count: '9999',
+          product_id: productID,
+        },
+      })
+        .then((reviewsData) => {
+          // console.log('reviews: ', reviewsData.data);
+          setProductReviews(reviewsData.data);
+        });
+    } catch (err) {
+      console.log('error when getting reviews: ', err);
+    }
   };
 
   useEffect(() => {
