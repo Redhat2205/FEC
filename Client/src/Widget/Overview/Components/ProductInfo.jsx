@@ -2,7 +2,7 @@ import React from "react";
 import Box from "@mui/material/Box";
 import StarIcon from "@mui/icons-material/Star";
 import StarBorderIcon from "@mui/icons-material/StarBorder";
-
+import axios from "axios";
 import SectionDiv from "../../../StyleComponents/Overview_Styles/SectionDiv.jsx";
 import PI from "../../../StyleComponents/Overview_Styles/PI.jsx";
 
@@ -12,15 +12,20 @@ const ProductInfo = ({
   const totalStars = 5;
   // const activeStars = ["100%", "100%", "100%", "40%", "0%"];
   const activeStars = [];
+  // console.log('product reviews: ', Array.isArray(productReviews));
 
   if (productReviews.product !== undefined) {
+  // if (Array.isArray(productReviews)) {
+  //   console.log('...');
+  // } else {
     let ratingsTotal = 0;
+    // console.log("results: ", productReviews)
     productReviews.results.forEach((review) => {
       ratingsTotal += review.rating;
     });
     let averageRating = ratingsTotal / productReviews.results.length;
 
-    console.log('average rating: ', averageRating);
+    // console.log('average rating: ', averageRating);
 
     while (averageRating > 0) {
       if (averageRating < 1) {
@@ -45,7 +50,9 @@ const ProductInfo = ({
 
   if (currView === 'default') {
     return (
-      <SectionDiv.ProductInfoSection>
+      <SectionDiv.ProductInfoSection
+        data-testid="PiSection"
+      >
         <PI.Ratings>
           {productReviews.product === undefined
             ? (
