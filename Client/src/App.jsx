@@ -1,9 +1,7 @@
 // Bring React in to build a component.
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-// Bring reactDOM in to mount component to the dom.
-// import reactDOM from "react-dom";
-import { createRoot } from "react-dom/client";
+
 import Overview from "./Widget/Overview/Overview.jsx";
 import Q_A from "./Widget/Q&A/Q&A.jsx";
 import R_R from "./Widget/R&R/R&R.jsx";
@@ -17,33 +15,47 @@ const App = () => {
   const [productReviews, setProductReviews] = useState([]);
 
   const getProduct = () => (
-    axios({
-      method: 'GET',
-      url: `${process.env.API_Base}/products/${productID}`,
-      headers: { Authorization: process.env.API_Key },
-    })
+    axios.get(`./products/${productID}`)
       .then((productData) => {
-        console.log('productData: ', productData.data);
+        // console.log('productData: ', productData.data);
         setProduct(productData.data);
       })
       .catch((err) => console.log('error when getting product: ', err))
+
+    // axios({
+    //   method: 'GET',
+    //   url: `${process.env.API_Base}/products/${productID}`,
+    //   headers: { Authorization: process.env.API_Key },
+    // })
+    //   .then((productData) => {
+    //     console.log('productData: ', productData.data);
+    //     setProduct(productData.data);
+    //   })
+    //   .catch((err) => console.log('error when getting product: ', err))
   );
 
   const getReviews = () => {
-    axios({
-      method: 'GET',
-      url: `${process.env.API_Base}/reviews`,
-      headers: { Authorization: process.env.API_Key },
-      params: {
-        count: '9999',
-        product_id: productID,
-      },
-    })
+    axios.get(`./reviews/${productID}`)
       .then((reviewsData) => {
         // console.log('reviews: ', reviewsData.data);
         setProductReviews(reviewsData.data);
       })
       .catch((err) => console.log('error when getting reviews: ', err));
+
+    // axios({
+    //   method: 'GET',
+    //   url: `${process.env.API_Base}/reviews`,
+    //   headers: { Authorization: process.env.API_Key },
+    //   params: {
+    //     count: '9999',
+    //     product_id: productID,
+    //   },
+    // })
+    //   .then((reviewsData) => {
+    //     // console.log('reviews: ', reviewsData.data);
+    //     setProductReviews(reviewsData.data);
+    //   })
+    //   .catch((err) => console.log('error when getting reviews: ', err));
   };
 
   useEffect(() => {
