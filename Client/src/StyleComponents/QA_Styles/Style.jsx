@@ -5,13 +5,13 @@ const Style = {
   Body: styled.div`
     margin: auto;
     width: 60%;
-    height: 600px;
+    height: 700px;
     padding: 10px;
     overflow: hidden;
   `,
   QuestionBody: styled.div`
     margin: auto;
-    height: 70%;
+    height: 60%;
     padding: 10px;
     overflow: auto;
 `,
@@ -61,7 +61,7 @@ const Style = {
     width: 30%;
     font-size: 13px;
     font-weight: normal;
-    display: flex;
+    display: -webkit-inline-box;
     float: right;
     list-style: none;
   `,

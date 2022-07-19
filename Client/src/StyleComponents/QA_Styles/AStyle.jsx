@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 const AStyle = {
   Body: styled.div`
-    height: 100px
+    height: 300px;
     overflow: auto
   `,
   Input: styled.span`
@@ -18,7 +18,7 @@ const AStyle = {
   Info: styled.ul`
     font-size: 13px;
     font-weight: normal;
-    display: flex;
+    display: -webkit-inline-box;
     list-style: none;
     margin-right: 0px;
     margin-top: 0;
@@ -30,6 +30,10 @@ const AStyle = {
   `,
   User: styled.li`
    margin: 2px;
+  `,
+  Seller: styled.li`
+    margin: 2px;
+    font-weight: bold;
   `,
   Date: styled.li`
   margin: 2px;

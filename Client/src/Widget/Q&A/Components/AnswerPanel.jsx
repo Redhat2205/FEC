@@ -14,12 +14,17 @@ const AnswerPanel = ({ answer, onClickHelpful, onReport }) => {
       <AStyle.Input>{answer.body}</AStyle.Input>
       <br />
       <AStyle.Info>
-        <AStyle.User>
-          {`by ${answer.answerer_name}`}
-        </AStyle.User>
+        <AStyle.User>by</AStyle.User>
+        {answer.answerer_name.toLowerCase() === "seller"
+          ? <AStyle.Seller>Seller</AStyle.Seller>
+          : (
+            <AStyle.User>
+              {answer.answerer_name}
+            </AStyle.User>
+          )}
         <AStyle.Date>{`| ${moment(answer.date).format('MMMM Do YYYY')}`}</AStyle.Date>
         <AStyle.Helpful>| Helpful?</AStyle.Helpful>
-        {answerHelp ? <li>{`| Yes (${answer.helpfulness})`}</li>
+        {answerHelp ? <AStyle.Helpful>{`| Yes (${answer.helpfulness})`}</AStyle.Helpful>
           : (
             <AStyle.Yes
               id={answer.id}
@@ -34,6 +39,7 @@ const AnswerPanel = ({ answer, onClickHelpful, onReport }) => {
           )}
         <AStyle.Reported
           id={answer.id}
+          type="answer"
           onClick={(e) => {
             setReport(true);
             onReport(e);

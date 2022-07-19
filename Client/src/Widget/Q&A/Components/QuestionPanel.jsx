@@ -46,9 +46,10 @@ const QuestionsPanel = ({
         />
         <AStyle.Reported
           id={questionid}
+          type="question"
           onClick={(e) => {
             setQReport(true);
-            onQReport(e);
+            onReport(e);
           }}
         >
           {qReport ? "Reported" : "Report"}
