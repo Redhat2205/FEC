@@ -25,38 +25,38 @@ const ReviewList = ({ currentItem, reviews, reviewCount, sort, setSort }) => {
   if (reviews) {
     // set the sorting here
 
-    const newest = reviews.slice(0).sort((a, b) => (
-      a.review_id < b.review_id ? 1 : -1
-    ));
+    // const newest = reviews.slice(0).sort((a, b) => (
+    //   a.review_id < b.review_id ? 1 : -1
+    // ));
 
-    const oldest = reviews.slice(0).sort((a, b) => (
-      // a.review_id > b.review_id ? 1 : -1
-      a.review_id - b.review_id
-    ));
+    // const oldest = reviews.slice(0).sort((a, b) => (
+    //   // a.review_id > b.review_id ? 1 : -1
+    //   a.review_id - b.review_id
+    // ));
 
-    const helpfulness = reviews.slice(0).sort((a, b) => (
-      // a.helpful > b.helpful ? -1 : 1
-      a.helpfulness - b.helpfulnessd
-    ));
+    // const helpfulness = reviews.slice(0).sort((a, b) => (
+    //   // a.helpful > b.helpful ? -1 : 1
+    //   a.helpfulness - b.helpfulnessd
+    // ));
 
-    const relevance = newest.slice(0).sort((a, b) => (
-      a.helpfulness > b.helpfulness ? -1 : 1
-    ));
+    // const relevance = newest.slice(0).sort((a, b) => (
+    //   a.helpfulness > b.helpfulness ? -1 : 1
+    // ));
 
-    const sorts = [newest, oldest, helpfulness, relevance];
+    // const sorts = [newest, oldest, helpfulness, relevance];
 
     // console.log('array of sorts in ReviewList', sorts);
-    console.log('newest', newest);
-    console.log('oldest', oldest);
-    console.log('helpfulness', helpfulness);
-    console.log('relevance', relevance);
+    // console.log('newest', newest);
+    // console.log('oldest', oldest);
+    // console.log('helpfulness', helpfulness);
+    // console.log('relevance', relevance);
 
     // console.log('reviews', reviews);
     // () => {setRenderedReviews(() => {reviews})};
   }
   if (renderedReviews) {
-    console.log('handle async!');
-    console.log(renderedReviews);
+    // console.log('handle async!');
+    // console.log(renderedReviews);
     if (initialView) {
       return (
         <div style={sortingStyle}>

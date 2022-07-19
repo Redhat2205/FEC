@@ -43,7 +43,7 @@ const Sorting = ({ reviews, reviewCount, setSort }) => {
     // ));
 
     const selectHandler = (e) => {
-      console.log('select handler value sort:', e.target.value);
+      // console.log('select handler value sort:', e.target.value);
       // setResourceType(e.target.value);
       // console.log('e.target.value@sort:', sorts[e.target.value])
       setSort(e.target.value);

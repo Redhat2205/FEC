@@ -21,14 +21,13 @@ const Factors = ({ productReviews, metaData }) => {
     //   sizeCount += review.
     // })
 
-
     return (
       <ul>
         {/* {Object.keys(metaData.characteristics).map((characteristic, index, obj) => (
           <li>{characteristic}<span>{`${obj[index]}`}</span></li>
         ))} */}
         {Object.entries(metaData.characteristics).map((characteristic, index, obj) => (
-          <li>{`${characteristic} `}</li>
+          <li key={index}>{`${characteristic} `}</li>
         ))}
       </ul>
     );
