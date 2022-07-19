@@ -36,35 +36,6 @@ const ImageGallery = ({ currStyle, currView, setCurrView }) => {
     }
   }, [currStyle]);
 
-  // async function setUpIgSection() {
-  //   try {
-  //     await function () {if (currStyle.name !== undefined) {
-  //       const mainArr = [];
-  //       const thumbnailArr = [];
-  //       if (currStyle.photos.length === 1 && currStyle.photos[0].url === null) {
-  //         setNoImageInAPI(true);
-  //       } else {
-  //         currStyle.photos.forEach((photoObj) => {
-  //           mainArr.push(photoObj.url);
-  //           if (photoObj.thumbnail_url[0] === 'u') {
-  //             thumbnailArr.push(photoObj.thumbnail_url.slice(1));
-  //           } else {
-  //             thumbnailArr.push(photoObj.thumbnail_url);
-  //           }
-  //         });
-  //         setMainImages(mainArr);
-  //         setThumbnails(thumbnailArr);
-  //         setCurrTnSet(thumbnailArr.slice(0, 7));
-  //       }
-  //     }
-  //   }} catch (err) {
-  //     console.log('error when setting up initial data in IG Section: ', err);
-  //   }
-  // }
-  // useEffect(() => {
-  //   setUpIgSection();
-  // }, [currStyle]);
-
   // =========== Arrows ===========
   const nextMainImage = () => {
     const newIndex = currIndex + 1;
@@ -123,7 +94,7 @@ const ImageGallery = ({ currStyle, currView, setCurrView }) => {
     return (
       <div>
         {currView === 'default' && (
-          <SectionDiv.ImageGallerySection data-testid="ImageGallerySection">
+          <SectionDiv.ImageGallerySection>
             {/* <IG.MainImageDiv
               style={{ backgroundImage: `url(${mainImages[currIndex]})` }}
               alt={currStyle.name}
