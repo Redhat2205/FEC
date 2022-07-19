@@ -10,7 +10,9 @@ const sortingStyle = {
   marginLeft: '10%',
 };
 
-const ReviewList = ({ currentItem, reviews, reviewCount, sort, setSort }) => {
+const ReviewList = ({
+  currentItem, reviews, reviewCount, sort, setSort,
+}) => {
   const [show, setShow] = useState(false);
   const [initialView, setInitialView] = useState(true);
   const [numberTiles, setNumberTiles] = useState(2);

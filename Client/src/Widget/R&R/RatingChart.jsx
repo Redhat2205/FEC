@@ -5,7 +5,9 @@ import Recommended from './Recommended.jsx';
 import Factors from './Factors.jsx';
 
 // eslint-disable-next-line consistent-return
-const RatingChart = ({ currentItem, averageRating, productReviews, metaData }) => (
+const RatingChart = ({
+  currentItem, averageRating, productReviews, metaData,
+}) => (
   <div>
     <h5 style={{ display: 'inline-block' }}>{averageRating}</h5>
     <BasicFn averageRating={averageRating} style={{ display: 'inline-block' }} />
