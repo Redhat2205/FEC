@@ -22,31 +22,58 @@ const underlineStyle = {
 // use stack but helpfulness trumps review date
 
 // eslint-disable-next-line consistent-return
-const Sorting = ({ reviews, reviewCount }) => {
+const Sorting = ({ reviews, reviewCount, setRenderedReviews }) => {
   if (reviews) {
     const newest = reviews.slice(0).sort((a, b) => (
       a.review_id < b.review_id ? 1 : -1
     ));
 
-    // const oldest = reviews.sort((a, b) => (a.date < b.date ? -1 : 1));
     const oldest = reviews.slice(0).sort((a, b) => (
-      a.review_id > b.review_id ? 1 : -1
+      // a.review_id > b.review_id ? 1 : -1
+      a.review_id - b.review_id
     ));
-    // console.log('regular');
-    // console.log('reviews:', reviews.forEach((review) => console.log(review.date)));
-    // console.log('new new');
-    // console.log('newest:', newest.forEach((review) => console.log(review.date)));
-    // console.log('oldies');
-    // console.log('oldest:', oldest.forEach((review) => console.log(review.date)));
+
+    const helpfulness = reviews.slice(0).sort((a, b) => (
+      // a.helpful > b.helpful ? -1 : 1
+      a.helpfulness - b.helpfulness
+    ));
+
+    const relevance = newest.slice(0).sort((a, b) => (
+      a.helpfulness > b.helpfulness ? -1 : 1
+    ));
+
+    // console.log('reviews fresh from API', reviews);
+
+    // console.log('newest sorted');
+    // newest.forEach((rev) => {
+    //   console.log(rev.review_id);
+    // });
+
+    // console.log('oldest sorted');
+    // oldest.forEach((rev) => {
+    //   console.log(rev.review_id);
+    // });
+
+    // console.log('helpfulness sorted');
+    // helpfulness.forEach((rev) => {
+    //   console.log(rev.helpfulness);
+    // });
+
+    // console.log('relevance sorted');
+    // relevance.forEach((rev) => {
+    //   console.log(rev.review_id, rev.helpfulness, rev.date.slice(0, 10));
+    //   // console.log(rev);
+    // });
+
     return (
       <div>
         <label>
-          {reviewCount}
-          reviews, sorted by
+          {`${reviewCount} reviews, sorted by `}
         </label>
         <select style={underlineStyle} name="sorting-dropdown-menu">
           <option value="helpfulness">helpfulness</option>
           <option value="newest">newest</option>
+          <option value="oldest">oldest</option>
           <option value="relevance">relevance</option>
         </select>
       </div>

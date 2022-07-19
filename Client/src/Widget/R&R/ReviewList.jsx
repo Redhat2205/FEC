@@ -13,11 +13,13 @@ const ReviewList = ({ currentItem, reviews, reviewCount }) => {
   const [show, setShow] = useState(false);
   const [initialView, setInitialView] = useState(true);
   const [numberTiles, setNumberTiles] = useState(2);
+  const [renderedReviews, setRenderedReviews] = useState(reviews);
 
   if (initialView) {
     return (
       <div style={sortingStyle}>
-        <Sorting reviewCount={reviewCount} reviews={reviews} />
+        <Sorting reviewCount={reviewCount} reviews={reviews} setRenderedReviews={setRenderedReviews} />
+        {/* {renderedReviews ? <Sorting reviewCount={reviewCount} reviews={renderedReviews} setRenderedReviews={setRenderedReviews} /> : null} */}
         <ul>
           {reviews.slice(0, numberTiles).map((review) => (
             <ReviewTile key={review.review_id} eachReview={review} />
@@ -30,7 +32,8 @@ const ReviewList = ({ currentItem, reviews, reviewCount }) => {
     );
   } return (
     <div style={sortingStyle}>
-      <Sorting reviewCount={reviewCount} reviews={reviews} />
+      <Sorting reviewCount={reviewCount} reviews={renderedReviews} setRenderedReviews={setRenderedReviews} />
+      {/* {renderedReviews ? <Sorting reviewCount={reviewCount} reviews={renderedReviews} setRenderedReviews={setRenderedReviews} /> : null} */}
       <ul>
         {reviews.map((review) => (
           <ReviewTile key={review.review_id} eachReview={review} />
