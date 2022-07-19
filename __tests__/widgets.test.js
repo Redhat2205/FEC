@@ -10,25 +10,25 @@ import Overview from '../Client/src/Widget/Overview/Overview.jsx';
 // write tests per widget
 
 // Overview
-test('rendering widget - overview', () => {
-  render(<Overview />);
-  const target = screen.getByTestId("overview");
-  expect(target).not.toBeNull();
-});
+// test('rendering widget - overview', () => {
+//   render(<Overview />);
+//   const target = screen.getByTestId("overview");
+//   expect(target).not.toBeNull();
+// });
 
-// QA
-it('rendering Q&A dynamically from api response data', () => {
-  render(<Q_A/>);
-  const target = screen.getByTestId('qna');
-  expect(target).not.toBeNull();
-});
+// // QA
+// it('rendering Q&A dynamically from api response data', () => {
+//   render(<Q_A/>);
+//   const target = screen.getByTestId('qna');
+//   expect(target).not.toBeNull();
+// });
 
-// Related
+// // Related
 
-// Ratings
+// // Ratings
 
-test('rendering R_R widget dynamically from api response data', () => {
-  render(<R_R />);
-  const target = screen.getByTestId("rnr");
-  expect(target).not.toBeNull();
-});
+// test('rendering R_R widget dynamically from api response data', () => {
+//   render(<R_R />);
+//   const target = screen.getByTestId("rnr");
+//   expect(target).not.toBeNull();
+// });
