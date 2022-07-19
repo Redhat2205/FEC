@@ -1,7 +1,7 @@
 const express = require('express');
 require('dotenv').config();
 const path = require('path');
-const { getProduct, getReviews } = require('./helpers');
+const helpers = require('./helpers');
 
 const app = express();
 
@@ -10,13 +10,16 @@ app.use(express.static(path.join(__dirname, "../Client/public")));
 app.use(express.json());
 
 app.get('/products/:id', (req, res) => {
-  getProduct(req, res);
+  helpers.getProduct(req, res);
 });
 
 app.get('/reviews/:id', (req, res) => {
-  getReviews(req, res);
+  helpers.getReviews(req, res);
 });
 
+app.get('/products/:id/styles', (req, res) => {
+  helpers.getStyles(req, res);
+});
 // listening
 const port = process.env.PORT || 3000;
 
