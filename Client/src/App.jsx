@@ -14,7 +14,6 @@ const App = () => {
   const [product, setProduct] = useState([]);
   const [productReviews, setProductReviews] = useState([]);
 
-  // axios.defaults.baseURL = `http://localhost:3000`;
   const getProduct = () => (
     axios.get(`products/${productID}`)
       .then((productData) => {
@@ -22,17 +21,6 @@ const App = () => {
         setProduct(productData.data);
       })
       .catch((err) => console.log('error when getting product: ', err))
-
-    // axios({
-    //   method: 'GET',
-    //   url: `${process.env.API_Base}/products/${productID}`,
-    //   headers: { Authorization: process.env.API_Key },
-    // })
-    //   .then((productData) => {
-    //     console.log('productData: ', productData.data);
-    //     setProduct(productData.data);
-    //   })
-    //   .catch((err) => console.log('error when getting product: ', err))
   );
 
   const getReviews = () => {
@@ -42,21 +30,6 @@ const App = () => {
         setProductReviews(reviewsData.data);
       })
       .catch((err) => console.log('error when getting reviews: ', err));
-
-    // axios({
-    //   method: 'GET',
-    //   url: `${process.env.API_Base}/reviews`,
-    //   headers: { Authorization: process.env.API_Key },
-    //   params: {
-    //     count: '9999',
-    //     product_id: productID,
-    //   },
-    // })
-    //   .then((reviewsData) => {
-    //     // console.log('reviews: ', reviewsData.data);
-    //     setProductReviews(reviewsData.data);
-    //   })
-    //   .catch((err) => console.log('error when getting reviews: ', err));
   };
 
   useEffect(() => {
