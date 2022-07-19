@@ -45,7 +45,7 @@ const AddAQuestionModal = ({
                   />
                 </div>
                 <div>
-                  <Modal.FormLabel> What is your nickname </Modal.FormLabel>
+                  <Modal.FormLabel> Your Question </Modal.FormLabel>
                   <Modal.SubmitInput
                     id="body"
                     type="text"

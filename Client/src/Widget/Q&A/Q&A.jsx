@@ -16,7 +16,7 @@ const Q_A = ({ productID }) => {
     })
       .then((product) => {
         const sortedQuestions = Object.values(product.data.results).sort((a, b) => (
-          b.helpfulness - a.helpfulness
+          b.helpfulness + a.helpfulness
         ));
         setQa(sortedQuestions);
       })

@@ -10,10 +10,10 @@ const Style = {
     overflow: hidden;
   `,
   QuestionBody: styled.div`
-  margin: auto;
-  height: 70%;
-  padding: 10px;
-  overflow: auto;
+    margin: auto;
+    height: 70%;
+    padding: 10px;
+    overflow: auto;
 `,
   SearchBar: styled.input`
     margin-left: auto;
@@ -51,12 +51,14 @@ const Style = {
 
  `,
   MoreAnsweredQuestion: styled.button`
-    width: 30%;
+    width: 38%;
     height: 65px;
+    margin-right: 10px;
     font-size: 18px;
     font-weight: bold;
 `,
   Info: styled.ul`
+    width: 30%;
     font-size: 13px;
     font-weight: normal;
     display: flex;

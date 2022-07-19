@@ -3,7 +3,8 @@ import axios from 'axios';
 import QuestionPanel from "./QuestionPanel.jsx";
 import SubmitNewQuestion from "./SubmitNewQuestion.jsx";
 import Style from "../../../StyleComponents/QA_Styles/Style.jsx";
-import AddAQuestion from './AddAQuestion.jsx';
+import AddAQuestionModal from "./AddAQuestionModal.jsx";
+import Modal from "../../../StyleComponents/QA_Styles/Modal.jsx";
 
 const QuestionList = ({
   qA, getQa, onClickHelpful, productName, onReport, productID, onSubmitAnswerHandle,
@@ -11,6 +12,7 @@ const QuestionList = ({
   const [moreQuestion, setMoreQuestion] = useState(false);
   const [currentQuestion, setCurrentQuestion] = useState([]);
   const [end, setEnd] = useState(4);
+  const [isShowAddQuestion, setShowAddQuestion] = useState(false);
 
   const onQReport = (e) => {
     const questionID = e.target.getAttribute('id');
@@ -64,7 +66,7 @@ const QuestionList = ({
             onQReport={onQReport}
             getQa={getQa}
             onSubmitAnswerHandle={onSubmitAnswerHandle}
-            // try later {...thingy}
+          // try later {...thingy}
           />
         ))
         : qA.slice(0, end).map((qAObj) => (
@@ -80,13 +82,25 @@ const QuestionList = ({
             onSubmitAnswerHandle={onSubmitAnswerHandle}
           />
         ))}
-      {(qA.length >= end) && <Style.MoreAnsweredQuestion type="button" onClick={handleMoreQuestion}>More Answered Questions</Style.MoreAnsweredQuestion>}
-      <AddAQuestion
-        qA={qA}
-        productName={productName}
-        productID={productID}
-        getQa={getQa}
-      />
+      {(qA.length >= end) && <Style.MoreAnsweredQuestion type="button" onClick={handleMoreQuestion}>More Questions</Style.MoreAnsweredQuestion>}
+      <Modal.AddQuestion
+        type="button"
+        onClick={() => {
+          setShowAddQuestion(true);
+        }}
+      >
+        ADD A QUESTION +
+      </Modal.AddQuestion>
+      {isShowAddQuestion && (
+        <AddAQuestionModal
+          qA={qA}
+          productName={productName}
+          productID={productID}
+          getQa={getQa}
+          isOpen={isShowAddQuestion}
+          onClose={() => (setShowAddQuestion(false))}
+        />
+      )}
     </Style.QuestionBody>
   );
 };
