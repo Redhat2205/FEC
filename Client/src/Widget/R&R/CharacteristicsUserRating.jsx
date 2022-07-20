@@ -13,12 +13,8 @@ const charContainerStyle = {
 };
 
 const handleRadioSelect = (e) => {
-  const oldUserChara = userChara;
-  oldUserChara[e.target.dataset.qualid] = e.target.value;
-  setUserChara(oldUserChara);
-  const oldForm = form;
-  oldForm.characteristics = oldUserChara;
-  setForm(oldForm);
+  // setForm(old => ({...old, characteristics[e.target.dataset.qualid]: e.target.value}));
+  console.log(e.target.name, e.target.value, e.target.dataset.qualid);
 };
 
 const CharacteristicsUserRating = ({
@@ -34,11 +30,11 @@ const CharacteristicsUserRating = ({
 
        */}
 
-      <input style={charButtonStyle} type="radio" name={quality} value="1" onChange={handleRadioSelect}></input>
-      <input style={charButtonStyle} type="radio" name={quality} value="1" onChange={handleRadioSelect}></input>
-      <input style={charButtonStyle} type="radio" name={quality} value="1" onChange={handleRadioSelect}></input>
-      <input style={charButtonStyle} type="radio" name={quality} value="1" onChange={handleRadioSelect}></input>
-      <input style={charButtonStyle} type="radio" name={quality} value="1" onChange={handleRadioSelect}></input>
+      <input style={charButtonStyle} data-qualid={qualID} type="radio" name={quality} value="1" onChange={handleRadioSelect}></input>
+      <input style={charButtonStyle} data-qualid={qualID} type="radio" name={quality} value="2" onChange={handleRadioSelect}></input>
+      <input style={charButtonStyle} data-qualid={qualID} type="radio" name={quality} value="3" onChange={handleRadioSelect}></input>
+      <input style={charButtonStyle} data-qualid={qualID} type="radio" name={quality} value="4" onChange={handleRadioSelect}></input>
+      <input style={charButtonStyle} data-qualid={qualID} type="radio" name={quality} value="5" onChange={handleRadioSelect}></input>
     </div>
   );
 };
