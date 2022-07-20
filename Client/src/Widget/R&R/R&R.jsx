@@ -114,7 +114,7 @@ const R_R = ({ productID }) => {
   }, []);
 
   return (
-    <div className="rnr-container">
+    <div className="rnr-container" style={{ width: '80%', margin: 'auto' }}>
       <div>
         <h1 id="main-rnr-header" data-testid="rnr" style={{ textAlign: 'left', fontFamily: 'tahoma' }}>Ratings and Reviews</h1>
       </div>

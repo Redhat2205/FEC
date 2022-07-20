@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import AddStarRating from './AddStarRating.jsx';
 import CharacteristicsUserRating from './CharacteristicsUserRating.jsx';
+import ImgUpload from './ImgUpload.jsx';
 
 // styles
 const left15PX = {
@@ -60,7 +61,7 @@ const AddReviewModal = ({
     bareQualityIds[key[1].id] = 0;
   });
 
-  console.log(mappings);
+  // console.log(mappings);
 
   // state/hooks
   const [userChara, setUserChara] = useState(bareQualityIds);
@@ -70,6 +71,7 @@ const AddReviewModal = ({
   const [userRec, setUserRec] = useState(false);
   const [userName, setUserName] = useState('');
   const [userEmail, setUserEmail] = useState('');
+  const [userPhotos, setUserPhotos] = useState([]);
 
   const [form, setForm] = useState({
     id: currentItem.id,
@@ -79,7 +81,7 @@ const AddReviewModal = ({
     recommend: userRec,
     name: userName,
     email: userEmail,
-    photos: [],
+    photos: userPhotos,
     characteristics: userChara,
   });
 
@@ -136,6 +138,7 @@ const AddReviewModal = ({
           <h5 style={left15PX}>Review body</h5>
           <textarea style={{ marginLeft: '15px', height: '100px', textAlign: 'none', resize: 'none', width: '80%' }} type="text" placeholder="Why did you like the product or not?" maxLength="1000" size="50" onChange={(e) => setForm(old => ({...old, body: e.target.value}))}></textarea>
           <h5>Upload photos</h5>
+          <ImgUpload form={form} setForm={setForm} userPhotos={userPhotos} setUserPhotos={setUserPhotos} />
           <h5 style={left15PX}>What is your nickname?</h5>
           <textarea style={{ marginLeft: '15px', resize: 'none', width: '80%' }} type="text" size="50" maxLength="60" placeholder="Example: jackson11!" onChange={(e) => setForm(old => ({...old, name: e.target.value}))}></textarea>
           <p style={{ fontWeight: 'bold', marginLeft: '15px' }}>For privacy reasons, do not use your full name or email address</p>
