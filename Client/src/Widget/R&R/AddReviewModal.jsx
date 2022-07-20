@@ -68,7 +68,7 @@ const AddReviewModal = ({
   const [userSum, setUserSum] = useState('');
   const [userRating, setUserRating] = useState(0);
   const [userBody, setUserBody] = useState('');
-  const [userRec, setUserRec] = useState(false);
+  const [userRec, setUserRec] = useState(null);
   const [userName, setUserName] = useState('');
   const [userEmail, setUserEmail] = useState('');
   const [userPhotos, setUserPhotos] = useState([]);
@@ -84,6 +84,33 @@ const AddReviewModal = ({
     photos: userPhotos,
     characteristics: userChara,
   });
+
+  // submission handler
+  const submitHandler = () => {
+    let formValidated = false;
+
+    let validated = {
+      rating: false,
+      recommend: false,
+      characteristics: false,
+      body: false,
+      name: false,
+      email: false,
+    };
+
+    if (!form.body.length > 50) {
+      validated.body = false;
+      console.log('review body must be at least 50 characters!');
+    }
+
+    // final validation before submission
+    for(var property in validated) {
+      if
+    }
+    if (validated) {
+      console.log('can submit form!', form);
+    }
+  };
 
   if (!show) {
     return null;
