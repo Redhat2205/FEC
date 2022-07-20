@@ -1,6 +1,8 @@
 // Bring React in to build a component.
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faRedhat } from '@fortawesome/free-brands-svg-icons';
 
 import Overview from "./Widget/Overview/Overview.jsx";
 import Q_A from "./Widget/Q&A/Q&A.jsx";
@@ -44,10 +46,20 @@ const App = () => {
 
   return (
     <GeneralStyles.Div data-testid="app">
-      <h1>Hello World!</h1>
-      {/* <GeneralStyles.Nav>
-        <GeneralStyles.Header>RedHat </GeneralStyles.Header>
-      </GeneralStyles.Nav> */}
+      {/* <h1>Hello World!</h1> */}
+      <GeneralStyles.Nav>
+        <GeneralStyles.Header>
+          RedHat
+          <FontAwesomeIcon
+            icon={faRedhat}
+            style={{
+              color: '#971a1a',
+              display: 'inline-block',
+              marginBottom: '15px',
+            }}
+          />
+        </GeneralStyles.Header>
+      </GeneralStyles.Nav>
       {product.name === undefined
         ? <div>Loading...</div>
         : (

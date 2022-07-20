@@ -8,14 +8,19 @@ const GeneralStyles = {
   `,
   Nav: styled.div`
     height: 70px;
-    /* background-color: #8d8d8d; */
+    background-image: linear-gradient(to left, #eee, grey, #333 );
+    /* -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent; */
+    /* background-color: #262626; */
   `,
   Header: styled.h1`
     display: inline-block;
     margin: 0;
     padding: 20px 20px 20px 40px;
     color: white;
-    /* font-family: 'Dyeline'; */
+    &:hover {
+      cursor: pointer;
+    }
   `,
 };
 
