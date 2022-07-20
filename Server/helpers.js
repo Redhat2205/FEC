@@ -41,7 +41,6 @@ const getReviews = (req, res) => {
 };
 const getQA = (req, res) => {
   const productID = req.url.slice(-5);
-  console.log(productID);
   axios({
     method: 'get',
     url: `${process.env.API_Base}/qa/questions`,
@@ -104,4 +103,32 @@ const helpfulQuestion = (req, res) => {
     })
     .catch((err) => console.log(err));
 };
-module.exports = { getProduct, getReviews, getQA, reportAnswer, reportQuestion, helpfulQuestion, helpfulAnswer };
+const submitQuestion = (req, res) => {
+  const params = req.body;
+  axios({
+    method: 'post',
+    url: `${process.env.API_Base}/qa/questions`,
+    headers: { Authorization: process.env.API_Key },
+    data: params,
+  })
+    .then(() => {
+      res.status(204);
+    })
+    .catch((err) => console.log(err));
+};
+const submitAnswer = (req, res) => {
+  const params = req.body;
+  const questionID = req.url.slice(-6);
+  axios({
+    method: 'post',
+    url: `${process.env.API_Base}/qa/questions/${questionID}/answers`,
+    headers: { Authorization: process.env.API_Key },
+    data: params,
+  })
+    .then(() => {
+      res.status(204);
+    })
+    .catch((err) => console.log(err));
+};
+
+module.exports = { getProduct, getReviews, getQA, reportAnswer, reportQuestion, helpfulQuestion, helpfulAnswer, submitAnswer, submitQuestion };

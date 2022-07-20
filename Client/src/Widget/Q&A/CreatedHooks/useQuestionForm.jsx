@@ -19,13 +19,7 @@ const useQuestionForm = (productID, getQa) => {
     e.preventDefault();
     const json = values;
     json.product_id = productID;
-    console.log(json);
-    axios({
-      method: 'post',
-      url: `${process.env.API_Base}/qa/questions`,
-      headers: { Authorization: process.env.API_Key },
-      data: json,
-    })
+    axios.post(`answers/submit/${questionID}`, json)
       .then(() => getQa())
       .then(() => setSubmit(true))
       .then(() => (setValues({
@@ -38,7 +32,7 @@ const useQuestionForm = (productID, getQa) => {
   };
 
   return {
-    handleInput, handleSubmit, values, submit, setSubmit,
+    handleInput, handleSubmit, values, submit, setSubmit, setValues,
   };
 };
 export default useQuestionForm;

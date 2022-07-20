@@ -11,8 +11,9 @@ const Style = {
   `,
   QuestionBody: styled.div`
     margin: auto;
-    height: 60%;
+    max-height: 60%;
     padding: 10px;
+    overflow-wrap: break-word;
     overflow: auto;
 `,
   SearchBar: styled.input`

@@ -6,8 +6,8 @@ const AddAnswerModal = ({
   addModalStatus, onClose, questionBody, productName, questionID, getQa,
 }) => {
   const {
-    handleSubmit, handleInput, values, submit, setSubmit, handleOnChangePhoto, imageSrc,
-  } = useAnswerForm(questionID, getQa);
+    handleSubmit, handleInput, values, submit, setSubmit, handleOnChangePhoto, imageSrc, setValues, setImageSrc,
+  } = useAnswerForm(questionID);
 
   if (!addModalStatus) return null;
   return (
@@ -69,7 +69,20 @@ const AddAnswerModal = ({
                 <button type="submit">Submit Question</button>
               </form>
             )}
-          <Modal.CloseButton onClick={() => { onClose(); setSubmit(false); getQa(); }}> X </Modal.CloseButton>
+          <Modal.CloseButton onClick={() => {
+            onClose();
+            setSubmit(false);
+            getQa();
+            setImageSrc([]);
+            setValues({
+              name: "",
+              email: "",
+              body: "",
+            });
+          }}
+          >
+            X
+          </Modal.CloseButton>
         </Modal.Content>
       </Modal.PopUp>
     </Modal.Background>

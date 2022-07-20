@@ -43,7 +43,7 @@ const Q_A = ({ productID, productName }) => {
     const elementId = e.target.getAttribute('id');
     const QorA = current === 'question' ? "questions" : "answers";
     axios.put(`helpful/${QorA}/${elementId}`)
-      .then(() => (getQa()))
+      .then(() => getQa())
       .catch((err) => console.log(err));
   };
 
