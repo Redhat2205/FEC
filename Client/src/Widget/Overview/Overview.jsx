@@ -31,7 +31,7 @@ const Overview = ({
   }, []);
   return (
     <div>
-      <div data-testid="overview"> Hello Overview</div>
+      <div data-testid="overview" />
       <ImageGallery
         currStyle={currStyle}
         currView={currView}

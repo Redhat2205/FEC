@@ -10,6 +10,8 @@ import GeneralStyles from "./StyleComponents/GeneralStyles.jsx";
 
 // Huzzah for JSX!!
 const App = () => {
+  // const url = window.location.pathname;
+  // console.log('url: ', url);
   const [productID, setProductID] = useState(37316);
   const [product, setProduct] = useState([]);
   const [productReviews, setProductReviews] = useState([]);
@@ -43,6 +45,9 @@ const App = () => {
   return (
     <GeneralStyles.Div data-testid="app">
       <h1>Hello World!</h1>
+      {/* <GeneralStyles.Nav>
+        <GeneralStyles.Header>RedHat </GeneralStyles.Header>
+      </GeneralStyles.Nav> */}
       {product.name === undefined
         ? <div>Loading...</div>
         : (
