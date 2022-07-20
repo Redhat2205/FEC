@@ -19,16 +19,14 @@ const useQuestionForm = (productID, getQa) => {
     e.preventDefault();
     const json = values;
     json.product_id = productID;
-    axios.post(`answers/submit/${questionID}`, json)
-      .then(() => getQa())
-      .then(() => setSubmit(true))
-      .then(() => (setValues({
-        name: "",
-        email: "",
-        body: "",
-        product_id: "",
-      })))
-      .catch((err) => console.log(err));
+    axios.post(`questions/submit/`, json);
+    setSubmit(true);
+    setValues({
+      name: "",
+      email: "",
+      body: "",
+      product_id: "",
+    });
   };
 
   return {

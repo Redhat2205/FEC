@@ -35,9 +35,9 @@ app.put('/helpful/answers/:id', (req, res) => {
 app.post('/answers/submit/:id', (req, res) => {
   helpers.submitAnswer(req, res);
 });
-// app.post('/question/submit/:id', () => {
-//   helpers.
-// });
+app.post('/questions/submit/', (req, res) => {
+  helpers.submitQuestion(req, res);
+});
 
 // listening
 const port = process.env.PORT || 3000;

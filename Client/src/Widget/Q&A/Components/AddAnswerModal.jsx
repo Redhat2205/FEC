@@ -8,7 +8,6 @@ const AddAnswerModal = ({
   const {
     handleSubmit, handleInput, values, submit, setSubmit, handleOnChangePhoto, imageSrc, setValues, setImageSrc,
   } = useAnswerForm(questionID);
-
   if (!addModalStatus) return null;
   return (
     <Modal.Background>

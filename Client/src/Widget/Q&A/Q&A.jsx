@@ -16,7 +16,7 @@ const Q_A = ({ productID, productName }) => {
     axios.get(`questions/${productID}`)
       .then((question) => {
         const sortedQuestions = Object.values(question.data.results).sort((a, b) => (
-          b.helpfulness + a.helpfulness
+          b.helpfulness - a.helpfulness
         ));
         setQa(sortedQuestions);
       })
@@ -43,7 +43,7 @@ const Q_A = ({ productID, productName }) => {
     const elementId = e.target.getAttribute('id');
     const QorA = current === 'question' ? "questions" : "answers";
     axios.put(`helpful/${QorA}/${elementId}`)
-      .then(() => getQa())
+      .then((r) => (console.log(r)))
       .catch((err) => console.log(err));
   };
 
@@ -51,8 +51,7 @@ const Q_A = ({ productID, productName }) => {
     const current = e.target.getAttribute("type");
     const elementId = e.target.getAttribute('id');
     const QorA = current === 'question' ? "questions" : "answers";
-    axios.put(`report/${QorA}/${elementId}`)
-      .catch((err) => console.log(err));
+    axios.put(`report/${QorA}/${elementId}`);
   };
 
   const handleMoreQuestion = () => {

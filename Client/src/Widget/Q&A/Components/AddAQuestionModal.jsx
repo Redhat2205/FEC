@@ -6,7 +6,7 @@ const AddAQuestionModal = ({
   productName, onClose, isOpen, productID, getQa,
 }) => {
   const {
-    handleSubmit, handleInput, values, submit, setSubmit, setImageSrc, setValues,
+    handleSubmit, handleInput, values, submit, setSubmit, setValues,
   } = useQuestionForm(productID, getQa);
 
   if (!isOpen) return null;
