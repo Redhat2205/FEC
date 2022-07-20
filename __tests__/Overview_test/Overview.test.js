@@ -17,7 +17,7 @@ import ProductAdditionalInfo from '../../Client/src/Widget/Overview/Components/P
 import App from '../../Client/src/App.jsx';
 
 describe('test!!', () => {
-  test('rendering the product info Section', async () => {
+  test('rendering the app after fetching data from API', async () => {
     render(<App />);
 
     await new Promise((a) => {
@@ -27,5 +27,7 @@ describe('test!!', () => {
 
     expect(await screen.getByTestId("app")).toBeInTheDocument();
     expect(await screen.getByTestId("appAfterRendering")).toBeInTheDocument();
+    expect(await screen.getByTestId("overview")).toBeInTheDocument();
+    expect(await screen.getByTestId("ATC-selectsize")).toBeInTheDocument();
   });
 });
