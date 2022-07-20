@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 const AStyle = {
   Body: styled.div`
-    height: 300px;
+    max-height: 300px;
     overflow: auto
   `,
   Input: styled.span`
