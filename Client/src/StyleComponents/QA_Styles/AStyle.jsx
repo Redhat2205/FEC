@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 const AStyle = {
   Body: styled.div`
-    height: 100px
+    max-height: 300px;
     overflow: auto
   `,
   Input: styled.span`
@@ -15,10 +15,10 @@ const AStyle = {
     font-weight: bold;
     margin-bottom: 25px;
 `,
-  Info: styled.ul`
+  LinksList: styled.ul`
     font-size: 13px;
     font-weight: normal;
-    display: flex;
+    display: -webkit-inline-box;
     list-style: none;
     margin-right: 0px;
     margin-top: 0;
@@ -31,20 +31,34 @@ const AStyle = {
   User: styled.li`
    margin: 2px;
   `,
+  Seller: styled.li`
+    margin: 2px;
+    font-weight: bold;
+  `,
   Date: styled.li`
   margin: 2px;
   `,
   Helpful: styled.li`
   margin: 2px;
 `,
-  Yes: styled.li`
+  YesClicked: styled.li`
   margin: 2px;
+  width: 20%;
+  `,
+  Yes: styled.li`
+  margin-left: 5px;
+  margin-right: 5px;
+  width: 20%;
     text-decoration-line: underline;
     &:hover {
     color: blue;
   }
 `,
   Reported: styled.li`
+  margin: 2px;
+  width: 28%;
+  `,
+  Report: styled.li`
   margin: 2px;
     text-decoration-line: underline;
     &:hover {
