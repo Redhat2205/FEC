@@ -13,7 +13,7 @@ const AnswerPanel = ({ answer, onClickHelpful, onReport }) => {
       <AStyle.A>A: </AStyle.A>
       <AStyle.Input>{answer.body}</AStyle.Input>
       <br />
-      <AStyle.Info>
+      <AStyle.LinksList>
         <AStyle.User>by</AStyle.User>
         {answer.answerer_name.toLowerCase() === "seller"
           ? <AStyle.Seller>Seller</AStyle.Seller>
@@ -24,7 +24,7 @@ const AnswerPanel = ({ answer, onClickHelpful, onReport }) => {
           )}
         <AStyle.Date>{`| ${moment(answer.date).format('MMMM Do YYYY')}`}</AStyle.Date>
         <AStyle.Helpful>| Helpful?</AStyle.Helpful>
-        {answerHelp ? <AStyle.Helpful>{`| Yes (${answer.helpfulness})`}</AStyle.Helpful>
+        {answerHelp ? <AStyle.YesClicked>{`| Yes (${answer.helpfulness})`}</AStyle.YesClicked>
           : (
             <AStyle.Yes
               id={answer.id}
@@ -37,17 +37,20 @@ const AnswerPanel = ({ answer, onClickHelpful, onReport }) => {
               {`| Yes (${answer.helpfulness})`}
             </AStyle.Yes>
           )}
-        <AStyle.Reported
-          id={answer.id}
-          type="answer"
-          onClick={(e) => {
-            setReport(true);
-            onReport(e);
-          }}
-        >
-          {report ? "Reported" : "Report"}
-        </AStyle.Reported>
-      </AStyle.Info>
+        {report ? <AStyle.Reported>| Reported</AStyle.Reported>
+          : (
+            <AStyle.Report
+              id={answer.id}
+              type="answer"
+              onClick={(e) => {
+                setReport(true);
+                onReport(e);
+              }}
+            >
+              | Report
+            </AStyle.Report>
+          )}
+      </AStyle.LinksList>
       {answer.photos.length > 0 && (
         <ul display="inline-block">
           {answer.photos.map((photo, index) => (

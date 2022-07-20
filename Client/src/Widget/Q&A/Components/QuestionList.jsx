@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from 'axios';
 import QuestionPanel from "./QuestionPanel.jsx";
 import SubmitNewQuestion from "./SubmitNewQuestion.jsx";
-import Style from "../../../StyleComponents/QA_Styles/Style.jsx";
+import QStyle from "../../../StyleComponents/QA_Styles/QStyle.jsx";
 import AddAQuestionModal from "./AddAQuestionModal.jsx";
 
 const QuestionList = ({
@@ -10,19 +10,19 @@ const QuestionList = ({
 }) => {
   if (qA.length === 0) return <SubmitNewQuestion productID={productID} productName={productName} getQa={getQa} />;
   return (
-    <Style.QuestionBody>
+    <QStyle.Body>
       {qA.slice(0, end).map((qAObj) => (
         <QuestionPanel
           key={qAObj.question_id}
           productName={productName}
-          questionid={qAObj.question_id}
+          questionID={qAObj.question_id}
           qAObj={qAObj}
           onClickHelpful={onClickHelpful}
           onReport={onReport}
           getQa={getQa}
         />
       ))}
-    </Style.QuestionBody>
+    </QStyle.Body>
   );
 };
 export default QuestionList;

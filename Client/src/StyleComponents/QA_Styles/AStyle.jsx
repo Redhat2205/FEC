@@ -15,7 +15,7 @@ const AStyle = {
     font-weight: bold;
     margin-bottom: 25px;
 `,
-  Info: styled.ul`
+  LinksList: styled.ul`
     font-size: 13px;
     font-weight: normal;
     display: -webkit-inline-box;
@@ -41,14 +41,24 @@ const AStyle = {
   Helpful: styled.li`
   margin: 2px;
 `,
-  Yes: styled.li`
+  YesClicked: styled.li`
   margin: 2px;
+  width: 20%;
+  `,
+  Yes: styled.li`
+  margin-left: 5px;
+  margin-right: 5px;
+  width: 20%;
     text-decoration-line: underline;
     &:hover {
     color: blue;
   }
 `,
   Reported: styled.li`
+  margin: 2px;
+  width: 28%;
+  `,
+  Report: styled.li`
   margin: 2px;
     text-decoration-line: underline;
     &:hover {

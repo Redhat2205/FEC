@@ -33,7 +33,6 @@ const Q_A = ({ productID, productName }) => {
     if (searchTerm.length > 2) {
       const result = qA.filter((questions) => (questions.question_body.toLowerCase().includes(searchTerm.toLowerCase())));
       setQa(result);
-      // console.log("this is state", currentState);
     } else {
       getQa();
     }
@@ -43,7 +42,7 @@ const Q_A = ({ productID, productName }) => {
     const elementId = e.target.getAttribute('id');
     const QorA = current === 'question' ? "questions" : "answers";
     axios.put(`helpful/${QorA}/${elementId}`)
-      .then((r) => (console.log(r)))
+      .then((r) => { getQa(); })
       .catch((err) => console.log(err));
   };
 
@@ -61,7 +60,7 @@ const Q_A = ({ productID, productName }) => {
 
   return (
     <Style.Body data-testid="qna">
-      <Style.Title> Questions and Answers</Style.Title>
+      <Style.Title> QUESTIONS AND ANSWERS</Style.Title>
       <SearchBar
         searchHandler={searchHandler}
       />
@@ -85,12 +84,12 @@ const Q_A = ({ productID, productName }) => {
         </Style.MoreAnsweredQuestion>
       )}
       {qA.length > 0 && (
-        <Modal.AddQuestion
+        <Style.AddQuestion
           type="button"
           onClick={() => { setShowAddQuestion(true); }}
         >
           ADD A QUESTION +
-        </Modal.AddQuestion>
+        </Style.AddQuestion>
       )}
       <AddAQuestionModal
         qA={qA}

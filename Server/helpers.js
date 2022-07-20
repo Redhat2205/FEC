@@ -39,7 +39,7 @@ exports.getReviews = (req, res) => {
       res.status(500).send(err);
     });
 };
-const getQA = (req, res) => {
+exports.getQA = (req, res) => {
   const productID = req.url.slice(-5);
   axios({
     method: 'get',
@@ -55,7 +55,7 @@ const getQA = (req, res) => {
     })
     .catch((err) => console.log(err));
 };
-const reportAnswer = (req, res) => {
+exports.reportAnswer = (req, res) => {
   const answerID = req.url.slice(-7);
   axios({
     method: 'put',
@@ -63,11 +63,11 @@ const reportAnswer = (req, res) => {
     headers: { Authorization: process.env.API_Key },
   })
     .then(() => {
-      res.status(204);
+      res.status(204).send();
     })
     .catch((err) => console.log(err));
 };
-const reportQuestion = (req, res) => {
+exports.reportQuestion = (req, res) => {
   const questionID = req.url.slice(-6);
   axios({
     method: 'put',
@@ -75,11 +75,11 @@ const reportQuestion = (req, res) => {
     headers: { Authorization: process.env.API_Key },
   })
     .then(() => {
-      res.status(204);
+      res.status(204).send();
     })
     .catch((err) => console.log(err));
 };
-const helpfulAnswer = (req, res) => {
+exports.helpfulAnswer = (req, res) => {
   const answerID = req.url.slice(-7);
   axios({
     method: 'put',
@@ -87,23 +87,24 @@ const helpfulAnswer = (req, res) => {
     headers: { Authorization: process.env.API_Key },
   })
     .then(() => {
-      res.status(204);
+      res.status(204).send();
     })
     .catch((err) => console.log(err));
 };
-const helpfulQuestion = (req, res) => {
+exports.helpfulQuestion = (req, res) => {
   const questionID = req.url.slice(-6);
   axios({
     method: 'put',
     url: `${process.env.API_Base}/qa/questions/${questionID}/helpful`,
     headers: { Authorization: process.env.API_Key },
   })
-    .then(() => {
-      res.status(204);
+    .then((r) => {
+      // const json = CircularJSON.stringify(response);
+      res.status(204).send();
     })
-    .catch((err) => console.log(err));
+    .catch((err) => { console.log(err); res.status(500).send(err); });
 };
-const submitQuestion = (req, res) => {
+exports.submitQuestion = (req, res) => {
   const params = req.body;
   axios({
     method: 'post',
@@ -112,11 +113,11 @@ const submitQuestion = (req, res) => {
     data: params,
   })
     .then(() => {
-      res.status(204);
+      res.status(204).send();
     })
     .catch((err) => console.log(err));
 };
-const submitAnswer = (req, res) => {
+exports.submitAnswer = (req, res) => {
   const params = req.body;
   const questionID = req.url.slice(-6);
   axios({
@@ -126,7 +127,7 @@ const submitAnswer = (req, res) => {
     data: params,
   })
     .then(() => {
-      res.status(204);
+      res.status(204).send();
     })
     .catch((err) => console.log(err));
 };
