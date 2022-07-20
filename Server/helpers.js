@@ -39,5 +39,69 @@ const getReviews = (req, res) => {
       res.status(500).send(err);
     });
 };
-
-module.exports = { getProduct, getReviews };
+const getQA = (req, res) => {
+  const productID = req.url.slice(-5);
+  console.log(productID);
+  axios({
+    method: 'get',
+    url: `${process.env.API_Base}/qa/questions`,
+    headers: { Authorization: process.env.API_Key },
+    params: {
+      product_id: productID,
+      count: '9999',
+    },
+  })
+    .then((qAData) => {
+      res.send(qAData.data);
+    })
+    .catch((err) => console.log(err));
+};
+const reportAnswer = (req, res) => {
+  const answerID = req.url.slice(-7);
+  axios({
+    method: 'put',
+    url: `${process.env.API_Base}/qa/answers/${answerID}/report`,
+    headers: { Authorization: process.env.API_Key },
+  })
+    .then(() => {
+      res.status(204);
+    })
+    .catch((err) => console.log(err));
+};
+const reportQuestion = (req, res) => {
+  const questionID = req.url.slice(-6);
+  axios({
+    method: 'put',
+    url: `${process.env.API_Base}/qa/questions/${questionID}/report`,
+    headers: { Authorization: process.env.API_Key },
+  })
+    .then(() => {
+      res.status(204);
+    })
+    .catch((err) => console.log(err));
+};
+const helpfulAnswer = (req, res) => {
+  const answerID = req.url.slice(-7);
+  axios({
+    method: 'put',
+    url: `${process.env.API_Base}/qa/answers/${answerID}/helpful`,
+    headers: { Authorization: process.env.API_Key },
+  })
+    .then(() => {
+      res.status(204);
+    })
+    .catch((err) => console.log(err));
+};
+const helpfulQuestion = (req, res) => {
+  const questionID = req.url.slice(-6);
+  axios({
+    method: 'put',
+    url: `${process.env.API_Base}/qa/questions/${questionID}/helpful`,
+    headers: { Authorization: process.env.API_Key },
+  })
+    .then(() => {
+      res.status(204);
+    })
+    .catch((err) => console.log(err));
+};
+module.exports = { getProduct, getReviews, getQA, reportAnswer, reportQuestion, helpfulQuestion, helpfulAnswer };

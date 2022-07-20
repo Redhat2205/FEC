@@ -13,13 +13,9 @@ const Q_A = ({ productID, productName }) => {
   const [end, setEnd] = useState(4);
 
   const getQa = () => {
-    axios({
-      method: 'get',
-      url: `${process.env.API_Base}/qa/questions?product_id=${productID}&count=1000`,
-      headers: { Authorization: process.env.API_Key },
-    })
-      .then((product) => {
-        const sortedQuestions = Object.values(product.data.results).sort((a, b) => (
+    axios.get(`questions/${productID}`)
+      .then((question) => {
+        const sortedQuestions = Object.values(question.data.results).sort((a, b) => (
           b.helpfulness + a.helpfulness
         ));
         setQa(sortedQuestions);
@@ -46,13 +42,8 @@ const Q_A = ({ productID, productName }) => {
     const current = (e.target.getAttribute('type'));
     const elementId = e.target.getAttribute('id');
     const QorA = current === 'question' ? "questions" : "answers";
-    const currentUrl = `${process.env.API_Base}/qa/${QorA}/${elementId}/helpful`;
-    axios({
-      method: 'put',
-      url: currentUrl,
-      headers: { Authorization: process.env.API_Key },
-    })
-      .then(() => { getQa(); })
+    axios.put(`helpful/${QorA}/${elementId}`)
+      .then(() => (getQa()))
       .catch((err) => console.log(err));
   };
 
@@ -60,15 +51,10 @@ const Q_A = ({ productID, productName }) => {
     const current = e.target.getAttribute("type");
     const elementId = e.target.getAttribute('id');
     const QorA = current === 'question' ? "questions" : "answers";
-    const currentUrl = `${process.env.API_Base}/qa/${QorA}/${elementId}/report`;
-    axios({
-      method: 'put',
-      url: currentUrl,
-      headers: { Authorization: process.env.API_Key },
-    })
-      .then(() => { console.log('shit'); })
+    axios.put(`report/${QorA}/${elementId}`)
       .catch((err) => console.log(err));
   };
+
   const handleMoreQuestion = () => {
     let counter = end;
     setEnd(counter += 2);
