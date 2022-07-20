@@ -19,26 +19,20 @@ const useQuestionForm = (productID, getQa) => {
     e.preventDefault();
     const json = values;
     json.product_id = productID;
-    console.log(json);
-    axios({
-      method: 'post',
-      url: `${process.env.API_Base}/qa/questions`,
-      headers: { Authorization: process.env.API_Key },
-      data: json,
-    })
-      .then(() => getQa())
-      .then(() => setSubmit(true))
-      .then(() => (setValues({
-        name: "",
-        email: "",
-        body: "",
-        product_id: "",
-      })))
-      .catch((err) => console.log(err));
+    axios.post(`questions/submit/`, json)
+      .then(() => {
+        setSubmit(true);
+        setValues({
+          name: "",
+          email: "",
+          body: "",
+          product_id: "",
+        });
+      });
   };
 
   return {
-    handleInput, handleSubmit, values, submit, setSubmit,
+    handleInput, handleSubmit, values, submit, setSubmit, setValues,
   };
 };
 export default useQuestionForm;

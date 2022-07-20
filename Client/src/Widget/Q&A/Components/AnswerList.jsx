@@ -11,6 +11,7 @@ const AnswerList = ({ answerObj, onClickHelpful, onReport }) => {
   const handleMoreAnswers = () => (
     moreAnswer !== true ? setMoreAnwser(true) : setMoreAnwser(false)
   );
+  if (sortedAnswer.length === 0) return null;
   return (
     <AStyle.Body>
       {sortedAnswer.slice(0, 2).map((answer) => (

@@ -6,7 +6,7 @@ const AddAQuestionModal = ({
   productName, onClose, isOpen, productID, getQa,
 }) => {
   const {
-    handleSubmit, handleInput, values, submit, setSubmit,
+    handleSubmit, handleInput, values, submit, setSubmit, setValues,
   } = useQuestionForm(productID, getQa);
 
   if (!isOpen) return null;
@@ -45,7 +45,7 @@ const AddAQuestionModal = ({
                   />
                 </div>
                 <div>
-                  <Modal.FormLabel> What is your nickname </Modal.FormLabel>
+                  <Modal.FormLabel> Your Question </Modal.FormLabel>
                   <Modal.SubmitInput
                     id="body"
                     type="text"
@@ -59,7 +59,19 @@ const AddAQuestionModal = ({
                 <button type="submit">Submit Question</button>
               </form>
             )}
-          <Modal.CloseButton onClick={() => { onClose(); setSubmit(false); }}> X </Modal.CloseButton>
+          <Modal.CloseButton onClick={() => {
+            onClose();
+            setSubmit(false);
+            getQa();
+            setValues({
+              name: "",
+              email: "",
+              body: "",
+            });
+          }}
+          >
+            X
+          </Modal.CloseButton>
         </Modal.Content>
       </Modal.PopUp>
     </Modal.Background>

@@ -12,12 +12,6 @@ const Modal = {
     justify-content: center;
     align-items: center;
   `,
-  AddQuestion: styled.button`
-    width: 30%;
-    height: 65px;
-    font-size: 18px;
-    font-weight: bold;
-`,
   PopUp: styled.div`
     width: 800px;
     height: 700px;
