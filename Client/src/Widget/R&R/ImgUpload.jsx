@@ -14,6 +14,7 @@ const ImgUpload = ({
 
   return (
     <div>
+      {userPhotos.length === 5 && <p style={{ color: 'red' }}>5 photo upload limit reached</p>}
       <input accept="image" type="file" id="files" onChange={addImgHandler}></input>
       {userPhotos.length >= 1 && <input accept="image" type="file" id="files" onChange={addImgHandler}></input>}
       {userPhotos.length >= 2 && <input accept="image" type="file" id="files" onChange={addImgHandler}></input>}
