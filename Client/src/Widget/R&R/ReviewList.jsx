@@ -11,20 +11,21 @@ const sortingStyle = {
 };
 
 const ReviewList = ({
-  currentItem, reviews, reviewCount, sort, setSort,
+  currentItem, reviews, reviewCount, sort, setSort, metaData,
 }) => {
   const [show, setShow] = useState(false);
   const [initialView, setInitialView] = useState(true);
   const [numberTiles, setNumberTiles] = useState(2);
   const [renderedReviews, setRenderedReviews] = useState(reviews);
   const [currentSort, setCurrentSort] = useState();
+  // const
   // put the state for the sort
 
   // useEffect(() => {
   // setRenderedReviews()
   // }, [currentSort]);
 
-  if (reviews) {
+  if (reviews && metaData) {
     // set the sorting here
 
     // const newest = reviews.slice(0).sort((a, b) => (
@@ -56,7 +57,7 @@ const ReviewList = ({
     // console.log('reviews', reviews);
     // () => {setRenderedReviews(() => {reviews})};
   }
-  if (renderedReviews) {
+  if (renderedReviews && metaData) {
     // console.log('handle async!');
     // console.log(renderedReviews);
     if (initialView) {
@@ -71,7 +72,7 @@ const ReviewList = ({
           </ul>
           {numberTiles < reviewCount && <MoreReviews initialView={initialView} setInitialView={setInitialView} numberTiles={numberTiles} setNumberTiles={setNumberTiles} reviewCount={reviewCount} />}
           <AddReview show={show} setShow={setShow} />
-          <AddReviewModal show={show} setShow={setShow} currentItem={currentItem} />
+          <AddReviewModal show={show} setShow={setShow} currentItem={currentItem} characteristics={metaData.characteristics} />
         </div>
       );
     } return (
@@ -86,7 +87,7 @@ const ReviewList = ({
         {/* <MoreReviews onClick={() => (setInitialView(!initialView))} /> */}
         {numberTiles < reviewCount && <MoreReviews view={initialView} setInitialView={setInitialView} numberTiles={numberTiles} setNumberTiles={setNumberTiles} reviewCount={reviewCount} />}
         <AddReview show={show} setShow={setShow} />
-        <AddReviewModal show={show} setShow={setShow} currentItem={currentItem} />
+        <AddReviewModal show={show} setShow={setShow} currentItem={currentItem} characteristics={metaData.characteristics} />
       </div>
     );
   }

@@ -11,7 +11,7 @@ const Factors = ({ productReviews, characteristics }) => {
       mappers.push([key[0], Number(key[1].value).toFixed(2)]);
     });
 
-    console.log(mappers);
+    // console.log(mappers);
     return (
       <ul>
         {mappers.map((arr, index) => (

@@ -136,7 +136,7 @@ const R_R = ({ productID }) => {
           border: 'solid 1px', borderRadius: '5px', boxShadow: '5px 10px #888888', float: 'right', width: '66%', marginBottom: '20px',
         }}
       >
-        <ReviewList reviews={productReviews} currentItem={currentItem} reviewCount={reviewCount} sort={currentSort} setSort={setCurrentSort} />
+        <ReviewList reviews={productReviews} currentItem={currentItem} reviewCount={reviewCount} sort={currentSort} setSort={setCurrentSort} metaData={metaData} />
       </div>
     </div>
   );
