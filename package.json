@@ -11,7 +11,7 @@
     "start": "webpack --mode=development",
     "build": "webpack --mode=production",
     "dev": "webpack serve --open",
-    "test": "jest --env=jsdom"
+    "test": "jest --env=jsdom --coverage"
   },
   "dependencies": {
     "@emotion/react": "^11.9.3",

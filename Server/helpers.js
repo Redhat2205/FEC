@@ -1,7 +1,7 @@
 const axios = require('axios');
 require('dotenv').config();
 
-const getProduct = (req, res) => {
+exports.getProduct = (req, res) => {
   const productID = req.url.slice(-5);
   // console.log(productID);
   axios({
@@ -19,7 +19,7 @@ const getProduct = (req, res) => {
     });
 };
 
-const getReviews = (req, res) => {
+exports.getReviews = (req, res) => {
   const productID = req.url.slice(-5);
   axios({
     method: 'GET',
@@ -131,4 +131,17 @@ const submitAnswer = (req, res) => {
     .catch((err) => console.log(err));
 };
 
-module.exports = { getProduct, getReviews, getQA, reportAnswer, reportQuestion, helpfulQuestion, helpfulAnswer, submitAnswer, submitQuestion };
+exports.getStyles = (req, res) => {
+  const productID = req.url.slice(-12, -7);
+  axios({
+    method: 'GET',
+    url: `${process.env.API_Base}/products/${productID}/styles`,
+    headers: { Authorization: process.env.API_Key },
+  })
+    .then((stylesData) => {
+      res.status(200).send(stylesData.data);
+    })
+    .catch((err) => {
+      res.status(500).send(err);
+    });
+};

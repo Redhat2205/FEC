@@ -39,6 +39,9 @@ app.post('/questions/submit/', (req, res) => {
   helpers.submitQuestion(req, res);
 });
 
+app.get('/products/:id/styles', (req, res) => {
+  helpers.getStyles(req, res);
+});
 // listening
 const port = process.env.PORT || 3000;
 
