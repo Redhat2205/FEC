@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import AddStarRating from './AddStarRating.jsx';
 import CharacteristicsUserRating from './CharacteristicsUserRating.jsx';
 import ImgUpload from './ImgUpload.jsx';
+import axios from 'axios';
 
 // styles
 const left15PX = {
@@ -73,6 +74,7 @@ const AddReviewModal = ({
   const [userEmail, setUserEmail] = useState('');
   const [userPhotos, setUserPhotos] = useState([]);
   const [submittedModal, setSubmittedModal] = useState(false);
+  const urlArray = [];
 
   const [form, setForm] = useState({
     id: currentItem.id,
@@ -146,9 +148,38 @@ const AddReviewModal = ({
     // console.log(Object.values(validated).filter((value) => value === true).length);
     // console.log(Object.values(validated).length);
 
+    // form is fully validated!
     if (formValidated) {
       console.log('can submit form!', form);
+      const formData = new FormData();
+      formData.append('upload_preset', 'fecRnR');
+      // get image urls from cloudinary and set new photo array state
+      // iterate through array of images
+      const promises = userPhotos.map((photo) => {
+        formData.append('file', photo[0]);
+        return axios.post('https://api.cloudinary.com/v1_1/ratingsredhat/image/upload', formData);
+          // .then((res) => console.log(res.data.url))
+          // .catch((err) => console.log('nah bro', err));
+      });
+      // console.log(promises);
+      Promise.all(promises)
+        .then((obj) => {
+          console.log(obj);
+          obj.forEach((image) => urlArray.push(image.data.url));
+          // urlArray.push()
+          // res.forEach(obj => urlArray.push(obj.data.url));
+        })
+        .then(() => {
+          console.log(urlArray);
+          // set state of photo urls
+        })
+        .catch((err) => {
+          console.log('🟥There was an error getting image urls from Cloudinary!', err);
+        });
+
+      // console.log(urlArray);
       setSubmittedModal((old) => !old);
+      // submit form to API
     }
   };
 
