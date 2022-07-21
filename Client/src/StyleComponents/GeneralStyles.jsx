@@ -12,6 +12,7 @@ const GeneralStyles = {
     /* -webkit-background-clip: text;
     -webkit-text-fill-color: transparent; */
     /* background-color: #262626; */
+    border-radius: 2px;
   `,
   Header: styled.h1`
     display: inline-block;
