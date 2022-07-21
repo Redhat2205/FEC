@@ -69,9 +69,10 @@ const AddReviewModal = ({
   const [userRating, setUserRating] = useState(0);
   const [userBody, setUserBody] = useState('');
   const [userRec, setUserRec] = useState(null);
-  const [userName, setUserName] = useState('');
+  const [userName, setUserName] = useState(null);
   const [userEmail, setUserEmail] = useState('');
   const [userPhotos, setUserPhotos] = useState([]);
+  const [submittedModal, setSubmittedModal] = useState(false);
 
   const [form, setForm] = useState({
     id: currentItem.id,
@@ -98,90 +99,140 @@ const AddReviewModal = ({
       email: false,
     };
 
-    if (!form.body.length > 50) {
-      validated.body = false;
-      console.log('review body must be at least 50 characters!');
+    // rating validation
+    if (form.rating > 0) {
+      validated.rating = true;
+      // console.log('rating validated');
+    }
+
+    // recommend validation
+    if (form.recommend) {
+      validated.recommend = true;
+      // console.log('recommend validated');
+    }
+
+    // characteristics validation
+    if (Object.values(userChara).filter(value => value > 0).length === Object.values(userChara).length) {
+      validated.characteristics = true;
+      // console.log('characteristics validated');
+    }
+
+    // body validation
+    if (form.body.length > 50) {
+      validated.body = true;
+      // console.log('body validated');
+      // console.log('review body must be at least 50 characters!');
+    }
+
+    // name validation
+    if (form.name) {
+      validated.name = true;
+      // console.log('name validated');
+    }
+
+    // email validation
+    if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(form.email)) {
+      validated.email = true;
+      // console.log('email validated');
     }
 
     // final validation before submission
-    for(var property in validated) {
-      if
+    if (Object.values(validated).filter((value) => value === true).length === 6) {
+      formValidated = true;
+      console.log('entire form is validated!');
     }
-    if (validated) {
+
+    // testing final validation
+    // console.log(Object.values(validated).filter((value) => value === true).length);
+    // console.log(Object.values(validated).length);
+
+    if (formValidated) {
       console.log('can submit form!', form);
+      setSubmittedModal((old) => !old);
     }
   };
 
   if (!show) {
     return null;
   }
-  return (
-    <div className="modal-container" style={modalStyle}>
-      <div className="modal-content" style={modalContentStyle}>
-        <div style={{ modalHeaderStyle }}>
-          <h1>Write Your Review</h1>
-          <h3 style={left15PX}>{`About ${currentItem.name}`}</h3>
-        </div>
-        <div className="modal-body" style={modalBodyStyle}>
-          <h5 style={{ marginLeft: '15px' }}>Overall rating</h5>
-          <AddStarRating form={form} setForm={setForm} />
-          <p style={{ marginLeft: '60%' }}>
-            <span>1 star - “Poor”</span><br></br>
-            <span>2 stars - “Fair”</span><br></br>
-            <span>3 stars - “Average”</span><br></br>
-            <span>4 stars - “Good”</span><br></br>
-            <span>5 stars - “Great”</span><br></br>
-          </p>
-          <h5 style={left15PX}>Do you recommend this product?</h5>
-          <label style={left15PX} htmlFor="Yes">Yes</label>
-          <input style={left15PX} type="radio" name="recommended" value="yes" onChange={(e) => setForm(old => ({...old, recommend: true}))}></input><br></br>
-          <label style={{ marginLeft: '16.5px' }} htmlFor="No">No</label>
-          <input style={{ marginLeft: '16.39px' }} type="radio" name="recommended" value="no" onChange={(e) => setForm(old => ({...old, recommend: false}))}></input>
-          <h5>Characteristics</h5>
-          <div>
-            <ul>
-              {/* {mappings.map((property, index) => (
-                <div key={index}>
-                  <div>
-                    {property[0]}
-                  </div>
-                  <CharacteristicsUserRating id={property[1]} quality={property[0]} />
-                </div>
-              ))} */}
-              {mappings.map((property, index, coll) => (index % 2 === 0 ? (
-                <div>
-                  <div>
-                    {property}
-                  </div>
-                  {/* <CharacteristicsUserRating quality={property} id={coll[(index + 1)]} form={form} setForm={setForm} userChara={userChara} setUserChara={setUserChara} /> */}
-                  <CharacteristicsUserRating quality={property} qualID={coll[(index + 1)]} form={form} setForm={setForm} userChara={userChara} setUserChara={setUserChara} />
-                </div>
-              )
-                : null))}
-            </ul>
+  if (!submittedModal) {
+    return (
+      <div className="modal-container" style={modalStyle}>
+        <div className="modal-content" style={modalContentStyle}>
+          <div style={{ modalHeaderStyle }}>
+            <h1>Write Your Review</h1>
+            <h3 style={left15PX}>{`About ${currentItem.name}`}</h3>
           </div>
-          <h5 style={left15PX}>Review summary</h5>
-          <textarea style={ {marginLeft: '15px', resize: 'none', width: '80%' }} type="text" size="50" maxLength="60" placeholder="Example: Best purchase ever!" onChange={(e) => setForm(old => ({...old, summary: e.target.value}))}></textarea>
-          <h5 style={left15PX}>Review body</h5>
-          <textarea style={{ marginLeft: '15px', height: '100px', textAlign: 'none', resize: 'none', width: '80%' }} type="text" placeholder="Why did you like the product or not?" maxLength="1000" size="50" onChange={(e) => setForm(old => ({...old, body: e.target.value}))}></textarea>
-          <h5>Upload photos</h5>
-          <ImgUpload form={form} setForm={setForm} userPhotos={userPhotos} setUserPhotos={setUserPhotos} />
-          <h5 style={left15PX}>What is your nickname?</h5>
-          <textarea style={{ marginLeft: '15px', resize: 'none', width: '80%' }} type="text" size="50" maxLength="60" placeholder="Example: jackson11!" onChange={(e) => setForm(old => ({...old, name: e.target.value}))}></textarea>
-          <p style={{ fontWeight: 'bold', marginLeft: '15px' }}>For privacy reasons, do not use your full name or email address</p>
+          <div className="modal-body" style={modalBodyStyle}>
+            <h5 style={{ marginLeft: '15px' }}>Overall rating</h5>
+            <AddStarRating form={form} setForm={setForm} />
+            <p style={{ marginLeft: '60%' }}>
+              <span>1 star - “Poor”</span><br></br>
+              <span>2 stars - “Fair”</span><br></br>
+              <span>3 stars - “Average”</span><br></br>
+              <span>4 stars - “Good”</span><br></br>
+              <span>5 stars - “Great”</span><br></br>
+            </p>
+            <h5 style={left15PX}>Do you recommend this product?</h5>
+            <label style={left15PX} htmlFor="Yes">Yes</label>
+            <input style={left15PX} type="radio" name="recommended" value="yes" onChange={(e) => setForm(old => ({...old, recommend: true}))}></input><br></br>
+            <label style={{ marginLeft: '16.5px' }} htmlFor="No">No</label>
+            <input style={{ marginLeft: '16.39px' }} type="radio" name="recommended" value="no" onChange={(e) => setForm(old => ({...old, recommend: false}))}></input>
+            <h5>Characteristics</h5>
+            <div>
+              <ul>
+                {/* {mappings.map((property, index) => (
+                  <div key={index}>
+                    <div>
+                      {property[0]}
+                    </div>
+                    <CharacteristicsUserRating id={property[1]} quality={property[0]} />
+                  </div>
+                ))} */}
+                {mappings.map((property, index, coll) => (index % 2 === 0 ? (
+                  <div>
+                    <div>
+                      {property}
+                    </div>
+                    {/* <CharacteristicsUserRating quality={property} id={coll[(index + 1)]} form={form} setForm={setForm} userChara={userChara} setUserChara={setUserChara} /> */}
+                    <CharacteristicsUserRating quality={property} qualID={coll[(index + 1)]} form={form} setForm={setForm} userChara={userChara} setUserChara={setUserChara} />
+                  </div>
+                )
+                  : null))}
+              </ul>
+            </div>
+            <h5 style={left15PX}>Review summary</h5>
+            <textarea style={ {marginLeft: '15px', resize: 'none', width: '80%' }} type="text" size="50" maxLength="60" placeholder="Example: Best purchase ever!" onChange={(e) => setForm(old => ({...old, summary: e.target.value}))}></textarea>
+            <h5 style={left15PX}>Review body</h5>
+            <textarea style={{ marginLeft: '15px', height: '100px', textAlign: 'none', resize: 'none', width: '80%' }} type="text" placeholder="Why did you like the product or not?" maxLength="1000" size="50" onChange={(e) => setForm(old => ({...old, body: e.target.value}))}></textarea>
+            <h5>Upload photos</h5>
+            <ImgUpload form={form} setForm={setForm} userPhotos={userPhotos} setUserPhotos={setUserPhotos} />
+            <h5 style={left15PX}>What is your nickname?</h5>
+            <textarea style={{ marginLeft: '15px', resize: 'none', width: '80%' }} type="text" size="50" maxLength="60" placeholder="Example: jackson11!" onChange={(e) => setForm(old => ({...old, name: e.target.value}))}></textarea>
+            <p style={{ fontWeight: 'bold', marginLeft: '15px' }}>For privacy reasons, do not use your full name or email address</p>
 
-          <h5 style={left15PX}>What is your email?</h5>
-          {/* <textarea style={{ marginLeft: '15px', resize: 'none', width: '80%' }} type="text" size="50" maxLength="60" placeholder="Example: jackson11@email.com" onChange={(e) => setUserEmail(e.target.value)}></textarea> */}
-          <textarea style={{ marginLeft: '15px', resize: 'none', width: '80%' }} type="text" size="50" maxLength="60" placeholder="Example: jackson11@email.com" onChange={(e) => setForm(old => ({...old, email: e.target.value}))}></textarea>
+            <h5 style={left15PX}>What is your email?</h5>
+            {/* <textarea style={{ marginLeft: '15px', resize: 'none', width: '80%' }} type="text" size="50" maxLength="60" placeholder="Example: jackson11@email.com" onChange={(e) => setUserEmail(e.target.value)}></textarea> */}
+            <textarea style={{ marginLeft: '15px', resize: 'none', width: '80%' }} type="text" size="50" maxLength="60" placeholder="Example: jackson11@email.com" onChange={(e) => setForm(old => ({...old, email: e.target.value}))}></textarea>
 
-        </div>
-        <div className="modal-footer" style={modalFooterStyle}>
-          <button style={left15PX}>Submit review</button><br></br>
-          <button onClick={() => setShow(!show)} style={left15PX}>Close</button>
+          </div>
+          <div className="modal-footer" style={modalFooterStyle}>
+            <button style={left15PX} onClick={submitHandler}>Submit review</button><br></br>
+            <button onClick={() => setShow(!show)} style={left15PX}>Close</button>
+          </div>
         </div>
       </div>
-    </div>
-  );
+    );
+  } else {
+    return (
+      <div style={modalStyle}>
+        <div style={modalContentStyle}>
+          <div style={modalBodyStyle}>Review Submitted!</div>
+        </div>
+      </div>
+    );
+  }
+
 };
 
 export default AddReviewModal;
