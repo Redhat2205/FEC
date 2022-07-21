@@ -91,6 +91,7 @@ const AddToCart = ({ product, currStyle }) => {
           : (
             <ATC.SelectSize
               id="selectSize"
+              data-testid="ATC-selectsize"
               onChange={selectSizeAndUpdateStock}
               ref={selectRef}
             >

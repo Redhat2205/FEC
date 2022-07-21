@@ -27,6 +27,7 @@ const SectionDiv = {
     float: right;
   `,
   ProductAdditionalInfo: styled.div`
+    margin-bottom: 50px;
     width: 100%;
     height: 200px;
     overflow: hidden;
