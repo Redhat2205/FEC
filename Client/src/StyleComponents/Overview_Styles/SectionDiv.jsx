@@ -2,32 +2,36 @@ import styled from "styled-components";
 
 const SectionDiv = {
   ImageGallerySection: styled.div`
-    width: 60vw;
+    width: 60%;
     height: 600px;
-    display: flex;
+    overflow: hidden;
     float: left;
-    background-color: #faface;
+    /* background-color: #f8f8f8; */
   `,
   ProductInfoSection: styled.div`
-    width: 38vw;
+    width: 39%;
     height: 200px;
-    display: flex;
+    overflow: hidden;
     float: right;
-    background-color: #e0a2b7;
   `,
   StyleSelectorSection: styled.div`
-    width: 38vw;
+    width: 39%;
     height: 200px;
-    display: flex;
+    overflow: hidden;
     float: right;
-    background-color: #9bd4e2;
   `,
   AddToCartSection: styled.div`
-    width: 38vw;
+    width: 39%;
     height: 200px;
-    display: flex;
+    overflow: hidden;
     float: right;
-    background-color: #e7d2f3;
+  `,
+  ProductAdditionalInfo: styled.div`
+    margin-bottom: 50px;
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+    float: right;
   `,
 };
 

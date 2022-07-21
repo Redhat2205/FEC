@@ -24,5 +24,10 @@ module.exports = {
     "no-console": 0,
     "react/function-component-definition": 0,
     "import/extensions": 0,
+    "react/prop-types": 0,
+    "no-unused-vars": 0,
+    "react/no-array-index-key": 0,
+    "react/jsx-filename-extension": [1, { extensions: [".js", ".jsx"] }],
+    'no-undef': 0,
   },
 };
