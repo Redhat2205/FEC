@@ -43,12 +43,12 @@ const AStyle = {
 `,
   YesClicked: styled.li`
   margin: 2px;
-  width: 20%;
+  width: 13%;
   `,
   Yes: styled.li`
   margin-left: 5px;
   margin-right: 5px;
-  width: 20%;
+  width: 13%;
     text-decoration-line: underline;
     &:hover {
     color: blue;
