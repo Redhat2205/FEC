@@ -9,7 +9,7 @@ const SocialMedia = ({ product, currStyle }) => {
 
   if (product.name !== undefined) {
     return (
-      <PAI.SocialMedia>
+      <PAI.SocialMedia data-testid="socialMedia">
         Share on
         <a
           type="button"

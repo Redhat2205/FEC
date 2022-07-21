@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import SectionDiv from "../../../StyleComponents/Overview_Styles/SectionDiv.jsx";
 import ATC from "../../../StyleComponents/Overview_Styles/ATC.jsx";
 
-const AddToCart = ({ product, currStyle }) => {
+const AddToCart = ({ product, currStyle, currView }) => {
   const defaultStock = ['-', 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
   const selectRef = React.useRef();
 
@@ -74,87 +74,89 @@ const AddToCart = ({ product, currStyle }) => {
     const toggleFavorite = () => {
       setFavorite(!favorite);
     };
-
-    return (
-      <SectionDiv.AddToCartSection>
-        {reminder && (
-          <ATC.Div>
-            Please select a size!
-          </ATC.Div>
-        )}
-        {skus[0][0] === "null"
-          ? (
-            <ATC.SelectSize disabled>
-              <option>OUT OF STOCK</option>
-            </ATC.SelectSize>
-          )
-          : (
-            <ATC.SelectSize
-              id="selectSize"
-              data-testid="ATC-selectsize"
-              onChange={selectSizeAndUpdateStock}
-              ref={selectRef}
-            >
-              <option> SELECT SIZE </option>
-              { skus.map((sku) => (
-                <option key={sku[0]}>
-                  {sku[1].size}
-                </option>
-              ))}
-            </ATC.SelectSize>
+    if (currView === 'default') {
+      return (
+        <SectionDiv.AddToCartSection>
+          {reminder && (
+            <ATC.Div>
+              Please select a size!
+            </ATC.Div>
           )}
-
-        { quantity === '-'
-          ? (
-            <ATC.SelectQuantity>
-              <option> - </option>
-            </ATC.SelectQuantity>
-          ) : (
-            <ATC.SelectQuantity onChange={updateQuantity} value={quantity}>
-              { size === null
-                ? stock.map((quantityChoice, index) => (
-                  <option key={index + 100}>
-                    {quantityChoice}
-                  </option>
-                ))
-                : stock.map((quantityChoice, index) => (
-                  <option key={index + 200}>
-                    {quantityChoice}
-                  </option>
-                ))}
-            </ATC.SelectQuantity>
-          )}
-
-        <ATC.SecondLine>
-          { size === null || size === 'SELECT SIZE'
+          {skus[0][0] === "null"
             ? (
-              <ATC.AddtoBag onClick={onClickOpenDropDown}>
-                ADD TO BAG &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; +
-              </ATC.AddtoBag>
+              <ATC.SelectSize disabled>
+                <option>OUT OF STOCK</option>
+              </ATC.SelectSize>
             )
             : (
-              <ATC.AddtoBag onClick={onClickAddToBag}>
-                ADD TO BAG &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; +
-              </ATC.AddtoBag>
+              <ATC.SelectSize
+                id="selectSize"
+                data-testid="ATC-selectsize"
+                onChange={selectSizeAndUpdateStock}
+                ref={selectRef}
+              >
+                <option> SELECT SIZE </option>
+                { skus.map((sku) => (
+                  <option key={sku[0]}>
+                    {sku[1].size}
+                  </option>
+                ))}
+              </ATC.SelectSize>
             )}
 
-          {favorite ? (
-            <ATC.FavoriteButton onClick={toggleFavorite}>
-              ★
-            </ATC.FavoriteButton>
-          ) : (
-            <ATC.FavoriteButton onClick={toggleFavorite}>
-              ☆
-            </ATC.FavoriteButton>
-          )}
-        </ATC.SecondLine>
+          { quantity === '-'
+            ? (
+              <ATC.SelectQuantity>
+                <option> - </option>
+              </ATC.SelectQuantity>
+            ) : (
+              <ATC.SelectQuantity onChange={updateQuantity} value={quantity}>
+                { size === null
+                  ? stock.map((quantityChoice, index) => (
+                    <option key={index + 100}>
+                      {quantityChoice}
+                    </option>
+                  ))
+                  : stock.map((quantityChoice, index) => (
+                    <option key={index + 200}>
+                      {quantityChoice}
+                    </option>
+                  ))}
+              </ATC.SelectQuantity>
+            )}
 
-      </SectionDiv.AddToCartSection>
-    );
+          <ATC.SecondLine>
+            { size === null || size === 'SELECT SIZE'
+              ? (
+                <ATC.AddtoBag onClick={onClickOpenDropDown}>
+                  ADD TO BAG &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; +
+                </ATC.AddtoBag>
+              )
+              : (
+                <ATC.AddtoBag onClick={onClickAddToBag}>
+                  ADD TO BAG &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; +
+                </ATC.AddtoBag>
+              )}
+
+            {favorite ? (
+              <ATC.FavoriteButton onClick={toggleFavorite}>
+                ★
+              </ATC.FavoriteButton>
+            ) : (
+              <ATC.FavoriteButton onClick={toggleFavorite}>
+                ☆
+              </ATC.FavoriteButton>
+            )}
+          </ATC.SecondLine>
+
+        </SectionDiv.AddToCartSection>
+      );
+      // return (
+      //   <SectionDiv.AddToCartSection> loading...</SectionDiv.AddToCartSection>
+      // );
+    }
   }
-  return (
-    <SectionDiv.AddToCartSection> loading...</SectionDiv.AddToCartSection>
-  );
+  return null;
 };
 
 export default AddToCart;
