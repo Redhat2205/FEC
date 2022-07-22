@@ -1,20 +1,13 @@
 import styled from "styled-components";
-// import SearchBar from '../../Widget/Q&A/Components/SearchBar.jsx';
 
 const Style = {
   Body: styled.div`
     margin: auto;
-    width: 60%;
-    height: 600px;
+    width: 80%;
+    height: 700px;
     padding: 10px;
     overflow: hidden;
   `,
-  QuestionBody: styled.div`
-  margin: auto;
-  height: 70%;
-  padding: 10px;
-  overflow: auto;
-`,
   SearchBar: styled.input`
     margin-left: auto;
     margin-right: auto;
@@ -30,39 +23,23 @@ const Style = {
   `,
   Title: styled.h2`
     text-align: left;
-    font-size: 15px;
+    font-size: 18px;
     font-weight: normal;
-    font-variant: small-caps;
   `,
-  QuestionList: styled.div`
-    display: inline-block;
-  `,
-  Questions: styled.div`
-    font-size: 18px;
-    font-weight: bold;
-    margin-bottom: 25px;
-    `,
-  QBody: styled.div`
-    width: 60%;
-    font-size: 18px;
-    font-weight: bold;
-    margin-bottom: 25px;
-    display: inline-block;
-
- `,
   MoreAnsweredQuestion: styled.button`
+    width: 35%;
+    height: 10%;
+    margin-right: 15px;
+    font-size: 18px;
+    font-weight: bold;
+  `,
+  AddQuestion: styled.button`
     width: 30%;
-    height: 65px;
+    height: 10%;
     font-size: 18px;
     font-weight: bold;
 `,
-  Info: styled.ul`
-    font-size: 13px;
-    font-weight: normal;
-    display: flex;
-    float: right;
-    list-style: none;
-  `,
+
 };
 
 export default Style;

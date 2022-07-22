@@ -17,11 +17,7 @@ const Overview = ({
   const [IgSectionWidth, setIgSectionWidth] = useState('60%');
 
   const getStyles = () => {
-    axios({
-      method: 'GET',
-      url: `${process.env.API_Base}/products/${productID}/styles`,
-      headers: { Authorization: process.env.API_Key },
-    })
+    axios.get(`/products/${productID}/styles`)
       .then((stylesData) => {
         setStyles(stylesData.data.results);
         setCurrStyle(stylesData.data.results[0]);
@@ -35,7 +31,7 @@ const Overview = ({
   }, []);
   return (
     <div>
-      <div data-testid="overview"> Hello Overview</div>
+      <div data-testid="overview" />
       <ImageGallery
         currStyle={currStyle}
         currView={currView}

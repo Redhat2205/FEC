@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from 'axios';
 
-const useAnswerForm = (questionID) => {
+const useAnswerForm = (questionID, addModalStatus) => {
   const [submit, setSubmit] = useState(false);
   const [imageSrc, setImageSrc] = useState([]);
   const [allUrls, setAllUrls] = useState(false);
@@ -10,6 +10,7 @@ const useAnswerForm = (questionID) => {
     email: "",
     body: "",
   });
+
   const urlArray = [];
   const handleInput = (e) => {
     const { name, value } = e.target;
@@ -41,17 +42,10 @@ const useAnswerForm = (questionID) => {
     )
       .then((response) => {
         response.forEach((res) => {
-          console.log(res.data.url);
           urlArray.push(res.data.url);
         });
-
         json.photos = urlArray;
-        axios({
-          method: 'post',
-          url: `${process.env.API_Base}/qa/questions/${questionID}/answers`,
-          headers: { Authorization: process.env.API_Key },
-          data: json,
-        }).then((r) => { console.log("PRINT RESPONSE"); console.log(r); });
+        axios.post(`answers/submit/${questionID}`, json);
       })
       .then(() => setSubmit(true))
       .then(() => {
@@ -66,7 +60,7 @@ const useAnswerForm = (questionID) => {
   };
 
   return {
-    handleInput, handleSubmit, values, submit, setSubmit, handleOnChangePhoto, imageSrc,
+    handleInput, handleSubmit, values, submit, setSubmit, handleOnChangePhoto, imageSrc, setImageSrc, setValues,
   };
 };
 
