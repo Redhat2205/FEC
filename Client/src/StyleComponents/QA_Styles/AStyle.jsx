@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 const AStyle = {
   Body: styled.div`
-    max-height: 300px;
+    max-height: 390px;
     overflow: auto
   `,
   Input: styled.span`
@@ -43,12 +43,11 @@ const AStyle = {
 `,
   YesClicked: styled.li`
   margin: 2px;
-  width: 20%;
+  max-width: 17%;
   `,
   Yes: styled.li`
-  margin-left: 5px;
-  margin-right: 5px;
-  width: 20%;
+  margin: 2px;
+  max-width: 17%;
     text-decoration-line: underline;
     &:hover {
     color: blue;

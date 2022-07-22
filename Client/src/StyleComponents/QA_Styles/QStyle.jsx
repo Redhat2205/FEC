@@ -3,7 +3,7 @@ import styled from "styled-components";
 const QStyle = {
   Body: styled.div`
     margin: auto;
-    max-height: 60%;
+    max-height: 520px;
     padding: 10px;
     overflow-wrap: break-word;
     overflow: auto;
@@ -14,7 +14,7 @@ const QStyle = {
     margin-bottom: 25px;
   `,
   Info: styled.ul`
-    width: 30%;
+    max-width: 30%;
     font-size: 13px;
     font-weight: normal;
     display: -webkit-inline-box;
@@ -22,7 +22,7 @@ const QStyle = {
     list-style: none;
   `,
   QuestionList: styled.div`
-  display: inline-block;
+    display: inline-block;
 `,
   Panel: styled.div`
     font-size: 18px;
@@ -60,7 +60,7 @@ const QStyle = {
     }
   `,
   Yes: styled.li`
-    min-width: 25%;
+    min-width: 20%;
       text-decoration-line: underline;
       &:hover {
       color: blue;

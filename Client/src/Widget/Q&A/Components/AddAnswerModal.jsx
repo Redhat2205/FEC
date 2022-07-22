@@ -43,7 +43,7 @@ const AddAnswerModal = ({
                   />
                 </div>
                 <div>
-                  <Modal.FormLabel> What is your nickname </Modal.FormLabel>
+                  <Modal.FormLabel> Your Answer </Modal.FormLabel>
                   <Modal.SubmitInput
                     type="text"
                     name="body"
@@ -65,7 +65,7 @@ const AddAnswerModal = ({
                   <br />
                   {imageSrc.length >= 4 && <Modal.Name type="file" name="photo" onChange={handleOnChangePhoto} />}
                 </div>
-                <button type="submit">Submit Question</button>
+                <button type="submit">Submit Answer</button>
               </form>
             )}
           <Modal.CloseButton onClick={() => {
