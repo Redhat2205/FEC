@@ -12,7 +12,7 @@ const ImgUpload = ({
     // console.log('current state of userPhotos', userPhotos);
 
     // do this after the axios comes back with an individual image url
-    // setForm((old) => ({ ...old, photos: userPhotos }));
+    setForm((old) => ({ ...old, photos: userPhotos }));
   };
 
   return (
