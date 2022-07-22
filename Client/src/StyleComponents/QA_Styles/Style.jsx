@@ -4,7 +4,7 @@ const Style = {
   Body: styled.div`
     margin: auto;
     width: 80%;
-    height: 700px;
+    max-height: 800px;
     padding: 10px;
     overflow: hidden;
   `,
@@ -28,14 +28,14 @@ const Style = {
   `,
   MoreAnsweredQuestion: styled.button`
     width: 35%;
-    height: 10%;
+    height: 70px;
     margin-right: 15px;
     font-size: 18px;
     font-weight: bold;
   `,
   AddQuestion: styled.button`
     width: 30%;
-    height: 10%;
+    height: 70px;
     font-size: 18px;
     font-weight: bold;
 `,

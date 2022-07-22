@@ -3,7 +3,7 @@ import styled from "styled-components";
 const QStyle = {
   Body: styled.div`
     margin: auto;
-    max-height: 60%;
+    max-height: 520px;
     padding: 10px;
     overflow-wrap: break-word;
     overflow: auto;

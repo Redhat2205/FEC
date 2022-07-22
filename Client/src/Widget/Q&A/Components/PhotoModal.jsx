@@ -6,7 +6,7 @@ const AnswerPhoto = ({ url, onClose }) => (
   <Modal.Background>
     <Modal.PopUp>
       <Modal.Content>
-        <img width="750px" height="650px" alt="answerspic" src={url} />
+        <img width="800px" height="700px" alt="answerspic" src={url} />
         <Modal.CloseButton onClick={onClose}> X </Modal.CloseButton>
       </Modal.Content>
     </Modal.PopUp>
