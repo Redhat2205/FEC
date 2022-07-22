@@ -1,7 +1,7 @@
 import React from "react";
 
 const Related = () => (
-  <div> Hello Related</div>
-)
+  <div />
+);
 
-export default  Related
+export default Related;
