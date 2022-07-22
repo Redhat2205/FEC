@@ -14,6 +14,7 @@ const R_R = ({ productID }) => {
   const [averageRating, setAverageRating] = useState(null);
   const [metaData, setMetaData] = useState(null);
   const [reviewCount, setReviewCount] = useState(null);
+  const [currentSort, setCurrentSort] = useState(null);
 
   // set the currentItem
   useEffect(() => {
@@ -34,33 +35,67 @@ const R_R = ({ productID }) => {
 
   // get all reviews for a specific product
   useEffect(() => {
-    axios({
-      method: 'get',
-      url: `${process.env.API_Base}/reviews/`,
-      // url: API_Base + '/reviews/' + productID,
-      headers: { Authorization: process.env.API_Key },
-      params: {
-        product_id: productID,
-        count: '9999',
-      },
-    })
-      .then((res) => {
-        // console.log('all reviews specific product', res.data.results);
-        setProductReviews(res.data.results);
-        setReviewCount(res.data.results.length);
-        // set the average rating
-        let total = 0;
-        res.data.results.forEach((result) => { total += result.rating; });
-        // console.log('total rating:', total);
-        // console.log('average rating:', total / res.data.results.length);
-        // setAverageRating(total * 1.00);
-        setAverageRating(Math.round((total / res.data.results.length) * 10) / 10);
-        // console.log('response data results', res.data.results.length);
+    if (!currentSort) {
+      axios({
+        method: 'get',
+        url: `${process.env.API_Base}/reviews/`,
+        // url: API_Base + '/reviews/' + productID,
+        headers: { Authorization: process.env.API_Key },
+        params: {
+          product_id: productID,
+          count: '9999',
+        },
       })
-      .catch((err) => {
-        console.log('🟥there was an error fetching product info!', err);
-      });
-  }, []);
+        .then((res) => {
+          // console.log('all reviews specific product', res.data.results);
+          setProductReviews(res.data.results);
+          setReviewCount(res.data.results.length);
+          // set the average rating
+          let total = 0;
+          res.data.results.forEach((result) => { total += result.rating; });
+          // console.log('total rating:', total);
+          // console.log('average rating:', total / res.data.results.length);
+          // setAverageRating(total * 1.00);
+          setAverageRating(Math.round((total / res.data.results.length) * 10) / 10);
+          // console.log('response data results', res.data.results.length);
+        })
+        .catch((err) => {
+          console.log('🟥there was an error fetching product info!', err);
+        });
+    }
+    if (currentSort) {
+      axios({
+        method: 'get',
+        url: `${process.env.API_Base}/reviews/`,
+        // url: API_Base + '/reviews/' + productID,
+        headers: { Authorization: process.env.API_Key },
+        params: {
+          product_id: productID,
+          count: '9999',
+          sort: `${currentSort}`,
+        },
+      })
+        .then((res) => {
+          // console.log('all reviews specific product', res.data.results);
+          setProductReviews(res.data.results);
+          setReviewCount(res.data.results.length);
+          // set the average rating
+          let total = 0;
+          res.data.results.forEach((result) => { total += result.rating; });
+          // console.log('total rating:', total);
+          // console.log('average rating:', total / res.data.results.length);
+          // setAverageRating(total * 1.00);
+          setAverageRating(Math.round((total / res.data.results.length) * 10) / 10);
+          // console.log('response data results', res.data.results.length);
+        })
+        .catch((err) => {
+          console.log('🟥there was an error fetching product info!', err);
+        });
+    }
+  }, [currentSort]);
+
+  // when sort changes, call for more reviews!
+  // useEffect(, );
 
   // get all metadata for a specific product
   useEffect(() => {
@@ -79,7 +114,7 @@ const R_R = ({ productID }) => {
   }, []);
 
   return (
-    <div className="rnr-container">
+    <div className="rnr-container" style={{ width: '80%', margin: 'auto' }}>
       <div>
         <h1 id="main-rnr-header" data-testid="rnr" style={{ textAlign: 'left', fontFamily: 'tahoma' }}>Ratings and Reviews</h1>
       </div>
@@ -90,7 +125,7 @@ const R_R = ({ productID }) => {
       <div
         className="rating-chart-container"
         style={{
-          border: 'solid 1px', borderRadius: '5px', boxShadow: '5px 10px #888888', float: 'left', width: '33%',
+          float: 'left', width: '33%',
         }}
       >
         <RatingChart currentItem={currentItem} averageRating={averageRating} productReviews={productReviews} metaData={metaData} />
@@ -98,10 +133,10 @@ const R_R = ({ productID }) => {
       <div
         className="review-list-container"
         style={{
-          border: 'solid 1px', borderRadius: '5px', boxShadow: '5px 10px #888888', float: 'right', width: '66%', marginBottom: '20px',
+          float: 'right', width: '66%', marginBottom: '20px',
         }}
       >
-        <ReviewList reviews={productReviews} currentItem={currentItem} reviewCount={reviewCount} />
+        <ReviewList reviews={productReviews} currentItem={currentItem} reviewCount={reviewCount} sort={currentSort} setSort={setCurrentSort} metaData={metaData} />
       </div>
     </div>
   );
