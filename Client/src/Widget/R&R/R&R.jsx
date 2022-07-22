@@ -125,7 +125,7 @@ const R_R = ({ productID }) => {
       <div
         className="rating-chart-container"
         style={{
-          border: 'solid 1px', borderRadius: '5px', boxShadow: '5px 10px #888888', float: 'left', width: '33%',
+          float: 'left', width: '33%',
         }}
       >
         <RatingChart currentItem={currentItem} averageRating={averageRating} productReviews={productReviews} metaData={metaData} />
@@ -133,7 +133,7 @@ const R_R = ({ productID }) => {
       <div
         className="review-list-container"
         style={{
-          border: 'solid 1px', borderRadius: '5px', boxShadow: '5px 10px #888888', float: 'right', width: '66%', marginBottom: '20px',
+          float: 'right', width: '66%', marginBottom: '20px',
         }}
       >
         <ReviewList reviews={productReviews} currentItem={currentItem} reviewCount={reviewCount} sort={currentSort} setSort={setCurrentSort} metaData={metaData} />
