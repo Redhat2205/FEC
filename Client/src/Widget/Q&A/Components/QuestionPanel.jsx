@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import AnswerList from "./AnswerList.jsx";
 import AddAnswerModal from "./AddAnswerModal.jsx";
 import Style from "../../../StyleComponents/QA_Styles/Style.jsx";
-import AStyle from "../../../StyleComponents/QA_Styles/AStyle.jsx";
+import QStyle from "../../../StyleComponents/QA_Styles/QStyle.jsx";
 
 const QuestionsPanel = ({
-  questionid, qAObj, onClickHelpful, productName, onReport, onQReport, productID, getQa,
+  questionID, qAObj, onClickHelpful, productName, onReport, productID, getQa,
 }) => {
   const [showAnswerStatus, setShowAnswerStatus] = useState(false);
   const [answerHelp, setAnswerHelp] = useState(false);
@@ -13,18 +13,18 @@ const QuestionsPanel = ({
   const [addModalStatus, setAddModalStatus] = useState(false);
   const [qReport, setQReport] = useState(false);
   return (
-    <Style.Questions>
-      <Style.QBody
+    <QStyle.Panel>
+      <QStyle.Question
         onClick={() => (showAnswerStatus !== true ? setShowAnswerStatus(true) : setShowAnswerStatus(false))}
       >
         {`Q: ${qAObj.question_body}`}
-      </Style.QBody>
-      <Style.Info>
-        <AStyle.Helpful>Helpful?</AStyle.Helpful>
-        {questionHelp ? <AStyle.Helpful>{`|  Yes (${qAObj.question_helpfulness})`}</AStyle.Helpful>
+      </QStyle.Question>
+      <QStyle.Info>
+        <QStyle.Helpful>Helpful?</QStyle.Helpful>
+        {questionHelp ? <QStyle.Helpful>{`|  Yes (${qAObj.question_helpfulness})`}</QStyle.Helpful>
           : (
-            <AStyle.Yes
-              id={questionid}
+            <QStyle.Yes
+              id={questionID}
               type="question"
               onClick={(e) => {
                 onClickHelpful(e);
@@ -32,30 +32,34 @@ const QuestionsPanel = ({
               }}
             >
               {`|  Yes (${qAObj.question_helpfulness})`}
-            </AStyle.Yes>
+            </QStyle.Yes>
           )}
-        <AStyle.Reported onClick={() => (setAddModalStatus(true))}>|  Add Answer</AStyle.Reported>
+        <QStyle.AddAnswer onClick={() => (setAddModalStatus(true))}>|  Add Answer</QStyle.AddAnswer>
         <AddAnswerModal
           productName={productName}
           productID={productID}
           getQa={getQa}
           questionBody={qAObj.question_body}
           addModalStatus={addModalStatus}
-          questionID={questionid}
+          questionID={questionID}
           onClose={() => (setAddModalStatus(false))}
         />
-        <AStyle.Reported
-          id={questionid}
-          onClick={(e) => {
-            setQReport(true);
-            onQReport(e);
-          }}
-        >
-          {qReport ? "Reported" : "Report"}
-        </AStyle.Reported>
-      </Style.Info>
+        {qReport ? <QStyle.Reported>| Reported</QStyle.Reported>
+          : (
+            <QStyle.Report
+              id={questionID}
+              type="question"
+              onClick={(e) => {
+                setQReport(true);
+                onReport(e);
+              }}
+            >
+              | Report
+            </QStyle.Report>
+          )}
+      </QStyle.Info>
       {showAnswerStatus && <AnswerList onClickHelpful={onClickHelpful} answerObj={qAObj.answers} onReport={onReport} />}
-    </Style.Questions>
+    </QStyle.Panel>
   );
 };
 
