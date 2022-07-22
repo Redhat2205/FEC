@@ -12,13 +12,19 @@ const charContainerStyle = {
   justifyContent: 'center',
 };
 
+const carrots = {};
+
 const CharacteristicsUserRating = ({
   quality, form, setForm, userChara, setUserChara, qualID,
 }) => {
   const handleRadioSelect = (e) => {
-    setUserChara((old) => ({ ...old, [e.target.dataset.qualid]: e.target.value }));
-    // console.log('testing!!', userChara);
-    setForm((old) => ({ ...old, characteristics: userChara }));
+    // setUserChara((old) => ({ ...old, [e.target.dataset.qualid]: parseInt(e.target.value) }));
+    console.log('testing!!', userChara);
+    const stringy = String(e.target.dataset.qualid);
+    carrots[stringy] = parseInt(e.target.value);
+    console.log(carrots);
+    setUserChara(() => (carrots));
+    setForm((old) => ({ ...old, characteristics: carrots }));
     // console.log(form);
     // console.log(e.target.name, e.target.value, e.target.dataset.qualid);
   };

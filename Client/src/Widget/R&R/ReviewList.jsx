@@ -25,7 +25,7 @@ const ReviewList = ({
   // setRenderedReviews()
   // }, [currentSort]);
 
-  if (reviews && metaData) {
+  if (reviews && metaData && currentItem) {
     // set the sorting here
 
     // const newest = reviews.slice(0).sort((a, b) => (
