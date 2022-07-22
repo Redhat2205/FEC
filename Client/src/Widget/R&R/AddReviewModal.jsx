@@ -208,7 +208,7 @@ const AddReviewModal = ({
                 email: form.email,
                 recommend: form.recommend,
                 characteristics: form.characteristics,
-                photos: form.photos,
+                photos: urlArray,
               },
             })
               .then((res) => { console.log(res.status); })
