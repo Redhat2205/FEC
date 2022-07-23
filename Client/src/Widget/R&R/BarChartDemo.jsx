@@ -44,26 +44,101 @@ const BarChartDemo = ({ productReviews }) => {
         //   <li>{`${fours.length} 4-star reviews is ${foursPct} percent of total`}</li>
         //   <li>{`${fives.length} 5-star reviews is ${fivesPct} percent of total`}</li>
         // </ul>
-        <div className="rating-bar-chart" style={{width: '90%', marginLeft: '45px'}}>
-          <div className="each-bar-container" style={{display: 'inline-flex', textAlign: 'left', height: '20px', width: '150px', position: 'relative'}}>
-            <div className="each-bar-bg" style={{backgroundColor: 'grey', width: '100%', height: '100%', position: 'absolute'}}></div>
-            <div className="each-bar-fg" style={{backgroundColor: 'green', height: '100%', overflow: 'hidden', position: 'inherit', width: `${onesPct}%`}}></div>
+        <div className="rating-bar-chart" style={{ width: '90%', marginLeft: '45px' }}>
+          <div
+            className="each-bar-container"
+            style={{
+              display: 'inline-flex', textAlign: 'left', height: '20px', width: '150px', position: 'relative',
+            }}
+          >
+            <div
+              className="each-bar-bg"
+              style={{
+                backgroundColor: 'grey', width: '100%', height: '100%', position: 'absolute',
+              }}
+            />
+            <div
+              className="each-bar-fg"
+              style={{
+                backgroundColor: 'green', height: '100%', overflow: 'hidden', position: 'inherit', width: `${onesPct}%`,
+              }}
+            />
           </div>
-          <div className="each-bar-container" style={{display: 'inline-flex', textAlign: 'left', height: '20px', width: '150px', position: 'relative'}}>
-            <div className="each-bar-bg" style={{backgroundColor: 'grey', width: '100%', height: '100%', position: 'absolute'}}></div>
-            <div className="each-bar-fg" style={{backgroundColor: 'green', height: '100%', overflow: 'hidden', position: 'inherit', width: `${twosPct}%`}}></div>
+          <div
+            className="each-bar-container"
+            style={{
+              display: 'inline-flex', textAlign: 'left', height: '20px', width: '150px', position: 'relative',
+            }}
+          >
+            <div
+              className="each-bar-bg"
+              style={{
+                backgroundColor: 'grey', width: '100%', height: '100%', position: 'absolute',
+              }}
+            />
+            <div
+              className="each-bar-fg"
+              style={{
+                backgroundColor: 'green', height: '100%', overflow: 'hidden', position: 'inherit', width: `${twosPct}%`,
+              }}
+            />
           </div>
-          <div className="each-bar-container" style={{display: 'inline-flex', textAlign: 'left', height: '20px', width: '150px', position: 'relative'}}>
-            <div className="each-bar-bg" style={{backgroundColor: 'grey', width: '100%', height: '100%', position: 'absolute'}}></div>
-            <div className="each-bar-fg" style={{backgroundColor: 'green', height: '100%', overflow: 'hidden', position: 'inherit', width: `${threesPct}%`}}></div>
+          <div
+            className="each-bar-container"
+            style={{
+              display: 'inline-flex', textAlign: 'left', height: '20px', width: '150px', position: 'relative',
+            }}
+          >
+            <div
+              className="each-bar-bg"
+              style={{
+                backgroundColor: 'grey', width: '100%', height: '100%', position: 'absolute',
+              }}
+            />
+            <div
+              className="each-bar-fg"
+              style={{
+                backgroundColor: 'green', height: '100%', overflow: 'hidden', position: 'inherit', width: `${threesPct}%`,
+              }}
+            />
           </div>
-          <div className="each-bar-container" style={{display: 'inline-flex', textAlign: 'left', height: '20px', width: '150px', position: 'relative'}}>
-            <div className="each-bar-bg" style={{backgroundColor: 'grey', width: '100%', height: '100%', position: 'absolute'}}></div>
-            <div className="each-bar-fg" style={{backgroundColor: 'green', height: '100%', overflow: 'hidden', position: 'inherit', width: `${foursPct}%`}}></div>
+          <div
+            className="each-bar-container"
+            style={{
+              display: 'inline-flex', textAlign: 'left', height: '20px', width: '150px', position: 'relative',
+            }}
+          >
+            <div
+              className="each-bar-bg"
+              style={{
+                backgroundColor: 'grey', width: '100%', height: '100%', position: 'absolute',
+              }}
+            />
+            <div
+              className="each-bar-fg"
+              style={{
+                backgroundColor: 'green', height: '100%', overflow: 'hidden', position: 'inherit', width: `${foursPct}%`,
+              }}
+            />
           </div>
-          <div className="each-bar-container" style={{display: 'inline-flex', textAlign: 'left', height: '20px', width: '150px', position: 'relative'}}>
-            <div className="each-bar-bg" style={{backgroundColor: 'grey', width: '100%', height: '100%', position: 'absolute'}}></div>
-            <div className="each-bar-fg" style={{backgroundColor: 'green', height: '100%', overflow: 'hidden', position: 'inherit', width: `${fivesPct}%`}}></div>
+          <div
+            className="each-bar-container"
+            style={{
+              display: 'inline-flex', textAlign: 'left', height: '20px', width: '150px', position: 'relative',
+            }}
+          >
+            <div
+              className="each-bar-bg"
+              style={{
+                backgroundColor: 'grey', width: '100%', height: '100%', position: 'absolute',
+              }}
+            />
+            <div
+              className="each-bar-fg"
+              style={{
+                backgroundColor: 'green', height: '100%', overflow: 'hidden', position: 'inherit', width: `${fivesPct}%`,
+              }}
+            />
           </div>
         </div>
       );

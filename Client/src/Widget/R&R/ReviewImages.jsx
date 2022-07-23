@@ -1,3 +1,6 @@
+/* eslint-disable jsx-a11y/img-redundant-alt */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import React, { useState } from 'react';
 import ReviewImageModal from './ReviewImageModal.jsx';
 
@@ -44,29 +47,27 @@ const ReviewImages = ({ images }) => {
 
   if (showImage) {
     return (
-      <ReviewImageModal url={currentUrl} setShowImage={setShowImage} showImage={showImage}/>
+      <ReviewImageModal url={currentUrl} setShowImage={setShowImage} showImage={showImage} />
     );
-  } else {
-    // fancy cursor
-    if (cursor) {
-      return (
-        <ul>
-          {images.map((obj) => (
-            <img key={obj.id} src={obj.url} style={cursorStyle} onMouseLeave={(old) => setCursor(!old)} onClick={() => setShowImage(!showImage)}></img>
-          ))}
-        </ul>
-      );
-    } else {
-      return (
-        <ul>
-          {images.map((obj) => (
-            // <img key={obj.id} src={obj.url} style={thumbnailStyle} onMouseEnter={(old) => setCursor(!old)} onClick={() => setShowImage(!showImage)} onClick={() => setCurrentUrl(obj.url)}></img>
-            <img key={obj.id} src={obj.url} style={thumbnailStyle} onMouseEnter={(old) => setCursor(!old)} onClick={() => {setShowImage(!showImage); setCurrentUrl(obj.url)}}></img>
-          ))}
-        </ul>
-      );
-    }
   }
+  // fancy cursor
+  if (cursor) {
+    return (
+      <ul>
+        {images.map((obj) => (
+          <img alt="user-submitted-image" key={obj.id} src={obj.url} style={cursorStyle} onMouseLeave={(old) => setCursor(!old)} onClick={() => setShowImage(!showImage)} />
+        ))}
+      </ul>
+    );
+  }
+  return (
+    <ul>
+      {images.map((obj) => (
+        // <img key={obj.id} src={obj.url} style={thumbnailStyle} onMouseEnter={(old) => setCursor(!old)} onClick={() => setShowImage(!showImage)} onClick={() => setCurrentUrl(obj.url)}></img>
+        <img alt="user-submitted-image" key={obj.id} src={obj.url} style={thumbnailStyle} onMouseEnter={(old) => setCursor(!old)} onClick={() => { setShowImage(!showImage); setCurrentUrl(obj.url); }} />
+      ))}
+    </ul>
+  );
 };
 
 export default ReviewImages;

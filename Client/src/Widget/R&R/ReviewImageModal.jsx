@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/no-noninteractive-tabindex */
 import React from 'react';
 
 const containerStyle = {
@@ -23,7 +24,7 @@ const bodyStyle = {
   // borderBottom: '1px solid #eee',
 };
 
-const ReviewImageModal = ({ url, setShowImage, showImage }) => {
+const ReviewImageModal = ({ url, setShowImage, showImage }) =>
   // const escHandler = (e) => {
   //   if (e.keyCode === 27) {
   //     console.log('esc key!');
@@ -31,17 +32,15 @@ const ReviewImageModal = ({ url, setShowImage, showImage }) => {
   //   }
   // };
   // onKeyDown={(e) => {escHandler(e)}
-  return (
+  (
   // <div style={containerStyle} className="review-image-modal-container" tabIndex="0" onKeyDown={(e) => {escHandler(e)}}>
-  <div style={containerStyle} className="review-image-modal-container" tabIndex="0">
-    <button type="button" onClick={() => setShowImage(!showImage)}>✕</button>
-    <div style={contentStyle} className="review-image-modal-content">
-      <div style={bodyStyle} className="review-image-modal-body">
-        <img alt="user-submitted" src={url} />
+    <div style={containerStyle} className="review-image-modal-container" tabIndex="0">
+      <button type="button" onClick={() => setShowImage(!showImage)}>✕</button>
+      <div style={contentStyle} className="review-image-modal-content">
+        <div style={bodyStyle} className="review-image-modal-body">
+          <img alt="user-submitted" src={url} />
+        </div>
       </div>
     </div>
-  </div>
   );
-};
-
 export default ReviewImageModal;
