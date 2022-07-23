@@ -22,4 +22,5 @@ describe('test!!', () => {
     expect(screen.getByTestId("app")).toBeInTheDocument();
     expect(screen.getByTestId("appAfterRendering")).toBeInTheDocument();
   });
+  test('rendering the modal ');
 });

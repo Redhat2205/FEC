@@ -16,7 +16,6 @@ app.get('/products/:id', (req, res) => {
 app.get('/reviews/:id', (req, res) => {
   helpers.getReviews(req, res);
 });
-
 app.get('/questions/:id', (req, res) => {
   helpers.getQA(req, res);
 });

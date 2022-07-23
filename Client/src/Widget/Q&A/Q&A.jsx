@@ -13,6 +13,7 @@ const Q_A = ({ productID, productName }) => {
   const [end, setEnd] = useState(4);
 
   const getQa = () => {
+    console.log(productID);
     axios.get(`questions/${productID}`)
       .then((question) => {
         const sortedQuestions = Object.values(question.data.results).sort((a, b) => (
