@@ -1,3 +1,5 @@
+/* eslint-disable no-useless-escape */
+/* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useState } from 'react';
 import axios from 'axios';
 import AddStarRating from './AddStarRating.jsx';
@@ -103,7 +105,7 @@ const AddReviewModal = ({
     const submitHandler = () => {
       let formValidated = false;
 
-      let validated = {
+      const validated = {
         rating: false,
         recommend: false,
         characteristics: false,
@@ -125,7 +127,7 @@ const AddReviewModal = ({
       }
 
       // characteristics validation
-      if (Object.values(userChara).filter(value => value > 0).length === Object.values(userChara).length) {
+      if (Object.values(userChara).filter((value) => value > 0).length === Object.values(userChara).length) {
         validated.characteristics = true;
         console.log('characteristics validated');
       }
@@ -169,8 +171,8 @@ const AddReviewModal = ({
         const promises = userPhotos.map((photo) => {
           formData.append('file', photo[0]);
           return axios.post('https://api.cloudinary.com/v1_1/ratingsredhat/image/upload', formData);
-            // .then((res) => console.log(res.data.url))
-            // .catch((err) => console.log('nah bro', err));
+          // .then((res) => console.log(res.data.url))
+          // .catch((err) => console.log('nah bro', err));
         });
         // console.log(promises);
         Promise.all(promises)
@@ -243,122 +245,181 @@ const AddReviewModal = ({
               <h3 style={left15PX}>{`About ${currentItem.name}`}</h3>
             </div>
             <div className="modal-body" style={modalBodyStyle}>
-              <h5 style={{ marginLeft: '15px' }}>Overall rating<span style={{fontWeight: '100', color: 'red'}}> *required</span></h5>
+              <h5 style={{ marginLeft: '15px' }}>
+                Overall rating
+                <span style={{ fontWeight: '100', color: 'red' }}> *required</span>
+              </h5>
               <div style={{ marginLeft: '15px' }}>
-                <AddStarRating form={form} setForm={setForm}/>
-                <p style={{display: 'inline-block', width: '85%'}}>
-                  <span>1 star - “Poor”</span><br></br>
-                  <span>2 stars - “Fair”</span><br></br>
-                  <span>3 stars - “Average”</span><br></br>
-                  <span>4 stars - “Good”</span><br></br>
-                  <span>5 stars - “Great”</span><br></br>
+                <AddStarRating form={form} setForm={setForm} />
+                <p style={{ display: 'inline-block', width: '85%' }}>
+                  <span>1 star - “Poor”</span>
+                  <br />
+                  <span>2 stars - “Fair”</span>
+                  <br />
+                  <span>3 stars - “Average”</span>
+                  <br />
+                  <span>4 stars - “Good”</span>
+                  <br />
+                  <span>5 stars - “Great”</span>
+                  <br />
                 </p>
               </div>
-              <h5 style={left15PX}>Do you recommend this product?<span style={{fontWeight: '100', color: 'red'}}> *required</span></h5>
+              <h5 style={left15PX}>
+                Do you recommend this product?
+                <span style={{ fontWeight: '100', color: 'red' }}> *required</span>
+              </h5>
               <div>
                 <div>
-                  <label style={{ display: 'inline-block', marginLeft: '15px', width: '4%', textAlign: 'center' }} htmlFor="Yes">Yes</label>
-                  <input  type="radio" name="recommended" value="yes" onChange={(e) => setForm(old => ({...old, recommend: true}))}></input><br></br>
+                  <label
+                    style={{
+                      display: 'inline-block', marginLeft: '15px', width: '4%', textAlign: 'center',
+                    }}
+                    htmlFor="Yes"
+                  >
+                    Yes
+                  </label>
+                  <input type="radio" name="recommended" value="yes" onChange={(e) => setForm((old) => ({ ...old, recommend: true }))} />
+                  <br />
                 </div>
                 <div>
-                  <label style={{ display: 'inline-block', marginLeft: '15px', width: '4%', textAlign: 'center' }} htmlFor="No">No</label>
-                  <input  type="radio" name="recommended" value="no" onChange={(e) => setForm(old => ({...old, recommend: false}))}></input>
+                  <label
+                    style={{
+                      display: 'inline-block', marginLeft: '15px', width: '4%', textAlign: 'center',
+                    }}
+                    htmlFor="No"
+                  >
+                    No
+                  </label>
+                  <input type="radio" name="recommended" value="no" onChange={(e) => setForm((old) => ({ ...old, recommend: false }))} />
                 </div>
               </div>
-              <h5 style={left15PX}>Characteristics<span style={{fontWeight: '100', color: 'red'}}> *required</span></h5>
+              <h5 style={left15PX}>
+                Characteristics
+                <span style={{ fontWeight: '100', color: 'red' }}> *required</span>
+              </h5>
               <div>
                 <ul>
                   {mappings.map((property, index, coll) => (index % 2 === 0 ? (
-                    <div style={{borderBottom: 'solid 1px #222222', marginBottom: '5px'}}>
+                    <div style={{ borderBottom: 'solid 1px #222222', marginBottom: '5px' }}>
                       <div style={{ fontWeight: 'bold', fontSize: '14px' }}>
                         {property}
                       </div>
-                      {property === 'Size' && (<div style={radioWrapper}>
+                      {property === 'Size' && (
+                      <div style={radioWrapper}>
                         <CharacteristicsUserRating quality={property} qualID={coll[(index + 1)]} form={form} setForm={setForm} userChara={userChara} setUserChara={setUserChara} />
                         <label style={radioLabels}>A size too small</label>
                         <label style={radioLabels}>1/2 size too small</label>
                         <label style={radioLabels}>Perfect</label>
                         <label style={radioLabels}>1/2 size too big</label>
                         <label style={radioLabels}>A size too wide</label>
-                      </div>)}
-                      {property === 'Width' && (<div style={radioWrapper}>
+                      </div>
+                      )}
+                      {property === 'Width' && (
+                      <div style={radioWrapper}>
                         <CharacteristicsUserRating quality={property} qualID={coll[(index + 1)]} form={form} setForm={setForm} userChara={userChara} setUserChara={setUserChara} />
                         <label style={radioLabels}>Too narrow</label>
                         <label style={radioLabels}>Slightly narrow</label>
                         <label style={radioLabels}>Perfect</label>
                         <label style={radioLabels}>Slightly wide</label>
                         <label style={radioLabels}>Too wide</label>
-                      </div>)}
-                      {property === 'Comfort' && (<div style={radioWrapper}>
+                      </div>
+                      )}
+                      {property === 'Comfort' && (
+                      <div style={radioWrapper}>
                         <CharacteristicsUserRating quality={property} qualID={coll[(index + 1)]} form={form} setForm={setForm} userChara={userChara} setUserChara={setUserChara} />
                         <label style={radioLabels}>Uncomfortable</label>
                         <label style={radioLabels}>Slightly uncomfortable</label>
                         <label style={radioLabels}>Ok</label>
                         <label style={radioLabels}>Comfortable</label>
                         <label style={radioLabels}>Perfect</label>
-                      </div>)}
-                      {property === 'Quality' && (<div style={radioWrapper}>
+                      </div>
+                      )}
+                      {property === 'Quality' && (
+                      <div style={radioWrapper}>
                         <CharacteristicsUserRating quality={property} qualID={coll[(index + 1)]} form={form} setForm={setForm} userChara={userChara} setUserChara={setUserChara} />
                         <label style={radioLabels}>Poor</label>
                         <label style={radioLabels}>Slightly uncomfortable</label>
                         <label style={radioLabels}>What I expected</label>
                         <label style={radioLabels}>Pretty great</label>
                         <label style={radioLabels}>Perfect</label>
-                      </div>)}
-                      {property === 'Length' && (<div style={radioWrapper}>
+                      </div>
+                      )}
+                      {property === 'Length' && (
+                      <div style={radioWrapper}>
                         <CharacteristicsUserRating quality={property} qualID={coll[(index + 1)]} form={form} setForm={setForm} userChara={userChara} setUserChara={setUserChara} />
                         <label style={radioLabels}>Runs short</label>
                         <label style={radioLabels}>Runs slightly short</label>
                         <label style={radioLabels}>Perfect</label>
                         <label style={radioLabels}>Runs slightly long</label>
                         <label style={radioLabels}>Runs long</label>
-                      </div>)}
-                      {property === 'Fit' && (<div style={radioWrapper}>
+                      </div>
+                      )}
+                      {property === 'Fit' && (
+                      <div style={radioWrapper}>
                         <CharacteristicsUserRating quality={property} qualID={coll[(index + 1)]} form={form} setForm={setForm} userChara={userChara} setUserChara={setUserChara} />
                         <label style={radioLabels}>Runs tight</label>
                         <label style={radioLabels}>Runs slightly tight</label>
                         <label style={radioLabels}>Perfect</label>
                         <label style={radioLabels}>Runs slightly long</label>
                         <label style={radioLabels}>Runs long</label>
-                      </div>)}
+                      </div>
+                      )}
                     </div>
                   )
                     : null))}
                 </ul>
               </div>
               <h5 style={left15PX}>Review summary</h5>
-              <textarea style={ {marginLeft: '15px', resize: 'none', width: '80%' }} type="text" size="50" maxLength="60" placeholder="Example: Best purchase ever!" onChange={(e) => setForm(old => ({...old, summary: e.target.value}))}></textarea>
-              <h5 style={left15PX}>Review body<span style={{fontWeight: '100', color: 'red'}}> *required</span></h5>
-              <textarea style={{ marginLeft: '15px', height: '100px', textAlign: 'none', resize: 'none', width: '80%' }} type="text" placeholder="Why did you like the product or not?" maxLength="1000" size="50" onChange={(e) => setForm(old => ({...old, body: e.target.value}))}></textarea>
+              <textarea style={{ marginLeft: '15px', resize: 'none', width: '80%' }} type="text" size="50" maxLength="60" placeholder="Example: Best purchase ever!" onChange={(e) => setForm((old) => ({ ...old, summary: e.target.value }))} />
+              <h5 style={left15PX}>
+                Review body
+                <span style={{ fontWeight: '100', color: 'red' }}> *required</span>
+              </h5>
+              <textarea
+                style={{
+                  marginLeft: '15px', height: '100px', textAlign: 'none', resize: 'none', width: '80%',
+                }}
+                type="text"
+                placeholder="Why did you like the product or not?"
+                maxLength="1000"
+                size="50"
+                onChange={(e) => setForm((old) => ({ ...old, body: e.target.value }))}
+              />
               <h5>Upload photos</h5>
               <ImgUpload form={form} setForm={setForm} userPhotos={userPhotos} setUserPhotos={setUserPhotos} />
-              <h5 style={left15PX}>What is your nickname?<span style={{fontWeight: '100', color: 'red'}}> *required</span></h5>
-              <textarea style={{ marginLeft: '15px', resize: 'none', width: '80%' }} type="text" size="50" maxLength="60" placeholder="Example: jackson11!" onChange={(e) => setForm(old => ({...old, name: e.target.value}))}></textarea>
+              <h5 style={left15PX}>
+                What is your nickname?
+                <span style={{ fontWeight: '100', color: 'red' }}> *required</span>
+              </h5>
+              <textarea style={{ marginLeft: '15px', resize: 'none', width: '80%' }} type="text" size="50" maxLength="60" placeholder="Example: jackson11!" onChange={(e) => setForm((old) => ({ ...old, name: e.target.value }))} />
               <p style={{ fontWeight: 'bold', marginLeft: '15px' }}>For privacy reasons, do not use your full name or email address</p>
 
-              <h5 style={left15PX}>What is your email?<span style={{fontWeight: '100', color: 'red'}}> *required</span></h5>
+              <h5 style={left15PX}>
+                What is your email?
+                <span style={{ fontWeight: '100', color: 'red' }}> *required</span>
+              </h5>
               {/* <textarea style={{ marginLeft: '15px', resize: 'none', width: '80%' }} type="text" size="50" maxLength="60" placeholder="Example: jackson11@email.com" onChange={(e) => setUserEmail(e.target.value)}></textarea> */}
-              <textarea style={{ marginLeft: '15px', resize: 'none', width: '80%' }} type="text" size="50" maxLength="60" placeholder="Example: jackson11@email.com" onChange={(e) => setForm(old => ({...old, email: e.target.value}))}></textarea>
+              <textarea style={{ marginLeft: '15px', resize: 'none', width: '80%' }} type="text" size="50" maxLength="60" placeholder="Example: jackson11@email.com" onChange={(e) => setForm((old) => ({ ...old, email: e.target.value }))} />
               <div className="modal-footer" style={modalFooterStyle}>
-                <button style={left15PX} onClick={submitHandler}>Submit review</button><br></br>
-                <button onClick={() => setShow(!show)} style={left15PX}>Close</button>
+                <button type="button" style={left15PX} onClick={submitHandler}>Submit review</button>
+                <br />
+                <button type="button" onClick={() => setShow(!show)} style={left15PX}>Close</button>
               </div>
             </div>
           </div>
         </div>
       );
-    } else {
-      return (
-        <div style={modalStyle}>
-          <div style={modalContentStyle}>
-            <div style={modalBodyStyle}>
-              <p>Review Submitted!</p>
-              <button onClick={(e) => {setModalDone((old) => (!old)); setSubmittedModal((old) => (!old)); setShow((old) => (!old))}}>✕</button>
-            </div>
+    }
+    return (
+      <div style={modalStyle}>
+        <div style={modalContentStyle}>
+          <div style={modalBodyStyle}>
+            <p>Review Submitted!</p>
+            <button type="button" onClick={(e) => { setModalDone((old) => (!old)); setSubmittedModal((old) => (!old)); setShow((old) => (!old)); }}>✕</button>
           </div>
         </div>
-      );
-    }
+      </div>
+    );
   }
 };
 

@@ -11,7 +11,7 @@ const RatingChart = ({
   if (metaData && productReviews && averageRating) {
     return (
       <div>
-        <div style={{marginLeft: '15px'}}>
+        <div style={{ marginLeft: '15px' }}>
           <h5 style={{ display: 'inline-block', fontWeight: '700', fontSize: '30px' }}>{averageRating}</h5>
           <BasicFn averageRating={averageRating} style={{ display: 'inline-block' }} />
         </div>

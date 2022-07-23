@@ -50,51 +50,51 @@ const BasicFn = ({ averageRating }) => {
       activeStars.push('0%');
     }
 
-  // useEffect(() => {
-  //   if (converted > 0.00) {
-  //     console.log('before conversion:', activeStars);
-  //     generateStars();
-  //     console.log('after conversion:', activeStars);
-  //     console.log(converted);
-  //   }
-  // }, [converted]);
+    // useEffect(() => {
+    //   if (converted > 0.00) {
+    //     console.log('before conversion:', activeStars);
+    //     generateStars();
+    //     console.log('after conversion:', activeStars);
+    //     console.log(converted);
+    //   }
+    // }, [converted]);
 
-  // console.log('active stars', activeStars);
+    // console.log('active stars', activeStars);
 
-  if (activeStars.length > 0) {
-    return (
-      <div style={{ display: 'inline-block', height: '100%' }}>
-        <Box
-          sx={{
-            display: 'inline-flex',
-            position: 'relative',
-            textAlign: 'left',
-            fontSize: '5px',
-            verticalAlign: 'top',
-          }}
-        >
-          {activeStars.map((starWidth, index) => (
-            <Box position="relative" key={index}>
-              <Box
-                sx={{
-                  width: starWidth,
-                  overflow: "hidden",
-                  position: "absolute",
-                }}
-              >
-                <StarIcon style={{ fontSize: "17px" }} />
+    if (activeStars.length > 0) {
+      return (
+        <div style={{ display: 'inline-block', height: '100%' }}>
+          <Box
+            sx={{
+              display: 'inline-flex',
+              position: 'relative',
+              textAlign: 'left',
+              fontSize: '5px',
+              verticalAlign: 'top',
+            }}
+          >
+            {activeStars.map((starWidth, index) => (
+              <Box position="relative" key={index}>
+                <Box
+                  sx={{
+                    width: starWidth,
+                    overflow: "hidden",
+                    position: "absolute",
+                  }}
+                >
+                  <StarIcon style={{ fontSize: "17px" }} />
+                </Box>
+                <Box>
+                  <StarBorderIcon style={{ fontSize: "17px" }} />
+                </Box>
               </Box>
-              <Box>
-                <StarBorderIcon style={{ fontSize: "17px" }} />
-              </Box>
-            </Box>
-          ))}
-        </Box>
-      </div>
+            ))}
+          </Box>
+        </div>
+      );
+    } return (
+      <div>☆☆☆☆☆</div>
     );
-  } return (
-    <div>☆☆☆☆☆</div>
-  );
   }
 };
 
