@@ -1,4 +1,4 @@
-# FEC
+# Project Atelier
 
 # step 1
 yarn install from the root directory with "npm i -g yarn"
