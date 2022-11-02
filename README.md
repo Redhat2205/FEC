@@ -38,8 +38,10 @@ This project is the front end implementation of an e-commerce platform
 ### Ratings & Reviews - Jordan Addleman
 ![Ratings & Reviews](https://i.gyazo.com/82d905cba0e9bfe04b2c446975f976d4.gif)
 
-* Users are able to checkout the ratings and reviews for the product and add new review with images
-* Sort the user submitted reviews by relevance, age or helpfulness.
+* Users are able to checkout the ratings and reviews for the current product and add a new review with images
+* Sort the user submitted reviews by relevance, age or helpfulness
+* The average user rating is shown for the current product
+* Users can report reviews as inappropriate and any Product reviews marked as *reported* will not be shown
 <br/>
 
 
