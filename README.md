@@ -39,6 +39,7 @@ This project is the front end implementation of an e-commerce platform
 ![Ratings & Reviews](https://i.gyazo.com/82d905cba0e9bfe04b2c446975f976d4.gif)
 
 * Users are able to checkout the ratings and reviews for the product and add new review with images
+* Sort the user submitted reviews by relevance, age or helpfulness.
 <br/>
 
 
